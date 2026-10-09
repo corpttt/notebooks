@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-nb-id="algorithms" data-nb-title="Алгоритмы и структуры данных">
+<html lang="ru" data-nb-id="algorithms" data-nb-title="Алгоритмы и структуры данных" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,8 +58,24 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 </style>
 
 <meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="stylesheet" href="./site.css?v=2">
+  <script src="./theme.js?v=2"></script>
 </head>
 <body>
+<header class="nb-app-header">
+  <div class="nb-app-header-inner">
+    <a class="nb-brand" href="./index.html">
+      <span class="nb-brand-mark">NB</span>
+      <span>Тетради</span>
+    </a>
+    <div class="nb-header-actions">
+      <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
+      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
+    </div>
+  </div>
+</header>
+
 <header>
   <h1>Алгоритмы · тетрадь</h1>
   <p class="note">Лекции 1–2 (Пальченков): асимптотика · Карацуба · структуры · префиксы · два указателя · стек/дек + практика 1 и 30 задач к лекции 2</p>
@@ -1160,6 +1176,7 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
   <p class="src">Если вторая ссылка устарела — ищи «Тренировки по алгоритмам префиксные суммы два указателя».</p>
 </section>
 </main>
+  <script src="./site.js?v=2"></script>
 </body>
 </html>
 

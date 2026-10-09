@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-nb-id="algebra-theory" data-nb-title="Алгебра · теория">
+<html lang="ru" data-nb-id="algebra-theory" data-nb-title="Алгебра · теория" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,8 +86,24 @@ html[data-theme="dark"] {
 
 
 <meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="stylesheet" href="./site.css?v=2">
+  <script src="./theme.js?v=2"></script>
 </head>
 <body>
+<header class="nb-app-header">
+  <div class="nb-app-header-inner">
+    <a class="nb-brand" href="./index.html">
+      <span class="nb-brand-mark">NB</span>
+      <span>Тетради</span>
+    </a>
+    <div class="nb-header-actions">
+      <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
+      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
+    </div>
+  </div>
+</header>
+
 <header>
   <h1>Алгебра · теория</h1>
   <p class="note">Теория · индекс АТ-§N</p>
@@ -557,5 +573,6 @@ $\pi =$ (1 2 3 4 5)(6 7) (неподвижная 8 обычно не пишут)
     </div>
   </div>
 </main>
+  <script src="./site.js?v=2"></script>
 </body>
 </html>

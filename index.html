@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1117">
   <title>Тетради Б84</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 42rem;
-      margin: 1.5rem auto;
-      padding: 0 1rem 3rem;
-      line-height: 1.45;
-    }
-    h1 { font-size: 1.4rem; }
-    .sub { color: #888; font-size: 0.9em; }
-    li { margin: 0.45rem 0; }
-    a { color: #3b82f6; }
-  </style>
+  <link rel="stylesheet" href="./site.css?v=2">
+  <script src="./theme.js?v=2"></script>
 </head>
-<body>
-  <h1>Тетради · Б84</h1>
-  <p>Статические HTML с KaTeX. Расписание отдельно:
-    <a href="https://corpttt.github.io/timetable/">timetable</a>.</p>
-  <ol>
+<body class="nb-index-body">
+<header class="nb-app-header">
+  <div class="nb-app-header-inner">
+    <a class="nb-brand" href="./index.html">
+      <span class="nb-brand-mark">NB</span>
+      <span>Тетради</span>
+    </a>
+    <div class="nb-header-actions">
+      <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
+      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
+    </div>
+  </div>
+</header>
+
+  <div class="nb-index-wrap">
+    <h1>Тетради · Б84</h1>
+    <p>Статические HTML с KaTeX. После публикации нажми <strong>↻ Обновить</strong>.
+      Расписание отдельно:
+      <a href="https://corpttt.github.io/timetable/">timetable</a>.</p>
+    <ol>
     <li><a href="./geometry-theory.html">Геометрия · теория</a> <span class="sub">Геометрия и топология</span></li>
     <li><a href="./geometry-practice.html">Геометрия · практика</a> <span class="sub">Практическая геометрия</span></li>
     <li><a href="./matan-theory.html">Матанализ · теория</a> <span class="sub">Математический анализ (теория)</span></li>
@@ -35,7 +39,9 @@
     <li><a href="./informatics.html">Информатика</a> <span class="sub">Информатика</span></li>
     <li><a href="./discrete.html">Дискретная математика · индукция</a> <span class="sub">Дискретная математика</span></li>
     <li><a href="./english.html">Английский · Unit 1 Study and Work</a> <span class="sub">Английский (с ответами)</span></li>
-  </ol>
-  <p class="sub">updated 2026-10-09 10:41 UTC</p>
+    </ol>
+    <p class="sub">updated 2026-10-09 10:49 UTC</p>
+  </div>
+  <script src="./site.js?v=2"></script>
 </body>
 </html>
