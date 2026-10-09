@@ -1,3 +1,5 @@
-# Notebooks
+# Notebooks (B84)
 
-https://corpttt.github.io/notebooks/
+GitHub Pages: https://corpttt.github.io/notebooks/
+
+Schedule PWA: https://corpttt.github.io/timetable/
