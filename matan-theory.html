@@ -146,6 +146,7 @@ html[data-theme="dark"] {
 <li><a href="#14-матан-24-09-бесконечно-большие-число-e-больцано-вейерштра">МТ-§14 · Матан 24.09: бесконечно большие, число e, Больцано–Вейерштрасс</a></li>
 <li><a href="#15-видео-трушина">МТ-§15 · Видео Трушина</a></li>
 <li><a href="#16-матан-предел-функции-коши-гейне">МТ-§16 · Матан: предел функции (Коши / Гейне)</a></li>
+<li><a href="#17-матан-08-10-коши-для-функций-монотонные-ln-1-x">МТ-§17 · Матан 08.10: Коши для функций, монотонные, ln(1+x)</a></li>
 </ol>
 <hr>
 <h2 id="1-язык-множеств">1. Язык множеств</h2>
@@ -215,7 +216,7 @@ $\forall$ — «для любого / для каждого».<br>
 $\exists$ — «существует / найдётся хотя бы один».<br>
 $\Rightarrow$ — «следует»; $\iff$ — «тогда и только тогда» (в обе стороны).</p>
 <p><em>Своими словами.</em><br>
-$\forall \varepsilon > 0$ … = «бери любое положительное $\varepsilon$, какое захочешь…».<br>
+$\forall \varepsilon &gt; 0$ … = «бери любое положительное $\varepsilon$, какое захочешь…».<br>
 $\exists N$ … = «найдётся подходящий номер N…».</p>
 <p><strong>Пример.</strong> $B \subseteq A \iff$ ($\forall b \in B \Rightarrow b \in A$).</p>
 <hr>
@@ -629,7 +630,7 @@ $a \sim a$' $\iff a$ и a' лежат в одном куске $A_i$.</p>
 <li>операция <strong>умножения</strong> ($\cdot$);  </li>
 <li>отношение <strong>порядка</strong> $\le$  </li>
 </ul>
-<p>и всё это подчиняется списку <strong>аксиом</strong>. Аксиомы не доказывают: это «правила игры». Из них уже <strong>выводят</strong> привычные факты (0 один, $a\cdot 0 = 0, 1 > 0$, …).</p>
+<p>и всё это подчиняется списку <strong>аксиом</strong>. Аксиомы не доказывают: это «правила игры». Из них уже <strong>выводят</strong> привычные факты (0 один, $a\cdot 0 = 0, 1 &gt; 0$, …).</p>
 <p><em>Своими словами.</em> Сначала договорились, какими свойствами должна обладать «настоящая» числовая прямая. Потом всё остальное — следствия этих свойств.</p>
 <p><strong>Группы аксиом (что внутри каждой).</strong></p>
 <ol>
@@ -706,14 +707,14 @@ $a \sim a$' $\iff a$ и a' лежат в одном куске $A_i$.</p>
 <h3 id="7-3-аксиома-архимеда-трушин-004">7.3. Аксиома Архимеда (Трушин #004)</h3>
 <p><strong>Формулировка 1.</strong> $\forall a \in \mathbb{R} \exists n \in \mathbb{N}$: n &gt; a.<br>
 «Любое вещественное можно превзойти натуральным».</p>
-<p><strong>Формулировка 2 (через шаг).</strong> $\forall x > 0 \forall y \in \mathbb{R} \exists n \in \mathbb{N}$: $n\cdot x > y$.<br>
+<p><strong>Формулировка 2 (через шаг).</strong> $\forall x &gt; 0 \forall y \in \mathbb{R} \exists n \in \mathbb{N}$: $n\cdot x &gt; y$.<br>
 «Какой бы большой ни был забор y и каким бы маленьким ни был положительный шаг x, повторив шаг достаточно много раз, забор перешагнёшь».</p>
 <p><em>Своими словами.</em> Натуральные «не заканчиваются» относительно любого масштаба. Нельзя застрять навсегда, если шагаешь хоть чуть-чуть вперёд.</p>
-<p><strong>Пример.</strong> x = 0.1, y = 1000. Нужно $n\cdot 0$.$1 > 1000 \iff n > 10000$. Подойдёт n = 10001.</p>
+<p><strong>Пример.</strong> x = 0.1, y = 1000. Нужно $n\cdot 0$.$1 &gt; 1000 \iff n &gt; 10000$. Подойдёт n = 10001.</p>
 <p><strong>Идея доказательства (из ролика).</strong><br>
 От противного: пусть какое-то a ограничивает сверху все $\mathbb{N}$ ($\forall n \in \mathbb{N}$: $n \le a$).<br>
 Тогда $\mathbb{N}$ ограничено сверху $\Rightarrow$ есть $b = sup \mathbb{N}$.<br>
-По свойству супремума для $b - 1$ найдётся натуральное $n > b - 1$.<br>
+По свойству супремума для $b - 1$ найдётся натуральное $n &gt; b - 1$.<br>
 Тогда n + 1 &gt; b, но $n + 1 \in \mathbb{N}$ — противоречие тому, что b — верхняя грань $\mathbb{N}$.</p>
 <hr>
 <h3 id="7-4-ограниченность-множества">7.4. Ограниченность множества</h3>
@@ -782,28 +783,28 @@ $\exists a \in \mathbb{R} \forall x \in X$: $x \ge a$<br>
 <ol>
 <li><strong>b — верхняя граница:</strong> $\forall x \in X$: $x \le b$;  </li>
 <li><strong>b — наименьшая из верхних границ:</strong><br>
-   $\forall b$' $< b \exists x \in X$: x &gt; b'<br>
-   (эквивалентно через $\varepsilon$: $\forall \varepsilon > 0 \exists x \in X$: $x > b - \varepsilon$).</li>
+   $\forall b' &lt; b\ \exists x \in X$: $x &gt; b'$<br>
+   (эквивалентно через $\varepsilon$: $\forall \varepsilon &gt; 0\ \exists x \in X$: $x &gt; b - \varepsilon$).</li>
 </ol>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Супремум</div>
-  <div class="formula-box-body">$b=\sup X\iff(\forall x\in X:\ x\le b)\ \land\ (\forall\varepsilon>0\ \exists x\in X:\ x>b-\varepsilon)$</div>
+  <div class="formula-box-body">$b=\sup X\iff(\forall x\in X:\ x\le b)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x\gt b-\varepsilon)$</div>
 </div>
 
 <p><em>Своими словами.</em><br>
 1) всё множество не выше b;<br>
 2) если чуть опустить крышку, она уже «не накрывает» — из-под неё торчит хоть один элемент X.</p>
-<p>Вторая формулировка через $\varepsilon$: в любой левой полуокрестности ($b - \varepsilon, b$] обязательно есть точка из X (или сама b, если она в X).</p>
+<p>Вторая формулировка через $\varepsilon$: в любой левой полуокрестности $(b - \varepsilon, b]$ обязательно есть точка из X (или сама b, если она в X).</p>
 <h4>Определение инфимума</h4>
 <p><strong>Определение.</strong> a = <strong>inf X</strong> (<em>инфимум</em>, точная нижняя грань), если:</p>
 <ol>
 <li>$\forall x \in X$: $x \ge a$ (a — нижняя граница);  </li>
-<li>$\forall a$' $> a \exists x \in X$: x &lt; a'<br>
-   (или $\forall \varepsilon > 0 \exists x \in X$: $x < a + \varepsilon$).</li>
+<li>$\forall a' &gt; a\ \exists x \in X$: $x &lt; a'$<br>
+   (или $\forall \varepsilon &gt; 0\ \exists x \in X$: $x &lt; a + \varepsilon$).</li>
 </ol>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Инфимум</div>
-  <div class="formula-box-body">$a=\inf X\iff(\forall x\in X:\ x\ge a)\ \land\ (\forall\varepsilon>0\ \exists x\in X:\ x<a+\varepsilon)$</div>
+  <div class="formula-box-body">$a=\inf X\iff(\forall x\in X:\ x\ge a)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x\lt a+\varepsilon)$</div>
 </div>
 
 <p><em>Своими словами.</em> Самый высокий пол, над которым ещё лежит всё множество: чуть подними пол — уже кто-то из X окажется ниже.</p>
@@ -838,18 +839,18 @@ $\exists a \in \mathbb{R} \forall x \in X$: $x \ge a$<br>
 Если минимума нет, супремум/инфимум всё равно могут существовать.</p>
 <p><strong>Пример 1.</strong> X = {1, 2, 3}.<br>
 sup X = 3 = max X, inf X = 1 = min X.</p>
-<p><strong>Пример 2.</strong> X = (0, 1) — открытый интервал.<br>
-Все элементы &lt; 1, но $1 \notin X$.<br>
-$sup X = 1 \notin X, inf X = 0 \notin X$.<br>
-Любое число &gt; 1 — тоже верхняя граница, но не точная (не наименьшая).</p>
+<p><strong>Пример 2.</strong> $X = (0, 1)$ — открытый интервал.<br>
+Все элементы $&lt; 1$, но $1 \notin X$.<br>
+$\sup X = 1 \notin X$, $\inf X = 0 \notin X$.<br>
+Любое число $&gt; 1$ — тоже верхняя граница, но не точная (не наименьшая).</p>
 <p><strong>Пример 3 (из ролика Трушина).</strong><br>
-$X = \{ x \in \mathbb{R} | x < 0 \}$ — все отрицательные.<br>
+$X = \{ x \in \mathbb{R} | x &lt; 0 \}$ — все отрицательные.<br>
 Самого большого отрицательного нет (нет max).<br>
 Но <strong>sup X = 0</strong>:<br>
 - все отрицательные $\le 0$;<br>
 - чуть ниже нуля (например $-0$.001) уже не верхняя граница: $-0$.0005 всё ещё отрицательно и больше $-0$.001.</p>
 <p><strong>Пример 4.</strong> $X = \{1 - 1/n | n \in \mathbb{N} \} = \{0, 1/2, 2/3, 3/4$, …}.<br>
-Все члены $< 1, sup X = 1 \notin X, inf X = 0 = min X$ (если 0 в множестве при $n \to$ … — при n=1: $1-1=0$).</p>
+Все члены $&lt; 1, sup X = 1 \notin X, inf X = 0 = min X$ (если 0 в множестве при $n \to$ … — при n=1: $1-1=0$).</p>
 <h4>Единственность</h4>
 <p><strong>Утверждение.</strong> Если супремум существует, он один.</p>
 <p><strong>По шагам.</strong> Пусть b и b' оба — супремумы, b' &lt; b.<br>
@@ -866,7 +867,7 @@ B = { все верхние границы X }.<br>
 По аксиоме непрерывности есть c: $a \le c \le b$ для всех таких a, b.<br>
 Проверяют: c — верхняя граница и наименьшая $\Rightarrow c = sup X$.</p>
 <p><em>Замечание про $\mathbb{Q}$.</em> В рациональных числах теорема <strong>неверна</strong>:<br>
-множество $\{ q \in \mathbb{Q} | q^2 < 2 \}$ ограничено сверху в $\mathbb{Q}$, но точной верхней грани в $\mathbb{Q}$ нет ($\sqrt 2$ «дырка»).</p>
+множество $\{ q \in \mathbb{Q} | q^2 &lt; 2 \}$ ограничено сверху в $\mathbb{Q}$, но точной верхней грани в $\mathbb{Q}$ нет ($\sqrt 2$ «дырка»).</p>
 <h4>Связь inf и −sup</h4>
 <p><strong>Утверждение.</strong> Если G ограничено снизу и $E = \{ -y | y \in G \}$, то<br>
 <strong>$inf G = - sup E$</strong>.</p>
@@ -898,7 +899,7 @@ $inf G = 0, -sup E = -$(0) = 0.</p>
 </blockquote>
 <h3 id="система-вложенных-отрезков-трушин-003">Система вложенных отрезков (Трушин #003)</h3>
 <p><strong>Определение.</strong> Семейство {[$a_n, b_n$]} — <em>система вложенных отрезков</em>, если каждый следующий лежит в предыдущем:<br>
-[$a_{n+1}, b_{n+1}$] $\subseteq$ [$a_n, b_n$], и концы конечны ($a_n < b_n$).</p>
+[$a_{n+1}, b_{n+1}$] $\subseteq$ [$a_n, b_n$], и концы конечны ($a_n &lt; b_n$).</p>
 <p><em>Своими словами.</em> Матрёшки-отрезки: каждый следующий целиком внутри предыдущего.</p>
 <p><strong>Пример (вложены, общая точка есть).</strong><br>
 [0, 1] $\supseteq$ [0, 1/2] $\supseteq$ [0, 1/4] $\supseteq$ [0, 1/8] $\supseteq$ …<br>
@@ -926,8 +927,8 @@ $inf G = 0, -sup E = -$(0) = 0.</p>
 <p><strong>Идея доказательства.</strong> A = {все левые концы $a_n\}, B = \{$ все правые $b_m\}$.<br>
 Показывают: любой $a_n \le$ любого $b_m$. По аксиоме непрерывности есть c между A и $B \Rightarrow c \in$ всех [$a_n, b_n$].</p>
 <h3 id="стягивающаяся-система">Стягивающаяся система</h3>
-<p>Если длины $\to 0$ ($\forall \varepsilon > 0 \exists n$: $b_n - a_n < \varepsilon$), общая точка <strong>ровно одна</strong>.<br>
-<em>Идея:</em> две разные точки на расстоянии $\delta > 0$ не влезут в отрезок длины $< \delta$.</p>
+<p>Если длины $\to 0$ ($\forall \varepsilon &gt; 0 \exists n$: $b_n - a_n &lt; \varepsilon$), общая точка <strong>ровно одна</strong>.<br>
+<em>Идея:</em> две разные точки на расстоянии $\delta &gt; 0$ не влезут в отрезок длины $&lt; \delta$.</p>
 <p><strong>Пример (единственная точка).</strong><br>
 [0, 1] $\supseteq$ [0, 1/2] $\supseteq$ [0, 1/4] $\supseteq$ … — длины 1, 1/2, 1/4, … $\to 0$,<br>
 общая точка ровно <strong>0</strong>.</p>
@@ -946,7 +947,7 @@ $inf G = 0, -sup E = -$(0) = 0.</p>
 <h3 id="теорема-кантора-пара-17-09">Теорема Кантора (пара 17.09)</h3>
 <p>На паре 17.09 формулировка чуть «жёстче»: сразу <strong>стягивающаяся</strong> система.</p>
 <p><strong>Условие.</strong> Последовательности $\{a_n\}, \{b_n\}$ таковы, что<br>
-$\forall n$: $a_n \le a_{n+1} < b_{n+1} \le b_n$<br>
+$\forall n$: $a_n \le a_{n+1} &lt; b_{n+1} \le b_n$<br>
 (то есть [$a_{n+1}, b_{n+1}$] $\subseteq$ [$a_n, b_n$]) и<br>
 $b_n - a_n \to 0$.</p>
 <p><strong>Теорема.</strong> Существует <strong>единственная</strong> точка c, лежащая во всех [$a_n, b_n$].</p>
@@ -995,27 +996,27 @@ E = {5}. Членов всё равно бесконечно: «первый р�
 Для последовательности 1/n: начиная с n = 2 все члены 1/2, 1/3, … уже в ($-1, 1$).</p>
 <h3 id="определение-предела-ε-n">Определение предела ε–N</h3>
 <p><strong>Определение.</strong> $a = lim x_n$ (пишут $x_n \to a$), если<br>
-$\forall \varepsilon > 0 \exists N \forall n > N$: $|x_n - a| < \varepsilon$<br>
-(эквивалентно: $\forall$ окрестности U(a) $\exists N \forall n > N$: $x_n \in U$(a);<br>
+$\forall \varepsilon &gt; 0 \exists N \forall n &gt; N$: $|x_n - a| &lt; \varepsilon$<br>
+(эквивалентно: $\forall$ окрестности U(a) $\exists N \forall n &gt; N$: $x_n \in U$(a);<br>
 в ролике часто $n \ge N$ — смысл тот же).</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Предел ε–N</div>
-  <div class="formula-box-body">$\lim x_n = a\iff\forall\varepsilon>0\ \exists N\ \forall n>N:\ |x_n-a|<\varepsilon$</div>
+  <div class="formula-box-body">$\lim x_n = a\iff\forall\varepsilon&gt;0\ \exists N\ \forall n&gt;N:\ |x_n-a|&lt;\varepsilon$</div>
 </div>
 
 <p><em>Своими словами.</em> Какую бы узкую «трубу» ($a - \varepsilon, a + \varepsilon$) ни взял — с некоторого номера весь хвост навсегда внутри.</p>
 <p><strong>Сходимость.</strong> Есть <strong>числовой</strong> предел. Предел $\pm \infty$ — язык $\mathbb{R}$̄; такую обычно не называют сходящейся.</p>
-<p><strong>Отрицание.</strong> a не предел $\iff \exists \varepsilon > 0 \forall N \exists n > N$: $|x_n - a| \ge \varepsilon$<br>
+<p><strong>Отрицание.</strong> a не предел $\iff \exists \varepsilon &gt; 0 \forall N \exists n &gt; N$: $|x_n - a| \ge \varepsilon$<br>
 («есть плохая труба, из которой хвост вечно выпрыгивает»).</p>
 <p><strong>Пример (постоянная).</strong> $x_n = 7$.<br>
 Утверждаем: lim = 7.<br>
-Для любого $\varepsilon > 0$ возьми N = 1. Тогда при n &gt; 1: $|7 - 7| = 0 < \varepsilon$. Подходит.</p>
+Для любого $\varepsilon &gt; 0$ возьми N = 1. Тогда при n &gt; 1: $|7 - 7| = 0 &lt; \varepsilon$. Подходит.</p>
 <p><strong>Пример ($1/n \to 0$) — полностью.</strong><br>
-Нужно: $\forall \varepsilon > 0 \exists N \forall n > N$: $|1/n - 0| < \varepsilon \iff 1/n < \varepsilon \iff n > 1/\varepsilon$.<br>
-Возьми любое натуральное $N > 1/\varepsilon$ (например $N = \lfloor 1/\varepsilon \rfloor + 1$).<br>
-Тогда при n &gt; N автоматически $1/n < \varepsilon$. Значит предел 0.</p>
+Нужно: $\forall \varepsilon &gt; 0 \exists N \forall n &gt; N$: $|1/n - 0| &lt; \varepsilon \iff 1/n &lt; \varepsilon \iff n &gt; 1/\varepsilon$.<br>
+Возьми любое натуральное $N &gt; 1/\varepsilon$ (например $N = \lfloor 1/\varepsilon \rfloor + 1$).<br>
+Тогда при n &gt; N автоматически $1/n &lt; \varepsilon$. Значит предел 0.</p>
 <p><strong>Конкретные числа.</strong> $\varepsilon = 0$.$01 \Rightarrow$ нужно n &gt; 100; подойдёт N = 100.<br>
-При n = 101, 102, … имеем $|1/n| \le 1/101 < 0$.01.</p>
+При n = 101, 102, … имеем $|1/n| \le 1/101 &lt; 0$.01.</p>
 <p><strong>Пример (предела нет: ($-1$)$^n$).</strong><br>
 Кандидат a = 1? Возьми $\varepsilon = 1/2$. Окрестность (1/2, 3/2) содержит все «плюсы» (+1), но не содержит $-1$.<br>
 Для любого N найдётся нечётный n &gt; N с $x_n = -1 \notin$ (1/2, 3/2).<br>
@@ -1027,13 +1028,13 @@ $\forall \varepsilon > 0 \exists N \forall n > N$: $|x_n - a| < \varepsilon$<br>
 <p><strong>Пример (сходится, но не монотонно).</strong><br>
 $x_n =$ ($-1$)$^n / n$: $-1, 1/2, -1/3, 1/4$, …<br>
 Значения прыгают по знаку, но $|x_n| = 1/n \to 0 \Rightarrow x_n \to 0$.<br>
-(Доказательство: $|x_n - 0| = 1/n < \varepsilon$ при тех же N, что для 1/n.)</p>
+(Доказательство: $|x_n - 0| = 1/n &lt; \varepsilon$ при тех же N, что для 1/n.)</p>
 <h3 id="единственность-предела">Единственность предела</h3>
 <p><strong>Теорема.</strong> Если $x_n \to a$ и $x_n \to b$, то a = b.</p>
 <p><strong>По шагам (из записей до 10.09).</strong><br>
-1. От противного: $a \neq b, d = |a - b| > 0, \varepsilon = d/4$.<br>
-2. $\exists N_1$: $|x_n - a| < \varepsilon$ при $n > N_1$; $\exists N_2$: $|x_n - b| < \varepsilon$ при $n > N_2$.<br>
-3. $n = N_1 + N_2 + 1$ больше обоих порогов $\Rightarrow |a - b| \le |a - x_n| + |x_n - b| < d/4 + d/4 = d/2$ — противоречие $d = |a - b|$.</p>
+1. От противного: $a \neq b, d = |a - b| &gt; 0, \varepsilon = d/4$.<br>
+2. $\exists N_1$: $|x_n - a| &lt; \varepsilon$ при $n &gt; N_1$; $\exists N_2$: $|x_n - b| &lt; \varepsilon$ при $n &gt; N_2$.<br>
+3. $n = N_1 + N_2 + 1$ больше обоих порогов $\Rightarrow |a - b| \le |a - x_n| + |x_n - b| &lt; d/4 + d/4 = d/2$ — противоречие $d = |a - b|$.</p>
 <p><strong>Пример «на пальцах».</strong><br>
 Нельзя одновременно: $1/n \to 0$ и $1/n \to 1$.<br>
 Трубы (например) ($-0$.1, 0.1) вокруг 0 и (0.9, 1.1) вокруг 1 <strong>не пересекаются</strong>.<br>
@@ -1064,7 +1065,7 @@ L и B — не одно и то же: из A, B берут L = max(|A|, |B|).</
 <h3 id="сходящаяся-ограниченная">Сходящаяся ⇒ ограниченная</h3>
 <p><strong>Теорема.</strong> Если $x_n \to a \in \mathbb{R}$, то $\{x_n\}$ ограничена.</p>
 <p><strong>По шагам (как на паре 10.$09, \varepsilon = 1$).</strong><br>
-1. $\exists N_0 \forall n > N_0$: $|x_n - a| < 1 \Rightarrow a - 1 < x_n < a + 1$.<br>
+1. $\exists N_0 \forall n &gt; N_0$: $|x_n - a| &lt; 1 \Rightarrow a - 1 &lt; x_n &lt; a + 1$.<br>
 2. Конечный кусок $x_1$…$x_\{N_0\}$: $\exists M_1 \forall k \le N_0$: $|x_k| \le M_1$.<br>
 3. M = max($M_1$, $|a-1|$, |a+1|). Тогда $|x_n| \le M$ для всех n.</p>
 <p><em>Обратно неверно:</em> ограниченность не даёт сходимости.</p>
@@ -1072,7 +1073,7 @@ L и B — не одно и то же: из A, B берут L = max(|A|, |B|).</
 А ($-1$)$^n$ ограничена, но <strong>не</strong> сходится.</p>
 <h3 id="постоянная-последовательность">Постоянная последовательность</h3>
 <p><strong>Утверждение.</strong> $x_n = a \forall n \Rightarrow lim x_n = a$<br>
-($\forall \varepsilon$ возьми N = 1: $|a - a| = 0 < \varepsilon$).</p>
+($\forall \varepsilon$ возьми N = 1: $|a - a| = 0 &lt; \varepsilon$).</p>
 <p><strong>Пример.</strong> $x_n = 5, 5, 5$, … $\to 5$.</p>
 <h3 id="умножение-на-константу">Умножение на константу</h3>
 <p><strong>Теорема.</strong> $x_n \to a, c \in \mathbb{R} \Rightarrow c\cdot x_n \to c\cdot a$.</p>
@@ -1081,11 +1082,11 @@ L и B — не одно и то же: из A, B берут L = max(|A|, |B|).</
 $- c \neq 0$: $|c\cdot x_n - c\cdot a| = |c|\cdot |x_n - a|$; бери точность $\varepsilon /|c|$ для $\{x_n\}$.</p>
 <p><strong>Пример.</strong> $1/n \to 0 \Rightarrow 7/n \to 0$; также ($-2$)$\cdot$(1 + 1/n) $\to$ ($-2$)$\cdot 1 = -2$.</p>
 <h3 id="лемма-про-mε-из-записей-10-09">Лемма про Mε (из записей 10.09)</h3>
-<p><strong>Лемма.</strong> Если $\exists M > 0$ такое, что<br>
-$\forall \varepsilon > 0 \exists N \forall n > N$: $|x_n - a| \le M\cdot \varepsilon$,<br>
+<p><strong>Лемма.</strong> Если $\exists M &gt; 0$ такое, что<br>
+$\forall \varepsilon &gt; 0 \exists N \forall n &gt; N$: $|x_n - a| \le M\cdot \varepsilon$,<br>
 то $x_n \to a$.</p>
 <p><em>Своими словами.</em> Лишний постоянный множитель перед $\varepsilon$ не мешает: заранее возьми $\varepsilon$' $= \varepsilon /M$.</p>
-<p>На паре так «убирают» оценки вида $< 2\varepsilon$ или &lt; (M+|a|)$\varepsilon$.</p>
+<p>На паре так «убирают» оценки вида $&lt; 2\varepsilon$ или &lt; (M+|a|)$\varepsilon$.</p>
 <p><strong>Пример.</strong> Пусть удалось показать $|x_n - 3| \le 2\varepsilon$ для хвоста.<br>
 Для нужной точности $\varepsilon_1$ бери в доказательстве $\varepsilon = \varepsilon_1/2$ — получишь $|x_n - 3| \le \varepsilon_1$. Значит $x_n \to 3$.</p>
 <h3 id="предел-суммы">Предел суммы</h3>
@@ -1097,19 +1098,19 @@ $\forall \varepsilon > 0 \exists N \forall n > N$: $|x_n - a| \le M\cdot \vareps
 
 <p><strong>По шагам.</strong><br>
 N = max($N_1, N_2$);<br>
-|($x_n+y_n$)$-$(a+b)$| \le |x_n-a| + |y_n-b| < \varepsilon + \varepsilon = 2\varepsilon \Rightarrow$ по лемме $M\varepsilon$ (или сразу бери $\varepsilon /2$ в определениях).</p>
+|($x_n+y_n$)$-$(a+b)$| \le |x_n-a| + |y_n-b| &lt; \varepsilon + \varepsilon = 2\varepsilon \Rightarrow$ по лемме $M\varepsilon$ (или сразу бери $\varepsilon /2$ в определениях).</p>
 <p><strong>Пример.</strong> $1/n \to 0, 1 - 1/n \to 1 \Rightarrow$ (1/n) + ($1 - 1/n$) $= 1 \to 1 = 0 + 1$.</p>
 <h3 id="предел-произведения">Предел произведения</h3>
 <p><strong>Теорема.</strong> $x_n \to a, y_n \to b \Rightarrow x_n y_n \to a b$.</p>
 <p><strong>Приём.</strong> $x_n y_n - a b =$ ($x_n - a$) $y_n + a$ ($y_n - b$).</p>
 <p><strong>По шагам.</strong><br>
 1. $\{y_n\}$ сходится $\Rightarrow$ ограничена: $|y_n| \le M$.<br>
-2. $|x_n y_n - ab| \le |x_n-a|\cdot M + |a|\cdot |y_n-b| <$ (M+|a|)$\varepsilon \Rightarrow$ снова лемма $M\varepsilon$.</p>
+2. $|x_n y_n - ab| \le |x_n-a|\cdot M + |a|\cdot |y_n-b| &lt;$ (M+|a|)$\varepsilon \Rightarrow$ снова лемма $M\varepsilon$.</p>
 <p><strong>Пример.</strong> (1 + 1/n) $\to 1$, ($2 - 1/n$) $\to 2 \Rightarrow$ (1 + 1/n)($2 - 1/n$) $\to 2$.</p>
 <h3 id="предел-обратной">Предел обратной</h3>
 <p><strong>Теорема.</strong> $x_n \to a, a \neq 0$ (и $x_n \neq 0$ с некоторого номера) $\Rightarrow 1/x_n \to 1/a$.</p>
 <p><strong>По шагам (как на паре).</strong><br>
-1. Сначала отлепиться от нуля: $\exists N_1 \forall n > N_1$: $|x_n - a| < |a|/2 \Rightarrow |x_n| > |a|/2 \Rightarrow 1/|x_n| < 2/|a|$.<br>
+1. Сначала отлепиться от нуля: $\exists N_1 \forall n &gt; N_1$: $|x_n - a| &lt; |a|/2 \Rightarrow |x_n| &gt; |a|/2 \Rightarrow 1/|x_n| &lt; 2/|a|$.<br>
 2. $|1/x_n - 1/a| = |x_n - a| /$ ($|x_n|\cdot |a|$) &lt; ($2/|a|^2$)$\cdot \varepsilon \Rightarrow$ предел 1/a.</p>
 <p><strong>Пример.</strong> $2 + 1/n \to 2 \Rightarrow 1/$(2 + 1/n) $\to 1/2$.</p>
 <h3 id="предел-частного">Предел частного</h3>
@@ -1118,15 +1119,15 @@ N = max($N_1, N_2$);<br>
 <h3 id="сохранение-неравенства">Сохранение неравенства</h3>
 <p><strong>Теорема.</strong> $x_n \to a, y_n \to b$ и $x_n \le y_n$ (с некоторого номера) $\Rightarrow a \le b$.</p>
 <p><strong>По шагам (от противного, как на 10.09).</strong><br>
-1. Пусть $a > b, \varepsilon =$ ($a-b$)/4.<br>
+1. Пусть $a &gt; b, \varepsilon =$ ($a-b$)/4.<br>
 2. Хвост x в ($a-\varepsilon, a+\varepsilon$), хвост y в ($b-\varepsilon, b+\varepsilon$).<br>
-3. Для большого $n_0$: $x_\{n_0\} >$ (3a+b)/4 &gt; (a+3b)$/4 > y_\{n_0\}$ — противоречие $x \le y$.</p>
+3. Для большого $n_0$: $x_\{n_0\} &gt;$ (3a+b)/4 &gt; (a+3b)$/4 &gt; y_\{n_0\}$ — противоречие $x \le y$.</p>
 <p><strong>Пример.</strong> $1/n \le 2 - 1/n$ для $n \ge 1$; пределы 0 и 2, и $0 \le 2$.</p>
 <h3 id="строгость-хрупкая">Строгость хрупкая</h3>
-<p>Из $x_n < y_n$ <strong>не</strong> следует a &lt; b (только $a \le b$).</p>
+<p>Из $x_n &lt; y_n$ <strong>не</strong> следует a &lt; b (только $a \le b$).</p>
 <p><strong>Пример.</strong> 0 &lt; 1/n для всех n, но оба предела равны 0 (не 0 &lt; 0).</p>
 <h3 id="сохранение-знака-проход-границы">Сохранение знака / проход границы</h3>
-<p>Если a &lt; B, то с некоторого N все $x_n < B$ (возьми $\varepsilon =$ ($B - a$)/2).</p>
+<p>Если a &lt; B, то с некоторого N все $x_n &lt; B$ (возьми $\varepsilon =$ ($B - a$)/2).</p>
 <p><strong>Пример.</strong> $1 - 1/n \to 1$, число B = 1.5 &gt; 1.<br>
 С некоторого N все члены &lt; 1.5 (на самом деле все сразу &lt; 1 &lt; 1.5).</p>
 <h3 id="теорема-о-двух-милиционерах">Теорема о двух милиционерах</h3>
@@ -1137,7 +1138,7 @@ N = max($N_1, N_2$);<br>
 </div>
 
 <p><strong>По шагам.</strong> N = max($N_1, N_2$); тогда<br>
-$a - \varepsilon < x_n \le y_n \le z_n < a + \varepsilon \Rightarrow |y_n - a| < \varepsilon$.</p>
+$a - \varepsilon &lt; x_n \le y_n \le z_n &lt; a + \varepsilon \Rightarrow |y_n - a| &lt; \varepsilon$.</p>
 <p><strong>Пример.</strong> $0 \le n/$($n^2 + 1$) $\le 1/n$.<br>
 Края $\to 0 \Rightarrow n/$($n^2 + 1$) $\to 0$.</p>
 <h3 id="основные-пределы-таблица-009">Основные пределы (таблица, #009)</h3>
@@ -1160,7 +1161,7 @@ $| q^n$ (|q|&lt;1)   | 0   | (1/2)$^n = 1/2, 1/4, 1/8$, … $\to 0 | | n q^n$ (|
 <p>На паре обычно:  </p>
 <ul>
 <li><strong>неубывающая:</strong> $x_n \le x_{n+1}$;  </li>
-<li><strong>возрастающая (строго):</strong> $x_n < x_{n+1}$;  </li>
+<li><strong>возрастающая (строго):</strong> $x_n &lt; x_{n+1}$;  </li>
 <li><strong>невозрастающая / убывающая</strong> — зеркально.</li>
 </ul>
 <p>У Трушина слово «возрастает» часто = нестрого ($\le$). Это те же понятия — другие слова. Не путай со школьным «строго растёт».</p>
@@ -1172,28 +1173,28 @@ $| q^n$ (|q|&lt;1)   | 0   | (1/2)$^n = 1/2, 1/4, 1/8$, … $\to 0 | | n q^n$ (|
   <div class="formula-box-label">Вейерштрасс</div>
   <div class="formula-box-body">неубывает и ограничена сверху $\Rightarrow$ сходится к $\sup\{x_n\}$</div>
 </div>
-<p>Если строго возрастает — дополнительно $x_n < a \forall n$.</p>
+<p>Если строго возрастает — дополнительно $x_n &lt; a \forall n$.</p>
 <p><em>Своими словами.</em> Лестница не опускается и упирается в потолок $\Rightarrow$ подходит к <strong>sup</strong> значений.</p>
 <p><strong>По шагам (как на паре 10.09).</strong><br>
 1. E = множество значений $\neq \emptyset$ и ограничено сверху $\Rightarrow a = sup E$.<br>
 2. $\forall n$: $x_n \le a$.<br>
-3. $\forall \varepsilon > 0$ число $a - \varepsilon$ не верхняя граница $\Rightarrow \exists N$: $x_N > a - \varepsilon$.<br>
-4. При $n \ge N$ из неубывания: $a - \varepsilon < x_N \le x_n \le a \Rightarrow |x_n - a| < \varepsilon$.</p>
-<p><strong>Строгое возрастание.</strong> Если вдруг $x_\{n_0\} = a$, то $x_\{n_{0+1}\} > a$, но a = sup — противоречие.</p>
+3. $\forall \varepsilon &gt; 0$ число $a - \varepsilon$ не верхняя граница $\Rightarrow \exists N$: $x_N &gt; a - \varepsilon$.<br>
+4. При $n \ge N$ из неубывания: $a - \varepsilon &lt; x_N \le x_n \le a \Rightarrow |x_n - a| &lt; \varepsilon$.</p>
+<p><strong>Строгое возрастание.</strong> Если вдруг $x_\{n_0\} = a$, то $x_\{n_{0+1}\} &gt; a$, но a = sup — противоречие.</p>
 <p><strong>Формулировка Трушина в $\mathbb{R}$̄.</strong> Если «возрастает» ($\le$) и <em>не</em> ограничена сверху — пишут $lim = +\infty$.</p>
 <h3 id="убывающая-через-минус">Убывающая через минус</h3>
 <p><strong>Теорема.</strong> Невозрастающая + ограничена снизу $\Rightarrow$ сходится к <strong>inf</strong> значений<br>
-(и $y_n \ge lim$; при строгом убывании — $y_n > lim$).</p>
+(и $y_n \ge lim$; при строгом убывании — $y_n &gt; lim$).</p>
 <p><strong>Сведение (из записей).</strong> $x_n = -y_n$: невозрастание $y \leftrightarrow$ неубывание x;<br>
 низ $y \leftrightarrow$ верх x; $lim y = -lim x$.</p>
 <h3 id="доказательство-теоремы-кантора-пара-17-09-сюда">Доказательство теоремы Кантора (пара 17.09) — сюда</h3>
 <p><em>(Формулировка была в МТ-§8; доказательство отложено, пока не появились предел и Вейерштрасс.)</em></p>
-<p><strong>Условие.</strong> $\forall n$: $a_n \le a_{n+1} < b_{n+1} \le b_n$ и $b_n - a_n \to 0$.</p>
+<p><strong>Условие.</strong> $\forall n$: $a_n \le a_{n+1} &lt; b_{n+1} \le b_n$ и $b_n - a_n \to 0$.</p>
 <p><strong>По шагам (из записей 17.09).</strong></p>
 <ol>
 <li>
 <p>Из вложенности:<br>
-   $a_1 \le a_2 \le$ … $\le a_n < b_n \le$ … $\le b_1$.<br>
+   $a_1 \le a_2 \le$ … $\le a_n &lt; b_n \le$ … $\le b_1$.<br>
    Значит $\{a_n\}$ неубывает и ограничена сверху (например $b_1$);<br>
    $\{b_n\}$ невозрастает и ограничена снизу (например $a_1$).</p>
 </li>
@@ -1211,8 +1212,8 @@ $| q^n$ (|q|&lt;1)   | 0   | (1/2)$^n = 1/2, 1/4, 1/8$, … $\to 0 | | n q^n$ (|
 <p>Тогда $\forall n$: $a_n \le c \le b_n$, то есть $c \in$ всех [$a_n, b_n$].</p>
 </li>
 <li>
-<p><strong>Единственность.</strong> Пусть $c_1 \neq c$ тоже во всех отрезках, скажем $c_1 > c$. Тогда<br>
-   $b_n - a_n \ge c_1 - c > 0 \forall n \Rightarrow lim$ ($b_n - a_n$) $\ge c_1 - c > 0$ — снова противоречие.<br>
+<p><strong>Единственность.</strong> Пусть $c_1 \neq c$ тоже во всех отрезках, скажем $c_1 &gt; c$. Тогда<br>
+   $b_n - a_n \ge c_1 - c &gt; 0 \forall n \Rightarrow lim$ ($b_n - a_n$) $\ge c_1 - c &gt; 0$ — снова противоречие.<br>
    Значит общая точка одна.</p>
 </li>
 </ol>
@@ -1229,25 +1230,25 @@ $| q^n$ (|q|&lt;1)   | 0   | (1/2)$^n = 1/2, 1/4, 1/8$, … $\to 0 | | n q^n$ (|
 <p><em>(Бегалиев <code>БГ-М-09.17</code>; Трушин <code>#013</code> — критерий Коши.)</em></p>
 <h3 id="определение-фундаментальной-коши-последовательности">Определение фундаментальной (Коши) последовательности</h3>
 <p><strong>Определение.</strong> $\{a_n\}$ называют <em>последовательностью Коши</em> (фундаментальной), если<br>
-$\forall \varepsilon > 0 \exists N \forall m > N \forall n > N$: $|a_m - a_n| < \varepsilon$.</p>
+$\forall \varepsilon &gt; 0 \exists N \forall m &gt; N \forall n &gt; N$: $|a_m - a_n| &lt; \varepsilon$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Критерий Коши</div>
-  <div class="formula-box-body">$\{a_n\}$ Коши $\iff$$\forall\varepsilon>0\ \exists N\ \forall m,n>N:\ |a_m-a_n|<\varepsilon$  (в $\mathbb{R}$: $\Leftrightarrow$ сходится)</div>
+  <div class="formula-box-body">$\{a_n\}$ Коши $\iff\forall\varepsilon&gt;0\ \exists N\ \forall m,n&gt;N:\ |a_m-a_n|&lt;\varepsilon$  (в $\mathbb{R}$: $\Leftrightarrow$ сходится)</div>
 </div>
 
 <p><em>Своими словами.</em> Не обязательно знать предел: хвост «сам с собой» становится сколь угодно мелким — любые два далёких члена близки друг к другу.</p>
-<p><strong>Пример.</strong> $a_n = 1/n$ — Коши: $|1/m - 1/n| \le 1/m + 1/n$; при $m, n > 2/\varepsilon$ оба слагаемых $< \varepsilon /2$.</p>
+<p><strong>Пример.</strong> $a_n = 1/n$ — Коши: $|1/m - 1/n| \le 1/m + 1/n$; при $m, n &gt; 2/\varepsilon$ оба слагаемых $&lt; \varepsilon /2$.</p>
 <p><strong>Пример (не Коши).</strong> $a_n =$ ($-1$)$^n$: для $\varepsilon = 1$ и любого N найдутся чётный и нечётный номера &gt; N с $|a_m - a_n| = 2 \ge 1$.</p>
 <h3 id="сходящаяся-коши">Сходящаяся ⇒ Коши</h3>
 <p><strong>Теорема.</strong> Если $a_n \to c \in \mathbb{R}$, то $\{a_n\}$ — Коши.</p>
 <p><strong>По шагам.</strong><br>
-$\forall \varepsilon > 0 \exists N \forall k > N$: $|a_k - c| < \varepsilon /2$.<br>
+$\forall \varepsilon &gt; 0 \exists N \forall k &gt; N$: $|a_k - c| &lt; \varepsilon /2$.<br>
 Тогда при m, n &gt; N:<br>
-$|a_m - a_n| \le |a_m - c| + |a_n - c| < \varepsilon /2 + \varepsilon /2 = \varepsilon$.</p>
+$|a_m - a_n| \le |a_m - c| + |a_n - c| &lt; \varepsilon /2 + \varepsilon /2 = \varepsilon$.</p>
 <h3 id="коши-ограниченная">Коши ⇒ ограниченная</h3>
 <p><strong>Теорема.</strong> Последовательность Коши ограничена.</p>
 <p><strong>По шагам (как на паре).</strong><br>
-1. Возьми $\varepsilon = 1$: $\exists N_0 \forall n > N_0$: $|a_n - a_\{N_0+1\}| < 1 \Rightarrow a_\{N_0+1\} - 1 < a_n < a_\{N_0+1\} + 1$.<br>
+1. Возьми $\varepsilon = 1$: $\exists N_0 \forall n &gt; N_0$: $|a_n - a_\{N_0+1\}| &lt; 1 \Rightarrow a_\{N_0+1\} - 1 &lt; a_n &lt; a_\{N_0+1\} + 1$.<br>
 2. На конечном куске 1…$N_0+1$ возьми max и min модулей/значений.<br>
 3. Склей с $a_\{N_0+1\} \pm 1$ — получишь общие $A_- \le a_n \le A_+$.</p>
 <h3 id="коши-сходящаяся-в-ℝ">Коши ⇒ сходящаяся (в ℝ)</h3>
@@ -1268,7 +1269,7 @@ $|a_m - a_n| \le |a_m - c| + |a_n - c| < \varepsilon /2 + \varepsilon /2 = \vare
 </li>
 <li>
 <p>Если $c_*$ &lt; $b_*$, положи $2\varepsilon = b_* - c_*$ &gt; 0.<br>
-   Из свойства Коши хвост лежит в интервале длины $< \varepsilon$ вокруг какого-то a_{N+1},<br>
+   Из свойства Коши хвост лежит в интервале длины $&lt; \varepsilon$ вокруг какого-то a_{N+1},<br>
    откуда $b_\{N+2\} - c_\{N+2\} \le \varepsilon$, но также $b_\{N+2\} - c_\{N+2\} \ge 2\varepsilon$ — противоречие.<br>
    Значит $c_*$ = $b_*$ =: a.</p>
 </li>
@@ -1290,7 +1291,7 @@ $|a_m - a_n| \le |a_m - c| + |a_n - c| < \varepsilon /2 + \varepsilon /2 = \vare
 <p><em>(Конец свежего куска матана в PDF.)</em></p>
 <h3 id="арифметика-в-ℝ-рабочие-правила-с-пары">Арифметика в ℝ̄ (рабочие правила с пары)</h3>
 <p>$\mathbb{R}$̄ $= \mathbb{R} \cup \{-\infty$, $+\infty \}$. Для $x \in \mathbb{R}$:</p>
-<p>$- x < +\infty, x > -\infty, -\infty < +\infty$;<br>
+<p>$- x &lt; +\infty, x &gt; -\infty, -\infty &lt; +\infty$;<br>
 - x + ($+\infty$) $= +\infty, x +$ ($-\infty$) $= -\infty$;<br>
 - при C &gt; 0: $C\cdot$($+\infty$) $= +\infty, C\cdot$($-\infty$) $= -\infty$;<br>
 - ($-1$)$\cdot$($+\infty$) $= -\infty$, ($-1$)$\cdot$($-\infty$) $= +\infty$.</p>
@@ -1300,16 +1301,16 @@ $|a_m - a_n| \le |a_m - c| + |a_n - c| < \varepsilon /2 + \varepsilon /2 = \vare
 $- \omega$($-\infty$) = ($-\infty, L$) для какого-то L.</p>
 <h3 id="определения">Определения</h3>
 <p><strong>Определение.</strong> $a_n \to +\infty$, если<br>
-$\forall M \in \mathbb{R} \exists N \forall n > N$: $a_n > M$  </p>
+$\forall M \in \mathbb{R} \exists N \forall n &gt; N$: $a_n &gt; M$  </p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Предел +∞</div>
-  <div class="formula-box-body">$a_n\to +\infty\iff\forall M\in\mathbb{R}\ \exists N\ \forall n>N:\ a_n>M$</div>
+  <div class="formula-box-body">$a_n\to +\infty\iff\forall M\in\mathbb{R}\ \exists N\ \forall n&gt;N:\ a_n&gt;M$</div>
 </div>
 <p>($\iff \forall$ окрестности $\omega$($+\infty$) хвост лежит в ней).</p>
 <p><strong>Определение.</strong> $b_n \to -\infty$, если<br>
-$\forall L \in \mathbb{R} \exists N \forall n > N$: $b_n < L$.</p>
+$\forall L \in \mathbb{R} \exists N \forall n &gt; N$: $b_n &lt; L$.</p>
 <p><strong>Общий язык.</strong> Для $\alpha \in \mathbb{R}$̄: $c_n \to \alpha$, если<br>
-$\forall$ окрестности $\omega$($\alpha$) $\exists N \forall n > N$: $c_n \in \omega$($\alpha$).<br>
+$\forall$ окрестности $\omega$($\alpha$) $\exists N \forall n &gt; N$: $c_n \in \omega$($\alpha$).<br>
 При $\alpha \in \mathbb{R}$ это то же $\varepsilon$–N; при $\alpha = \pm \infty$ — определения выше.</p>
 <p><strong>Пример.</strong> $n \to +\infty$; $-n \to -\infty$; ($-1$)$^n\cdot n$ не стремится ни к $\pm \infty$, ни к числу.</p>
 <hr>
@@ -1325,72 +1326,98 @@ $\forall$ окрестности $\omega$($\alpha$) $\exists N \forall n > N$: $
 <p><em>Что уже должно быть прочитано.</em> Формулировка Кантора — МТ-§8, её доказательство через Вейерштрасса — конец МТ-§11; свойства пределов и «два милиционера» — МТ-§10; $\pm \infty$ — МТ-§13. Индукция для Бернулли — <code>ДТ-§1</code>.</p>
 <p>Видео: <a href="https://teach-in.ru/lecture/10-03-Shaposhnikov">МГУ, Шапошников — Лекция 9. Подпоследовательности, теорема Больцано</a>.</p>
 <h3 id="14-1-бесконечно-большие-и-бесконечно-малые">14.1. Бесконечно большие и бесконечно малые</h3>
-<p><strong>Определение.</strong> Последовательность $\{a_n\}$ <strong>бесконечно большая</strong>, если $|a_n| \to +\infty$, то есть $\forall M \exists N$: $\forall n > N |a_n| > M$.<br>
+<p><strong>Определение.</strong> Последовательность $\{a_n\}$ <strong>бесконечно большая</strong>, если $|a_n| \to +\infty$, то есть $\forall M \exists N$: $\forall n &gt; N |a_n| &gt; M$.<br>
 Последовательность $\{b_n\}$ <strong>бесконечно малая</strong>, если $b_n \to 0$ ($\iff |b_n| \to 0$).</p>
 <p><em>Своими словами.</em> Бесконечно большая: хвост по модулю уходит выше любой планки (знак может скакать). Бесконечно малая: хвост прижимается к нулю.</p>
 <p><strong>Пример.</strong> $a_n = n^2$ — бесконечно большая. $a_n =$ ($-1$)$^n\cdot n$ ($-1, 2, -3, 4$, …) — тоже бесконечно большая: к $+\infty$ не стремится, но $|a_n| = n \to +\infty$. $b_n = 1/n$ — бесконечно малая.</p>
 <p><strong>Не-пример.</strong> $a_n = n$ при чётных n и 0 при нечётных: последовательность не ограничена, но <strong>не</strong> бесконечно большая, так как на нечётных местах $|a_n| = 0$ не превышает планку M = 1. «Неограниченная» $\neq$ «бесконечно большая».</p>
 <p><strong>Свойство.</strong> Если $a_n \neq 0$ для всех n и $\{a_n\}$ бесконечно большая, то $\{1/a_n\}$ бесконечно малая.</p>
-<p><em>Доказательство.</em> Возьмём любое $\varepsilon > 0$ и положим $M = 1/\varepsilon$. По определению $\exists N$: $\forall n > N |a_n| > M = 1/\varepsilon$. Тогда $|1/a_n| < \varepsilon$ для всех n &gt; N, то есть $1/a_n \to 0$. ■</p>
-<p><strong>Пример.</strong> $a_n = n^2 \Rightarrow 1/n^2 \to 0$. Для $\varepsilon = 0,01$ берём M = 100: при n &gt; 10 выполняется $n^2 > 100$ и $1/n^2 < 0,01$.</p>
+<p><em>Доказательство.</em> Возьмём любое $\varepsilon &gt; 0$ и положим $M = 1/\varepsilon$. По определению $\exists N$: $\forall n &gt; N |a_n| &gt; M = 1/\varepsilon$. Тогда $|1/a_n| &lt; \varepsilon$ для всех n &gt; N, то есть $1/a_n \to 0$. ■</p>
+<p><strong>Пример.</strong> $a_n = n^2 \Rightarrow 1/n^2 \to 0$. Для $\varepsilon = 0,01$ берём M = 100: при n &gt; 10 выполняется $n^2 &gt; 100$ и $1/n^2 &lt; 0,01$.</p>
 <p><em>(Дополнено: верно и обратное: если $b_n \to 0$ и $b_n \neq 0$, то $\{1/b_n\}$ бесконечно большая. Доказательство то же, с M вместо $1/\varepsilon$.)</em></p>
 <h3 id="14-2-неравенство-бернулли">14.2. Неравенство Бернулли</h3>
-<p><strong>Теорема.</strong> Пусть $x \in \mathbb{R}, x > -1, x \neq 0, n \in \mathbb{N}, n \ge 2$. Тогда</p>
-<p>(1 + x)$^n > 1 + nx$.</p>
+<p><strong>Теорема.</strong> Пусть $x \in \mathbb{R}, x &gt; -1, x \neq 0, n \in \mathbb{N}, n \ge 2$. Тогда</p>
+<p>(1 + x)$^n &gt; 1 + nx$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Бернулли</div>
-  <div class="formula-box-body">$(1+x)^n > 1+nx$ ($x>-1,\ x\neq 0,\ n\ge 2$)</div>
+  <div class="formula-box-body">$(1+x)^n &gt; 1+nx$ ($x&gt;-1,\ x\neq 0,\ n\ge 2$)</div>
 </div>
 
 <p><em>Своими словами.</em> Степень растёт быстрее «линейного приближения»: (1 + x)$^n$ всегда больше, чем 1 + nx.</p>
-<p><strong>Пример.</strong> x = 0,1, n = 3: $1,1^3 = 1,331 > 1,3$. $x = -0,5, n = 2$: 0,25 &gt; 0.</p>
+<p><strong>Пример.</strong> x = 0,1, n = 3: $1,1^3 = 1,331 &gt; 1,3$. $x = -0,5, n = 2$: 0,25 &gt; 0.</p>
 <p><em>Доказательство (индукция).</em><br>
-База n = 2: (1 + x)$^2 = 1 + 2x + x^2 > 1 + 2x$, так как $x^2 > 0$ ($x \neq 0$).<br>
-Переход $n \Rightarrow n + 1$: пусть (1 + x)$^n > 1 + nx$. Умножим на 1 + x &gt; 0 (здесь нужно $x > -1$, иначе знак неравенства перевернётся):</p>
-<p>(1 + x)$^{n+1} =$ (1 + x)$^n$(1 + x) &gt; (1 + nx)(1 + x) = 1 + (n + 1)$x + nx^2 > 1 +$ (n + 1)x,</p>
-<p>так как $nx^2 > 0$. ■</p>
-<p><strong>Не-пример (условие $x > -1$ нужно).</strong> $x = -4, n = 3$: ($-3$)$^3 = -27$, а $1 + 3\cdot$($-4$) $= -11$. $-27 > -11$ неверно.</p>
+База n = 2: (1 + x)$^2 = 1 + 2x + x^2 &gt; 1 + 2x$, так как $x^2 &gt; 0$ ($x \neq 0$).<br>
+Переход $n \Rightarrow n + 1$: пусть (1 + x)$^n &gt; 1 + nx$. Умножим на 1 + x &gt; 0 (здесь нужно $x &gt; -1$, иначе знак неравенства перевернётся):</p>
+<p>(1 + x)$^{n+1} =$ (1 + x)$^n$(1 + x) &gt; (1 + nx)(1 + x) = 1 + (n + 1)$x + nx^2 &gt; 1 +$ (n + 1)x,</p>
+<p>так как $nx^2 &gt; 0$. ■</p>
+<p><strong>Не-пример (условие $x &gt; -1$ нужно).</strong> $x = -4, n = 3$: ($-3$)$^3 = -27$, а $1 + 3\cdot$($-4$) $= -11$. $-27 &gt; -11$ неверно.</p>
 <h3 id="14-3-число-e">14.3. Число e</h3>
 <p><strong>Теорема (о существовании числа e).</strong> Пусть</p>
-<p>$x_n =$ (1 + 1/n)$^n, y_n =$ (1 + 1/n)$^{n+1}$.</p>
-<p>Тогда существует $e = lim x_n = lim y_n$, причём $x_n < e < y_n$ для всех n; $e \approx 2,718$…</p>
+<p>$$x_n = \left(1 + \frac{1}{n}\right)^n,\qquad y_n = \left(1 + \frac{1}{n}\right)^{n+1}.$$</p>
+<p>Тогда существует $e = \lim x_n = \lim y_n$, причём $x_n &lt; e &lt; y_n$ для всех $n$; $e \approx 2{,}718\ldots$</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Число e</div>
-  <div class="formula-box-body">$e=\lim(1+1/n)^n=\lim(1+1/n)^{n+1}$  $x_n<e<y_n$</div>
+  <div class="formula-box-body">$e=\lim\left(1+\frac{1}{n}\right)^n=\lim\left(1+\frac{1}{n}\right)^{n+1}$  $x_n\lt e\lt y_n$</div>
 </div>
 
-<p><em>Своими словами.</em> $x_n$ подбирается к e снизу и растёт, $y_n$ спускается к e сверху и убывает. e зажато между ними.</p>
+<p><em>Своими словами.</em> $x_n$ подбирается к $e$ снизу и растёт, $y_n$ спускается к $e$ сверху и убывает. Число $e$ зажато между ними.</p>
 <p><strong>Пример (числа).</strong></p>
-<p>$| n | x_n =$ (1 + 1/n)$^n | y_n =$ (1 + 1/n)$^{n+1} |$<br>
-| --- | --- | --- |<br>
-| 1 | 2 | 4 |<br>
-| 2 | 2,25 | 3,375 |<br>
-$| 10 | \approx 2,594 | \approx 2,853 | | 100 | \approx 2,705 | \approx 2,732 |$</p>
+<div class="nb-table-scroll"><table>
+<thead>
+<tr>
+<th>$n$</th>
+<th>$x_n = (1+1/n)^n$</th>
+<th>$y_n = (1+1/n)^{n+1}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2,25</td>
+<td>3,375</td>
+</tr>
+<tr>
+<td>10</td>
+<td>$\approx 2{,}594$</td>
+<td>$\approx 2{,}853$</td>
+</tr>
+<tr>
+<td>100</td>
+<td>$\approx 2{,}705$</td>
+<td>$\approx 2{,}732$</td>
+</tr>
+</tbody>
+</table></div>
 <p><em>Доказательство по шагам.</em></p>
-<p><strong>Шаг 1. $y_n > x_n$.</strong> $y_n =$ (1 + 1/n)$\cdot x_n$, а множитель 1 + 1/n &gt; 1.</p>
+<p><strong>Шаг 1. $y_n &gt; x_n$.</strong> $y_n = \left(1 + \frac{1}{n}\right)\cdot x_n$, а множитель $1 + \frac{1}{n} &gt; 1$.</p>
 <p><strong>Шаг 2. $x_n$ строго возрастает.</strong> Считаем отношение:</p>
-<p>$x_{n+1}/x_n =$ ((n + 2)/(n + 1))$^{n+1} \cdot$ (n/(n + 1))$^n =$ (n + 2)/(n + 1) $\cdot$ ((n + 2)n/(n + 1)$^2$)$^n$.</p>
-<p>Заметим, что (n + 2)$n = n^2 + 2n =$ (n + 1)$^2 - 1$, поэтому ((n + 2)n/(n + 1)$^2$) $= 1 - 1/$(n + 1)$^2$.</p>
-<p>Применяем Бернулли с $x = -1/$(n + 1)$^2$ ($x > -1, x \neq 0$):</p>
-<p>($1 - 1/$(n + 1)$^2$)$^n > 1 - n/$(n + 1)$^2 =$ ($n^2 + n + 1$)/(n + 1)$^2$.</p>
+<p>$$\frac{x_{n+1}}{x_n} = \left(\frac{n+2}{n+1}\right)^{n+1}\cdot\left(\frac{n}{n+1}\right)^n = \frac{n+2}{n+1}\cdot\left(\frac{(n+2)n}{(n+1)^2}\right)^n.$$</p>
+<p>Заметим, что $(n+2)n = n^2 + 2n = (n+1)^2 - 1$, поэтому $\dfrac{(n+2)n}{(n+1)^2} = 1 - \dfrac{1}{(n+1)^2}$.</p>
+<p>Применяем Бернулли с $x = -\dfrac{1}{(n+1)^2}$ ($x &gt; -1$, $x \neq 0$):</p>
+<p>$$\left(1 - \frac{1}{(n+1)^2}\right)^n &gt; 1 - \frac{n}{(n+1)^2} = \frac{n^2 + n + 1}{(n+1)^2}.$$</p>
 <p>Значит,</p>
-<p>$x_{n+1}/x_n >$ (n + 2)($n^2 + n + 1$)/(n + 1)$^3 =$ ($n^3 + 3n^2 + 3n + 2$)/($n^3 + 3n^2 + 3n + 1$) &gt; 1.</p>
+<p>$$\frac{x_{n+1}}{x_n} &gt; \frac{n+2}{n+1}\cdot\frac{n^2+n+1}{(n+1)^2} = \frac{n^3+3n^2+3n+2}{n^3+3n^2+3n+1} &gt; 1.$$</p>
 <p><strong>Шаг 3. $y_n$ строго убывает</strong> ($n \ge 2$). Считаем отношение предыдущего к следующему:</p>
-<p>$y_{n-1}/y_n =$ (n/($n - 1$))$^n /$ ((n + 1)/n)$^{n+1} =$ ($n^2/$(($n - 1$)(n + 1)))$^n \cdot n/$(n + 1) = (1 + 1/($n^2 - 1$))$^n \cdot n/$(n + 1).</p>
-<p>Бернулли с x = 1/($n^2 - 1$):</p>
-<p>(1 + 1/($n^2 - 1$))$^n > 1 + n/$($n^2 - 1$) = ($n^2 + n - 1$)/($n^2 - 1$).</p>
+<p>$$\frac{y_{n-1}}{y_n} = \frac{\bigl(n/(n-1)\bigr)^n}{\bigl((n+1)/n\bigr)^{n+1}} = \left(\frac{n^2}{(n-1)(n+1)}\right)^n\cdot\frac{n}{n+1} = \left(1+\frac{1}{n^2-1}\right)^n\cdot\frac{n}{n+1}.$$</p>
+<p>Бернулли с $x = \dfrac{1}{n^2-1}$:</p>
+<p>$$\left(1+\frac{1}{n^2-1}\right)^n &gt; 1 + \frac{n}{n^2-1} = \frac{n^2+n-1}{n^2-1}.$$</p>
 <p>Значит,</p>
-<p>$y_{n-1}/y_n > n$($n^2 + n - 1$)/(($n - 1$)(n + 1)$^2$) = ($n^3 + n^2 - n$)/($n^3 + n^2 - n - 1$) &gt; 1.</p>
+<p>$$\frac{y_{n-1}}{y_n} &gt; \frac{n(n^2+n-1)}{(n-1)(n+1)^2} = \frac{n^3+n^2-n}{n^3+n^2-n-1} &gt; 1.$$</p>
 <p><strong>Шаг 4. Ограниченность и предел.</strong> Из шагов 1–3:</p>
-<p>$2 = x_1 < x_2 <$ … $< x_n < y_n <$ … $< y_2 < y_1 = 4$.</p>
-<p>$\{x_n\}$ возрастает и ограничена сверху (числом 4) $\Rightarrow$ по теореме Вейерштрасса (МТ-§11) есть предел; обозначим его e.<br>
+<p>$$2 = x_1 &lt; x_2 &lt; \cdots &lt; x_n &lt; y_n &lt; \cdots &lt; y_2 &lt; y_1 = 4.$$</p>
+<p>$\{x_n\}$ возрастает и ограничена сверху (числом 4) $\Rightarrow$ по теореме Вейерштрасса (МТ-§11) есть предел; обозначим его $e$.<br>
 $\{y_n\}$ убывает и ограничена снизу (числом 2) $\Rightarrow$ тоже есть предел.</p>
-<p><strong>Шаг 5. Пределы равны.</strong> $y_n =$ (1 + 1/n)$\cdot x_n \Rightarrow lim y_n = lim$(1 + 1/n)$\cdot lim x_n = 1\cdot e = e$.</p>
-<p><strong>Шаг 6. Строгие неравенства.</strong> $x_n < x_{n+1} \le e$ (возрастающая лежит не выше своего предела) и $e \le y_{n+1} < y_n$. Итак, $x_n < e < y_n$. ■</p>
-<p><strong>Пример к шагу 6.</strong> При n = 10: 2,594 &lt; e &lt; 2,853. Уже при n = 100 точность $\approx 0,03$.</p>
+<p><strong>Шаг 5. Пределы равны.</strong> $y_n = \left(1+\dfrac{1}{n}\right)\cdot x_n \Rightarrow \lim y_n = \lim\left(1+\dfrac{1}{n}\right)\cdot\lim x_n = 1\cdot e = e$.</p>
+<p><strong>Шаг 6. Строгие неравенства.</strong> $x_n &lt; x_{n+1} \le e$ (возрастающая лежит не выше своего предела) и $e \le y_{n+1} &lt; y_n$. Итак, $x_n &lt; e &lt; y_n$. ■</p>
+<p><strong>Пример к шагу 6.</strong> При $n = 10$: $2{,}594 &lt; e &lt; 2{,}853$. Уже при $n = 100$ точность $\approx 0{,}03$.</p>
 <h3 id="14-4-подпоследовательности">14.4. Подпоследовательности</h3>
-<p><strong>Определение.</strong> Пусть f: $\mathbb{N} \to \mathbb{R}$ — последовательность ($x_n = f$(n)), l: $\mathbb{N} \to \mathbb{N}$ — <strong>строго возрастающая</strong>: $n < m \Rightarrow l$(n) &lt; l(m). Композиция f(l): $k \mapsto f$(l(k)) называется <strong>подпоследовательностью</strong>.</p>
-<p>Обозначение: $n_k = l$(k), подпоследовательность $\{x_{n_{k}}\}_{k=1}^\infty =$ ($x_{n_{1}}, x_{n_{2}}$, …), $n_1 < n_2 <$ …</p>
+<p><strong>Определение.</strong> Пусть f: $\mathbb{N} \to \mathbb{R}$ — последовательность ($x_n = f$(n)), l: $\mathbb{N} \to \mathbb{N}$ — <strong>строго возрастающая</strong>: $n &lt; m \Rightarrow l$(n) &lt; l(m). Композиция f(l): $k \mapsto f$(l(k)) называется <strong>подпоследовательностью</strong>.</p>
+<p>Обозначение: $n_k = l$(k), подпоследовательность $\{x_{n_{k}}\}_{k=1}^\infty =$ ($x_{n_{1}}, x_{n_{2}}$, …), $n_1 &lt; n_2 &lt;$ …</p>
 <p><em>Своими словами.</em> Из последовательности вычёркиваем часть членов (возможно, бесконечно много), но <strong>не переставляем</strong> оставшиеся и не повторяем их.</p>
 <p><strong>Пример.</strong> Чётные номера: l(k) $= 2k \Rightarrow n_1 = 2, n_2 = 4$, … $\Rightarrow$ ($x_2, x_4, x_6$, …). Для $x_n =$ ($-1$)$^n$ это (1, 1, 1, …).</p>
 <p><strong>Не-пример.</strong> ($x_2, x_1, x_3, x_4$, …) — не подпоследовательность: номера 2, 1 идут не по возрастанию. ($x_1, x_1, x_2$, …) — тоже нет: номер повторяется, а l должна строго возрастать.</p>
@@ -1408,11 +1435,11 @@ $\{y_n\}$ убывает и ограничена снизу (числом 2) $\R
 <p><strong>Не-пример.</strong> $x_n = n$ — не ограничена, и ни одна подпоследовательность не сходится (любая уходит в $+\infty$). Условие ограниченности существенно.</p>
 <p><em>Доказательство (деление пополам).</em></p>
 <p><strong>Шаг 1.</strong> Положим $a_1 = a, b_1 = b, c_1 =$ ($a_1 + b_1$)/2 — середина. Отрезок [$a_1, b_1$] делится на [$a_1, c_1$] и [$c_1, b_1$]. Хотя бы в одной половине лежит <strong>бесконечно много</strong> членов последовательности (иначе всего членов было бы конечно). Эту половину назовём [$a_2, b_2$]. Выберем номер $n_1$, для которого $x_{n_{1}} \in$ [$a_2, b_2$].</p>
-<p><strong>Шаг 2.</strong> $c_2 =$ ($a_2 + b_2$)/2. Снова одна из половин [$a_2, c_2$], [$c_2, b_2$] содержит бесконечно много членов — это [$a_3, b_3$]. Выберем $n_2 > n_1$ с $x_{n_{2}} \in$ [$a_3, b_3$] (можно, так как там бесконечно много членов, а значит есть и с большим номером).</p>
-<p><strong>Шаг k.</strong> Имея [$a_k, b_k$] с бесконечным числом членов, делим пополам, берём половину [$a_{k+1}, b_{k+1}$] с бесконечным числом членов и номер $n_k > n_{k-1}$ с $x_{n_{k}} \in$ [$a_{k+1}, b_{k+1}$].</p>
+<p><strong>Шаг 2.</strong> $c_2 =$ ($a_2 + b_2$)/2. Снова одна из половин [$a_2, c_2$], [$c_2, b_2$] содержит бесконечно много членов — это [$a_3, b_3$]. Выберем $n_2 &gt; n_1$ с $x_{n_{2}} \in$ [$a_3, b_3$] (можно, так как там бесконечно много членов, а значит есть и с большим номером).</p>
+<p><strong>Шаг k.</strong> Имея [$a_k, b_k$] с бесконечным числом членов, делим пополам, берём половину [$a_{k+1}, b_{k+1}$] с бесконечным числом членов и номер $n_k &gt; n_{k-1}$ с $x_{n_{k}} \in$ [$a_{k+1}, b_{k+1}$].</p>
 <p><strong>Что получили.</strong> Четыре последовательности $\{a_k\}, \{b_k\}, \{n_k\}, \{x_{n_{k}}\}$, причём:</p>
 <ol>
-<li>$a_1 \le$ … $\le a_k \le a_{k+1} < b_{k+1} \le b_k \le$ … $\le b_1$ — отрезки вложены: [$a_{k+1}, b_{k+1}$] $\subset$ [$a_k, b_k$];</li>
+<li>$a_1 \le$ … $\le a_k \le a_{k+1} &lt; b_{k+1} \le b_k \le$ … $\le b_1$ — отрезки вложены: [$a_{k+1}, b_{k+1}$] $\subset$ [$a_k, b_k$];</li>
 <li>$b_k - a_k =$ ($b - a$)$/2^{k-1} \to 0$ — длины стягиваются к нулю;</li>
 <li>$a_{k+1} \le x_{n_{k}} \le b_{k+1}$.</li>
 </ol>
@@ -1527,9 +1554,9 @@ $\{y_n\}$ убывает и ограничена снизу (числом 2) $\R
 <blockquote>
 <p>Индекс: <code>МТ-§16</code></p>
 </blockquote>
-<p><em>(Практика / конспект: <a href="практика/документ-15-практика.pdf"><code>практика/документ-15-практика.pdf</code></a>. Определения и доказательства — из записей; примеры и «своими словами» — дополнено.)</em></p>
+<p><em>(Из записей Бегалиева: <a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%2010.01.2026.pdf"><code>Матан 10.01.2026.pdf</code></a> = <code>БГ-М-10.01</code>, локально <code>материалы/_архив/_бегалиев-матан/10.01.pdf</code>. Практика: <a href="практика/документ-15-практика.pdf"><code>практика/документ-15-практика.pdf</code></a>. Своими словами и примеры дополнены. Продолжение 08.10 — <code>МТ-§17</code>.)</em></p>
 <p><em>Что уже должно быть прочитано.</em> Предел последовательности — <code>МТ-§9</code>–<code>МТ-§10</code>; ±∞ — <code>МТ-§13</code>.</p>
-<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — определение предела функции по Коши и эквивалентность с Гейне</a>.</p>
+<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — предел функции (Коши / Гейне)</a>.</p>
 <h3 id="16-1-окрестности-и-точка-прикосновения">16.1. Окрестности и точка прикосновения</h3>
 <p>Пусть $E \subset \mathbb{R}, a \in \mathbb{R}$̄ (расширенная прямая: число или $\pm \infty$). Говорят, что a — <strong>точка прикосновения</strong> множества E (из E можно подойти к a, оставаясь в E и не обязательно попадая в a), если в любой окрестности a есть точка множества E, отличная от a (когда a конечно).</p>
 <p>Удобные «стандартные» окрестности:</p>
@@ -1545,17 +1572,17 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 <p><strong>Определение (общее).</strong> f: $E \to \mathbb{R}, a \in \mathbb{R}$̄, $A \in \mathbb{R}$̄. Пишут $lim_\{x\to a\} f$(x) = A (или f(x) $\to A$ при $x \to a$), если</p>
 <p>$\forall$ окрестности G(A) $\exists$ окрестность $\omega$(a): $\forall x \in \omega$(a) $\cap E, x \neq a \Rightarrow f$(x) $\in G$(A).</p>
 <p><em>Своими словами.</em> Хочешь попасть f(x) в любую «мишень» вокруг A — найди достаточно узкую «зону» вокруг a (без самой a), где это уже гарантировано.</p>
-<p><strong>Определение (Коши, конечные a и A).</strong> $\forall \varepsilon > 0 \exists \delta > 0$: $\forall x \in E, 0 < |x - a| < \delta \Rightarrow |f$(x) $- A| < \varepsilon$.</p>
+<p><strong>Определение (Коши, конечные a и A).</strong> $\forall \varepsilon &gt; 0 \exists \delta &gt; 0$: $\forall x \in E, 0 &lt; |x - a| &lt; \delta \Rightarrow |f$(x) $- A| &lt; \varepsilon$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Предел функции ε–δ</div>
-  <div class="formula-box-body">$\lim_{x\to a}f(x)=A\iff\forall\varepsilon>0\ \exists\delta>0:\ 0<|x-a|<\delta\Rightarrow |f(x)-A|<\varepsilon$</div>
+  <div class="formula-box-body">$\lim_{x\to a}f(x)=A\iff\forall\varepsilon&gt;0\ \exists\delta&gt;0:\ 0&lt;|x-a|&lt;\delta\Rightarrow |f(x)-A|&lt;\varepsilon$</div>
 </div>
 
-<p><strong>Пример.</strong> f(x) = 3x + 1, a = 2, A = 7. |f(x) $- 7| = |3x - 6| = 3|x - 2|$. Чтобы это было $< \varepsilon$, достаточно $\delta = \varepsilon /3$.</p>
-<p><strong>Предел $+\infty$.</strong> f(x) $\to +\infty$ при $x \to a$ значит: $\forall M \exists \delta > 0$: $0 < |x - a| < \delta, x \in E \Rightarrow f$(x) &gt; M (и аналогично для других комбинаций с $\pm \infty$).</p>
+<p><strong>Пример.</strong> f(x) = 3x + 1, a = 2, A = 7. |f(x) $- 7| = |3x - 6| = 3|x - 2|$. Чтобы это было $&lt; \varepsilon$, достаточно $\delta = \varepsilon /3$.</p>
+<p><strong>Предел $+\infty$.</strong> f(x) $\to +\infty$ при $x \to a$ значит: $\forall M \exists \delta &gt; 0$: $0 &lt; |x - a| &lt; \delta, x \in E \Rightarrow f$(x) &gt; M (и аналогично для других комбинаций с $\pm \infty$).</p>
 <h3 id="16-3-локальная-ограниченность">16.3. Локальная ограниченность</h3>
 <p><strong>Утверждение.</strong> Если f(x) $\to A \in \mathbb{R}$ при $x \to a$, то f локально ограничена: $\exists$ окрестность $\omega_0$(a) и C &gt; 0 такие, что $\forall x \in \omega_0$(a) $\cap E, x \neq a$ выполняется |f(x)$| \le C$.</p>
-<p><em>Доказательство.</em> Возьмём $\varepsilon = 1$. Есть $\delta$: при $0 < |x - a| < \delta$ имеем |f(x) $- A| < 1 \Rightarrow |f$(x)$| \le |f$(x) $- A| + |A| < 1 + |A|$. Полагаем C = 1 + |A|. ■</p>
+<p><em>Доказательство.</em> Возьмём $\varepsilon = 1$. Есть $\delta$: при $0 &lt; |x - a| &lt; \delta$ имеем |f(x) $- A| &lt; 1 \Rightarrow |f$(x)$| \le |f$(x) $- A| + |A| &lt; 1 + |A|$. Полагаем C = 1 + |A|. ■</p>
 <p><strong>Пример.</strong> f(x) $= 1/x \to 1$ при $x \to 1$; около 1 функция ограничена, например на (1/2, 3/2) \ {1}.<br>
 <strong>Не-пример глобальности.</strong> f(x) = 1/x при $x \to 0$ <strong>не</strong> имеет конечного предела — и около 0 не ограничена.</p>
 <h3 id="16-4-определение-по-гейне-и-эквивалентность">16.4. Определение по Гейне и эквивалентность</h3>
@@ -1583,10 +1610,110 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 </ul>
 <p>Если f(x) $\le g$(x) в проколотой окрестности a и пределы конечны, то $lim f \le lim g$.</p>
 <p><em>Своими словами.</em> Те же правила, что для последовательностей (МТ-§10), только «хвост» заменяется на «дырку вокруг a».</p>
-<p><strong>Пример.</strong> $lim_\{x\to 2\}$ ($x^2 - 4$)/($x - 2$) $= lim_\{x\to 2\}$ (x + 2) = 4 (сократили при $x \neq 2$).</p>
+<p><strong>Пример.</strong> $\lim_{x\to 2}\dfrac{x^2-4}{x-2}=\lim_{x\to 2}(x+2)=4$ (сократили при $x\neq 2$).</p>
 <hr>
 <blockquote>
 <p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§16</code> — по всему блоку</p>
+</blockquote>
+<hr>
+<h2 id="17-матан-08-10-коши-для-функций-монотонные-ln-1-x">17. Матан 08.10: Коши для функций, монотонные, ln(1+x)</h2>
+<blockquote>
+<p>Индекс: <code>МТ-§17</code></p>
+</blockquote>
+<p><em>(Фото доски: <a href="08.10-матан.pdf"><code>08.10-матан.pdf</code></a> — в файле кадры вразнобой, ниже порядок </em><em>логический</em><em> по номерам на доске и смыслу. В репозитории Бегалиева на момент разбора есть только до <a href="https://github.com/Begaliev-Kirill/SPBU/tree/master/Release/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7"><code>Матан 10.01.2026.pdf</code></a> (<code>БГ-М-10.01</code> ≈ <code>МТ-§16</code>); файла <code>Матан 10.08.2026.pdf</code> ещё нет. Своими словами, примеры и склейка шагов — дополнены.)</em></p>
+<p><em>Что уже должно быть прочитано.</em> Предел функции — <code>МТ-§16</code>; число $e$ — <code>МТ-§14</code>; критерий Коши для последовательностей — <code>МТ-§12</code>.</p>
+<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — Лекция 15. Замечательные пределы</a> (в т.ч. второй замечательный / следствия с $\ln$).</p>
+<h3 id="17-1-критерий-коши-для-предела-функции">17.1. Критерий Коши для предела функции</h3>
+<p><strong>Теорема.</strong> Пусть $E\subset\mathbb{R}$, $\alpha\in\overline{\mathbb{R}}$ — точка сгущения $E$, $f:E\to\mathbb{R}$. Конечный предел $\lim_{x\to\alpha}f(x)$ существует тогда и только тогда, когда</p>
+<p>$$\forall\varepsilon&gt;0\ \exists\,\omega(\alpha):\ \forall x_1,x_2\in E\cap\omega(\alpha),\ x_1\neq\alpha,\ x_2\neq\alpha\qquad |f(x_1)-f(x_2)|&lt;\varepsilon.$$</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Коши для функций</div>
+  <div class="formula-box-body">$\exists\lim_{x\to\alpha}f(x)\in\mathbb{R}\iff$ значения $f$ «почти постоянны» в достаточно узкой проколотой окрестности $\alpha$</div>
+</div>
+
+<p><em>Своими словами.</em> Как у последовательностей: предел конечен $\iff$ любые два значения $f$ на хвосте (здесь — в маленькой дырке вокруг $\alpha$) отличаются меньше чем на $\varepsilon$. Саму точку $\alpha$ не трогаем.</p>
+<p><strong>Необходимость (из записей).</strong> Пусть $f(x)\to A\in\mathbb{R}$. Возьмём $\varepsilon&gt;0$ и найдём $\omega(\alpha)$ так, что при $x\in\omega(\alpha)\cap E$, $x\neq\alpha$ выполняется $|f(x)-A|&lt;\varepsilon/2$. Тогда для любых двух таких $x_1,x_2$:</p>
+<p>$$|f(x_2)-f(x_1)|=\bigl|(f(x_2)-A)-(f(x_1)-A)\bigr|\le |f(x_2)-A|+|f(x_1)-A|&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$</p>
+<p><strong>Достаточность (идея через Гейне, из записей).</strong> Пусть условие Коши выполнено. Возьмём любую $\{x_n\}\subset E$, $x_n\neq\alpha$, $x_n\to\alpha$. Для $\varepsilon&gt;0$ есть $\omega(\alpha)$ из условия; с некоторого $N$ все $x_n$ лежат в $\omega(\alpha)\cap E$. Тогда при $m,n&gt;N$ имеем $|f(x_m)-f(x_n)|&lt;\varepsilon$, то есть $\{f(x_n)\}$ — последовательность Коши и сходится в $\mathbb{R}$. По Гейне (МТ-§16) предел $f$ при $x\to\alpha$ существует и конечен.</p>
+<p><strong>Пример.</strong> $f(x)=x$ при $x\to 0$: в $\omega=(-\varepsilon/2,\varepsilon/2)$ любые два значения отличаются меньше чем на $\varepsilon$.<br>
+<strong>Не-пример.</strong> $f(x)=\sin(1/x)$ при $x\to 0$: в любой дырке около $0$ есть точки с $f=1$ и с $f=-1$, разность $=2$ — критерий Коши нарушен, предела нет.</p>
+<h3 id="17-2-предел-монотонной-функции">17.2. Предел монотонной функции</h3>
+<p>Пусть $E\subset\mathbb{R}$, $\alpha\in\overline{\mathbb{R}}$ — точка сгущения $E$, и $\forall x\in E$ выполняется $x&lt;\alpha$ (подходим к $\alpha$ <strong>слева</strong>). Функция $f:E\to\mathbb{R}$ <strong>возрастает</strong> (нестрого: $x_1&lt;x_2\Rightarrow f(x_1)\le f(x_2)$).</p>
+<p><strong>Теорема (возрастающая слева от $\alpha$).</strong> Тогда существует $\lim_{x\to\alpha}f(x)\in\overline{\mathbb{R}}$. Причём</p>
+<ul>
+<li>предел <strong>конечен</strong> $\iff$ $f$ ограничена сверху на $E$: $\exists M\in\mathbb{R}\ \forall x\in E:\ f(x)\le M$;</li>
+<li>если $B=\sup\{f(x):x\in E\}\in\mathbb{R}$, то $\lim_{x\to\alpha}f(x)=B$ и $\forall x\in E:\ f(x)\le B$.</li>
+</ul>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Монотонная → предел</div>
+  <div class="formula-box-body">$f$ возр. слева от $\alpha$ $\Rightarrow$ $\exists\lim_{x\to\alpha}f(x)\in\overline{\mathbb{R}}$; конечен $\iff$ огр. сверху</div>
+</div>
+
+<p><em>Своими словами.</em> Возрастающая функция «ползёт вверх» к $\alpha$; ей некуда дёргаться — остаётся упереться в супремум значений (или уйти в $+\infty$, если сверху нет крышки). Это аналог теоремы Вейерштрасса для последовательностей (МТ-§11), только «номер $n$» заменён на «точку $x$ ближе к $\alpha$».</p>
+<p><em>Доказательство по шагам (из записей, склеено).</em></p>
+<p><strong>Шаг 1. Образ ограничен сверху $\Rightarrow$ есть $B=\sup G$.</strong> Пусть $G=\{y\in\mathbb{R}:\exists x\in E,\ f(x)=y\}$ — множество значений. Если $f$ ограничена сверху, то $B=\sup G\in\mathbb{R}$.</p>
+<p><strong>Шаг 2. Покажем $f(x)\to B$.</strong> Возьмём $\varepsilon&gt;0$. Число $B-\varepsilon$ <strong>не</strong> верхняя граница $G$, значит $\exists x_0\in E$ с $f(x_0)&gt;B-\varepsilon$. Положим $\delta=\alpha-x_0&gt;0$ (случай $\alpha\in\mathbb{R}$) и $\omega(\alpha)=(\alpha-\delta,\alpha+\delta)$. Тогда для $x\in E\cap\omega(\alpha)$, $x\neq\alpha$ автоматически $x_0&lt;x&lt;\alpha$ (мы подходим слева), и по возрастанию</p>
+<p>$$B-\varepsilon &lt; f(x_0)\le f(x)\le B &lt; B+\varepsilon,$$</p>
+<p>то есть $|f(x)-B|&lt;\varepsilon$. ■</p>
+<p><strong>Шаг 3. Если сверху не ограничена.</strong> Тогда для любого $M$ найдётся $x_0$ с $f(x_0)&gt;M$; в левой полуокрестности правее $x_0$ все значения ещё больше — значит $f(x)\to+\infty$.</p>
+<p><strong>Пример.</strong> $E=(0,1)$, $\alpha=1$, $f(x)=x$: возрастает, ограничена сверху, $\lim_{x\to 1^-}f(x)=1=\sup E$ по значениям.<br>
+<strong>Пример без конечного предела.</strong> $E=(0,+\infty)$, $\alpha=+\infty$ в роли «крышки справа» / или $\beta=0$ слева для $f(x)=1/x$ на $(0,1]$: убывает к $+\infty$ при $x\to 0^+$ — предел в $\overline{\mathbb{R}}$ есть, но не в $\mathbb{R}$.</p>
+<p><strong>Случай убывающей.</strong> Если $g$ убывает слева от $\alpha$, то $\exists\lim g\in\overline{\mathbb{R}}$; предел конечен $\iff$ $g$ ограничена снизу; тогда $\lim g=\inf$ значений и $g(x)\ge\lim g$.</p>
+<p><strong>Случай подхода справа / снизу.</strong> Если $\beta$ — нижняя грань (все $x\in E$ удовлетворяют $x&gt;\beta$) и $f$ возрастает, то $\exists\lim_{x\to\beta}f(x)\in\overline{\mathbb{R}}$; конечен $\iff$ ограничена снизу.</p>
+<p><strong>Сведение через минус.</strong> Убывание $g$ сводится к возрастанию $f=-g$ (как для последовательностей в МТ-§11).</p>
+<h3 id="17-3-неравенства-для-ln-1-x-из-числа-e">17.3. Неравенства для $\ln(1+x)$ из числа $e$</h3>
+<p>Напоминание из МТ-§14: $2&lt;e&lt;3$ и</p>
+<p>$$\Bigl(1+\frac{1}{n}\Bigr)^n &lt; e &lt; \Bigl(1+\frac{1}{n}\Bigr)^{n+1}.$$</p>
+<p>Логарифмируем (строго возрастающий $\ln$) и делим на положительные множители:</p>
+<p>$$\frac{1}{n+1} &lt; \ln\Bigl(1+\frac{1}{n}\Bigr) &lt; \frac{1}{n}.\tag{1}$$</p>
+<p><em>Своими словами.</em> $\ln(1+1/n)$ зажат между двумя соседними единичными дробями — чуть меньше $1/n$ и чуть больше $1/(n+1)$.</p>
+<h4>Случай $x&gt;0$</h4>
+<p>Пусть $0&lt;x\le 1$. Выберем $n\in\mathbb{N}$ так, что</p>
+<p>$$\frac{1}{n+1}&lt;x\le\frac{1}{n}\iff n\le\frac{1}{x}&lt;n+1.$$</p>
+<p>Тогда $1+x\le 1+1/n$, и из монотонности $\ln$ плюс $(1)$:</p>
+<p>$$\ln(1+x)\le\ln\Bigl(1+\frac{1}{n}\Bigr)&lt;\frac{1}{n}.$$</p>
+<p>Из $n&gt;1/x-1$ (точнее $1/x-1&lt;n$) получаем $1/n&lt;1/(1/x-1)=x/(1-x)$, значит</p>
+<p>$$\ln(1+x)&lt;\frac{x}{1-x}.\tag{4}$$</p>
+<p>Нижняя оценка: $x&gt;1/(n+1)\Rightarrow 1+x&gt;1+1/(n+1)$,</p>
+<p>$$\ln(1+x)&gt;\ln\Bigl(1+\frac{1}{n+1}\Bigr)\ge\frac{1}{n+2}$$</p>
+<p>(второе — снова $(1)$ со сдвигом номера). А $n\le 1/x\Rightarrow n+2\le 1/x+2$, откуда $1/(n+2)\ge 1/(1/x+2)=x/(1+2x)$. Итого</p>
+<p>$$\frac{x}{1+2x}&lt;\ln(1+x)&lt;\frac{x}{1-x}\qquad (0&lt;x\le\tfrac12\text{ достаточно; на доске — в зоне, где знаменатели }&gt;0).\tag{6}$$</p>
+<p><strong>Пример.</strong> $x=0{,}1$: $0{,}1/1{,}2\approx 0{,}083$, $\ln(1{,}1)\approx 0{,}095$, $0{,}1/0{,}9\approx 0{,}111$ — неравенство $(6)$ выполняется.</p>
+<h4>Случай $x&lt;0$</h4>
+<p>Пусть $x\in[-1/3,0)$. Положим $y=-x/(1+x)$. Тогда $1+y=1/(1+x)$, откуда</p>
+<p>$$\ln(1+x)=-\ln(1+y),\qquad 0&lt;y\le\frac12.$$</p>
+<p>Подставляем в уже доказанное для $y&gt;0$ и аккуратно меняем знаки (домножение на $-1$ переворачивает неравенства). После алгебры (на доске шаги $(9)$–$(11)$: выражения вида $-y/(1-y)=-x/(1-x)$ и $-y/(1+2y)=-x/(1+2x)$) снова получается</p>
+<p>$$\frac{x}{1+2x}&lt;\ln(1+x)&lt;\frac{x}{1-x},\qquad x\in\Bigl[-\frac13,\frac12\Bigr],\ x\neq 0.\tag{12}$$</p>
+<h4>Единая форма через $|x|$</h4>
+<p>Деля $(12)$ на $x$ (с учётом знака) и оценивая грубее через $|x|$, на доске получают удобный «симметричный» зажим:</p>
+<p>$$\frac{1}{1+2|x|}&lt;\frac{\ln(1+x)}{x}&lt;\frac{1}{1-2|x|}$$</p>
+<p>при достаточно малых $x\neq 0$ (чтобы $1-2|x|&gt;0$, то есть $|x|&lt;1/2$).</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Оценка для $\ln$</div>
+  <div class="formula-box-body">$\dfrac{1}{1+2|x|}\lt\dfrac{\ln(1+x)}{x}\lt\dfrac{1}{1-2|x|}$ ($0\lt |x|\lt 1/2$)</div>
+</div>
+
+<p><strong>Не-пример области.</strong> При $x=0{,}6$ знаменатель $1-x=0{,}4$ ещё положителен, но форма с $1-2|x|$ уже ломается ($1-1{,}2&lt;0$) — поэтому в единой записи держат $|x|&lt;1/2$.</p>
+<h3 id="17-4-предел-ln-1-x-x-и-символ-o">17.4. Предел $\ln(1+x)/x$ и символ $o$</h3>
+<p><strong>Теорема.</strong> $\displaystyle\lim_{x\to 0}\frac{\ln(1+x)}{x}=1$.</p>
+<p><em>Доказательство.</em> При $0&lt;|x|&lt;1/2$ обе «стенки» $1/(1+2|x|)$ и $1/(1-2|x|)$ стремятся к $1$ при $x\to 0$. По теореме о двух милиционерах (МТ-§10 / для функций — МТ-§16) зажатая между ними $\ln(1+x)/x$ тоже $\to 1$. ■</p>
+<p><strong>Пример.</strong> $x=0{,}01$: $\ln(1{,}01)/0{,}01\approx 0{,}995\to 1$. $x=-0{,}01$: $\ln(0{,}99)/(-0{,}01)\approx 1{,}005\to 1$.</p>
+<h4>Бесконечно малые и $o$-малое</h4>
+<p><strong>Определение.</strong> Пусть $\alpha$ — точка сгущения $E$, $f:E\to\mathbb{R}$. Говорят, что $f$ <strong>бесконечно малая</strong> при $x\to\alpha$, если $f(x)\to 0$. Функция $g$ <strong>бесконечно большая</strong>, если $|g(x)|\to+\infty$ (при $g(x)\neq 0$ тогда $1/g$ — бесконечно малая).</p>
+<p><strong>Определение.</strong> $h(x)=o\bigl(l(x)\bigr)$ при $x\to\alpha$, если существует бесконечно малая $\varphi$ такая, что $h(x)=\varphi(x)\,l(x)$ (в проколотой окрестности $\alpha$). Эквивалентно (когда $l(x)\neq 0$): $h(x)/l(x)\to 0$.</p>
+<p><em>Своими словами.</em> «$h$ есть $o(l)$» = «$h$ пренебрежимо мала по сравнению с $l$»: отношение $h/l$ сжимается к нулю.</p>
+<p><strong>Пример.</strong> Из предела выше: $\dfrac{\ln(1+x)}{x}-1\to 0$, то есть $\ln(1+x)-x=o(x)$ при $x\to 0$. Пишут также $\ln(1+x)=x+o(x)$.</p>
+<p><strong>Не-пример.</strong> $x$ не есть $o(x)$ при $x\to 0$: отношение $x/x=1\not\to 0$. А $x^2=o(x)$ — да, $x^2/x=x\to 0$.</p>
+<h3 id="что-взять-с-собой">Что взять с собой</h3>
+<ul>
+<li>Конечный $\lim f$ $\iff$ критерий Коши: любые два значения $f$ в узкой дырке около $\alpha$ близки.</li>
+<li>Монотонная у точки сгущения $\Rightarrow$ предел в $\overline{\mathbb{R}}$; конечен $\iff$ есть подходящая ограниченность (сверху / снизу).</li>
+<li>Из $e$ следует зажим для $\ln(1+1/n)$, затем для $\ln(1+x)$, затем $\ln(1+x)/x\to 1$.</li>
+<li>$\ln(1+x)=x+o(x)$ при $x\to 0$.</li>
+</ul>
+<hr>
+<blockquote>
+<p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§17</code> — по всему блоку</p>
 </blockquote>
     </div>
   </div>

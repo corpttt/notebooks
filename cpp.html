@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ru" data-nb-id="cpp" data-nb-title="C++ · тетрадь" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ · тетрадь</title>
+<style>
+:root {
+  --bg: #f6f4ef; --card: #fff; --ink: #1c1b19; --muted: #6b665c;
+  --line: #e2ddd2; --acc: #1f4e79; --acc2: #8a4b1f; --soft: #e8eef5;
+  --warn: #fff4e5; --code: #f0ebe3; --danger: #fde8e8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 16px/1.55 "Segoe UI", "Cambria Math", "Segoe UI Symbol", system-ui, sans-serif;
+  color: var(--ink); background: var(--bg);
+}
+header { max-width: 52rem; margin: 0 auto; padding: 1.2rem 1.2rem 0.6rem; }
+h1 { font-size: 1.45rem; margin: 0 0 0.25rem; }
+.note { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.7rem; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+nav.toc a {
+  text-decoration: none; color: var(--acc); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 0.28rem 0.7rem; font-size: 0.86rem;
+}
+main { max-width: 52rem; margin: 0 auto 3rem; padding: 0 1.2rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 1rem 1.15rem 1.25rem; margin: 0 0 0.95rem;
+  border-top: 3px solid var(--acc);
+}
+h2 { font-size: 1.18rem; margin: 0 0 0.55rem; color: var(--acc); }
+h3 { font-size: 1.02rem; margin: 1.05rem 0 0.4rem; }
+p { margin: 0.45rem 0; }
+ul, ol { margin: 0.35rem 0 0.55rem; padding-left: 1.25rem; }
+li { margin: 0.28rem 0; }
+.def {
+  border-left: 3px solid var(--acc); background: var(--soft);
+  padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
+}
+.own { color: #333; }
+.ex {
+  border-left: 3px solid var(--acc2); background: var(--warn);
+  padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
+}
+.nonex {
+  border-left: 3px solid #a33; background: var(--danger);
+  padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
+}
+.cheat {
+  background: var(--code); border: 1px dashed var(--line);
+  border-radius: 10px; padding: 0.7rem 0.9rem;
+}
+.task {
+  border: 1px solid color-mix(in srgb, var(--acc2) 35%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc2) 6%, var(--card)), var(--card));
+  border-radius: 10px; padding: 0.85rem 1rem; margin: 0.85rem 0;
+}
+.task h3 { margin-top: 0; color: var(--acc2); }
+.nosolve {
+  font-size: 0.9rem; color: var(--muted);
+  border: 1px dashed var(--line); border-radius: 8px;
+  padding: 0.45rem 0.7rem; margin: 0.5rem 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.94rem; margin: 0.5rem 0; }
+th, td { border: 1px solid var(--line); padding: 0.4rem 0.55rem; text-align: left; vertical-align: top; }
+th { background: var(--soft); }
+code, .mono { font-family: ui-monospace, Consolas, "Cascadia Code", monospace; font-size: 0.9em; }
+pre {
+  background: #1e1e1e; color: #eee; padding: 0.75rem 0.95rem;
+  overflow: auto; border-radius: 0 0 8px 8px; font-size: 0.86rem; line-height: 1.45;
+  margin: 0;
+}
+pre code { font-size: inherit; color: inherit; background: none; }
+.code-tabs {
+  margin: 0.75rem 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+.code-tabs-nav {
+  display: flex; flex-wrap: wrap; gap: 0;
+  background: #ece8e0; border-bottom: 1px solid var(--line);
+}
+.code-tabs-nav button {
+  appearance: none; border: none; background: transparent;
+  font: inherit; font-size: 0.86rem; font-weight: 600;
+  color: var(--muted); padding: 0.55rem 0.9rem; cursor: pointer;
+  border-right: 1px solid var(--line);
+}
+.code-tabs-nav button[aria-selected="true"] {
+  background: #1e1e1e; color: #eee;
+}
+.code-tabs-panel { display: none; }
+.code-tabs-panel.is-active { display: block; }
+.code-tabs-caption {
+  font-size: 0.86rem; color: var(--muted);
+  padding: 0.45rem 0.85rem; background: #f7f5f0;
+  border-top: 1px solid var(--line);
+}
+.src { color: var(--muted); font-size: 0.88rem; }
+.tag {
+  display: inline-block; font-size: 0.75rem; padding: 0.1rem 0.45rem;
+  border-radius: 999px; background: var(--soft); color: var(--acc); margin-right: 0.25rem;
+}
+.formula-box {
+  margin: 0.9rem 0; padding: 0.85rem 1rem 0.95rem; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--acc) 35%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 8%, var(--card)), var(--card));
+}
+.formula-box-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--acc); margin-bottom: 0.35rem;
+}
+.formula-box-body {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 1.02rem; line-height: 1.45;
+}
+.quiz-trigger {
+  margin: 1.2rem 0; padding: .7rem 1rem;
+  border-left: 4px solid var(--acc); background: var(--soft);
+}
+.py-cmp {
+  border-left: 3px solid #2d6a4f; background: #eef6f1;
+  padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
+}
+.py-cmp > strong:first-child { color: #1b4332; }
+a { color: var(--acc); }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+
+<meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Тетради">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./site.css?v=3">
+  <script src="./theme.js?v=3"></script>
+</head>
+<body>
+<header class="nb-app-header">
+  <div class="nb-app-header-inner">
+    <a class="nb-brand" href="./index.html">
+      <span class="nb-brand-mark">NB</span>
+      <span>Тетради</span>
+    </a>
+    <div class="nb-header-actions">
+      <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
+      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
+    </div>
+  </div>
+</header>
+
+
+<header>
+  <h1>C++ · тетрадь</h1>
+  <p class="note">
+    Опора: курс
+    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Stepik 363 · Введение в программирование (C++)</a>
+    (Яндекс / ВШЭ) · задания практикума:
+    <a href="https://github.com/corpttt/cpp-lab-01" target="_blank" rel="noopener">corpttt/cpp-lab-01</a>
+    (локально <code>Documents/cpp-lab-01/tasks/</code> — открывай эту папку отдельным окном Cursor).
+    Индекс в чате: <code>C++-§N</code>.
+    Примеры кода — во <strong>вкладках</strong> (переключай сверху блока).
+    Где полезно — рядом блок <strong>С Python</strong> (ты уже знаешь Python; C++ — с нуля).
+  </p>
+  <nav class="toc">
+    <a href="#intro">С чего начать</a>
+    <a href="#feel">Как это ощущается</a>
+    <a href="#s0">§0 Устройство программы</a>
+    <a href="#map">Куда идём</a>
+    <a href="#s1">§1 Типы</a>
+    <a href="#s2">§2 Ветвления</a>
+    <a href="#s3">§3 Циклы и ввод</a>
+    <a href="#s4">§4 Функции</a>
+    <a href="#tasks">Задания 1–4</a>
+    <a href="#cheat">Шпаргалка</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ========== INTRO ========== -->
+<section class="card" id="intro">
+  <h2>С чего начать</h2>
+  <p>
+    Ты открываешь C++ не «с нуля вселенной», а с понятной цели:
+    есть курс
+    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Stepik 363 · Введение в программирование (C++)</a>
+    и рядом — четыре своих задания в папке <code>tasks/</code>.
+    Эта тетрадь — мостик между ними: сначала спокойно разобрать <em>идеи</em>,
+    потом уже смотреть на файлы заданий.
+  </p>
+  <p>
+    Не нужно проглатывать всё за один присест. Нормальный темп такой:
+  </p>
+  <ol>
+    <li>«как это ощущается» — без кода;</li>
+    <li><strong>§0</strong> — как вообще устроена программа и в каком порядке она бежит;</li>
+    <li>§1…§4 по одному (после каждого можно <code>тест C++-§N</code>);</li>
+    <li>только потом — файлы заданий и чеклист в конце.</li>
+  </ol>
+  <div class="nosolve">
+    <strong>Важно.</strong> Решений заданий в тетради нет — только понятия и ловушки языка.
+    Короткие фрагменты вроде <code>5 / 2</code> — это примеры <em>правила</em>, а не готовый ответ на <code>types.cpp</code>.
+  </div>
+</section>
+
+<section class="card" id="feel">
+  <h2>Как это ощущается (без жаргона)</h2>
+  <p>
+    Программа на C++ — это машина, которая хранит числа в «коробках» разного размера,
+    умеет сравнивать («если … то …») и повторять одно и то же действие много раз.
+    Четыре твоих задания как раз про эти четыре навыка по очереди:
+  </p>
+  <ol>
+    <li><strong>коробки с числами</strong> — какой тип выбрать, как делить, куда класть большую сумму;</li>
+    <li><strong>выбор</strong> — по знаку, чётности или баллу выдать нужную строку;</li>
+    <li><strong>повтор</strong> — прочитать несколько чисел и посчитать сумму / min / max;</li>
+    <li><strong>кусочки кода</strong> — вынести проверки в функции и собрать из них «журнал».</li>
+  </ol>
+  <p class="own">
+    <em>Своими словами.</em> Сначала учимся аккуратно обращаться с числами,
+    потом — принимать решения, потом — крутить цикл, потом — не писать всё в одной куче.
+    Так же выстроен и сам Stepik-курс: от целых чисел к условиям, циклам и функциям.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Идеи те же: переменные, <code>if</code>, циклы, функции.
+    Разница — в «жёсткости»: в C++ тип коробки пишешь явно, программу обычно
+    <em>компилируешь</em> перед запуском, а <code>/</code> для двух целых ведёт себя не как в Python 3.
+    Ниже по § — короткие сопоставления; не путай «похоже» с «одинаково».
+  </div>
+</section>
+
+<!-- ========== §0 PROGRAM ANATOMY ========== -->
+<section class="card" id="s0">
+  <h2><span class="tag">C++-§0</span> Устройство программы: что за чем и как она бежит</h2>
+  <p>
+    Пока не трогаем «хитрые» типы и условия.
+    Сначала — каркас: из чего состоит файл <code>.cpp</code>, где программа <em>начинается</em>,
+    и по каким правилам компьютер идёт от строки к строке.
+  </p>
+
+  <h3>1. Два мира: текст и запуск</h3>
+  <p>
+    Ты пишешь <strong>текст</strong> на языке C++ (файл вроде <code>main.cpp</code>).
+    Компилятор переводит этот текст в программу, которую уже можно <strong>запустить</strong>.
+    Пока текст не скомпилирован, «машины» ещё нет — есть только рецепт.
+  </p>
+  <p class="own">
+    <em>Своими словами.</em>
+    Сначала пишем рецепт → потом компилятор его «запекает» → потом запускаем готовое блюдо.
+    Ошибка на этапе компиляции = рецепт нечитаем. Ошибка при запуске = блюдо приготовилось, но ведёт себя не так.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Обычно пишешь <code>.py</code> и сразу <code>python file.py</code> — интерпретатор читает текст на лету.
+    В C++ типичный путь: написал <code>.cpp</code> → компилятор собрал исполняемый файл → уже его запускаешь.
+    Синтаксическую опечатку в Python часто увидишь только при достижении строки;
+    в C++ компилятор часто ловит её <em>до</em> любого запуска.
+  </div>
+
+  <h3>2. С чего начинается выполнение</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Точка входа в обычную консольную программу на C++ — функция <code>main</code>.
+    Операционная система запускает программу и передаёт управление <em>в начало</em> <code>main</code>.
+    Когда <code>main</code> заканчивается (часто через <code>return</code>), программа завершается.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Неважно, сколько функций ты напишешь выше или ниже — выполнение для пользователя
+    начинается с <code>main</code>. Остальные функции сами по себе не бегут: их <em>вызывают</em>.
+  </p>
+  <div class="ex">
+    <strong>Пример смысла.</strong>
+    В задании 4 функции вроде проверки балла лежат в <code>journal.cpp</code>,
+    а «сценарий дня» — в <code>main.cpp</code>: прочитать вход, в цикле звать функции, напечатать отчёт.
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    В обычном скрипте выполнение идёт сверху вниз с первой строки файла —
+    отдельной обязательной <code>main</code> нет.
+    Часто пишут <code>def main(): …</code> и внизу <code>if __name__ == "__main__": main()</code>,
+    но это соглашение, а не правило языка. В C++ без <code>main</code> консольная программа «не знает, с чего стартовать».
+  </div>
+
+  <h3>3. Что обычно стоит в файле сверху вниз</h3>
+  <p>Типичный порядок в учебном файле (сверху вниз по тексту):</p>
+  <ol>
+    <li><strong>Подключения</strong> — строки <code>#include &lt;…&gt;</code>.
+      Это «возьми готовые куски стандартной библиотеки» (ввод-вывод, пределы типов и т.д.).
+      Их читает препроцессор <em>до</em> основной компиляции.</li>
+    <li><strong>Объявления / свои функции</strong> (если они в этом же файле) —
+      чтобы к моменту вызова компилятор уже знал имя и типы аргументов.</li>
+    <li><strong><code>int main()</code></strong> — тело программы в фигурных скобках <code>{ … }</code>.</li>
+  </ol>
+  <p>
+    Не обязательно зубрить все заголовки сразу. Для начала часто встречаются:
+    <code>&lt;iostream&gt;</code> (ввод-вывод), <code>&lt;limits&gt;</code> (границы типов — в §1),
+    иногда свои <code>.h</code> / соседние <code>.cpp</code> в большом задании.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>#include &lt;iostream&gt;</code> ≈ «подключить готовый модуль», как <code>import</code>.
+    Но это не тот же механизм: заголовок подмешивается на этапе препроцессора/компиляции,
+    а не подгружается при каждом запуске скрипта как модуль Python.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Каркас (смысл)</div>
+    <div class="formula-box-body">
+#include …<br>
+функции (по желанию)<br>
+int main() { … return 0; }
+    </div>
+  </div>
+
+  <h3>4. Минимальный скелет — чтобы увидеть порядок</h3>
+  <p>
+    Ниже — не задание и не «решение», а учебные скелеты.
+    Переключай вкладки: от самого короткого к «есть переменная» и «есть ввод»,
+    плюс вкладка <strong>Python</strong> — тот же смысл другим языком.
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Скелет</button>
+      <button type="button" role="tab" aria-selected="false">Переменная</button>
+      <button type="button" role="tab" aria-selected="false">Ввод</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "hello\n";
+    return 0;
+}</code></pre>
+      <div class="code-tabs-caption">Старт → печать → return 0. Смотри порядок строк.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>#include &lt;iostream&gt;
+
+int main() {
+    int n;          // объявили коробку
+    n = 3;          // положили значение
+    std::cout &lt;&lt; n; // прочитали и напечатали
+    return 0;
+}</code></pre>
+      <div class="code-tabs-caption">Сначала объявить, потом пользоваться — всё ещё сверху вниз.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>#include &lt;iostream&gt;
+
+int main() {
+    int n;
+    std::cin &gt;&gt; n;   // прочитать число с входа
+    std::cout &lt;&lt; n;  // потом напечатать
+    return 0;
+}</code></pre>
+      <div class="code-tabs-caption"><code>cin</code> и <code>cout</code> — тоже обычные команды в очереди.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>print("hello")
+
+n = 3
+print(n)
+
+n = int(input())   # прочитать число
+print(n)</code></pre>
+      <div class="code-tabs-caption">Тот же порядок «сделай → сделай». Нет <code>main</code>, нет <code>;</code>, тип у <code>n</code> не пишем.</div>
+    </div>
+  </div>
+  <ul>
+    <li><code>#include &lt;iostream&gt;</code> — подключили печать/чтение.</li>
+    <li><code>int main()</code> — вход.</li>
+    <li>внутри <code>{ }</code> — команды <strong>сверху вниз</strong>.</li>
+    <li><code>std::cout</code> / <code>std::cin</code> — из стандартной библиотеки (<code>std::</code>).</li>
+    <li><code>return 0;</code> — «всё ок»; ненулевой код часто значит ошибку (задание 4).</li>
+  </ul>
+
+  <h3>5. Правила, по которым «течёт» выполнение</h3>
+  <p>Пока нет ветвлений и циклов, закон простой:</p>
+  <div class="def">
+    <strong>Определение.</strong>
+    Внутри блока <code>{ … }</code> операторы выполняются <strong>последовательно</strong>:
+    сверху вниз, один за другим, пока не встретится конец блока, <code>return</code>
+    или (позже) переход из-за <code>if</code> / цикла.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Компьютер не «читает файл глазами как рассказ».
+    Он стоит на текущей команде, делает её, переходит к следующей.
+    Фигурные скобки — это «заборчик»: всё внутри одного двора.
+  </p>
+
+  <h3>6. Оператор, выражение, точка с запятой</h3>
+  <ul>
+    <li><strong>Оператор (statement)</strong> — законченная команда: объявить переменную, присвоить, вызвать функцию, <code>return</code>.
+      В C++ большинство операторов заканчивается <strong>точкой с запятой</strong> <code>;</code>.</li>
+    <li><strong>Выражение</strong> — кусок, у которого есть значение: <code>2 + 3</code>, <code>a / b</code>, вызов функции, возвращающей число.</li>
+    <li>Блок <code>{ … }</code> сам по себе — тоже оператор (составной): внутри него снова идут операторы по порядку.</li>
+  </ul>
+  <div class="ex">
+    <strong>Пример.</strong>
+    <code>int x = 5;</code> — оператор (объявление + начальное значение).
+    <code>x + 1</code> — выражение. <code>x = x + 1;</code> — снова оператор.
+  </div>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    Забыть <code>;</code> в конце команды — компилятор часто ругается на «следующей» строке,
+    и кажется, что ошибка «не там». Смотри на предыдущую строку.
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    В конце строки <code>;</code> обычно не нужна (можно, но не принято).
+    Блоки задаёт <strong>отступ</strong>, а не <code>{ }</code>.
+    В C++ отступ — для человека; для компилятора решают скобки и точки с запятой.
+  </div>
+
+  <h3>7. Переменные: сначала объявить, потом пользоваться</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Переменная — именованная «коробка» в памяти. У неё есть <strong>тип</strong> и <strong>имя</strong>.
+    Пока переменная не объявлена в текущей области видимости, обращаться к ней нельзя.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Сначала говоришь языку: «заведи коробку <code>int n</code>», потом кладёшь туда значение и читаешь.
+    Область видимости — обычно от объявления до конца ближайших <code>{ }</code>.
+  </p>
+  <p>
+    Развёрнутый пример с объявлением — вкладка «Переменная» в блоке выше (п. 4).
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Пишешь <code>n = 3</code> — и коробка появляется: тип выводится из значения, потом можно положить строку в то же имя.
+    В C++ тип фиксируешь при объявлении: <code>int n;</code> потом нельзя сделать <code>n = "hi"</code>.
+    Это не «хуже», а другая дисциплина: компилятор раньше ловит путаницу типов.
+  </div>
+
+  <h3>8. Ввод и вывод — тоже команды по очереди</h3>
+  <p>
+    <code>std::cin &gt;&gt; n;</code> — прочитать в <code>n</code>.
+    <code>std::cout &lt;&lt; n;</code> — напечатать.
+    Смотри вкладку «Ввод» в п. 4: они стоят в очереди как любые другие операторы.
+  </p>
+  <p>
+    Пробелы и переводы строк при чтении чисел <code>cin</code> обычно пропускает сам —
+    об этом ещё раз в §3.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>print(…)</code> ≈ <code>cout</code>; <code>int(input())</code> ≈ «прочитать строку и сделать int».
+    <code>cin &gt;&gt; n</code> сам понимает, что нужно число, и перескакивает пробелы между числами —
+    удобнее, чем вручную <code>split()</code>, когда на входе поток чисел.
+  </div>
+
+  <h3>9. Четыре режима течения (карта на будущее)</h3>
+  <p>
+    Вся дальнейшая тетрадь — уточнение четырёх способов управлять потоком:
+  </p>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Режим</th><th>Смысл</th><th>Где разберём</th></tr></thead>
+    <tbody>
+      <tr><td>Последовательность</td><td>строка за строкой</td><td>этот §0</td></tr>
+      <tr><td>Ветвление</td><td>«если условие — один путь, иначе другой»</td><td>§2</td></tr>
+      <tr><td>Цикл</td><td>«пока / сколько раз — повтори кусок»</td><td>§3</td></tr>
+      <tr><td>Вызов функции</td><td>«уйди в другой кусок, вернись с результатом»</td><td>§4</td></tr>
+    </tbody>
+  </table></div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Типы (§1) — про <em>что</em> лежит в коробках.
+    §2–§4 — про <em>куда</em> идёт выполнение.
+    Без §0 легко путать «порядок в файле» и «порядок во время запуска».
+  </p>
+
+  <h3>10. Комментарии</h3>
+  <p>
+    <code>//</code> — комментарий до конца строки.
+    <code>/* … */</code> — многострочный.
+    Компилятор их игнорирует: для человека, не для машины.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>#</code> — однострочный комментарий (как <code>//</code>).
+    Многострочных «как /* */» в языке нет: обычно несколько строк с <code>#</code> или строка в тройных кавычках как документация.
+  </div>
+
+  <h3>11. Имя <code>std::</code> и «using»</h3>
+  <p>
+    Стандартная библиотека лежит в пространстве имён <code>std</code>.
+    Пишут <code>std::cout</code>, либо (в учебных файлах иногда) после <code>using namespace std;</code>
+    можно писать просто <code>cout</code>. Оба варианта встречаются в каркасах —
+    смотри, как сделано <em>в твоём</em> файле задания, и не смешивай стили зря.
+  </p>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Поток выполнения</div>
+    <div class="formula-box-body">старт → main → сверху вниз → return / конец main → выход</div>
+  </div>
+
+  <p>
+    Когда этот каркас стал понятен, можно смотреть карту курса и переходить к §1 —
+    уже зная, <em>куда</em> в программе вставляются типы и операции.
+  </p>
+  <p class="video">
+    Видео (одно):
+    <a href="https://www.youtube.com/watch?v=0T3XGzqVqLM" target="_blank" rel="noopener">переменные и типы</a>
+    — удобнее после §0 и начала §1.
+  </p>
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§0</code> — main, порядок, операторы</blockquote>
+</section>
+
+<!-- ========== COURSE MAP ========== -->
+<section class="card" id="map">
+  <h2>Куда идём по курсу</h2>
+  <p>
+    Ниже — карта Stepik 363. Сейчас нам важны нижние ступени.
+    Остальное можно просто знать «оно будет позже» — не прыгай туда заранее.
+  </p>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Урок</th><th>Тема</th><th>Сейчас?</th></tr></thead>
+    <tbody>
+      <tr><td>1.1–1.2</td><td>Введение, среда</td><td>фон: компиляция, каркас</td></tr>
+      <tr><td>1.3</td><td>Целые числа</td><td>→ §1 и задание 1</td></tr>
+      <tr><td>1.4</td><td>Условный оператор</td><td>→ §2 и задание 2</td></tr>
+      <tr><td>1.5</td><td>Цикл <code>while</code></td><td>→ §3 и задание 3</td></tr>
+      <tr><td>1.6</td><td>Действительные числа</td><td>рядом с §1 (дробное деление, среднее)</td></tr>
+      <tr><td>1.7</td><td><code>for</code> и массивы</td><td>цикл в §3–§4; массивы — позже</td></tr>
+      <tr><td>1.8</td><td>Двумерные массивы</td><td>позже</td></tr>
+      <tr><td>1.9</td><td>Функции и рекурсия</td><td>→ §4 и задание 4 (рекурсия — позже)</td></tr>
+      <tr><td>1.10–1.12</td><td>Строки, словари, STL</td><td>позже</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Программа по описанию курса на Stepik (уроки 1.1–1.12).</p>
+  <p>Если §0 уже лёг — дальше §1: что лежит в коробках и как с ними считать.</p>
+</section>
+
+<!-- ========== §1 TYPES ========== -->
+<section class="card" id="s1">
+  <h2><span class="tag">C++-§1</span> Типы: коробки, деление, большие суммы</h2>
+  <p>
+    Этот параграф нужен для <code>tasks/01_types/types.cpp</code>
+    и ещё всплывёт, когда будешь копить суммы в заданиях 3 и 4.
+    Идём по шагам: сначала «что за коробка», потом «как делят», потом «что бывает, если не влезло».
+  </p>
+
+  <h3>Шаг 1. Две коробки для целых</h3>
+  <p>
+    В жизни мы пишем «5» и не думаем, сколько байт это занимает.
+    В C++ у целого числа есть <strong>тип</strong>: от него зависят и диапазон, и то, как сработают операции.
+  </p>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>int</code> — обычное целое со знаком (на типичной машине — 32 бита);
+    <code>long long</code> — целое «пошире» (часто 64 бита).
+    Точные границы <code>int</code> язык даёт через заголовок <code>&lt;limits&gt;</code>:
+    <code>std::numeric_limits&lt;int&gt;::min()</code> и <code>::max()</code>.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    <code>int</code> — повседневная коробка: счётчики, баллы, маленькие числа.
+    Если заранее видно, что сумма может перевалить за пару миллиардов — бери коробку побольше (<code>long long</code>).
+  </p>
+  <div class="ex">
+    <strong>Пример.</strong>
+    $2\,000\,000\,000 + 2\,000\,000\,000 = 4\cdot 10^9$.
+    В типичный <code>int</code> (макс примерно $2{,}147\cdot 10^9$) это уже не лезет.
+    В <code>long long</code> — лезет спокойно.
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Обычный <code>int</code> в Python 3 почти «без потолка»: сумма двух миллиардов просто даст большое целое.
+    В C++ размер коробки фиксирован: «не влезло» — это реальная ловушка, а не редкость.
+    Отсюда и отдельный тип <code>long long</code>, и проверка через <code>numeric_limits</code>.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Границы int</div>
+    <div class="formula-box-body">
+#include &lt;limits&gt;<br>
+std::numeric_limits&lt;int&gt;::min() · · · ::max()
+    </div>
+  </div>
+
+  <h3>Шаг 2. Деление «как у целых»</h3>
+  <p>
+    В калькуляторе $5 / 2 = 2{,}5$. В программе, если оба числа целые, язык делает иначе —
+    и это частый сюрприз в начале.
+  </p>
+  <div class="def">
+    <strong>Определение.</strong>
+    Если оба операнда целые, оператор <code>/</code> даёт <strong>целое</strong> частное:
+    дробная часть отбрасывается. В современном C++ округление идёт <strong>к нулю</strong>.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    <code>5 / 2</code> — это <code>2</code>, не <code>2.5</code>.
+    Для отрицательных то же правило «к нулю»: <code>-5 / 2</code> даёт <code>-2</code>
+    (не «вниз до −3», как иногда ждут из школы).
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Целое /</button>
+      <button type="button" role="tab" aria-selected="false">К нулю (−)</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>int a = 7, b = 3;
+int q = a / b;   // 2, не 2.333…
+</code></pre>
+      <div class="code-tabs-caption">Оба операнда <code>int</code> → частное целое.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>int q1 = (-5) / 2;   // -2  (к нулю)
+int q2 = (-7) / 3;   // -2
+</code></pre>
+      <div class="code-tabs-caption">Не «вниз до −3», а к нулю.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>5 / 2      # 2.5  — в Python 3 обычный / всегда «дробный»
+5 // 2     # 2    — целое деление (floor)
+(-5) // 2  # -3   — вниз, не к нулю!
+</code></pre>
+      <div class="code-tabs-caption">В C++ <code>int/int</code> ≈ идея <code>//</code>, но знак у отрицательных другой: C++ к нулю, Python — вниз.</div>
+    </div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python — главное отличие.</strong>
+    В Python 3: <code>/</code> даёт float, целое — через <code>//</code>.
+    В C++: <code>/</code> для двух <code>int</code> уже целое; дробь — только если есть <code>double</code>.
+    И ещё: <code>(-5) // 2</code> в Python это <code>-3</code>, а <code>(-5) / 2</code> в C++ — <code>-2</code>.
+    Не переноси привычку «как в калькуляторе Python» один в один.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Деление int</div>
+    <div class="formula-box-body">оба операнда int → частное int (к нулю)  -5 / 2 == -2</div>
+  </div>
+
+  <h3>Шаг 3. Когда нужен именно 2.5</h3>
+  <p>
+    Иногда дробный ответ — как раз то, что хочется (среднее, доля, «половина»).
+    Тогда целочисленного деления мало: нужно, чтобы хотя бы одно число считалось <em>действительным</em>.
+  </p>
+  <div class="def">
+    <strong>Определение.</strong>
+    Если хотя бы один операнд — <code>double</code> (или его явно привели к <code>double</code>),
+    деление выполняется уже в действительных числах.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Нельзя сначала поделить два <code>int</code> и потом «надеть» дробный тип на результат:
+    дробная часть уже выброшена. Сначала расширь тип, потом дели.
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Вовремя</button>
+      <button type="button" role="tab" aria-selected="false">Поздно (не так)</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>int a = 5, b = 2;
+double x = static_cast&lt;double&gt;(a) / b;  // 2.5
+// или: double x = a * 1.0 / b;
+</code></pre>
+      <div class="code-tabs-caption">Сначала расширили тип — потом делили. (Идея, не решение задания.)</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>int a = 5, b = 2;
+int r = a / b;          // уже 2
+double x = r;           // 2.0 — дробь не вернуть
+</code></pre>
+      <div class="code-tabs-caption">После целочисленного <code>/</code> информация потеряна.</div>
+    </div>
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Приведение до деления</div>
+    <div class="formula-box-body">нужен double → сначала cast одного операнда, потом /</div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>float(a) / b</code> или просто <code>a / b</code> (если нужен float) —
+    близко к идее «сделай операнд действительным до деления».
+    В C++ привычный Python-ный <code>/</code> сам дробь не даст, пока оба операнда целые.
+  </div>
+
+  <h3>Шаг 4. Сложение: расширять до, а не после</h3>
+  <p>
+    Вернёмся к двум миллиардам. Даже если результат ты хочешь положить в большую коробку,
+    опасность в том, <em>в каком типе</em> происходит само сложение.
+  </p>
+  <div class="def">
+    <strong>Определение.</strong>
+    Если сложить два <code>int</code> как <code>int</code>, а сумма не влезает —
+    получается <strong>переполнение</strong> (для знакового целого это плохая ситуация).
+    Запись испорченного значения в <code>long long</code> потом его не «вылечит».
+  </div>
+  <p class="own">
+    <em>Своими словами.</em>
+    Сначала расширь слагаемые, потом складывай — как переложить яблоки в большой пакет
+    <em>до</em> того, как маленький пакет лопнет.
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Вовремя</button>
+      <button type="button" role="tab" aria-selected="false">Поздно (не так)</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>int a = 2000000000, b = 2000000000;
+long long s = static_cast&lt;long long&gt;(a) + b;  // ок
+</code></pre>
+      <div class="code-tabs-caption">Расширили до сложения. (Идея типа, не готовая функция задания.)</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>int a = 2000000000, b = 2000000000;
+int bad = a + b;              // уже опасно
+long long s = bad;            // «лечение» не сработает
+</code></pre>
+      <div class="code-tabs-caption">Сначала сложили в <code>int</code> — поздно.</div>
+    </div>
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Сумма в long long</div>
+    <div class="formula-box-body">cast → сложение  не наоборот</div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Сложил два больших <code>int</code> — Python сам расширил число; отдельно «cast до +» не думаешь.
+    В C++ переполнение знакового <code>int</code> — серьёзная ошибка: сначала расширь тип, потом складывай.
+  </div>
+
+  <h3>Шаг 5. Вопрос «влезает ли обратно в int?»</h3>
+  <p>
+    Иногда число уже лежит в большой коробке, и нужно понять:
+    можно ли его безопасно считать обычным <code>int</code>.
+  </p>
+  <p>
+    Да — если оно не меньше <code>numeric_limits&lt;int&gt;::min()</code>
+    и не больше <code>::max()</code> (обе границы включительно).
+  </p>
+  <div class="ex">
+    <strong>Пример.</strong>
+    $0$ — влезает. Число чуть больше <code>max()</code> — уже нет.
+  </div>
+
+  <p>
+    На этом §1 заканчивается. Если хочется проверить себя — <code>тест C++-§1</code>.
+    Дальше мягко переходим к «решениям машины»: условиям.
+  </p>
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§1</code> — типы, деление, переполнение</blockquote>
+</section>
+
+<!-- ========== §2 BRANCHES ========== -->
+<section class="card" id="s2">
+  <h2><span class="tag">C++-§2</span> Ветвления: выбор одной из дорог</h2>
+  <p>
+    Числа мы уже умеем хранить и делить. Следующий навык — <strong>выбрать</strong>,
+    что делать дальше: отрицательное / ноль / положительное, чёт / нечет, какая метка у балла.
+    Это как раз задание 2 (<code>labels.cpp</code>); те же if-ы пригодятся в задании 4.
+  </p>
+
+  <h3>if / else if / else</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Ветвление выбирает одну из веток по условию.
+    Цепочка <code>if</code> → <code>else if</code> → … → <code>else</code>
+    проверяется <strong>сверху вниз</strong>: сработала первая подходящая — остальные не смотрят.
+  </div>
+  <p class="own"><em>Своими словами.</em> Порядок границ критичен: сначала «вне диапазона»,
+  потом узкие интервалы, иначе правильный балл уедет не в ту строку.</p>
+  <p>
+    Границы <em>включительны</em> там, где сказано: 59 и 60 — разные метки; 89 и 90 — тоже.
+    Ниже — только <em>скелет порядка</em> (не готовый <code>GradeLabel</code>).
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Порядок if</button>
+      <button type="button" role="tab" aria-selected="false">Знак (идея)</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>if (/* вне 0..100 */) {
+    // invalid
+} else if (/* 0..59 */) {
+    // fail
+} else if (/* 60..74 */) {
+    // pass
+} else if (/* 75..89 */) {
+    // good
+} else {
+    // 90..100 → excellent
+}
+</code></pre>
+      <div class="code-tabs-caption">Сверху вниз: первая подходящая ветка — и выход из цепочки.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>if (x &lt; 0) {
+    // negative
+} else if (x == 0) {
+    // zero
+} else {
+    // positive
+}
+</code></pre>
+      <div class="code-tabs-caption">Ноль — отдельная ветка, не «положительный».</div>
+    </div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Цепочка <code>if / elif / else</code> — почти тот же смысл, что <code>if / else if / else</code>.
+    Отступы вместо <code>{ }</code>; условия без обязательных скобок вокруг, но в C++ скобки у условия обязательны:
+    <code>if (x &lt; 0)</code>, не <code>if x &lt; 0</code>.
+  </div>
+
+  <h3>Знак числа</h3>
+  <p>Три случая: строго меньше нуля / ровно ноль / строго больше нуля.
+  Ноль — отдельная метка, не «положительный».</p>
+
+  <h3>Чётность и оператор <code>%</code></h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>a % b</code> — остаток от деления. В C++ знак остатка согласован с делением «к нулю»:
+    для отрицательного делимого остаток может быть <strong>отрицательным</strong>.
+  </div>
+  <p class="own"><em>Своими словами.</em> Надёжный тест чётности: «остаток при делении на 2 равен нулю».
+  Сравнивать остаток с <code>1</code> ломается на отрицательных: у <code>-3</code> остаток <code>-1</code>, не <code>1</code>.</p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Надёжно</button>
+      <button type="button" role="tab" aria-selected="false">Ломается (−)</button>
+      <button type="button" role="tab" aria-selected="false">Python %</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>// чётное, в том числе 0 и -4:
+if (value % 2 == 0) { /* even */ }
+else { /* odd */ }
+</code></pre>
+      <div class="code-tabs-caption"><code>-4 % 2 == 0</code>. Ноль тоже чётный.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>// опасно как единственный тест «нечёт»:
+if (value % 2 == 1) { /* … */ }
+// у -3 остаток -1, не 1
+</code></pre>
+      <div class="code-tabs-caption">На отрицательных остаток может быть отрицательным.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>(-3) % 2   # в Python → 1  (остаток ≥ 0 при делителе &gt; 0)
+# в C++: (-3) % 2 → -1
+</code></pre>
+      <div class="code-tabs-caption">Тест <code>% 2 == 0</code> для чётности безопасен в обоих. А «остаток == 1» в C++ на отрицательных ломается.</div>
+    </div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Остаток согласован с <code>//</code> (вниз): у отрицательных часто получается <em>неотрицательный</em> остаток.
+    В C++ остаток согласован с делением к нулю — может быть отрицательным.
+    Практическое правило для чётности одно и то же: сравнивай с нулём, не с единицей.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Чётность</div>
+    <div class="formula-box-body">чётное ⇔ (value % 2 == 0)  ноль — чётный</div>
+  </div>
+
+  <h3>Шкала оценок (как таблица)</h3>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Балл</th><th>Метка</th></tr></thead>
+    <tbody>
+      <tr><td>вне $0..100$</td><td><code>invalid</code></td></tr>
+      <tr><td>$0..59$</td><td><code>fail</code></td></tr>
+      <tr><td>$60..74$</td><td><code>pass</code></td></tr>
+      <tr><td>$75..89$</td><td><code>good</code></td></tr>
+      <tr><td>$90..100$</td><td><code>excellent</code></td></tr>
+    </tbody>
+  </table></div>
+  <p>Проверь руками границы: 59 / 60 / 89 / 90 — частые места ошибок «на единицу».</p>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§2</code> — if, %, шкалы</blockquote>
+</section>
+
+<!-- ========== §3 LOOPS ========== -->
+<section class="card" id="s3">
+  <h2><span class="tag">C++-§3</span> Циклы: повторить одно и то же</h2>
+  <p>
+    Условия выбирают <em>одну</em> дорогу. Цикл — когда дорогу нужно пройти
+    <strong>несколько раз</strong>: прочитать $n$ чисел и по дороге считать сумму, минимум, максимум…
+    Это задание 3; тот же приём — в журнале баллов (задание 4).
+  </p>
+  <p>
+    Перед деталями — картинка целиком: сначала узнаём, <em>сколько</em> чисел будет,
+    потом столько раз читаем по одному и обновляем «сводку».
+  </p>
+
+  <h3>Схема «сначала n, потом n чисел»</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Типичный ввод: одно целое $n$ — сколько дальше прочитать чисел;
+    затем ровно $n$ значений. При $n = 0$ цикл по числам <strong>не выполняется</strong>.
+  </div>
+  <p class="own"><em>Своими словами.</em> Счётчик итераций и «сколько уже прочитали» — разные роли.
+  Пустой набор — отдельный случай для минимума/максимума.</p>
+
+  <h3><code>for</code> и <code>while</code></h3>
+  <p>
+    Оба подходят. <code>for (int i = 0; i &lt; n; ++i)</code> — когда число шагов известно заранее.
+    Внутри тела: прочитать очередное число, обновить сумму / min / max / счётчик.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>for i in range(n):</code> ≈ «сделай тело <code>n</code> раз» — по смыслу близко к
+    <code>for (int i = 0; i &lt; n; ++i)</code>.
+    <code>while</code> в обоих языках — «пока условие истинно».
+    В C++ заголовок <code>for</code> явно пишет инициализацию, проверку и шаг через <code>;</code> внутри скобок.
+  </div>
+
+  <h3>Пробелы и <code>std::cin</code></h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Оператор <code>&gt;&gt;</code> для чисел пропускает пробелы, табы и переводы строк одинаково.
+  </div>
+  <p class="own"><em>Своими словами.</em> Числа в одной строке или каждое с новой — для <code>cin</code> без разницы.</p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Часто читают строку и делают <code>map(int, input().split())</code>.
+    <code>cin &gt;&gt; x</code> сам «прыгает» по пробелам между числами — удобно, когда формат «поток чисел»,
+    а не «ровно одна строка на всё».
+  </div>
+
+  <h3>Сумма, min, max, счётчик</h3>
+  <ul>
+    <li><strong>Сумма</strong> больших целых — копи в <code>long long</code> (см. §1).</li>
+    <li><strong>Минимум / максимум:</strong> пока ни одного числа не было — нет значения
+      (в задании 3 печатают <code>none</code>, не «ноль по умолчанию»).</li>
+    <li><strong>Строго положительные:</strong> условие $x &gt; 0$ (ноль и отрицательные не входят).</li>
+  </ul>
+  <p>
+    Смысл на числах $-2,\;0,\;4,\;-8,\;4$: сумма $-2$, min $-8$, max $4$, строго положительных — два.
+    Ниже — только каркас цикла (не готовое решение задания 3).
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Каркас for</button>
+      <button type="button" role="tab" aria-selected="false">n == 0</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>int n;
+std::cin &gt;&gt; n;
+long long sum = 0;
+// … флаг / подготовка min-max …
+for (int i = 0; i &lt; n; ++i) {
+    int x;
+    std::cin &gt;&gt; x;
+    // обновить sum / min / max / счётчик
+}
+</code></pre>
+      <div class="code-tabs-caption">Сначала <code>n</code>, потом ровно <code>n</code> чисел. Тело — твоё.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>// если n == 0, цикл не войдёт ни разу:
+// sum остаётся 0
+// min/max в задании — "none", не 0
+</code></pre>
+      <div class="code-tabs-caption">Не инициализируй min/max нулём «на всякий случай».</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>n = int(input())
+total = 0
+for _ in range(n):
+    x = int(input())  # или читать из потока иначе
+    # обновить sum / min / max
+</code></pre>
+      <div class="code-tabs-caption">Схема та же: сначала <code>n</code>, потом <code>n</code> шагов. В C++ сумма больших целых — сразу думай про <code>long long</code>.</div>
+    </div>
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Пустой набор</div>
+    <div class="formula-box-body">n == 0 → min/max = none  сумма всё равно 0  positive = 0</div>
+  </div>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§3</code> — цикл, none, long long</blockquote>
+</section>
+
+<!-- ========== §4 FUNCTIONS ========== -->
+<section class="card" id="s4">
+  <h2><span class="tag">C++-§4</span> Функции: собрать программу из кусочков</h2>
+  <p>
+    В заданиях 1–3 почти всё живёт «в одном месте».
+    Задание 4 специально учит другому стилю: сначала маленькие функции
+    («валиден ли балл?», «новый минимум?», «какой вердикт?»),
+    потом <code>main</code> только читает вход и склеивает кусочки.
+  </p>
+  <p>
+    Читай этот параграф спокойно: сначала <em>зачем</em> функции, потом флаг «ещё не было значения»,
+    потом порядок вердикта — он капризный к последовательности проверок.
+  </p>
+
+  <h3>Зачем функции</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Функция — именованный кусок кода с аргументами и возвращаемым значением.
+    Её можно тестировать отдельно от ввода/вывода всей программы.
+  </div>
+  <p class="own"><em>Своими словами.</em> В задании 4 сначала «кирпичики» (<code>IsValidScore</code>, <code>NextMin</code>, …),
+  потом сборка в <code>main</code>. Так автотесты бьют по функциям до полного прогона.</p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>def f(x): …</code> ≈ функция с аргументом.
+    В C++ тип пишешь и у результата, и у аргументов: <code>bool IsValidScore(int score)</code> —
+    «вернёт bool, примет int». В Python аннотации (<code>def f(x: int) -&gt; bool</code>) необязательны и по умолчанию не проверяются;
+    в C++ несовпадение типов часто ловит уже компилятор.
+  </div>
+
+  <h3>Булев флаг «уже было значение»</h3>
+  <p>
+    Для минимума/максимума часто держат флаг <code>has_score</code> (или аналог):
+    пока <code>false</code> — «старого» экстремума нет, первым баллом и становится ответ.
+    Важно вызвать обновление min/max <strong>до</strong> того, как выставишь флаг в <code>true</code>
+    на первом элементе (иначе логика «ещё нет» не сработает).
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Флаг (идея)</button>
+      <button type="button" role="tab" aria-selected="false">Вызов функции</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>bool has = false;
+int cur_min = 0;  // значение до первого балла не считается «настоящим»
+
+// внутри цикла, для очередного score:
+// cur_min = NextMin(has, cur_min, score);  // пока !has — вернёт score
+// … то же для max …
+// has = true;   // уже после обновления min/max
+</code></pre>
+      <div class="code-tabs-caption">Смысл порядка: сначала NextMin/NextMax, потом has = true.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>// в journal.cpp — кирпичики (их тестируют отдельно)
+// bool IsValidScore(int score);
+// …
+
+// в main — сценарий:
+// if (!IsValidScore(score)) { … ошибка … }
+</code></pre>
+      <div class="code-tabs-caption">Функции сами не бегут: их вызывает <code>main</code> (или тест).</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>has = False          # bool с большой буквы в литералах
+# cur_min = next_min(has, cur_min, score)
+# has = True
+
+# вызов: if not is_valid_score(score): …
+</code></pre>
+      <div class="code-tabs-caption"><code>false/true</code> в C++ — с маленькой; в Python — <code>False/True</code>. Идея флага та же.</div>
+    </div>
+  </div>
+
+  <h3>Среднее как <code>double</code></h3>
+  <p>
+    Среднее = сумма / количество. Деление должно быть дробным (см. §1):
+    сумма $2$ и количество $3$ дают $\approx 0{,}666\ldots$, не $0$.
+    Печать с двумя знаками — уже в каркасе <code>main</code> (фиксированный формат).
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>sum / count</code> в Python 3 уже даст float.
+    В C++ при двух целых снова целое частное — нужен <code>double</code> (или умножение на <code>1.0</code>) <em>до</em> деления.
+  </div>
+
+  <h3>Порядок проверок вердикта</h3>
+  <p>Строго сверху вниз (как в условии задания 4):</p>
+  <ol>
+    <li><code>count == 0</code> → <code>empty</code></li>
+    <li><code>passed != count</code> → <code>debt</code> (есть балл &lt; 60)</li>
+    <li><code>min_score &gt;= 90</code> → <code>excellent</code></li>
+    <li>иначе → <code>ok</code></li>
+  </ol>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Порядок</button>
+      <button type="button" role="tab" aria-selected="false">Почему так</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>if (count == 0) return "empty";
+if (passed != count) return "debt";
+if (min_score &gt;= 90) return "excellent";
+return "ok";
+</code></pre>
+      <div class="code-tabs-caption">Строго сверху вниз — как в условии задания 4.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>// 90 90 50 → debt (есть балл &lt; 60), не excellent
+// пустой журнал → empty, даже «если бы» смотрели на min
+</code></pre>
+      <div class="code-tabs-caption">Переставить проверки — получить чужой вердикт.</div>
+    </div>
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Вердикт (порядок)</div>
+    <div class="formula-box-body">empty → debt → excellent → ok</div>
+  </div>
+
+  <h3>Ошибки ввода и код возврата</h3>
+  <ul>
+    <li>$n &lt; 0$ → одна строка <code>invalid count</code>, вернуть $1$, отчёт не печатать.</li>
+    <li>балл вне $0..100$ → <code>invalid score</code>, вернуть $1$, отчёт не печатать.</li>
+    <li>Зачёт по одному баллу: $\ge 60$. <code>failed</code> в отчёте = <code>count - passed</code> (уже в каркасе).</li>
+  </ul>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§4</code> — функции, флаг, вердикт</blockquote>
+</section>
+
+<!-- ========== TASKS (NO SOLUTIONS) ========== -->
+<section class="card" id="tasks">
+  <h2>Задания 1–4 (когда теория уже легла)</h2>
+  <p>
+    Сюда имеет смысл заглядывать <em>после</em> соответствующего § —
+    как в шпаргалку «что от меня хотят», а не как в первую страницу курса.
+  </p>
+  <div class="nosolve">
+    Готовый код функций и циклов сюда не пишем — только цель и ловушки.
+  </div>
+
+  <div class="task" id="t1">
+    <h3>Задание 1 · Типы</h3>
+    <p><span class="tag">файл</span> <code>tasks/01_types/types.cpp</code></p>
+    <ul>
+      <li><code>DivideInts</code> — целочисленное деление (на ноль в тестах не проверяют).</li>
+      <li><code>DivideAsDouble</code> — то же частное, но дробное; нужен cast <em>до</em> <code>/</code>.</li>
+      <li><code>FitsInInt</code> — лежит ли <code>long long</code> в [<code>min</code>, <code>max</code>] у <code>int</code>.</li>
+      <li><code>SumAsLongLong</code> — сумма двух <code>int</code> в <code>long long</code> без переполнения «по дороге».</li>
+    </ul>
+    <p><strong>Теория:</strong> §1.</p>
+  </div>
+
+  <div class="task" id="t2">
+    <h3>Задание 2 · Ветвления</h3>
+    <p><span class="tag">файл</span> <code>tasks/02_branches/labels.cpp</code></p>
+    <ul>
+      <li><code>SignLabel</code> → <code>negative</code> / <code>zero</code> / <code>positive</code>.</li>
+      <li><code>ParityLabel</code> → <code>even</code> / <code>odd</code>; ноль чётный; проверка через <code>% 2 == 0</code>.</li>
+      <li><code>GradeLabel</code> — таблица invalid / fail / pass / good / excellent; границы включительны.</li>
+    </ul>
+    <p><strong>Теория:</strong> §2.</p>
+  </div>
+
+  <div class="task" id="t3">
+    <h3>Задание 3 · Циклы</h3>
+    <p><span class="tag">файл</span> <code>tasks/03_loops/main.cpp</code></p>
+    <p>Читаешь $n$, затем $n$ целых ($n \ge 0$ в тестах). Формат печати в каркасе не менять — заполнить тело цикла.</p>
+    <p>Вывод: <code>sum</code>, <code>min</code>/<code>max</code> (или <code>none</code>), <code>positive</code> (строго &gt; 0). Сумма в <code>long long</code>.</p>
+    <p><strong>Теория:</strong> §1 (сумма) + §3.</p>
+  </div>
+
+  <div class="task" id="t4">
+    <h3>Задание 4 · Журнал баллов</h3>
+    <p><span class="tag">файлы</span> <code>tasks/04_journal/journal.cpp</code>, <code>main.cpp</code></p>
+    <p>
+      Функции: <code>IsValidScore</code>, <code>AddToSum</code>, <code>NextMin</code>/<code>NextMax</code>,
+      <code>NextPassed</code>, <code>Average</code>, <code>Verdict</code> (порядок: empty → debt → excellent → ok).
+      В <code>main</code>: отказ при $n &lt; 0$ и невалидном балле; цикл с флагом «ещё не было балла».
+    </p>
+    <p><strong>Теория:</strong> §1–§4 целиком.</p>
+  </div>
+
+  <h3>Чеклист «теория ↔ задание»</h3>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Тема из тетради</th><th>Где нужна</th></tr></thead>
+    <tbody>
+      <tr><td>деление int / к нулю</td><td>1 · DivideInts</td></tr>
+      <tr><td>cast к double до /</td><td>1 · DivideAsDouble; 4 · Average</td></tr>
+      <tr><td>numeric_limits</td><td>1 · FitsInInt</td></tr>
+      <tr><td>сложение после cast в long long</td><td>1 · SumAsLongLong; 3–4 · sum</td></tr>
+      <tr><td>цепочка if, границы</td><td>2 · GradeLabel; 4 · Verdict / IsValidScore</td></tr>
+      <tr><td>% и отрицательные</td><td>2 · ParityLabel</td></tr>
+      <tr><td>цикл n раз, none при пустоте</td><td>3; частично 4</td></tr>
+      <tr><td>функции + флаг has_*</td><td>4</td></tr>
+      <tr><td>код возврата 1, точная строка ошибки</td><td>4 · main</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ========== CHEAT ========== -->
+<section class="card" id="cheat">
+  <h2>Что взять с собой</h2>
+  <div class="cheat">
+    <ul>
+      <li>Запуск начинается с <code>main</code>; внутри блока — сверху вниз; <code>;</code> закрывает оператор.</li>
+      <li>Сначала объявить переменную, потом использовать; функции сами не бегут — их вызывают.</li>
+      <li><code>return 0</code> — ок; ненулевой код — ошибка (как в задании 4).</li>
+      <li><code>int / int</code> → целое к нулю; дробь — только после приведения типа.</li>
+      <li>Большие суммы — <code>long long</code>, расширять <em>до</em> операции.</li>
+      <li>Чётность: <code>% 2 == 0</code>, не «остаток == 1».</li>
+      <li>Границы шкал и вердиктов: 59/60, 89/90, пустой набор.</li>
+      <li>Порядок в <code>Verdict</code>: empty → debt → excellent → ok.</li>
+    </ul>
+  </div>
+
+  <h3>C++ ↔ Python (коротко)</h3>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Идея</th><th>C++</th><th>Python 3</th></tr></thead>
+    <tbody>
+      <tr><td>Старт</td><td><code>main</code>, обычно компиляция</td><td>сверху вниз / <code>python file.py</code></td></tr>
+      <tr><td>Блоки</td><td><code>{ }</code> + <code>;</code></td><td>отступы</td></tr>
+      <tr><td>Тип переменной</td><td>пишем явно (<code>int n</code>)</td><td>из значения (<code>n = 3</code>)</td></tr>
+      <tr><td>Печать / ввод числа</td><td><code>cout</code> / <code>cin &gt;&gt;</code></td><td><code>print</code> / <code>int(input())</code></td></tr>
+      <tr><td>Деление</td><td><code>int/int</code> → целое к нулю</td><td><code>/</code> → float; <code>//</code> → вниз</td></tr>
+      <tr><td>Большие целые</td><td>следить за <code>int</code> / брать <code>long long</code></td><td><code>int</code> почти без потолка</td></tr>
+      <tr><td>Остаток (−)</td><td>может быть &lt; 0</td><td>часто ≥ 0 при делителе &gt; 0</td></tr>
+      <tr><td>Цикл n раз</td><td><code>for (int i = 0; i &lt; n; ++i)</code></td><td><code>for i in range(n)</code></td></tr>
+      <tr><td>Ветвление</td><td><code>if / else if / else</code></td><td><code>if / elif / else</code></td></tr>
+      <tr><td>Булевы литералы</td><td><code>true</code> / <code>false</code></td><td><code>True</code> / <code>False</code></td></tr>
+    </tbody>
+  </table></div>
+  <p class="own">
+    <em>Своими словами.</em> Python помогает узнать <em>что хочешь сделать</em>.
+    C++ заставляет явно сказать <em>в какой коробке</em> это лежит и <em>каким делением</em> считаешь.
+  </p>
+
+  <p class="src">
+    Курс:
+    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Введение в программирование (C++) · Stepik 363</a>.
+    Дальше по курсу — массивы, строки, STL; в тетрадь добавим, когда дойдёшь.
+  </p>
+</section>
+
+</main>
+<script>
+(function () {
+  document.querySelectorAll(".code-tabs").forEach(function (root) {
+    var buttons = root.querySelectorAll(".code-tabs-nav button");
+    var panels = root.querySelectorAll(".code-tabs-panel");
+    buttons.forEach(function (btn, i) {
+      btn.addEventListener("click", function () {
+        buttons.forEach(function (b, j) {
+          b.setAttribute("aria-selected", j === i ? "true" : "false");
+        });
+        panels.forEach(function (p, j) {
+          p.classList.toggle("is-active", j === i);
+        });
+      });
+    });
+  });
+})();
+</script>
+  <script src="./site.js?v=3"></script>
+</body>
+</html>
+
