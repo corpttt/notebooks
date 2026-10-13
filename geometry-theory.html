@@ -152,7 +152,7 @@ html[data-theme="dark"] .fig { background: #12171e; }
     <p>Лекции по <strong>геометрии и топологии</strong> (Антоник и др.). Рисунки SVG встроены; кэш — <code>_geometry_figures.html</code>.</p>
     <p>Практика (Цубербиллер) — отдельная тетрадь: <a href="тетрадь-практика.html"><code>тетрадь-практика.html</code></a> · индекс <code>ГП-ПN</code>.</p>
     <p>Блок про множества с лекции 07.09 пересекается с <a href="../математический-анализ/тетрадь-теория.md"><code>МТ-§1</code>…<code>МТ-§5</code></a>; здесь — сжатый разбор с примерами.</p>
-    <p><strong>Проверка:</strong> в чат <code>тест ГЛ-L4</code> и т.п. (см. <a href="../ИНДЕКС-тетрадей.md">ИНДЕКС-тетрадей</a>).</p>
+    <p><strong>Проверка:</strong> в чат <code>тест ГЛ-L4</code>, <code>тест ГЛ-L5</code>, <code>тест ГЛ-L6</code> и т.п. (см. <a href="../ИНДЕКС-тетрадей.md">ИНДЕКС-тетрадей</a>).</p>
   </div>
 </div>
   <div class="card">
@@ -176,6 +176,15 @@ html[data-theme="dark"] .fig { background: #12171e; }
 <li><a href="#l4-2809--свободные-векторы-лнз-базис-гамеля" target="_blank" rel="noopener">L4. 28.09 — свободные векторы, ЛНЗ, базис Гамеля</a></li>
 </ul>
 <p>  - <a href="#операции-на-v-и-корректность" target="_blank" rel="noopener">Операции на V и корректность</a> <em>(рис. L-4a)</em>   - <a href="#изоморфизм-ψ--v--vₙ" target="_blank" rel="noopener">Изоморфизм Ψ : V → Vₙ</a>   - <a href="#линейная-комбинация-и-лнз" target="_blank" rel="noopener">Линейная комбинация и ЛНЗ</a> <em>(рис. L-4b–c)</em>   - <a href="#порождающий-набор-и-базис" target="_blank" rel="noopener">Порождающий набор и базис</a>   - <a href="#конечномерность-и-dim-v" target="_blank" rel="noopener">Конечномерность и dim V</a>   - <a href="#аддитивные-но-не-однородные-функции" target="_blank" rel="noopener">Аддитивные, но не однородные функции</a></p>
+<ul>
+<li><a href="#l5-0510--размерность-базисы-в-en-аффинные-комбинации" target="_blank" rel="noopener">L5. 05.10 — размерность, базисы в Eₙ, аффинные комбинации</a></li>
+</ul>
+<p>  - <a href="#доказательство-инвариантности-dim" target="_blank" rel="noopener">Доказательство инвариантности dim</a>   - <a href="#базисы-в-v0v3" target="_blank" rel="noopener">Базисы в V⁰…V³</a> <em>(рис. L-5a–c)</em>   - <a href="#аффинные-комбинации-и-барицентрические-координаты" target="_blank" rel="noopener">Аффинные комбинации</a> <em>(рис. L-5d)</em></p>
+<ul>
+<li><a href="#l6-1210--центр-масс-сужение-линейные-и-аффинные-подпространства" target="_blank" rel="noopener">L6. 12.10 — центр масс, сужение, линейные и аффинные подпространства</a></li>
+</ul>
+<p>  - <a href="#центр-масс-рычаг" target="_blank" rel="noopener">Центр масс / рычаг</a> <em>(рис. L-6a)</em>   - <a href="#знаки-барицентрических-в-треугольнике" target="_blank" rel="noopener">Знаки в треугольнике</a> <em>(рис. L-6b)</em>   - <a href="#сужение-отображений" target="_blank" rel="noopener">Сужение F|_{A'}^{B'}</a>   - <a href="#§4-линейные-и-аффинные-подпространства" target="_blank" rel="noopener">§4 Подпространства</a>   - <a href="#линейная-оболочка-lin-span" target="_blank" rel="noopener">lin / span</a>   - <a href="#аффинные-подпространства" target="_blank" rel="noopener">Аффинные подпространства</a> <em>(рис. L-6c)</em>   - <a href="#аффинная-оболочка-aff" target="_blank" rel="noopener">aff</a></p>
+
 <div class="figs two">
 <figure class="fig">
         <svg viewBox="0 0 320 220" width="320" height="220" aria-label="Базис R2">
@@ -243,7 +252,6 @@ html[data-theme="dark"] .fig { background: #12171e; }
         <figcaption>Рис. L-4a · сумма свободных векторов: начало можно сменить — класс u+v тот же</figcaption>
       </figure>
 </div>
-<h3
 <hr />
 <h1 id="сторона-l--лекции">Сторона L · Лекции</h1>
 <p><em>(Теория курса «Геометрия и топология». Не путать с задачами Цубербиллера на стороне П.)</em></p>
@@ -261,8 +269,10 @@ html[data-theme="dark"] .fig { background: #12171e; }
 <li><a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%2014.09.2026.pdf" target="_blank" rel="noopener">14.09.2026</a></li>
 <li><a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%2021.09.2026.pdf" target="_blank" rel="noopener">21.09.2026</a></li>
 <li><a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%2028.09.2026.pdf" target="_blank" rel="noopener">28.09.2026</a></li>
+<li><a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%2010.05.2026.pdf" target="_blank" rel="noopener">05.10.2026</a> · локально <code>материалы/_архив/_бегалиев-геометрия/05.pdf</code> (+ <code>05.txt</code>)</li>
+<li><em>12.10 — в Release Бегалиева PDF пока нет; локально: <a href="12.10-лекция.pdf"><code>12.10-лекция.pdf</code></a> (кадры OCR: <code>материалы/_архив/_geom-ocr-2026-10/</code>)</em></li>
 </ul>
-<p>Локальные выписки (архив): <code>материалы/_архив/_бегалиев-геометрия/</code> — <code>07.txt</code>, <code>14.txt</code>, <code>21.txt</code>, <code>28.txt</code> (+ PDF <code>28.pdf</code>).</p>
+<p>Локальные выписки (архив): <code>материалы/_архив/_бегалиев-геометрия/</code> — <code>07.txt</code>, <code>14.txt</code>, <code>21.txt</code>, <code>28.txt</code>, <code>05.txt</code> (+ PDF <code>28.pdf</code>, <code>05.pdf</code>). Фото доски 05.10: <a href="05.10-лекция.pdf"><code>05.10-лекция.pdf</code></a>.</p>
 <p><strong>Видео по теме</strong> (одно, для закрепления аксиом векторного пространства):   <a href="https://teach-in.ru/lecture/2022-02-07-Timashev-1" target="_blank" rel="noopener">Лекция 1. Векторные пространства · Тимашев, МГУ / teach-in</a>.</p>
 <hr />
 <h2 id="l1-0709--множества-операции-отображения">L1. 07.09 — множества, операции, отображения</h2>
@@ -829,12 +839,354 @@ html[data-theme="dark"] .fig { background: #12171e; }
 <p>значит f(λ w) ≠ λ f(w). При этом f аддитивна по построению.</p>
 <p><strong>Пример-картинка (не доказательство).</strong> Обычная f(x) = 3x и аддитивна, и однородна над ℝ. «Дикая» f из базиса Гамеля аддитивна, на рациональных ведёт себя прилично, а на каких-то иррациональных «ломает» однородность — но явно её не нарисуешь.</p>
 <p><strong>Не-пример.</strong> f(x) = x² не аддитивна: f(1+1) = 4 ≠ 1+1 = f(1)+f(1). Это другой тип «плохой» функции.</p>
-<hr />
-      </div>
-    </div>
-    <p class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест ГЛ-L4</code> — по блоку свободных векторов / ЛНЗ / базиса.</p>
+<p class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест ГЛ-L4</code> — по блоку свободных векторов / ЛНЗ / базиса.</p>
+
+<h2 id="l5-0510--размерность-базисы-в-en-аффинные-комбинации">L5. 05.10 — размерность, базисы в Eₙ, аффинные комбинации</h2>
+<p><em>(Из записей Бегалиева: <a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F/%D0%93%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%8F%2010.05.2026.pdf" target="_blank" rel="noopener"><code>Геометрия 10.05.2026.pdf</code></a>; локально <code>материалы/_архив/_бегалиев-геометрия/05.pdf</code>. Фото доски: <a href="05.10-лекция.pdf"><code>05.10-лекция.pdf</code></a>. Своими словами, примеры и рисунки — дополнено.)</em></p>
+<p>Видео: <a href="https://teach-in.ru/lecture/02-12-Manuilov" target="_blank" rel="noopener">МГУ, Мануйлов — линейная алгебра / teach-in</a>.</p>
+<p><strong>Связь с прошлым.</strong> L4 ввела линейную комбинацию, ЛНЗ, базис и <em>объявила</em> предложение «все базисы одной мощности = dim V». На 05.10 это доказывают (замена по Штейницу / индукция), разбирают, как выглядят базисы в V⁰…V³, и переходят к <strong>аффинным комбинациям</strong> (сумма коэффициентов = 1) — мост к барицентрическим координатам и центру масс на L6.</p>
+
+<h3 id="доказательство-инвариантности-dim">Доказательство инвариантности dim</h3>
+<p><strong>Предложение.</strong> <em>(из записей / доска)</em> Если W и W′ — базисы конечномерного векторного пространства V, то |W| = |W′|. Это общее число и есть <strong>dim V</strong>.</p>
+<p><em>Своими словами.</em> Сколько бы «систем осей» ни выбирали — в каждой ровно одинаковое число векторов. Иначе «размерность» зависела бы от каприза выбора базиса.</p>
+<p><strong>Идея доказательства (замена / индукция).</strong> Пусть u₁, …, uₙ — базис, а w₁, w₂, … — элементы другого базиса (его мощность ≥ n; иначе сразу |W′| &lt; n и противоречие с симметричным рассуждением). Индукцией по n показывают: первые n векторов второго базиса тоже образуют базис. Тогда второй базис не может быть длиннее n — иначе wₙ₊₁ разлагался бы по первым n, и набор перестал бы быть ЛНЗ.</p>
+<p><strong>Шаг замены (лемма типа Штейница).</strong> Пусть {u₁, …, uₙ} — базис, w₁ ≠ 0. Разложим</p>
+<p>w₁ = ∑_{i=1}^n λᵢ uᵢ.</p>
+<p>Так как w₁ ≠ 0, найдётся индекс i₁ с λ_{i₁} ≠ 0. Тогда u_{i₁} выражается через w₁ и остальные uᵢ:</p>
+<p>u_{i₁} = (1/λ_{i₁}) ( w₁ − ∑_{i≠i₁} λᵢ uᵢ ).</p>
+<p>Подставляя это в произвольное разложение v = ∑ μᵢ uᵢ, получают</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">v = ∑_{i≠i₁} (μᵢ − (μ_{i₁}/λ_{i₁}) λᵢ) uᵢ + (μ_{i₁}/λ_{i₁}) w₁</div>
 </div>
-  </div>
+<p>То есть набор {uᵢ : i ≠ i₁} ∪ {w₁} <strong>порождает</strong> V. Единственность <em>(из записей Бегалиева, развёртка Антоника)</em>: приравнивают два разложения, подставляют w₁ = ∑ λᵢ uᵢ, собирают коэффициенты при ЛНЗ-наборе {uᵢ}; из λ_{i₁} ≠ 0 следует ν_{i₁} = μ_{i₁}/λ_{i₁} и для i ≠ i₁ — νᵢ = μᵢ − λᵢ ν_{i₁}. Значит новый набор — снова базис: один u заменили на w.</p>
+<p><em>Своими словами.</em> Новый вектор «съедает» место одного старого: выкидываешь ту ось, на которую у нового вектора ненулевая координата, и вставляешь новый. После n таких замен весь базис состоит только из w₁, …, wₙ.</p>
+<p><strong>Пример (письменно, ℝ²).</strong> Базис e₁ = (1, 0), e₂ = (0, 1). Возьмём w₁ = (1, 1) = 1·e₁ + 1·e₂. Можно заменить, скажем, e₁: тогда новый базис {(1, 1), (0, 1)}. Любой (a, b) = a·(1, 1) + (b−a)·(0, 1) — единственно. Если бы пытались добавить ещё w₂ без выкидывания — три вектора в ℝ² неизбежно ЛЗ.</p>
+<p><strong>Не-пример.</strong> Набор {(1, 0), (2, 0)} не базис: замену «по Штейницу» начинать не с чего осмысленного для порождения плоскости — оба вектора на одной прямой, dim span = 1 ≠ 2.</p>
+
+<h3 id="базисы-в-v0v3">Базисы в V⁰…V³</h3>
+<p>Для аффинных пространств Eₙ (n = 0, 1, 2, 3) ассоциированное пространство свободных векторов обозначают Vₙ (или Vⁿ). Геометрический смысл базиса — «сколько независимых направлений».</p>
+
+<p><strong>V⁰ (точка).</strong> Единственная точка; свободных направлений нет. Базис — <strong>пустой</strong> набор. dim V⁰ = 0.</p>
+<p><em>Своими словами.</em> Некуда «идти» стрелкой: пространство векторов — только ноль.</p>
+<p><strong>Пример.</strong> E⁰ = {P}. Вектор PP = 0̃ — единственный. Базис ∅.</p>
+
+<p><strong>V¹ (прямая).</strong> Базис — любой <strong>ненулевой</strong> вектор на прямой. dim V¹ = 1.</p>
+<p><em>Своими словами.</em> Одно направление (вперёд/назад — это скаляр ±). Все ненулевые стрелки на прямой — растяжения друг друга.</p>
+<p><strong>Пример.</strong> На прямой точки A ≠ B: набор {AB} — базис. Любой XY = λ · AB для единственного λ ∈ ℝ. <em>(Рис. L-5a.)</em></p>
+<p><strong>Не-пример.</strong> {AA} = {0̃} не базис: ноль не порождает ненулевые векторы и не ЛНЗ в смысле «максимального» набора направлений.</p>
+<figure class="fig">
+  <svg viewBox="0 0 360 100" width="360" height="100" aria-label="Базис на прямой">
+    <defs>
+      <marker id="L-5a-a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f5c4d"/></marker>
+    </defs>
+    <line x1="30" y1="50" x2="330" y2="50" stroke="#bbb" stroke-width="2"/>
+    <circle cx="80" cy="50" r="5" fill="#333"/>
+    <circle cx="260" cy="50" r="5" fill="#333"/>
+    <line x1="80" y1="50" x2="250" y2="50" stroke="#1f5c4d" stroke-width="3" marker-end="url(#L-5a-a1)"/>
+    <text x="72" y="78" font-size="13">A</text>
+    <text x="252" y="78" font-size="13">B</text>
+    <text x="150" y="38" font-size="13" fill="#1f5c4d">AB — базис V¹</text>
+  </svg>
+  <figcaption>Рис. L-5a · на прямой базис — один ненулевой вектор</figcaption>
+</figure>
+
+<p><strong>V² (плоскость).</strong> <em>(из записей)</em></p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">{AB, CD} — базис V²  ⟺  AB ∦ CD<br/>(A ≠ B, C ≠ D; прямые (AB) и (CD) пересекаются / направления независимы)</div>
+</div>
+<p>Тогда dim V² = 2. Любой вектор плоскости — единственная комбинация λu + μv. <em>(Рис. L-5b.)</em></p>
+<p><em>Своими словами.</em> Две оси не на одной прямой: ими можно накрыть всю плоскость параллелограммом.</p>
+<p><strong>Пример.</strong> u = (1, 0), v = (0, 1) — базис. Вектор (3, −2) = 3u + (−2)v.</p>
+<p><strong>Не-пример.</strong> (1, 0) и (2, 0) параллельны — не базис плоскости.</p>
+<figure class="fig">
+  <svg viewBox="0 0 320 220" width="320" height="220" aria-label="Базис плоскости">
+    <defs>
+      <marker id="L-5b-a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f5c4d"/></marker>
+      <marker id="L-5b-a2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8a4b1f"/></marker>
+      <marker id="L-5b-a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a33"/></marker>
+    </defs>
+    <line x1="40" y1="180" x2="280" y2="180" stroke="#ddd"/>
+    <line x1="40" y1="180" x2="40" y2="30" stroke="#ddd"/>
+    <line x1="40" y1="180" x2="200" y2="180" stroke="#1f5c4d" stroke-width="2.5" marker-end="url(#L-5b-a1)"/>
+    <line x1="40" y1="180" x2="100" y2="60" stroke="#8a4b1f" stroke-width="2.5" marker-end="url(#L-5b-a2)"/>
+    <line x1="200" y1="180" x2="260" y2="60" stroke="#8a4b1f" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="100" y1="60" x2="260" y2="60" stroke="#1f5c4d" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="40" y1="180" x2="260" y2="60" stroke="#a33" stroke-width="2.5" marker-end="url(#L-5b-a3)"/>
+    <text x="120" y="198" font-size="12" fill="#1f5c4d">u</text>
+    <text x="48" y="110" font-size="12" fill="#8a4b1f">v</text>
+    <text x="200" y="100" font-size="12" fill="#a33">λu+μv</text>
+    <text x="48" y="205" font-size="12">O</text>
+  </svg>
+  <figcaption>Рис. L-5b · базис плоскости: непараллельные u, v; любой вектор — диагональ параллелограмма</figcaption>
+</figure>
+
+<p><strong>V³ (пространство).</strong> Базис — три <strong>некомпланарных</strong> (не лежащих в одной плоскости) вектора u, v, w. dim V³ = 3.</p>
+<p><em>Своими словами.</em> Три ребра «ящика» из одной вершины: ими собирают любой пространственный вектор как диагональ параллелепипеда.</p>
+<p><strong>Пример.</strong> z = λu + μv + νw — единственно при ЛНЗ {u, v, w}: если два разложения, разность даёт (λ−λ′)u + … = 0 ⇒ все разности нули. <em>(Рис. L-5c.)</em></p>
+<p><strong>Не-пример.</strong> Три вектора в одной плоскости (даже если попарно непараллельны) — ЛЗ в V³, не базис пространства.</p>
+<figure class="fig">
+  <svg viewBox="0 0 340 240" width="340" height="240" aria-label="Базис пространства">
+    <defs>
+      <marker id="L-5c-a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f5c4d"/></marker>
+      <marker id="L-5c-a2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8a4b1f"/></marker>
+      <marker id="L-5c-a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#333"/></marker>
+      <marker id="L-5c-a4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a33"/></marker>
+    </defs>
+    <line x1="60" y1="180" x2="200" y2="180" stroke="#1f5c4d" stroke-width="2.5" marker-end="url(#L-5c-a1)"/>
+    <line x1="60" y1="180" x2="120" y2="120" stroke="#8a4b1f" stroke-width="2.5" marker-end="url(#L-5c-a2)"/>
+    <line x1="60" y1="180" x2="60" y2="60" stroke="#333" stroke-width="2.5" marker-end="url(#L-5c-a3)"/>
+    <line x1="200" y1="180" x2="260" y2="120" stroke="#8a4b1f" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="120" y1="120" x2="260" y2="120" stroke="#1f5c4d" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="200" y1="180" x2="200" y2="60" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="120" y1="120" x2="120" y2="40" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="60" y1="60" x2="200" y2="60" stroke="#1f5c4d" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="60" y1="60" x2="120" y2="40" stroke="#8a4b1f" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="200" y1="60" x2="260" y2="40" stroke="#8a4b1f" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="120" y1="40" x2="260" y2="40" stroke="#1f5c4d" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="260" y1="120" x2="260" y2="40" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line x1="60" y1="180" x2="260" y2="40" stroke="#a33" stroke-width="2.5" marker-end="url(#L-5c-a4)"/>
+    <text x="48" y="198" font-size="12">O</text>
+    <text x="130" y="198" font-size="12" fill="#1f5c4d">u</text>
+    <text x="100" y="145" font-size="12" fill="#8a4b1f">v</text>
+    <text x="68" y="110" font-size="12" fill="#333">w</text>
+    <text x="200" y="100" font-size="12" fill="#a33">z=λu+μv+νw</text>
+  </svg>
+  <figcaption>Рис. L-5c · базис пространства: некомпланарные u, v, w; z — диагональ параллелепипеда</figcaption>
+</figure>
+
+<h3 id="аффинные-комбинации-и-барицентрические-координаты">Аффинные комбинации и барицентрические координаты</h3>
+<p><em>(из записей Бегалиева)</em> Слово <em>barys</em> (др.-греч.) — «тяжесть / сила»: барицентрические координаты — веса в физической картинке центра масс (подробнее на L6).</p>
+<p><strong>Определение.</strong> <em>(из записей)</em> Пусть X₁, …, Xₘ — точки аффинного пространства A, а λ₁, …, λₘ ∈ ℝ таковы, что</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">∑_{i=1}^m λᵢ = 1</div>
+</div>
+<p>Тогда точка</p>
+<p>X = ∑_{i=1}^m λᵢ Xᵢ</p>
+<p>называется <strong>аффинной комбинацией</strong> точек Xᵢ (коэффициенты λᵢ — <strong>барицентрические координаты</strong> X относительно этого набора, когда они определены однозначно).</p>
+<p><em>Своими словами.</em> Обычная линейная комбинация векторов разрешает любые коэффициенты. Для <strong>точек</strong> сумма коэффициентов должна быть ровно 1 — иначе результат зависел бы от выбора «начала отсчёта».</p>
+<p><strong>Независимость от начала.</strong> <em>(доска)</em> Фиксируем произвольные начала O и Q. Пишем ∑ λᵢ OXᵢ как вектор из O и ∑ λᵢ QXᵢ как вектор из Q. При ∑ λᵢ = 1:</p>
+<p>OQ + ∑ λᵢ QXᵢ = ∑ λᵢ (OQ + QXᵢ) = ∑ λᵢ OXᵢ,</p>
+<p>то есть оба способа указывают на одну и ту же точку X. Без условия ∑ λᵢ = 1 равенство ломается.</p>
+<p><strong>Пример.</strong> Середина отрезка XY: M = (1/2)X + (1/2)Y. Сумма коэффициентов 1. Из любой точки O: OM = (OX + OY)/2.</p>
+<p><strong>Не-пример.</strong> «(1/2)X + (1/3)Y» — сумма ≠ 1; такая запись для точек некорректна (зависит от начала).</p>
+
+<p><strong>Формула деления отрезка.</strong> <em>(из записей)</em> Точка Z на прямой (XY), λ + μ = 1, Z = λ X + μ Y. Тогда XZ = μ · XY, YZ = −λ · XY, откуда</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">Z = (ZY / XY) · X + (XZ / XY) · Y<br/>μ = XZ/XY, λ = ZY/XY — коэффициенты разложения по базису {XY} в V¹</div>
+</div>
+<p>(отношения направленных отрезков на прямой). Эквивалентно Z = λ X + (1−λ) Y.</p>
+<p><em>Своими словами.</em> Чем ближе Z к X, тем больше «вес» у X (коэффициент при X = ZY/XY). На прямой это ровно координата вектора XZ (или ZY) в одномерном базисе {XY}.</p>
+<p><strong>Знаки на прямой.</strong> Для Z = λ X + μ Y, λ + μ = 1: <em>(рис. L-5d)</em></p>
+<ul>
+<li>левее X: μ &lt; 0, λ &gt; 1;</li>
+<li>на отрезке [XY]: 0 ≤ λ, μ ≤ 1;</li>
+<li>правее Y: λ &lt; 0, μ &gt; 1;</li>
+<li>в самой X: μ = 0, λ = 1; в Y: λ = 0, μ = 1.</li>
+</ul>
+<figure class="fig">
+  <svg viewBox="0 0 420 120" width="420" height="120" aria-label="Знаки барицентрических на прямой">
+    <line x1="20" y1="60" x2="400" y2="60" stroke="#333" stroke-width="2"/>
+    <circle cx="140" cy="60" r="6" fill="#1f5c4d"/>
+    <circle cx="280" cy="60" r="6" fill="#8a4b1f"/>
+    <text x="132" y="90" font-size="14" fill="#1f5c4d">X</text>
+    <text x="272" y="90" font-size="14" fill="#8a4b1f">Y</text>
+    <text x="30" y="40" font-size="12" fill="#a33">μ&lt;0, λ&gt;1</text>
+    <text x="175" y="40" font-size="12" fill="#1f5c4d">0≤λ,μ≤1</text>
+    <text x="310" y="40" font-size="12" fill="#a33">λ&lt;0, μ&gt;1</text>
+    <text x="125" y="112" font-size="11" fill="#666">μ=0</text>
+    <text x="265" y="112" font-size="11" fill="#666">λ=0</text>
+  </svg>
+  <figcaption>Рис. L-5d · знаки барицентрических координат λ, μ на прямой (Z = λX + μY, λ+μ=1)</figcaption>
+</figure>
+<p><strong>Пример.</strong> X = 0, Y = 10 на числовой прямой, Z = 4. Тогда XZ = 4, ZY = 6, XY = 10 ⇒ Z = (6/10)·0 + (4/10)·10 = 4. Коэффициенты 0,6 и 0,4 оба в [0, 1].</p>
+
+<h3 id="что-взять-с-собой-l5">Что взять с собой</h3>
+<ul>
+<li>Все базисы одной мощности → dim V; доказательство — замена (Штейниц) + индукция.</li>
+<li>V⁰: ∅; V¹: ненулевой; V²: непараллельные; V³: некомпланарные.</li>
+<li>Аффинная комбинация: ∑ λᵢ = 1; иначе зависит от начала.</li>
+<li>Деление отрезка: Z = (ZY/XY)X + (XZ/XY)Y; знаки λ, μ на прямой.</li>
+</ul>
+<p class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ГЛ-L5</code> — размерность, базисы Vⁿ, аффинные комбинации.</p>
+
+<h2 id="l6-1210--центр-масс-сужение-линейные-и-аффинные-подпространства">L6. 12.10 — центр масс, сужение, линейные и аффинные подпространства</h2>
+<p><em>(Из фото доски / локального PDF: <a href="12.10-лекция.pdf"><code>12.10-лекция.pdf</code></a>. В Release Бегалиева на момент разбора <strong>не было</strong> PDF за 12.10.2026. OCR/кадры: <code>материалы/_архив/_geom-ocr-2026-10/</code>. Своими словами и примеры — дополнено.)</em></p>
+<p>Видео: <a href="https://teach-in.ru/lecture/2022-02-09-Timashev-1" target="_blank" rel="noopener">МГУ, Тимашёв — подпространства / teach-in</a>.</p>
+<p><strong>Связь с прошлым.</strong> L5 дала аффинные комбинации и деление отрезка. На 12.10 то же читают как <strong>центр масс</strong>, смотрят знаки барицентрических координат в треугольнике, вводят <strong>сужение</strong> отображений и §4: линейные / аффинные подпространства, lin и aff.</p>
+
+<h3 id="центр-масс-рычаг">Центр масс / рычаг</h3>
+<p><strong>Две точки.</strong> Массы m₁ в X и m₂ в Y (mᵢ &gt; 0). Центр масс Z — точка опоры рычага в равновесии:</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">Z = (m₁/(m₁+m₂)) X + (m₂/(m₁+m₂)) Y<br/>XZ / ZY = m₂ / m₁</div>
+</div>
+<p>Это та же формула деления: коэффициент при X равен ZY/XY = m₁/(m₁+m₂). <em>(Рис. L-6a.)</em></p>
+<p><em>Своими словами.</em> Тяжёлая гиря «перетягивает» опору к себе: больше масса у X — Z ближе к X.</p>
+<p><strong>Пример.</strong> m₁ = 2 в X, m₂ = 1 в Y. Тогда Z = (2/3)X + (1/3)Y, XZ:ZY = 1:2.</p>
+<figure class="fig">
+  <svg viewBox="0 0 380 140" width="380" height="140" aria-label="Рычаг центр масс">
+    <line x1="40" y1="50" x2="340" y2="50" stroke="#333" stroke-width="3"/>
+    <polygon points="180,50 165,75 195,75" fill="#1f5c4d"/>
+    <circle cx="60" cy="50" r="5" fill="#333"/>
+    <circle cx="320" cy="50" r="5" fill="#333"/>
+    <circle cx="180" cy="50" r="5" fill="#a33"/>
+    <text x="52" y="40" font-size="13">X</text>
+    <text x="312" y="40" font-size="13">Y</text>
+    <text x="172" y="40" font-size="13" fill="#a33">Z</text>
+    <line x1="60" y1="55" x2="60" y2="100" stroke="#8a4b1f" stroke-width="2"/>
+    <line x1="320" y1="55" x2="320" y2="115" stroke="#8a4b1f" stroke-width="2"/>
+    <text x="48" y="118" font-size="12" fill="#8a4b1f">m₁g</text>
+    <text x="300" y="132" font-size="12" fill="#8a4b1f">m₂g</text>
+    <text x="100" y="30" font-size="11" fill="#666">XZ</text>
+    <text x="230" y="30" font-size="11" fill="#666">ZY</text>
+  </svg>
+  <figcaption>Рис. L-6a · рычаг: опора Z — центр масс; XZ/ZY = m₂/m₁</figcaption>
+</figure>
+
+<p><strong>Система k точек.</strong> Массы m₁, …, mₖ в точках X₁, …, Xₖ, M = ∑ mᵢ &gt; 0. Центр масс</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">Z = ∑_{i=1}^k (mᵢ / M) Xᵢ  (∑ (mᵢ/M) = 1)</div>
+</div>
+<p><em>Своими словами.</em> Обычное взвешенное среднее точек; веса автоматически дают аффинную комбинацию.</p>
+<p><strong>Пример.</strong> Три равные массы в вершинах треугольника → Z — пересечение медиан (барицентр).</p>
+
+<h3 id="знаки-барицентрических-в-треугольнике">Знаки барицентрических координат в треугольнике (E²)</h3>
+<p>Для точки P = αA + βB + γC с α+β+γ = 1 в плоскости треугольника ABC плоскость делится на <strong>7 областей</strong> знаками (α, β, γ): внутри все &gt; 0; в трёх «бесконечных» углах при вершинах один &gt; 1 и два &lt; 0; в трёх полосах напротив сторон один &lt; 0 и два &gt; 0. <em>(Рис. L-6b.)</em></p>
+<p><em>Своими словами.</em> Внутри треугольника все «веса» положительны. За стороной BC (напротив A) вес α отрицателен — как «левее X» на прямой.</p>
+<p><strong>Пример.</strong> Барицентр G = (1/3)A + (1/3)B + (1/3)C — все знаки «+», внутри.</p>
+<p><strong>Не-пример.</strong> Точка на продолжении медианы за сторону BC имеет отрицательную координату при A.</p>
+<figure class="fig">
+  <svg viewBox="0 0 360 300" width="360" height="300" aria-label="Семь областей барицентрических знаков">
+    <!-- extended lines -->
+    <line x1="180" y1="20" x2="40" y2="260" stroke="#ccc" stroke-width="1"/>
+    <line x1="180" y1="20" x2="320" y2="260" stroke="#ccc" stroke-width="1"/>
+    <line x1="40" y1="260" x2="320" y2="260" stroke="#ccc" stroke-width="1"/>
+    <!-- triangle -->
+    <polygon points="180,50 70,240 290,240" fill="#e7f2ee" stroke="#1f5c4d" stroke-width="2"/>
+    <!-- labels regions -->
+    <text x="155" y="160" font-size="11" fill="#1f5c4d">+++</text>
+    <text x="165" y="38" font-size="11" fill="#a33">+−−</text>
+    <text x="20" y="200" font-size="11" fill="#a33">−+−</text>
+    <text x="300" y="200" font-size="11" fill="#a33">−−+</text>
+    <text x="155" y="275" font-size="11" fill="#8a4b1f">−++</text>
+    <text x="55" y="120" font-size="11" fill="#8a4b1f">+−+</text>
+    <text x="255" y="120" font-size="11" fill="#8a4b1f">++−</text>
+    <circle cx="180" cy="50" r="4" fill="#333"/>
+    <circle cx="70" cy="240" r="4" fill="#333"/>
+    <circle cx="290" cy="240" r="4" fill="#333"/>
+    <text x="172" y="42" font-size="13">A</text>
+    <text x="52" y="255" font-size="13">B</text>
+    <text x="292" y="255" font-size="13">C</text>
+  </svg>
+  <figcaption>Рис. L-6b · семь областей знаков (α,β,γ) для P = αA+βB+γC в плоскости треугольника</figcaption>
+</figure>
+
+<h3 id="сужение-отображений">Сужение отображений F|_{A'}^{B'}</h3>
+<p><strong>Определение.</strong> <em>(из записей)</em> Пусть F : A → B (например, аффинное отображение), A′ ⊂ A, и B′ ⊂ B таково, что F(A′) ⊂ B′. <strong>Сужение</strong></p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">F|_{A'}^{B'} : A′ → B′, x ↦ F(x)</div>
+</div>
+<p>Если B′ = B, пишут коротко F|_{A′} — «сужение F на A′ ⊂ A».</p>
+<p><em>Своими словами.</em> Та же формула F, но домен и/или кодомен уже поменьше. Полезно, когда образ лежит в подпространстве.</p>
+<p><strong>Пример.</strong> F : ℝ² → ℝ², F(x, y) = (x, 0) (проекция на ось). A′ = ось Oy, F(A′) = {0}. Тогда F|_{A′}^{{0}} — постоянное отображение в ноль.</p>
+<p><strong>Не-пример.</strong> Нельзя писать F|_{A′}^{B′}, если какой-то F(x) при x ∈ A′ не лежит в B′.</p>
+
+<h3 id="§4-линейные-и-аффинные-подпространства">§4. Линейные и аффинные подпространства</h3>
+<p><strong>Определение (линейное подпространство).</strong> <em>(из записей)</em> U ⊂ V — <strong>линейное подпространство</strong>, если U само является векторным пространством относительно тех же операций + и ·. Эквивалентный критерий:</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">∀ u, v ∈ U, ∀ λ ∈ K: u + λ v ∈ U</div>
+</div>
+<p><em>Своими словами.</em> Из «своих» векторов нельзя выскочить наружу ни суммой, ни растяжением.</p>
+<p><strong>Примеры.</strong> <em>(доска)</em></p>
+<ul>
+<li>{0} — 0-мерное подпространство;</li>
+<li>для v ∈ V набор {λ v : λ ∈ ℝ} = lin{v} — 1-мерное (если v ≠ 0);</li>
+<li>само V — подпространство.</li>
+</ul>
+<p><strong>Не-пример.</strong> Открытый луч {λ v : λ &gt; 0} не подпространство: нет нуля и нет отрицательных растяжений.</p>
+
+<h3 id="линейная-оболочка-lin-span">Линейная оболочка lin / span</h3>
+<p><strong>Определение.</strong> <em>(из записей)</em> Для v₁, …, vₖ ∈ V</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">lin{v₁,…,vₖ} := span{v₁,…,vₖ} := ⟨v₁,…,vₖ⟩<br/>:= { ∑ λᵢ vᵢ : λᵢ ∈ K }</div>
+</div>
+<p>Для произвольного U ⊂ V: lin U — все конечные линейные комбинации элементов U.</p>
+<p><em>Своими словами.</em> Самое маленькое линейное подпространство, содержащее данные векторы: «натянули» на них все комбинации.</p>
+<p><strong>Предложение.</strong> <em>(из записей / стандартно)</em> dim lin U = r тогда и только тогда, когда в U есть ЛНЗ набор из r векторов, порождающий lin U (т.е. базис оболочки длины r).</p>
+<p><strong>Пример.</strong> lin{(1,0), (2,0), (0,1)} = ℝ², dim = 2 (первые два ЛЗ; базис оболочки — например (1,0) и (0,1)).</p>
+
+<h3 id="аффинные-подпространства">Аффинные подпространства</h3>
+<p><strong>Определение.</strong> <em>(из записей)</em> Аффинное подпространство — сдвиг линейного:</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">A′ = X + lin U := { Y : XY ∈ lin U }</div>
+</div>
+<p>Размерность: dim A′ := dim(lin U) (на доске также dim(X + lin U) = r при dim lin U = r).</p>
+<p><em>Своими словами.</em> Берёшь линейное подпространство направлений и «приклеиваешь» его к точке X. Прямая, плоскость, точка — всё это сдвиги {0}, прямой через 0, плоскости через 0.</p>
+<p><strong>Примеры.</strong></p>
+<ul>
+<li><strong>Точка:</strong> {X} = X + {0}, dim = 0.</li>
+<li><strong>Прямая:</strong> при n ≥ 1 точка X и ненулевой u: { Y : XY = λ u } — аффинная прямая, dim 1.</li>
+<li><strong>Плоскость:</strong> при n ≥ 2 точка X и неколлинеарные u, v:
+  A² = { Y : XY = λ u + μ v } — аффинная плоскость, dim 2. <em>(Рис. L-6c.)</em></li>
+<li><strong>Отрезок [XY]</strong> — <em>не</em> аффинное подпространство (нельзя выйти за концы комбинациями с произвольными λ), но лежит в аффинной прямой aff{X, Y}.</li>
+</ul>
+<figure class="fig">
+  <svg viewBox="0 0 300 200" width="300" height="200" aria-label="Аффинная плоскость">
+    <defs>
+      <marker id="L-6c-a1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f5c4d"/></marker>
+      <marker id="L-6c-a2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8a4b1f"/></marker>
+      <marker id="L-6c-a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a33"/></marker>
+    </defs>
+    <polygon points="40,160 220,160 260,60 80,60" fill="#f0f7f4" stroke="#c5ddd4"/>
+    <circle cx="100" cy="130" r="5" fill="#333"/>
+    <line x1="100" y1="130" x2="200" y2="130" stroke="#1f5c4d" stroke-width="2.5" marker-end="url(#L-6c-a1)"/>
+    <line x1="100" y1="130" x2="140" y2="70" stroke="#8a4b1f" stroke-width="2.5" marker-end="url(#L-6c-a2)"/>
+    <line x1="100" y1="130" x2="220" y2="90" stroke="#a33" stroke-width="2" marker-end="url(#L-6c-a3)"/>
+    <circle cx="220" cy="90" r="4" fill="#a33"/>
+    <text x="88" y="150" font-size="13">X</text>
+    <text x="160" y="148" font-size="12" fill="#1f5c4d">u</text>
+    <text x="110" y="90" font-size="12" fill="#8a4b1f">v</text>
+    <text x="225" y="85" font-size="12" fill="#a33">Y</text>
+  </svg>
+  <figcaption>Рис. L-6c · плоскость A² = X + lin{u, v}: XY = λu + μv</figcaption>
+</figure>
+
+<h3 id="аффинная-оболочка-aff">Аффинная оболочка aff</h3>
+<p><strong>Определение.</strong> aff B — наименьшее аффинное подпространство, содержащее множество точек B (аффинная оболочка). Для конечного набора:</p>
+<p>aff{X₁, …, Xᵣ} — все аффинные комбинации ∑ λᵢ Xᵢ с ∑ λᵢ = 1.</p>
+<p><strong>Предложение.</strong> <em>(из записей)</em></p>
+<ol>
+<li>dim aff{X₁, …, Xᵣ} ≤ r − 1;</li>
+<li>dim aff{X₁, …, Xᵣ} = r − 1 ⟺ существует O ∈ A такое, что dim lin{OX₁, …, OXᵣ} = r − 1
+  (эквивалентно: векторы OX₁, …, OXᵣ «почти» ЛНЗ — оболочка размерности r−1; геометрически точки «в общем положении»).</li>
+</ol>
+<p><em>Своими словами.</em> r точек порождают аффинное пространство размерности не выше r−1 (две точки — прямая dim ≤ 1, три — плоскость dim ≤ 2). Равенство — когда точки не «сплющены» в меньшую размерность.</p>
+<p><strong>Пример.</strong> Три точки не на одной прямой: dim aff = 2 (плоскость треугольника). Три точки на прямой: dim aff = 1 &lt; 3−1.</p>
+<p><strong>Не-пример равенства.</strong> Четыре вершины параллелограмма: r−1 = 3, но все лежат в одной плоскости ⇒ dim aff = 2 &lt; 3.</p>
+
+<h3 id="что-взять-с-собой-l6">Что взять с собой</h3>
+<ul>
+<li>Центр масс = аффинная комбинация с весами mᵢ/M; рычаг XZ/ZY = m₂/m₁.</li>
+<li>В треугольнике 7 областей знаков барицентрических координат.</li>
+<li>Сужение F|_{A′}^{B′} — та же F на меньших множествах (образ ⊂ B′).</li>
+<li>Линейное подпространство ⇔ u+λv ∈ U; lin = span.</li>
+<li>Аффинное: A′ = X + lin U; dim A′ = dim lin U.</li>
+<li>dim aff{X₁..Xᵣ} ≤ r−1; равенство — точки в общем положении.</li>
+</ul>
+<p class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ГЛ-L6</code> — центр масс, подпространства, lin/aff.</p>
+<hr />
+
+</div>
+</div>
 </main>
   <script src="./site.js?v=3"></script>
 </body>

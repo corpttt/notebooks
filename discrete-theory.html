@@ -73,9 +73,21 @@ pre {
   font-family: "Cambria Math", "Segoe UI Symbol", "Segoe UI", serif;
   font-size: 1.12rem; line-height: 1.45;
 }
+.fig {
+  margin: 0.85rem 0; padding: 0.65rem; background: #faf9f6;
+  border: 1px dashed var(--line); border-radius: 10px;
+  overflow-x: auto; text-align: center;
+}
+.fig figcaption {
+  color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; text-align: left;
+}
+.figs { display: grid; gap: 0.65rem; margin: 0.85rem 0; }
+@media (min-width: 640px) { .figs.two { grid-template-columns: 1fr 1fr; } }
+.prose svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
 html[data-theme="dark"] {
   --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e; --line: #30363d;
 }
+html[data-theme="dark"] .fig { background: #12171e; }
 .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
 </style>
 

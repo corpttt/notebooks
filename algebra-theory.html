@@ -73,9 +73,21 @@ pre {
   font-family: "Cambria Math", "Segoe UI Symbol", "Segoe UI", serif;
   font-size: 1.12rem; line-height: 1.45;
 }
+.fig {
+  margin: 0.85rem 0; padding: 0.65rem; background: #faf9f6;
+  border: 1px dashed var(--line); border-radius: 10px;
+  overflow-x: auto; text-align: center;
+}
+.fig figcaption {
+  color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; text-align: left;
+}
+.figs { display: grid; gap: 0.65rem; margin: 0.85rem 0; }
+@media (min-width: 640px) { .figs.two { grid-template-columns: 1fr 1fr; } }
+.prose svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
 html[data-theme="dark"] {
   --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e; --line: #30363d;
 }
+html[data-theme="dark"] .fig { background: #12171e; }
 .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
 </style>
 
@@ -166,18 +178,18 @@ $\exists x \in \mathbb{Z}$: $a = b\cdot x$.</p>
 </ol>
 <h3 id="деление-с-остатком">Деление с остатком</h3>
 <p><strong>Теорема.</strong> $\forall a, b \in \mathbb{Z}, b \neq 0 \exists$! $q, r \in \mathbb{Z}$:<br>
-$a = q\cdot b + r$ и $0 \le r < |b|$.</p>
+$a = q\cdot b + r$ и $0 \le r &lt; |b|$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Деление с остатком</div>
-  <div class="formula-box-body">$a=qb+r,\quad 0\le r<|b|$</div>
+  <div class="formula-box-body">$a=qb+r,\quad 0\le r&lt;|b|$</div>
 </div>
 
-<p><em>Идея существования.</em> При $a \ge 0, b > 0$ — индукция по a<br>
+<p><em>Идея существования.</em> При $a \ge 0, b &gt; 0$ — индукция по a<br>
 (база a &lt; b: q = 0, r = a; шаг: $a - b$ меньше a).<br>
 Остальные знаки сводят к этому, меняя знак b или a<br>
 (для a &lt; 0 аккуратно: если $-a = b q$′ + r′ и r′ &gt; 0, то<br>
 a = b($-q$′ $- 1$) + ($b - r$′), остаток $b - r$′ $\in$ (0, b)).</p>
-<p><em>Единственность.</em> Из двух представлений $|b|\cdot |q_1 - q_2| = |r_2 - r_1| < |b| \Rightarrow q_1 = q_2 \Rightarrow r_1 = r_2$.</p>
+<p><em>Единственность.</em> Из двух представлений $|b|\cdot |q_1 - q_2| = |r_2 - r_1| &lt; |b| \Rightarrow q_1 = q_2 \Rightarrow r_1 = r_2$.</p>
 <p><strong>Пример.</strong> $a = -17, b = 5$: $-17 = 5\cdot$($-4$) + 3, остаток 3.</p>
 <h3 id="нод">НОД</h3>
 <p><strong>Определение.</strong> d = НОД(a, b), если  </p>
@@ -267,7 +279,7 @@ $a \pm b \equiv a$′ $\pm b$′, $a b \equiv a$′ b′.</p>
 <p><strong>Функция порядка</strong> $\varphi$: $R \setminus \{0\} \to \mathbb{Z}$ в области целостности:<br>
 если $a \vdots b$ ($a \neq 0$), то $\varphi$(a) $\ge \varphi$(b).</p>
 <p>R — <strong>евклидово кольцо</strong>, если есть $\varphi$, относительно которого верно деление с остатком:<br>
-a = q b + r, где r = 0 или $\varphi$(r) $< \varphi$(b).</p>
+a = q b + r, где r = 0 или $\varphi$(r) $&lt; \varphi$(b).</p>
 <p><strong>Следствие.</strong> $\mathbb{Z}$ евклидово; $\varphi$(n) = |n|.</p>
 <hr>
 <blockquote>
@@ -381,7 +393,7 @@ a = q b + r, где r = 0 или $\varphi$(r) $< \varphi$(b).</p>
 База r = 1: $p_1 = p$′$_1$…p′$_r$′. Простое $p_1$ делится на простое p′$_1 \Rightarrow p$′$_1 = p_1$, и тогда r′ = 1.<br>
 Переход ($r \ge 2$): p′$_1$…p′$_r$′ $\vdots p_r$. По лемме 3 (применённой несколько раз) какой-то p′$_k \vdots p_r$, а так как оба простые, p′$_k = p_r$. Перенумеруем так, чтобы k = r′. Сократим на $p_r$: $p_1$…$p_{r-1} = p$′$_1$…p′$_r$′$_{-1}$. По предположению индукции $r - 1 = r$′ $- 1$ и $p_i = p$′$_i$.</p>
 <p><strong>Каноническое разложение.</strong> Собираем одинаковые простые в степени:</p>
-<p>$n = p_{1}^{k_{1}} \cdot p_{2}^{k_{2}} \cdot$ … $\cdot p_{m}^{k_{m}}, p_1 < p_2 <$ … $< p_m$.</p>
+<p>$n = p_{1}^{k_{1}} \cdot p_{2}^{k_{2}} \cdot$ … $\cdot p_{m}^{k_{m}}, p_1 &lt; p_2 &lt;$ … $&lt; p_m$.</p>
 <p><strong>Пример.</strong> $360 = 2^3\cdot 3^2\cdot 5$. $84 = 2^2\cdot 3\cdot 7$.</p>
 <p><strong>НОД и НОК через разложение.</strong> Любые два числа можно записать через <strong>одни и те же</strong> простые, разрешив нулевые показатели ($p^0 = 1$):</p>
 <p>$n = \pm p_{1}^{\alpha_{1}}$…$p_{k}^{\alpha_{k}}, m = \pm p_{1}^{\beta_{1}}$…$p_{k}^{\beta_{k}}$.</p>
@@ -750,7 +762,7 @@ $$<br>
 $$
 \alpha=[\alpha]+\{\alpha\}=[\alpha]+\frac{1}{1/\{\alpha\}}=\cdots,
 $$<br>
-где $[\alpha]$ — целая часть, $\{\alpha\}=\alpha-[\alpha]$ — дробная ($0\le\{\alpha\}<1$; если $\{\alpha\}=0$, процесс останавливается — число рациональное).</p>
+где $[\alpha]$ — целая часть, $\{\alpha\}=\alpha-[\alpha]$ — дробная ($0\le\{\alpha\}&lt;1$; если $\{\alpha\}=0$, процесс останавливается — число рациональное).</p>
 <p><strong>Не-пример остановки.</strong> У $\sqrt{2}$ дробная часть никогда не обнуляется $\Rightarrow$ дробь бесконечна.</p>
 <h3 id="что-взять-с-собой">Что взять с собой</h3>
 <ul>

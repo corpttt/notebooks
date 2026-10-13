@@ -40,7 +40,7 @@ function isShellHtml(url) {
 
 function isShellAsset(url) {
   const p = url.pathname;
-  return /\/(site\.css|site\.js|theme\.js|sw\.js)$/i.test(p);
+  return /\/(site\.css|site\.js|theme\.js|sw\.js)$/i.test(p) || /\/_viz\/[^/]+$/i.test(p);
 }
 
 function isNotebookHtml(url) {
