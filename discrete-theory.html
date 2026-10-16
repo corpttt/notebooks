@@ -18,9 +18,6 @@ body {
 }
 header {
   max-width: 48rem; margin: 0 auto; padding: 1.25rem 1.25rem 0.5rem;
-  position: sticky; top: 0;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(6px); z-index: 5;
 }
 h1 { font-size: 1.4rem; margin: 0 0 0.35rem; }
 .note { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.75rem; }
@@ -90,14 +87,14 @@ html[data-theme="dark"] {
 html[data-theme="dark"] .fig { background: #12171e; }
 .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
 </style>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=841024d8">
+<script src="./общее/тетрадь.js?v=841024d8" defer></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
 
-
-<meta name="theme-color" content="#0d1117">
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -106,22 +103,8 @@ html[data-theme="dark"] .fig { background: #12171e; }
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <link rel="stylesheet" href="./site.css?v=3">
-  <script src="./theme.js?v=3"></script>
 </head>
 <body>
-<header class="nb-app-header">
-  <div class="nb-app-header-inner">
-    <a class="nb-brand" href="./index.html">
-      <span class="nb-brand-mark">NB</span>
-      <span>Тетради</span>
-    </a>
-    <div class="nb-header-actions">
-      <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
-      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
-    </div>
-  </div>
-</header>
-
 <header>
   <h1>Дискретная · теория</h1>
   <p class="note">Теория · индекс ДТ-§N</p>
