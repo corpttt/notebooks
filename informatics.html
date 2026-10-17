@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Информатика · тетрадь (лекции 0–3 + семинары 1–2)</title>
+<title>Информатика · тетрадь (лекции 0–4 + семинары 1–2)</title>
 <style>
 :root {
   --bg: #f6f4ef; --card: #fff; --ink: #1c1b19; --muted: #6b665c;
@@ -80,11 +80,11 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   font-size: 1.12rem; line-height: 1.45;
 }
 </style>
-<link rel="stylesheet" href="./_viz/viz.css?v=1a155ff9">
-<script src="./_viz/viz.js?v=1a155ff9" defer></script>
+<link rel="stylesheet" href="./_viz/viz.css?v=947fd7ee">
+<script src="./_viz/viz.js?v=947fd7ee" defer></script>
 
-<link rel="stylesheet" href="./общее/тетрадь.css?v=841024d8">
-<script src="./общее/тетрадь.js?v=841024d8" defer></script>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=3cbcc131">
+<script src="./общее/тетрадь.js?v=3cbcc131" defer></script>
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -98,7 +98,7 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 
 <header>
   <h1>Информатика · тетрадь</h1>
-  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · осень 2026</p>
+  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · лекция 4 (трансляции, парадигмы, типизация) · осень 2026</p>
   <nav class="toc">
     <a href="#intro">Введение</a>
     <a href="#format">Формат и зачёт</a>
@@ -127,6 +127,14 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
     <a href="#von-neumann">Фон Нейман</a>
     <a href="#cpu-bus">Процессор, память, шина</a>
     <a href="#threads">Многопоточность</a>
+    <a href="#translate">Трансляция</a>
+    <a href="#compile-interp">Компиляция / интерпретация</a>
+    <a href="#compile-stages">Этапы трансляции</a>
+    <a href="#paradigms">Парадигмы</a>
+    <a href="#structural">Структурная</a>
+    <a href="#oop">ООП</a>
+    <a href="#declarative">Декларативные</a>
+    <a href="#typing">Типизация</a>
     <a href="#cheat">Шпаргалка</a>
     <a href="#video">Видео</a>
   </nav>
@@ -135,8 +143,8 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 
 <section class="card" id="intro">
   <h2>Введение</h2>
-  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ. Текст собран <span class="tag">из записей</span> презентаций Есина / Абрамова и развёрнут «своими словами» с примерами — чтобы готовиться к тестам Google Forms без дыр между слайдами.</p>
-  <p class="src">Источники в <span class="mono">материалы/</span>: <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>.</p>
+  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ, трансляции / парадигмы / типизация. Текст собран <span class="tag">из записей</span> презентаций Есина / Абрамова и развёрнут «своими словами» с примерами — чтобы готовиться к тестам Google Forms без дыр между слайдами.</p>
+  <p class="src">Источники в <span class="mono">материалы/</span>: <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>, <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>, <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">лекция №4</a>.</p>
 </section>
 
 <section class="card" id="format">
@@ -873,8 +881,236 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   <p class="src">На слайдах также: аппаратный async через <span class="mono">std::thread</span> + мьютекс; программный — Event Loop в Node.js. Для теста по лекции №3 достаточно определений выше.</p>
 </section>
 
-<section class="card" id="cheat">
+<section class="card" id="translate">
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-архитектура</code> — несколько коротких вопросов по лекции 3.</p>
+
+  <h2>Трансляция и машинный код <span class="tag">лекция 4</span></h2>
+  <div class="def"><strong>Машинный код</strong> — низкоуровневый двоичный код из инструкций, которые выполняет процессор. Это <em>единственный</em> код, который процессор умеет исполнять напрямую.</div>
+  <p class="own"><em>Своими словами.</em> Человек пишет на Python / C++ / Java. Процессор понимает только нули и единицы своей архитектуры. Между ними нужен переводчик.</p>
+  <div class="ex"><strong>Пример.</strong> Сложение в x86: <code>ADD EAX, EBX</code> (результат в EAX). В ARM: <code>ADD R0, R1, R2</code> (результат в R0). Одинаковая идея, разные «диалекты» ассемблера — потому что разные архитектуры.</div>
+  <div class="def"><strong>Трансляция кода</strong> — преобразование кода более высокого уровня в код более низкого уровня. Трансляторы не только переводят, но и часто <em>оптимизируют</em> программу. Компиляторы и интерпретаторы — оба виды трансляторов.</div>
+  <p class="src"><span class="tag">из записей</span> слайды 5–6 лекции №4 · <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>.</p>
+</section>
+
+<section class="card" id="compile-interp">
+  <h2>Компиляция и интерпретация</h2>
+  <div class="def"><strong>Компилятор</strong> преобразует <em>весь</em> код программы сразу. На выходе — исполняемый файл (машинный код), который можно запускать без исходников и без компилятора.</div>
+  <div class="def"><strong>Интерпретатор</strong> выполняет код <em>построчно</em> (или по частям). Отдельный исполняемый файл обычно <strong>не создаётся</strong>: для запуска нужен сам интерпретатор.</div>
+  <p class="own"><em>Своими словами.</em> Компилятор — «переведи книгу целиком, потом читай готовый перевод». Интерпретатор — «переводчик сидит рядом и переводит фразу за фразой прямо во время разговора».</p>
+  <div class="nb-table-scroll"><table>
+    <tr><th></th><th>Компилятор</th><th>Интерпретатор</th></tr>
+    <tr><td>Когда переводит</td><td>до запуска, целиком</td><td>во время работы, по частям</td></tr>
+    <tr><td>Исполняемый файл</td><td>да (типично)</td><td>нет</td></tr>
+    <tr><td>Скорость</td><td>обычно выше (уже машинный код + больше оптимизаций)</td><td>обычно ниже (чтение + разбор на лету)</td></tr>
+    <tr><td>Плюсы</td><td>защита исходников, запуск без интерпретатора</td><td>быстрое прототипирование, кросс‑платформенность, проще отладка</td></tr>
+  </table></div>
+  <div class="ex"><strong>Что отличает компилятор от интерпретатора в тесте.</strong> Общее: оба могут проверять синтаксис и разбивать код на токены. <strong>Только у компилятора</strong> (в типичной картине лекции) — <em>создание исполняемого файла</em>. «Выполнение без промежуточного преобразования» — как раз скорее про интерпретатор, не про компилятор.</div>
+  <p class="src">На слайдах также: JIT (часто исполняемые куски компилируются «на лету») — интерпретатор тоже умеет оптимизировать, но полный обзор кода даёт компилятору больше пространства.</p>
+</section>
+
+<section class="card" id="compile-stages">
+  <h2>Этапы трансляции кода</h2>
+  <div class="def"><strong>Лексический анализ</strong> — токенизация входного потока: исходный текст режется на лексемы (токены): числа, имена, ключевые слова, знаки операций.</div>
+  <p class="own"><em>Своими словами.</em> Лексер не «проверяет правильность программы целиком» — он только нарезает текст на слова. Проверка структуры — следующий этап.</p>
+  <div class="ex"><strong>Пример.</strong> Строка <code>x = 2 + 3;</code> → токены: <code>x</code>, <code>=</code>, <code>2</code>, <code>+</code>, <code>3</code>, <code>;</code>. Неверно для формы: «проверяет синтаксическую корректность» / «генерирует машинный код» / «оптимизирует» — это другие этапы.</div>
+  <div class="def"><strong>Синтаксический анализ</strong> по потоку лексем строит дерево AST и проверяет правила языка (скобки, порядок конструкций).</div>
+  <div class="def"><strong>Семантический анализ</strong> проверяет типы, области видимости и смысл: «можно ли сложить эти два значения», «объявлена ли переменная».</div>
+  <div class="def"><strong>Оптимизация</strong> промежуточного представления: удаление мёртвого кода, свёртка констант и др. Затем <strong>кодогенерация</strong> — машинный код.</div>
+
+  <div class="fig" aria-label="Этапы трансляции">
+    <svg viewBox="0 0 520 420" width="520" height="420" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="13">
+      <defs>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b665c"/></marker>
+      </defs>
+      <text x="260" y="22" text-anchor="middle" font-weight="700" fill="#1f5c4d">Конвейер трансляции (как на слайде 8)</text>
+      <rect x="140" y="40" width="240" height="36" rx="10" fill="#5b4fc7"/><text x="260" y="63" text-anchor="middle" fill="#fff" font-weight="600">Лексический анализатор</text>
+      <text x="400" y="63" fill="#6b665c">→ поток лексем</text>
+      <line x1="260" y1="76" x2="260" y2="98" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <rect x="140" y="100" width="240" height="36" rx="10" fill="#5b4fc7"/><text x="260" y="123" text-anchor="middle" fill="#fff" font-weight="600">Синтаксический анализатор</text>
+      <text x="400" y="123" fill="#6b665c">→ AST</text>
+      <line x1="260" y1="136" x2="260" y2="158" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <rect x="140" y="160" width="240" height="36" rx="10" fill="#5b4fc7"/><text x="260" y="183" text-anchor="middle" fill="#fff" font-weight="600">Семантический анализатор</text>
+      <text x="400" y="183" fill="#6b665c">→ семант. дерево</text>
+      <line x1="260" y1="196" x2="260" y2="218" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <rect x="120" y="220" width="280" height="36" rx="10" fill="#3d8b6e"/><text x="260" y="243" text-anchor="middle" fill="#fff" font-weight="600">Генератор промежуточного кода</text>
+      <line x1="260" y1="256" x2="260" y2="278" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <rect x="140" y="280" width="240" height="36" rx="10" fill="#3d8b6e"/><text x="260" y="303" text-anchor="middle" fill="#fff" font-weight="600">Оптимизатор</text>
+      <line x1="260" y1="316" x2="260" y2="338" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <rect x="140" y="340" width="240" height="36" rx="10" fill="#3d8b6e"/><text x="260" y="363" text-anchor="middle" fill="#fff" font-weight="600">Кодогенератор → машинный код</text>
+      <line x1="260" y1="376" x2="260" y2="398" stroke="#6b665c" marker-end="url(#arr4)"/>
+      <text x="260" y="412" text-anchor="middle" fill="#8a4b1f" font-weight="600">Процессор</text>
+    </svg>
+    <p class="caption">Схема со слайда 8: фиолетовое — анализ, зелёное — синтез / оптимизация.</p>
+  </div>
+
+  <div class="lab" data-lab="compile"></div>
+  <script>
+  (window.VizLabs = window.VizLabs || {}).compile = function (box, V) {
+    V.head(box, 'Анимация: путь кода от текста до процессора');
+    var stages = [
+      { name: 'Исходный код', out: 'x = 2 + 3;', tip: 'Человек написал текст программы.' },
+      { name: 'Лексический анализ', out: '[x] [=] [2] [+] [3] [;]', tip: 'Текст нарезан на токены (лексемы). Синтаксис ещё не проверяли.' },
+      { name: 'Синтаксический анализ', out: 'AST: (= x (+ 2 3))', tip: 'Построена структура по правилам языка. Ошибка вроде «) без (» поймается здесь.' },
+      { name: 'Семантический анализ', out: 'типы ок, x объявлен', tip: 'Проверка смысла: типы, области видимости.' },
+      { name: 'Промежуточный код', out: 't1=2+3; x=t1', tip: 'Удобное внутреннее представление для оптимизатора.' },
+      { name: 'Оптимизация', out: 'x=5', tip: 'Свёртка констант: 2+3 посчитали заранее.' },
+      { name: 'Кодогенерация', out: 'MOV … / ADD …', tip: 'Машинные инструкции архитектуры.' },
+      { name: 'Процессор', out: 'исполнение', tip: 'Только сейчас железо реально считает.' }
+    ];
+    var holder = V.el('div'); box.appendChild(holder);
+    var msg = V.el('div', 'sa-msg'); box.appendChild(msg);
+    var ctr = V.el('div', 'sa-controls'); box.appendChild(ctr);
+    var step = V.stepper(ctr, {
+      count: function () { return stages.length; },
+      delay: 900,
+      render: function (i) {
+        var s = stages[i];
+        var html = '<div class="gate-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.4rem">';
+        stages.forEach(function (st, j) {
+          var on = j === i ? ' background:#1f5c4d;color:#fff;' : (j < i ? ' background:#e8f1ee;' : '');
+          html += '<div style="border:1px solid #e2ddd2;border-radius:8px;padding:.35rem .4rem;font-size:.82rem;' + on + '"><b>' + (j + 1) + '.</b> ' + st.name + '</div>';
+        });
+        html += '</div><p style="margin:.55rem 0 0;font-family:ui-monospace,Consolas,monospace">' + s.out + '</p>';
+        holder.innerHTML = html;
+        msg.textContent = 'Шаг ' + (i + 1) + '/' + stages.length + '. ' + s.tip;
+      }
+    });
+    step.reset();
+  };
+  </script>
+  <p class="own"><em>Как смотреть.</em> Жми «Шаг →»: на каждом этапе меняется представление программы. Для формы важно: <strong>лексер = токены</strong>, не машинный код и не «полная проверка синтаксиса».</p>
+</section>
+
+<section class="card" id="paradigms">
+  <h2>Парадигмы программирования</h2>
+  <div class="def"><strong>Парадигма</strong> — подход / стиль решения задач: как устроена и организована программа. Парадигмы — про <em>логику мышления</em> о коде. Виды трансляции — про <em>технический</em> способ превратить код в исполнение.</div>
+  <div class="def"><strong>Императивная</strong> парадигма описывает <em>как</em> сделать (шаги процесса). <strong>Декларативная</strong> — <em>что</em> должно получиться (цель / результат).</div>
+  <p class="own"><em>Своими словами.</em> Императив: «открой кран, налей воду, поставь чайник…». Декларатив: «хочу чай» — детали спрятаны. Но «под капотом» декларативного языка всё равно крутятся низкоуровневые императивные инструкции — это иллюзия удобного интерфейса, а не магия.</p>
+  <div class="ex"><strong>Пример со слайда.</strong> SQL: <code>SELECT * FROM table WHERE age &gt; 30</code> — декларативно (что выбрать). Императивно пришлось бы: читать строки по одной, проверять age, копить результат…</div>
+  <div class="fig" aria-label="Дерево парадигм">
+    <svg viewBox="0 0 560 260" width="560" height="260" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <rect x="200" y="10" width="160" height="32" rx="8" fill="#1f5c4d"/><text x="280" y="31" text-anchor="middle" fill="#fff" font-weight="700">Парадигмы</text>
+      <line x1="280" y1="42" x2="140" y2="70" stroke="#6b665c"/><line x1="280" y1="42" x2="420" y2="70" stroke="#6b665c"/>
+      <rect x="40" y="72" width="200" height="32" rx="8" fill="#8a4b1f"/><text x="140" y="93" text-anchor="middle" fill="#fff" font-weight="600">Императивные («как»)</text>
+      <rect x="320" y="72" width="200" height="32" rx="8" fill="#5b4fc7"/><text x="420" y="93" text-anchor="middle" fill="#fff" font-weight="600">Декларативные («что»)</text>
+      <line x1="90" y1="104" x2="50" y2="130" stroke="#6b665c"/><line x1="140" y1="104" x2="140" y2="130" stroke="#6b665c"/><line x1="190" y1="104" x2="230" y2="130" stroke="#6b665c"/>
+      <rect x="10" y="132" width="80" height="50" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="50" y="152" text-anchor="middle">структурная</text><text x="50" y="168" text-anchor="middle">(процедурная)</text>
+      <rect x="100" y="132" width="80" height="50" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="140" y="160" text-anchor="middle">ООП</text>
+      <rect x="190" y="132" width="80" height="50" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="230" y="152" text-anchor="middle">параллельная</text><text x="230" y="168" text-anchor="middle">обработка</text>
+      <line x1="370" y1="104" x2="340" y2="130" stroke="#6b665c"/><line x1="420" y1="104" x2="420" y2="130" stroke="#6b665c"/><line x1="470" y1="104" x2="500" y2="130" stroke="#6b665c"/>
+      <rect x="300" y="132" width="80" height="50" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="340" y="160" text-anchor="middle">логическая</text>
+      <rect x="390" y="132" width="80" height="50" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="430" y="152" text-anchor="middle">функцио‑</text><text x="430" y="168" text-anchor="middle">нальная</text>
+      <rect x="480" y="132" width="70" height="50" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="515" y="160" text-anchor="middle">БД / SQL</text>
+      <text x="280" y="220" text-anchor="middle" fill="#6b665c">Многие языки мультипарадигменны (Python: процедурный + ООП + функциональный стиль)</text>
+      <text x="280" y="242" text-anchor="middle" fill="#6b665c">схема по слайду 15</text>
+    </svg>
+    <p class="caption">Две большие ветки и типичные подгруппы (слайд 15).</p>
+  </div>
+  <div class="ex"><strong>Не‑пример для формы.</strong> Утверждение «императивная описывает результат, а декларативная — процесс» — перевёрнуто, это неверно. Верно: императивная = процесс (как), декларативная = результат (что).</div>
+</section>
+
+<section class="card" id="structural">
+  <h2>Структурная (процедурная) парадигма</h2>
+  <div class="def"><strong>Структурное программирование</strong> опирается на базовые управляющие конструкции: последовательность, <em>ветвление</em> и <em>циклы</em> — вместо хаотичных переходов <code>goto</code>. Ключевые идеи: декомпозиция и переиспользование через подпрограммы.</div>
+  <p class="own"><em>Своими словами.</em> Дейкстра («Go To Statement Considered Harmful»): <code>goto</code> позволяет прыгать куда угодно, и программа превращается в «спагетти». Структурный стиль: только понятные блоки if / while / for и вызовы функций.</p>
+  <div class="ex"><strong>Для формы.</strong> Верное утверждение: основной принцип — использование ветвлений и циклов вместо операторов перехода вроде <code>goto</code>. Неверно: «основано на объектах» (это ООП), «функции полностью изолированы» (идеализация), «всегда требует многопоточности».</div>
+  <div class="def"><strong>Функция</strong> — подпрограмма, которая может <em>возвращать</em> результат. <strong>Процедура</strong> — подпрограмма, которая функцией не является (обычно «сделай действие» без возврата значения в смысле функции).</div>
+  <div class="fig" aria-label="Функция как блок">
+    <svg viewBox="0 0 280 140" width="280" height="140" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="13">
+      <text x="140" y="18" text-anchor="middle" fill="#6b665c">INPUT x</text>
+      <line x1="140" y1="24" x2="140" y2="48" stroke="#6b665c" stroke-width="2"/>
+      <rect x="70" y="48" width="140" height="50" rx="8" fill="#e8f1ee" stroke="#1f5c4d" stroke-width="2"/>
+      <text x="140" y="78" text-anchor="middle" font-weight="700" fill="#1f5c4d">FUNCTION f</text>
+      <line x1="140" y1="98" x2="140" y2="118" stroke="#6b665c" stroke-width="2"/>
+      <text x="140" y="134" text-anchor="middle" fill="#6b665c">OUTPUT f(x)</text>
+    </svg>
+    <p class="caption">Схема со слайда 20: вход → функция → выход.</p>
+  </div>
+  <p><strong>Декомпозиция:</strong> сверху вниз (от общего к деталям) или снизу вверх (от простых функций к сложным). <strong>Переиспользование:</strong> одну подпрограмму вызывают в разных местах.</p>
+</section>
+
+<section class="card" id="oop">
+  <h2>Объектно-ориентированная парадигма</h2>
+  <div class="def"><strong>Класс</strong> — пользовательский тип / «чертёж»: свойства и методы. <strong>Объект</strong> — конкретный <em>экземпляр</em> класса, созданный по этому чертежу.</div>
+  <p class="own"><em>Своими словами.</em> Класс «Студент» описывает, что у студента есть имя и метод <code>сдать_тест()</code>. Объект — конкретный Ярослав из группы 26.Б83‑мм.</p>
+  <div class="ex"><strong>Не‑пример.</strong> «Объект — шаблон, класс — экземпляр» — перепутано. «Класс и объект — одно и то же» — тоже нет.</div>
+
+  <h3>Инкапсуляция</h3>
+  <div class="def"><strong>Инкапсуляция</strong> — объединение данных и методов работы с ними в одном месте (классе / объекте) и сокрытие деталей реализации: наружу виден интерфейс («чёрный ящик»).</div>
+  <div class="ex"><strong>Пример.</strong> Поле <code>balance</code> спрятано; снаружи только <code>deposit</code> / <code>withdraw</code>. Setter может запретить отрицательный баланс. Для формы: идея — «данные и методы в одном месте — классе», а не «класс открыт без ограничений» и не «дочерний = родитель» (это ближе к LSP / наследованию).</div>
+
+  <h3>Наследование и множественное наследование</h3>
+  <div class="def"><strong>Наследование</strong> — класс‑потомок перенимает свойства и методы родителя: переиспользование кода и иерархия типов.</div>
+  <div class="def"><strong>Множественное наследование</strong> — у класса больше одного суперкласса. Проблема: <strong>конфликт имён</strong> (один и тот же метод / поле приходит из разных родителей; «ромбовидное» наследование).</div>
+  <div class="fig" aria-label="Ромб наследования">
+    <svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="14">
+      <rect x="110" y="10" width="60" height="36" rx="8" fill="#5b4fc7"/><text x="140" y="33" text-anchor="middle" fill="#fff" font-weight="700">A</text>
+      <line x1="140" y1="46" x2="70" y2="78" stroke="#6b665c"/><line x1="140" y1="46" x2="210" y2="78" stroke="#6b665c"/>
+      <rect x="40" y="80" width="60" height="36" rx="8" fill="#8a4b1f"/><text x="70" y="103" text-anchor="middle" fill="#fff" font-weight="700">B</text>
+      <rect x="180" y="80" width="60" height="36" rx="8" fill="#8a4b1f"/><text x="210" y="103" text-anchor="middle" fill="#fff" font-weight="700">C</text>
+      <line x1="70" y1="116" x2="140" y2="148" stroke="#6b665c"/><line x1="210" y1="116" x2="140" y2="148" stroke="#6b665c"/>
+      <rect x="110" y="150" width="60" height="36" rx="8" fill="#1f5c4d"/><text x="140" y="173" text-anchor="middle" fill="#fff" font-weight="700">D</text>
+    </svg>
+    <p class="caption">Ромб со слайда 28: D наследует B и C, оба тянут A — откуда брать одноимённый метод?</p>
+  </div>
+  <p class="own"><em>Своими словами.</em> В C++ программист часто обязан явно сказать, какой родительский член брать. Python строит порядок поиска методов (C3‑линеаризация / MRO). Для формы достаточно: множественное наследование <strong>создаёт конфликт имён</strong>. Не обязательно «нарушает инкапсуляцию» или «мешает полиморфизму».</p>
+
+  <h3>Интерфейс и абстрактный класс</h3>
+  <div class="def"><strong>Интерфейс</strong> объявляет набор методов (контракт), которые класс обязан реализовать, но <em>не даёт</em> их реализаций.</div>
+  <div class="def"><strong>Абстрактный класс</strong> может содержать и абстрактные методы (без тела), и уже <em>реализованные</em> методы / свойства; часто хранит общее состояние для наследников.</div>
+  <div class="ex"><strong>Для формы.</strong> Отличие: абстрактный класс может включать реализованные методы и свойства; интерфейс — только абстрактные методы для реализации. «Это одно и то же» — неверно.</div>
+
+  <h3>Полиморфизм</h3>
+  <div class="def"><strong>Полиморфизм</strong> позволяет работать с разными классами через общий интерфейс: один и тот же вызов метода — разное поведение у разных объектов.</div>
+  <div class="ex"><strong>Пример.</strong> У <code>Dog</code> и <code>Cat</code> метод <code>speak()</code>: вызываем одинаково, слышим разное. На слайдах 42–44: команды «Свет»/«Тьма» принимают разных <code>Hero</code> через абстрактный базовый класс — иначе при статической типизации пришлось бы миллионы конструкторов под комбинации. Для формы: полиморфизм улучшает гибкость и расширяемость; это не «только для статической типизации» и не «в ООП нежелателен».</div>
+</section>
+
+<section class="card" id="declarative">
+  <h2>Декларативные парадигмы: логика и функции</h2>
+  <div class="def"><strong>Логическое программирование</strong> (Пролог): описываем <em>факты</em> и <em>правила</em>, а не пошаговый алгоритм. Программа как экспертная система: задаёшь вопрос — движок ищет доказательство (обратный вывод, возврат при неудаче).</div>
+  <div class="ex"><strong>Пример.</strong> <code>parent(john, mary).</code> и правило <code>child(X,Y) :- parent(Y,X).</code> Вопрос <code>?- child(X, john).</code> → Mary, Tom.</div>
+  <div class="def"><strong>Функциональное программирование</strong>: основные блоки — функции. <strong>Чистая функция</strong> для одних и тех же входов даёт один и тот же результат и не меняет внешнее состояние. Данные обычно <em>неизменяемы</em> (изменение = новая копия).</div>
+  <p class="own"><em>Зачем.</em> Надёжность, простое тестирование, удобнее многопоточность (нет гонок за общее изменяемое состояние).</p>
+</section>
+
+<section class="card" id="typing">
+  <h2>Типизация языков программирования</h2>
+  <div class="def"><strong>Типизация</strong> — механизм, задающий тип данным / выражениям. Делят по <em>когда</em> проверяют типы, <em>насколько строго</em>, и указываются ли типы явно.</div>
+
+  <h3>Когда: статическая и динамическая</h3>
+  <div class="def"><strong>Статическая</strong> — типы определяются / проверяются на этапе <em>компиляции</em> и дальше не «плавают». <strong>Динамическая</strong> — типы выясняются <em>во время выполнения</em>.</div>
+  <div class="fig" aria-label="Где проверяют типы">
+    <svg viewBox="0 0 520 120" width="520" height="120" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="13">
+      <rect x="20" y="40" width="90" height="40" rx="8" fill="#f0ebe3" stroke="#e2ddd2"/><text x="65" y="65" text-anchor="middle">код</text>
+      <line x1="110" y1="60" x2="150" y2="60" stroke="#6b665c" stroke-width="2"/>
+      <rect x="150" y="40" width="130" height="40" rx="8" fill="#5b4fc7"/><text x="215" y="65" text-anchor="middle" fill="#fff" font-weight="600">компиляция</text>
+      <text x="215" y="28" text-anchor="middle" fill="#c0392b" font-weight="700" font-size="11">проверка типов ЗДЕСЬ</text>
+      <text x="215" y="18" text-anchor="middle" fill="#6b665c" font-size="11">статическая</text>
+      <line x1="280" y1="60" x2="330" y2="60" stroke="#6b665c" stroke-width="2"/>
+      <rect x="330" y="40" width="130" height="40" rx="8" fill="#1f5c4d"/><text x="395" y="65" text-anchor="middle" fill="#fff" font-weight="600">выполнение</text>
+      <text x="395" y="28" text-anchor="middle" fill="#c0392b" font-weight="700" font-size="11">проверка типов ЗДЕСЬ</text>
+      <text x="395" y="18" text-anchor="middle" fill="#6b665c" font-size="11">динамическая</text>
+      <text x="480" y="65" fill="#6b665c">…</text>
+    </svg>
+    <p class="caption">Слайд 39: static = compile time, dynamic = runtime.</p>
+  </div>
+  <div class="ex"><strong>Для формы.</strong> Верно: при статической типизации проверка на этапе компиляции; при динамической — во время работы. Обратные утверждения — ложь. Примеры: C/Java — скорее статика; Python/JS — динамика.</div>
+
+  <h3>Насколько строго: сильная и слабая</h3>
+  <div class="def"><strong>Сильная</strong> типизация строго соблюдает типы и не делает «тихих» неявных преобразований несовместимых типов без явного указания. <strong>Слабая</strong> — язык сам конвертирует типы, иногда с сюрпризами.</div>
+  <div class="ex"><strong>Пример JavaScript (слабая).</strong> <code>4 + '7'</code> → <code>'47'</code> (склейка строк); <code>4 * '7'</code> → <code>28</code>; <code>2 + true</code> → <code>3</code>. Python обычно строже к таким смешениям.</div>
+  <div class="def"><strong>Ключ к форме (слайд 41).</strong> Сильная/слабая отвечают за то, <em>насколько серьёзно</em> выполняется проверка типов. Динамическая/статическая — за то, <em>когда</em> выполняется проверка. Не наоборот.</div>
+  <div class="nb-table-scroll"><table>
+    <tr><th>Ось</th><th>Вопрос</th><th>Варианты</th></tr>
+    <tr><td>static / dynamic</td><td>когда?</td><td>компиляция ↔ выполнение</td></tr>
+    <tr><td>strong / weak</td><td>насколько строго?</td><td>запрет неявных чудес ↔ автоконверсии</td></tr>
+  </table></div>
+  <p class="own"><em>Связь с ООП.</em> Без полиморфизма статическая типизация была бы «деревянной»: пришлось бы прописывать отдельный код под каждую комбинацию типов (пример с героями на слайдах 42–44).</p>
+  <p class="src"><span class="tag">из записей</span> лекция №4, 15.10.2026 · форма <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">Лекция №4 Парадигмы, трансляции, типизации</a>.</p>
+</section>
+
+<section class="card" id="cheat">
+<p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-парадигмы</code> — несколько коротких вопросов по лекции 4.</p>
 
 <h2>Что взять с собой</h2>
   <div class="cheat">
@@ -895,6 +1131,12 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
       <li>Гарвард: раздельные памяти команд/данных → дороже → массово не прижился</li>
       <li>Триггер хранит 1 бит · такт синхронизирует вентили · кэш быстрее RAM · ядер не «всегда 1» и не «всегда много»</li>
       <li>Многопоточность умнее использует ресурсы, ядра не обязательны · async ≠ parallel</li>
+      <li>Лексер → токены · синтаксис → AST · семантика → типы/области · потом IR, оптимизация, машинный код</li>
+      <li>Компилятор: весь код сразу + исполняемый файл · интерпретатор: построчно, без exe</li>
+      <li>Императив = как (шаги) · декларатив = что (цель) · структурное: ветвления/циклы вместо goto</li>
+      <li>Класс = чертёж · объект = экземпляр · инкапсуляция = данные+методы вместе · полиморфизм = один интерфейс, разное поведение</li>
+      <li>Множественное наследование → конфликт имён · абстрактный класс может иметь реализацию, интерфейс — только контракт</li>
+      <li>Static/dynamic = <em>когда</em> проверка типов · strong/weak = <em>насколько строго</em></li>
     </ul>
   </div>
 </section>
@@ -904,6 +1146,7 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 <h2>Видео по теме</h2>
   <p class="video"><a href="https://www.lektorium.tv/lecture/26234" target="_blank" rel="noopener">Лекториум — Введение в теорию информации (вероятностный подход, энтропия Шеннона)</a></p>
   <p class="video"><a href="https://www.youtube.com/watch?v=ZCOIxQTd7Gw" target="_blank" rel="noopener">CSC / «К первой паре» — Архитектура ЭВМ, лекция 1 (введение)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=E7Fbf7R3x6I" target="_blank" rel="noopener">Imperative vs Declarative Programming (коротко: «как» vs «что»)</a></p>
 </section>
 </main>
   <script src="./site.js?v=3"></script>

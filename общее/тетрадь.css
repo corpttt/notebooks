@@ -165,7 +165,7 @@ figure svg, figure img {
   font-family: "Segoe UI", system-ui, sans-serif;
 }
 html[data-theme="dark"] .fig svg text:not(.node-label),
-html[data-theme="dark"] .prose svg text:not(.node-label) {
+html[data-theme="dark"] .prose svg text:not(.node-label):not(.lab text):not(.sort-anim text) {
   fill: var(--ink);
 }
 .fig svg line, .fig svg path, .fig svg polyline, .fig svg polygon,

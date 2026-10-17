@@ -8,7 +8,8 @@
  * Built-in widgets (markup only, no JS in the notebook):
  *   <div class="sort-anim" data-algo="quick|merge" data-title="…"
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted"></div>
- *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct"></div>
+ *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur"></div>
+ *   recur: optional data-preset="cbrt7|heron|sqrt2"
  *
  * Notebook-specific widget (inline script, any order relative to viz.js):
  *   <div class="lab" data-lab="mywidget"></div>
@@ -1073,10 +1074,86 @@ window.Viz = window.Viz || {};
     draw(0);
   }
 
+  /* ---------- рекуррентная последовательность: «лестница» xₙ₊₁ = f(xₙ) ---------- */
+  var RECUR = {
+    cbrt7: { title: 'xₙ₊₁ = ∛(7xₙ), x₁ = ∛7', f: function (x) { return Math.cbrt(7 * x); },
+      fs: '∛(7x)', x1: Math.cbrt(7), lo: 0, hi: 3, L: Math.sqrt(7), Ls: '√7', n: 7 },
+    heron: { title: 'xₙ₊₁ = (xₙ + 2/xₙ)/2, x₁ = 2', f: function (x) { return (x + 2 / x) / 2; },
+      fs: '(x + 2/x)/2', x1: 2, lo: 1, hi: 2.2, L: Math.SQRT2, Ls: '√2', n: 5 },
+    sqrt2: { title: 'xₙ₊₁ = √(2 + xₙ), x₁ = 1', f: function (x) { return Math.sqrt(2 + x); },
+      fs: '√(2+x)', x1: 1, lo: 0, hi: 2.5, L: 2, Ls: '2', n: 7 }
+  };
+  function sub(n) { return String(n).replace(/\d/g, function (d) { return '₀₁₂₃₄₅₆₇₈₉'[d]; }); }
+  function labRecur(box) {
+    var key = box.getAttribute('data-preset') || 'cbrt7';
+    var title = el('div', 'sa-title'); box.appendChild(title);
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var P, S;
+    function f4(v) { return v.toFixed(4).replace('.', ','); }
+    function build() {
+      P = RECUR[key];
+      var xs = [P.x1];
+      for (var i = 1; i < P.n; i++) xs.push(P.f(xs[i - 1]));
+      var steps = [{ k: 0, xs: xs, msg: 'Рисуем график y = ' + P.fs + ' и прямую y = x. Старт: x₁ = ' + f4(P.x1) + ' (оранжевая точка на оси).' }];
+      for (var k = 1; k < xs.length; k++) {
+        steps.push({ k: k, xs: xs, msg: 'x' + sub(k + 1) + ' = f(x' + sub(k) + ') = ' + f4(xs[k]) +
+          ': вертикаль от x' + sub(k) + ' до графика, затем горизонталь до прямой y = x. ' +
+          (xs[k] > xs[k - 1] ? 'Член вырос' : 'Член уменьшился') + '; до предела осталось ' + f4(Math.abs(P.L - xs[k])) + '.' });
+      }
+      steps.push({ k: xs.length - 1, xs: xs, msg: 'Лестница упирается в пересечение графика с прямой y = x. В этой точке x = f(x), поэтому предел L = ' +
+        P.Ls + ' ≈ ' + f4(P.L) + ' — корень уравнения L = f(L). Картинка подсказывает ответ, а доказательство — монотонность + ограниченность.' });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], W = 520, H = 320, pad = 36, lo = P.lo, hi = P.hi, xs = o.xs;
+      function X(v) { return pad + (v - lo) / (hi - lo) * (W - 2 * pad); }
+      function Y(v) { return H - pad - (v - lo) / (hi - lo) * (H - 2 * pad); }
+      var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">';
+      svg += '<line x1="' + X(lo) + '" y1="' + Y(lo) + '" x2="' + X(hi) + '" y2="' + Y(lo) + '" stroke="#6b665c"/>';
+      svg += '<line x1="' + X(lo) + '" y1="' + Y(lo) + '" x2="' + X(lo) + '" y2="' + Y(hi) + '" stroke="#6b665c"/>';
+      svg += '<line x1="' + X(lo) + '" y1="' + Y(lo) + '" x2="' + X(hi) + '" y2="' + Y(hi) + '" stroke="#9a948a" stroke-dasharray="4 3"/>';
+      var pts = [];
+      for (var i = 0; i <= 120; i++) {
+        var x = lo + (hi - lo) * i / 120, y = P.f(x);
+        if (isFinite(y) && y >= lo && y <= hi) pts.push(X(x).toFixed(1) + ',' + Y(y).toFixed(1));
+      }
+      svg += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#1f5c4d" stroke-width="2.2"/>';
+      svg += '<line x1="' + X(P.L) + '" y1="' + Y(lo) + '" x2="' + X(P.L) + '" y2="' + Y(P.L) + '" stroke="#c45c26" stroke-dasharray="3 3"/>';
+      svg += txt(X(P.L), Y(lo) + 14, 'L = ' + P.Ls, ' text-anchor="middle" font-size="11" fill="#c45c26" font-weight="600"');
+      svg += '<circle cx="' + X(xs[0]) + '" cy="' + Y(lo) + '" r="4.5" fill="#e0a24a"/>';
+      svg += txt(X(xs[0]), Y(lo) + 28, 'x₁', ' text-anchor="middle" font-size="11" fill="#6b665c"');
+      for (var j = 1; j <= o.k; j++) {
+        var a = xs[j - 1], b = xs[j], col = j === o.k ? '#c45c26' : '#8a4b1f';
+        svg += '<line x1="' + X(a) + '" y1="' + Y(j === 1 ? lo : a) + '" x2="' + X(a) + '" y2="' + Y(b) + '" stroke="' + col + '" stroke-width="1.6"/>';
+        svg += '<line x1="' + X(a) + '" y1="' + Y(b) + '" x2="' + X(b) + '" y2="' + Y(b) + '" stroke="' + col + '" stroke-width="1.6"/>';
+        svg += '<circle cx="' + X(b) + '" cy="' + Y(b) + '" r="3.5" fill="' + col + '"/>';
+      }
+      svg += txt(X(hi) - 4, Y(hi) + 14, 'y = x', ' text-anchor="end" font-size="11" fill="#6b665c"');
+      svg += txt(X(lo) + 8, Y(hi) + 12, 'y = ' + P.fs, ' font-size="11" fill="#1f5c4d"');
+      holder.innerHTML = svg + '</svg>';
+      title.textContent = 'Рекуррентная последовательность «лестницей»: ' + P.title;
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + (p + 1) + ' из ' + S.length + ' · построено членов: ' + (o.k + 1);
+    }
+    S = build();
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1600 });
+    function setKey(k) { key = k; S = build(); sp.reset(); }
+    btn(ctr, '∛(7x)', function () { setKey('cbrt7'); });
+    btn(ctr, 'Герон, √2', function () { setKey('heron'); });
+    btn(ctr, '√(2+x)', function () { setKey('sqrt2'); });
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#1f5c4d"></i>график y = f(x) <i style="background:#9a948a"></i>прямая y = x <i style="background:#c45c26"></i>текущий шаг <i style="background:#8a4b1f"></i>прошлые шаги'));
+    draw(0);
+  }
+
   var LABS = {
     switches: labSwitches, gates: labGates, fulladder: labFullAdder, ripple: labRipple,
     rs: labRS, vn: labVN, timeline: labTimeline,
-    bfs: labBFS, dfs: labDFS, stackqueue: labStackQueue, epsn: labEpsN, induct: labInduct
+    bfs: labBFS, dfs: labDFS, stackqueue: labStackQueue, epsn: labEpsN, induct: labInduct,
+    recur: labRecur
   };
   var Viz = window.Viz;
   var api = {

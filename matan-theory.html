@@ -87,13 +87,14 @@ html[data-theme="dark"] {
 html[data-theme="dark"] .fig { background: #12171e; }
 .katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
 </style>
-<link rel="stylesheet" href="./общее/тетрадь.css?v=841024d8">
-<script src="./общее/тетрадь.js?v=841024d8" defer></script>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=3cbcc131">
+<script src="./общее/тетрадь.js?v=3cbcc131" defer></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
+
 
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -139,8 +140,8 @@ html[data-theme="dark"] .fig { background: #12171e; }
 <li><a href="#12-критерий-коши">МТ-§12 · Критерий Коши</a></li>
 <li><a href="#13-пределы-и-расширенная-прямая">МТ-§13 · Пределы ±∞ и расширенная прямая</a></li>
 <li><a href="#14-матан-24-09-бесконечно-большие-число-e-больцано-вейерштра">МТ-§14 · Матан 24.09: бесконечно большие, число e, Больцано–Вейерштрасс</a></li>
-<li><a href="#15-матан-предел-функции-коши-гейне">МТ-§15 · Матан: предел функции (Коши / Гейне)</a></li>
-<li><a href="#16-матан-08-10-коши-для-функций-монотонные-ln-1-x">МТ-§16 · Матан 08.10: Коши для функций, монотонные, ln(1+x)</a></li>
+<li><a href="#15-видео-трушина">МТ-§15 · Видео Трушина</a></li>
+<li><a href="#16-матан-предел-функции-коши-гейне">МТ-§16 · Матан: предел функции (Коши / Гейне)</a></li>
 </ol>
 <hr>
 <h2 id="1-язык-множеств">1. Язык множеств</h2>
@@ -777,28 +778,28 @@ $\exists a \in \mathbb{R} \forall x \in X$: $x \ge a$<br>
 <ol>
 <li><strong>b — верхняя граница:</strong> $\forall x \in X$: $x \le b$;  </li>
 <li><strong>b — наименьшая из верхних границ:</strong><br>
-   $\forall b' &lt; b\ \exists x \in X$: $x &gt; b'$<br>
-   (эквивалентно через $\varepsilon$: $\forall \varepsilon &gt; 0\ \exists x \in X$: $x &gt; b - \varepsilon$).</li>
+   $\forall b$' $&lt; b \exists x \in X$: x &gt; b'<br>
+   (эквивалентно через $\varepsilon$: $\forall \varepsilon &gt; 0 \exists x \in X$: $x &gt; b - \varepsilon$).</li>
 </ol>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Супремум</div>
-  <div class="formula-box-body">$b=\sup X\iff(\forall x\in X:\ x\le b)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x\gt b-\varepsilon)$</div>
+  <div class="formula-box-body">$b=\sup X\iff(\forall x\in X:\ x\le b)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x&gt;b-\varepsilon)$</div>
 </div>
 
 <p><em>Своими словами.</em><br>
 1) всё множество не выше b;<br>
 2) если чуть опустить крышку, она уже «не накрывает» — из-под неё торчит хоть один элемент X.</p>
-<p>Вторая формулировка через $\varepsilon$: в любой левой полуокрестности $(b - \varepsilon, b]$ обязательно есть точка из X (или сама b, если она в X).</p>
+<p>Вторая формулировка через $\varepsilon$: в любой левой полуокрестности ($b - \varepsilon, b$] обязательно есть точка из X (или сама b, если она в X).</p>
 <h4>Определение инфимума</h4>
 <p><strong>Определение.</strong> a = <strong>inf X</strong> (<em>инфимум</em>, точная нижняя грань), если:</p>
 <ol>
 <li>$\forall x \in X$: $x \ge a$ (a — нижняя граница);  </li>
-<li>$\forall a' &gt; a\ \exists x \in X$: $x &lt; a'$<br>
-   (или $\forall \varepsilon &gt; 0\ \exists x \in X$: $x &lt; a + \varepsilon$).</li>
+<li>$\forall a$' $&gt; a \exists x \in X$: x &lt; a'<br>
+   (или $\forall \varepsilon &gt; 0 \exists x \in X$: $x &lt; a + \varepsilon$).</li>
 </ol>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Инфимум</div>
-  <div class="formula-box-body">$a=\inf X\iff(\forall x\in X:\ x\ge a)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x\lt a+\varepsilon)$</div>
+  <div class="formula-box-body">$a=\inf X\iff(\forall x\in X:\ x\ge a)\ \land\ (\forall\varepsilon&gt;0\ \exists x\in X:\ x&lt;a+\varepsilon)$</div>
 </div>
 
 <p><em>Своими словами.</em> Самый высокий пол, над которым ещё лежит всё множество: чуть подними пол — уже кто-то из X окажется ниже.</p>
@@ -833,10 +834,10 @@ $\exists a \in \mathbb{R} \forall x \in X$: $x \ge a$<br>
 Если минимума нет, супремум/инфимум всё равно могут существовать.</p>
 <p><strong>Пример 1.</strong> X = {1, 2, 3}.<br>
 sup X = 3 = max X, inf X = 1 = min X.</p>
-<p><strong>Пример 2.</strong> $X = (0, 1)$ — открытый интервал.<br>
-Все элементы $&lt; 1$, но $1 \notin X$.<br>
-$\sup X = 1 \notin X$, $\inf X = 0 \notin X$.<br>
-Любое число $&gt; 1$ — тоже верхняя граница, но не точная (не наименьшая).</p>
+<p><strong>Пример 2.</strong> X = (0, 1) — открытый интервал.<br>
+Все элементы &lt; 1, но $1 \notin X$.<br>
+$sup X = 1 \notin X, inf X = 0 \notin X$.<br>
+Любое число &gt; 1 — тоже верхняя граница, но не точная (не наименьшая).</p>
 <p><strong>Пример 3 (из ролика Трушина).</strong><br>
 $X = \{ x \in \mathbb{R} | x &lt; 0 \}$ — все отрицательные.<br>
 Самого большого отрицательного нет (нет max).<br>
@@ -1227,7 +1228,7 @@ $| q^n$ (|q|&lt;1)   | 0   | (1/2)$^n = 1/2, 1/4, 1/8$, … $\to 0 | | n q^n$ (|
 $\forall \varepsilon &gt; 0 \exists N \forall m &gt; N \forall n &gt; N$: $|a_m - a_n| &lt; \varepsilon$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Критерий Коши</div>
-  <div class="formula-box-body">$\{a_n\}$ Коши $\iff\forall\varepsilon&gt;0\ \exists N\ \forall m,n&gt;N:\ |a_m-a_n|&lt;\varepsilon$  (в $\mathbb{R}$: $\Leftrightarrow$ сходится)</div>
+  <div class="formula-box-body">$\{a_n\}$ Коши $\iff$$\forall\varepsilon>0\ \exists N\ \forall m,n>N:\ |a_m-a_n|<\varepsilon$  (в $\mathbb{R}$: $\Leftrightarrow$ сходится)</div>
 </div>
 
 <p><em>Своими словами.</em> Не обязательно знать предел: хвост «сам с собой» становится сколь угодно мелким — любые два далёких члена близки друг к другу.</p>
@@ -1347,68 +1348,42 @@ $\forall$ окрестности $\omega$($\alpha$) $\exists N \forall n &gt; N$
 <p><strong>Не-пример (условие $x &gt; -1$ нужно).</strong> $x = -4, n = 3$: ($-3$)$^3 = -27$, а $1 + 3\cdot$($-4$) $= -11$. $-27 &gt; -11$ неверно.</p>
 <h3 id="14-3-число-e">14.3. Число e</h3>
 <p><strong>Теорема (о существовании числа e).</strong> Пусть</p>
-<p>$$x_n = \left(1 + \frac{1}{n}\right)^n,\qquad y_n = \left(1 + \frac{1}{n}\right)^{n+1}.$$</p>
-<p>Тогда существует $e = \lim x_n = \lim y_n$, причём $x_n &lt; e &lt; y_n$ для всех $n$; $e \approx 2{,}718\ldots$</p>
+<p>$x_n =$ (1 + 1/n)$^n, y_n =$ (1 + 1/n)$^{n+1}$.</p>
+<p>Тогда существует $e = lim x_n = lim y_n$, причём $x_n &lt; e &lt; y_n$ для всех n; $e \approx 2,718$…</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Число e</div>
-  <div class="formula-box-body">$e=\lim\left(1+\frac{1}{n}\right)^n=\lim\left(1+\frac{1}{n}\right)^{n+1}$  $x_n\lt e\lt y_n$</div>
+  <div class="formula-box-body">$e=\lim(1+1/n)^n=\lim(1+1/n)^{n+1}$  $x_n&lt;e&lt;y_n$</div>
 </div>
 
-<p><em>Своими словами.</em> $x_n$ подбирается к $e$ снизу и растёт, $y_n$ спускается к $e$ сверху и убывает. Число $e$ зажато между ними.</p>
+<p><em>Своими словами.</em> $x_n$ подбирается к e снизу и растёт, $y_n$ спускается к e сверху и убывает. e зажато между ними.</p>
 <p><strong>Пример (числа).</strong></p>
-<div class="nb-table-scroll"><table>
-<thead>
-<tr>
-<th>$n$</th>
-<th>$x_n = (1+1/n)^n$</th>
-<th>$y_n = (1+1/n)^{n+1}$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2,25</td>
-<td>3,375</td>
-</tr>
-<tr>
-<td>10</td>
-<td>$\approx 2{,}594$</td>
-<td>$\approx 2{,}853$</td>
-</tr>
-<tr>
-<td>100</td>
-<td>$\approx 2{,}705$</td>
-<td>$\approx 2{,}732$</td>
-</tr>
-</tbody>
-</table></div>
+<p>$| n | x_n =$ (1 + 1/n)$^n | y_n =$ (1 + 1/n)$^{n+1} |$<br>
+| --- | --- | --- |<br>
+| 1 | 2 | 4 |<br>
+| 2 | 2,25 | 3,375 |<br>
+$| 10 | \approx 2,594 | \approx 2,853 | | 100 | \approx 2,705 | \approx 2,732 |$</p>
 <p><em>Доказательство по шагам.</em></p>
-<p><strong>Шаг 1. $y_n &gt; x_n$.</strong> $y_n = \left(1 + \frac{1}{n}\right)\cdot x_n$, а множитель $1 + \frac{1}{n} &gt; 1$.</p>
+<p><strong>Шаг 1. $y_n &gt; x_n$.</strong> $y_n =$ (1 + 1/n)$\cdot x_n$, а множитель 1 + 1/n &gt; 1.</p>
 <p><strong>Шаг 2. $x_n$ строго возрастает.</strong> Считаем отношение:</p>
-<p>$$\frac{x_{n+1}}{x_n} = \left(\frac{n+2}{n+1}\right)^{n+1}\cdot\left(\frac{n}{n+1}\right)^n = \frac{n+2}{n+1}\cdot\left(\frac{(n+2)n}{(n+1)^2}\right)^n.$$</p>
-<p>Заметим, что $(n+2)n = n^2 + 2n = (n+1)^2 - 1$, поэтому $\dfrac{(n+2)n}{(n+1)^2} = 1 - \dfrac{1}{(n+1)^2}$.</p>
-<p>Применяем Бернулли с $x = -\dfrac{1}{(n+1)^2}$ ($x &gt; -1$, $x \neq 0$):</p>
-<p>$$\left(1 - \frac{1}{(n+1)^2}\right)^n &gt; 1 - \frac{n}{(n+1)^2} = \frac{n^2 + n + 1}{(n+1)^2}.$$</p>
+<p>$x_{n+1}/x_n =$ ((n + 2)/(n + 1))$^{n+1} \cdot$ (n/(n + 1))$^n =$ (n + 2)/(n + 1) $\cdot$ ((n + 2)n/(n + 1)$^2$)$^n$.</p>
+<p>Заметим, что (n + 2)$n = n^2 + 2n =$ (n + 1)$^2 - 1$, поэтому ((n + 2)n/(n + 1)$^2$) $= 1 - 1/$(n + 1)$^2$.</p>
+<p>Применяем Бернулли с $x = -1/$(n + 1)$^2$ ($x &gt; -1, x \neq 0$):</p>
+<p>($1 - 1/$(n + 1)$^2$)$^n &gt; 1 - n/$(n + 1)$^2 =$ ($n^2 + n + 1$)/(n + 1)$^2$.</p>
 <p>Значит,</p>
-<p>$$\frac{x_{n+1}}{x_n} &gt; \frac{n+2}{n+1}\cdot\frac{n^2+n+1}{(n+1)^2} = \frac{n^3+3n^2+3n+2}{n^3+3n^2+3n+1} &gt; 1.$$</p>
+<p>$x_{n+1}/x_n &gt;$ (n + 2)($n^2 + n + 1$)/(n + 1)$^3 =$ ($n^3 + 3n^2 + 3n + 2$)/($n^3 + 3n^2 + 3n + 1$) &gt; 1.</p>
 <p><strong>Шаг 3. $y_n$ строго убывает</strong> ($n \ge 2$). Считаем отношение предыдущего к следующему:</p>
-<p>$$\frac{y_{n-1}}{y_n} = \frac{\bigl(n/(n-1)\bigr)^n}{\bigl((n+1)/n\bigr)^{n+1}} = \left(\frac{n^2}{(n-1)(n+1)}\right)^n\cdot\frac{n}{n+1} = \left(1+\frac{1}{n^2-1}\right)^n\cdot\frac{n}{n+1}.$$</p>
-<p>Бернулли с $x = \dfrac{1}{n^2-1}$:</p>
-<p>$$\left(1+\frac{1}{n^2-1}\right)^n &gt; 1 + \frac{n}{n^2-1} = \frac{n^2+n-1}{n^2-1}.$$</p>
+<p>$y_{n-1}/y_n =$ (n/($n - 1$))$^n /$ ((n + 1)/n)$^{n+1} =$ ($n^2/$(($n - 1$)(n + 1)))$^n \cdot n/$(n + 1) = (1 + 1/($n^2 - 1$))$^n \cdot n/$(n + 1).</p>
+<p>Бернулли с x = 1/($n^2 - 1$):</p>
+<p>(1 + 1/($n^2 - 1$))$^n &gt; 1 + n/$($n^2 - 1$) = ($n^2 + n - 1$)/($n^2 - 1$).</p>
 <p>Значит,</p>
-<p>$$\frac{y_{n-1}}{y_n} &gt; \frac{n(n^2+n-1)}{(n-1)(n+1)^2} = \frac{n^3+n^2-n}{n^3+n^2-n-1} &gt; 1.$$</p>
+<p>$y_{n-1}/y_n &gt; n$($n^2 + n - 1$)/(($n - 1$)(n + 1)$^2$) = ($n^3 + n^2 - n$)/($n^3 + n^2 - n - 1$) &gt; 1.</p>
 <p><strong>Шаг 4. Ограниченность и предел.</strong> Из шагов 1–3:</p>
-<p>$$2 = x_1 &lt; x_2 &lt; \cdots &lt; x_n &lt; y_n &lt; \cdots &lt; y_2 &lt; y_1 = 4.$$</p>
-<p>$\{x_n\}$ возрастает и ограничена сверху (числом 4) $\Rightarrow$ по теореме Вейерштрасса (МТ-§11) есть предел; обозначим его $e$.<br>
+<p>$2 = x_1 &lt; x_2 &lt;$ … $&lt; x_n &lt; y_n &lt;$ … $&lt; y_2 &lt; y_1 = 4$.</p>
+<p>$\{x_n\}$ возрастает и ограничена сверху (числом 4) $\Rightarrow$ по теореме Вейерштрасса (МТ-§11) есть предел; обозначим его e.<br>
 $\{y_n\}$ убывает и ограничена снизу (числом 2) $\Rightarrow$ тоже есть предел.</p>
-<p><strong>Шаг 5. Пределы равны.</strong> $y_n = \left(1+\dfrac{1}{n}\right)\cdot x_n \Rightarrow \lim y_n = \lim\left(1+\dfrac{1}{n}\right)\cdot\lim x_n = 1\cdot e = e$.</p>
+<p><strong>Шаг 5. Пределы равны.</strong> $y_n =$ (1 + 1/n)$\cdot x_n \Rightarrow lim y_n = lim$(1 + 1/n)$\cdot lim x_n = 1\cdot e = e$.</p>
 <p><strong>Шаг 6. Строгие неравенства.</strong> $x_n &lt; x_{n+1} \le e$ (возрастающая лежит не выше своего предела) и $e \le y_{n+1} &lt; y_n$. Итак, $x_n &lt; e &lt; y_n$. ■</p>
-<p><strong>Пример к шагу 6.</strong> При $n = 10$: $2{,}594 &lt; e &lt; 2{,}853$. Уже при $n = 100$ точность $\approx 0{,}03$.</p>
+<p><strong>Пример к шагу 6.</strong> При n = 10: 2,594 &lt; e &lt; 2,853. Уже при n = 100 точность $\approx 0,03$.</p>
 <h3 id="14-4-подпоследовательности">14.4. Подпоследовательности</h3>
 <p><strong>Определение.</strong> Пусть f: $\mathbb{N} \to \mathbb{R}$ — последовательность ($x_n = f$(n)), l: $\mathbb{N} \to \mathbb{N}$ — <strong>строго возрастающая</strong>: $n &lt; m \Rightarrow l$(n) &lt; l(m). Композиция f(l): $k \mapsto f$(l(k)) называется <strong>подпоследовательностью</strong>.</p>
 <p>Обозначение: $n_k = l$(k), подпоследовательность $\{x_{n_{k}}\}_{k=1}^\infty =$ ($x_{n_{1}}, x_{n_{2}}$, …), $n_1 &lt; n_2 &lt;$ …</p>
@@ -1444,14 +1419,114 @@ $\{y_n\}$ убывает и ограничена снизу (числом 2) $\R
 <p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§14</code> — по всему блоку</p>
 </blockquote>
 <hr>
-<h2 id="15-матан-предел-функции-коши-гейне">15. Матан: предел функции (Коши / Гейне)</h2>
+<h2 id="15-видео-трушина">15. Видео Трушина</h2>
 <blockquote>
 <p>Индекс: <code>МТ-§15</code></p>
 </blockquote>
-<p><em>(Из записей Бегалиева: <a href="https://github.com/Begaliev-Kirill/SPBU/blob/master/Release/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%2010.01.2026.pdf"><code>Матан 10.01.2026.pdf</code></a> = <code>БГ-М-10.01</code>, локально <code>материалы/_архив/_бегалиев-матан/10.01.pdf</code>. Практика: <a href="практика/документ-15-практика.pdf"><code>практика/документ-15-практика.pdf</code></a>. Своими словами и примеры дополнены. Продолжение 08.10 — <code>МТ-§16</code>.)</em></p>
+<p>Новая YouTube-серия «матан». Сырые субтитры <code>#001</code>–<code>#010</code> — в <code>материалы/_архив/трушин-субтитры/</code> (вшиты в <code>МТ-§3</code>, <code>МТ-§7</code>–<code>МТ-§11</code>).<br>
+Ролики <code>#011</code>–<code>#013</code> добавлены в таблицу (автоскачивание субтитров с YouTube сейчас блокируется; темы уже разобраны в <code>МТ-§12</code> / <code>МТ-§14</code>).</p>
+<div class="nb-table-scroll"><table>
+<thead>
+<tr>
+<th>№</th>
+<th>Тема</th>
+<th>Куда в тетради</th>
+<th>Ссылка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>Множество действительных чисел</td>
+<td><code>МТ-§7</code></td>
+<td>https://www.youtube.com/watch?v=6hwENpQqKP0</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Супремум и инфимум</td>
+<td><code>МТ-§7</code></td>
+<td>https://www.youtube.com/watch?v=JlL-Tno5zvA</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Принцип вложенных отрезков</td>
+<td><code>МТ-§8</code></td>
+<td>https://www.youtube.com/watch?v=sHtEOtwxvKQ</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Принципы непрерывности</td>
+<td><code>МТ-§7</code>–<code>§8</code></td>
+<td>https://www.youtube.com/watch?v=GUHjkiFxuxo</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Счётные и несчётные</td>
+<td><code>МТ-§3</code></td>
+<td>https://www.youtube.com/watch?v=u_B36oDPtb4</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Предел последовательности</td>
+<td><code>МТ-§9</code></td>
+<td>https://www.youtube.com/watch?v=ZmwdHAhVsPM</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Пределы и неравенства</td>
+<td><code>МТ-§10</code></td>
+<td>https://www.youtube.com/watch?v=WTjfi-eqL7E</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Пределы и арифметика</td>
+<td><code>МТ-§10</code></td>
+<td>https://www.youtube.com/watch?v=aUTEZComjUw</td>
+</tr>
+<tr>
+<td>009</td>
+<td>Основные пределы</td>
+<td><code>МТ-§10</code></td>
+<td>https://www.youtube.com/watch?v=Y09Pfs2Ylx8</td>
+</tr>
+<tr>
+<td>010</td>
+<td>Монотонные; Вейерштрасс</td>
+<td><code>МТ-§11</code></td>
+<td>https://www.youtube.com/watch?v=aL145agf47s</td>
+</tr>
+<tr>
+<td>011</td>
+<td>Число e</td>
+<td><code>МТ-§14</code></td>
+<td>https://www.youtube.com/watch?v=4kYSQmJ8pMM</td>
+</tr>
+<tr>
+<td>012</td>
+<td>Больцано–Вейерштрасс, подпоследовательности</td>
+<td><code>МТ-§14</code></td>
+<td>https://www.youtube.com/watch?v=HNSjOIGiUxQ</td>
+</tr>
+<tr>
+<td>013</td>
+<td>Критерий Коши</td>
+<td><code>МТ-§12</code></td>
+<td>https://www.youtube.com/watch?v=m7i30nUCyQk</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§15</code> — по всему блоку</p>
+</blockquote>
+<hr>
+<h2 id="16-матан-предел-функции-коши-гейне">16. Матан: предел функции (Коши / Гейне)</h2>
+<blockquote>
+<p>Индекс: <code>МТ-§16</code></p>
+</blockquote>
+<p><em>(Практика / конспект: <a href="практика/документ-15-практика.pdf"><code>практика/документ-15-практика.pdf</code></a>. Определения и доказательства — из записей; примеры и «своими словами» — дополнено.)</em></p>
 <p><em>Что уже должно быть прочитано.</em> Предел последовательности — <code>МТ-§9</code>–<code>МТ-§10</code>; ±∞ — <code>МТ-§13</code>.</p>
-<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — предел функции (Коши / Гейне)</a>.</p>
-<h3 id="15-1-окрестности-и-точка-прикосновения">15.1. Окрестности и точка прикосновения</h3>
+<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — определение предела функции по Коши и эквивалентность с Гейне</a>.</p>
+<h3 id="16-1-окрестности-и-точка-прикосновения">16.1. Окрестности и точка прикосновения</h3>
 <p>Пусть $E \subset \mathbb{R}, a \in \mathbb{R}$̄ (расширенная прямая: число или $\pm \infty$). Говорят, что a — <strong>точка прикосновения</strong> множества E (из E можно подойти к a, оставаясь в E и не обязательно попадая в a), если в любой окрестности a есть точка множества E, отличная от a (когда a конечно).</p>
 <p>Удобные «стандартные» окрестности:</p>
 <ul>
@@ -1462,7 +1537,7 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 <p><em>Своими словами.</em> Чтобы говорить $lim_\{x\to a\} f$(x), нужно, чтобы к a можно было <strong>приблизиться по точкам из области</strong> E, не считая саму точку a (значение f(a) для предела неважно).</p>
 <p><strong>Пример.</strong> E = (0, 1], a = 0: к нулю подходим справа по точкам $E \Rightarrow$ предел при $x \to 0$ имеет смысл.<br>
 <strong>Не-пример.</strong> E = {2}, a = 2: в проколотой окрестности 2 точек из E нет — про предел f(x) при $x \to 2$ по E говорить нельзя.</p>
-<h3 id="15-2-определение-предела-окрестности-и-ε-δ">15.2. Определение предела (окрестности и ε–δ)</h3>
+<h3 id="16-2-определение-предела-окрестности-и-ε-δ">16.2. Определение предела (окрестности и ε–δ)</h3>
 <p><strong>Определение (общее).</strong> f: $E \to \mathbb{R}, a \in \mathbb{R}$̄, $A \in \mathbb{R}$̄. Пишут $lim_\{x\to a\} f$(x) = A (или f(x) $\to A$ при $x \to a$), если</p>
 <p>$\forall$ окрестности G(A) $\exists$ окрестность $\omega$(a): $\forall x \in \omega$(a) $\cap E, x \neq a \Rightarrow f$(x) $\in G$(A).</p>
 <p><em>Своими словами.</em> Хочешь попасть f(x) в любую «мишень» вокруг A — найди достаточно узкую «зону» вокруг a (без самой a), где это уже гарантировано.</p>
@@ -1474,12 +1549,12 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 
 <p><strong>Пример.</strong> f(x) = 3x + 1, a = 2, A = 7. |f(x) $- 7| = |3x - 6| = 3|x - 2|$. Чтобы это было $&lt; \varepsilon$, достаточно $\delta = \varepsilon /3$.</p>
 <p><strong>Предел $+\infty$.</strong> f(x) $\to +\infty$ при $x \to a$ значит: $\forall M \exists \delta &gt; 0$: $0 &lt; |x - a| &lt; \delta, x \in E \Rightarrow f$(x) &gt; M (и аналогично для других комбинаций с $\pm \infty$).</p>
-<h3 id="15-3-локальная-ограниченность">15.3. Локальная ограниченность</h3>
+<h3 id="16-3-локальная-ограниченность">16.3. Локальная ограниченность</h3>
 <p><strong>Утверждение.</strong> Если f(x) $\to A \in \mathbb{R}$ при $x \to a$, то f локально ограничена: $\exists$ окрестность $\omega_0$(a) и C &gt; 0 такие, что $\forall x \in \omega_0$(a) $\cap E, x \neq a$ выполняется |f(x)$| \le C$.</p>
 <p><em>Доказательство.</em> Возьмём $\varepsilon = 1$. Есть $\delta$: при $0 &lt; |x - a| &lt; \delta$ имеем |f(x) $- A| &lt; 1 \Rightarrow |f$(x)$| \le |f$(x) $- A| + |A| &lt; 1 + |A|$. Полагаем C = 1 + |A|. ■</p>
 <p><strong>Пример.</strong> f(x) $= 1/x \to 1$ при $x \to 1$; около 1 функция ограничена, например на (1/2, 3/2) \ {1}.<br>
 <strong>Не-пример глобальности.</strong> f(x) = 1/x при $x \to 0$ <strong>не</strong> имеет конечного предела — и около 0 не ограничена.</p>
-<h3 id="15-4-определение-по-гейне-и-эквивалентность">15.4. Определение по Гейне и эквивалентность</h3>
+<h3 id="16-4-определение-по-гейне-и-эквивалентность">16.4. Определение по Гейне и эквивалентность</h3>
 <p><strong>Определение (Гейне).</strong> f(x) $\to A$ при $x \to a$ тогда и только тогда, когда для <strong>любой</strong> последовательности $\{x_n\} \subset E, x_n \neq a, x_n \to a$ выполняется f($x_n$) $\to A$.</p>
 <div class="formula-box" role="note">
   <div class="formula-box-label">Гейне</div>
@@ -1490,11 +1565,11 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 <p><strong>Идея доказательства «Гейне $\Rightarrow$ Коши» (от противного, из записей).</strong> Пусть неверно, что $f \to A$ по Коши. Тогда $\exists$ окрестность $G_0$(A) такая, что для каждой стандартной окрестности $\omega_n$(a) найдётся точка $x_n$′ $\in E \cap \omega_n$(a), $x_n$′ $\neq a$, с f($x_n$′) $\notin G_0$(A). Тогда $x_n$′ $\to a$, но f($x_n$′) не стремится к A — противоречие определению по Гейне.</p>
 <p><strong>Пример.</strong> f(x) = x sin(1/x) при $x \to 0$ (доопределять в 0 не нужно). По любой $x_n \to 0$: |f($x_n$)$| \le |x_n| \to 0 \Rightarrow f$($x_n$) $\to 0$. По Гейне предел 0; по Коши то же с $\delta = \varepsilon$.</p>
 <p><strong>Не-пример.</strong> f(x) = sin(1/x) при $x \to 0$: возьми $x_n = 1/$($\pi /2 + 2\pi n$) и $y_n = 1/$($\pi + 2\pi n$) — f($x_n$) = 1, f($y_n$) = 0, оба $\to 0$ по аргументу, пределы значений разные $\Rightarrow$ предела нет.</p>
-<h3 id="15-5-единственность-предела">15.5. Единственность предела</h3>
+<h3 id="16-5-единственность-предела">16.5. Единственность предела</h3>
 <p><strong>Свойство.</strong> Если f(x) $\to A$ и f(x) $\to B$ при $x \to a$, то A = B.</p>
 <p><em>Идея доказательства из записей (через Гейне).</em> Если $A \neq B$, возьмём две последовательности $x_n \to a$ и $x_n$′ $\to a$ с f($x_n$) $\to A, f$($x_n$′) $\to B$. Составим «шахматную» $t_{2n-1} = x_n, t_{2n} = x_n$′: тогда $t_n \to a$, значит f($t_n$) должен сходиться к одному числу C. Но тогда и A, и B обязаны совпасть с C (иначе $\varepsilon = |A - B|/4$ даёт противоречие треугольником). Значит A = B.</p>
 <p><strong>Пример.</strong> Нельзя одновременно иметь lim = 2 и lim = 3.</p>
-<h3 id="15-6-арифметика-и-неравенства">15.6. Арифметика и неравенства</h3>
+<h3 id="16-6-арифметика-и-неравенства">16.6. Арифметика и неравенства</h3>
 <p>Если f(x) $\to A, g$(x) $\to B$ (конечные пределы), то</p>
 <ul>
 <li>lim (f + g) = A + B;</li>
@@ -1504,107 +1579,7 @@ $- -\infty$: $\omega_n$($-\infty$) = ($-\infty, -n$).</li>
 </ul>
 <p>Если f(x) $\le g$(x) в проколотой окрестности a и пределы конечны, то $lim f \le lim g$.</p>
 <p><em>Своими словами.</em> Те же правила, что для последовательностей (МТ-§10), только «хвост» заменяется на «дырку вокруг a».</p>
-<p><strong>Пример.</strong> $\lim_{x\to 2}\dfrac{x^2-4}{x-2}=\lim_{x\to 2}(x+2)=4$ (сократили при $x\neq 2$).</p>
-<hr>
-<blockquote>
-<p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§15</code> — по всему блоку</p>
-</blockquote>
-<hr>
-<h2 id="16-матан-08-10-коши-для-функций-монотонные-ln-1-x">16. Матан 08.10: Коши для функций, монотонные, ln(1+x)</h2>
-<blockquote>
-<p>Индекс: <code>МТ-§16</code></p>
-</blockquote>
-<p><em>(Фото доски: <a href="08.10-матан.pdf"><code>08.10-матан.pdf</code></a> — в файле кадры вразнобой, ниже порядок </em><em>логический</em><em> по номерам на доске и смыслу. В репозитории Бегалиева на момент разбора есть только до <a href="https://github.com/Begaliev-Kirill/SPBU/tree/master/Release/%D0%9C%D0%B0%D1%82%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7"><code>Матан 10.01.2026.pdf</code></a> (<code>БГ-М-10.01</code> ≈ <code>МТ-§15</code>); файла <code>Матан 10.08.2026.pdf</code> ещё нет. Своими словами, примеры и склейка шагов — дополнены.)</em></p>
-<p><em>Что уже должно быть прочитано.</em> Предел функции — <code>МТ-§15</code>; число $e$ — <code>МТ-§14</code>; критерий Коши для последовательностей — <code>МТ-§12</code>.</p>
-<p>Видео: <a href="https://teach-in.ru/lecture/10-24-Shaposhnikov">МГУ, Шапошников — Лекция 15. Замечательные пределы</a> (в т.ч. второй замечательный / следствия с $\ln$).</p>
-<h3 id="16-1-критерий-коши-для-предела-функции">16.1. Критерий Коши для предела функции</h3>
-<p><strong>Теорема.</strong> Пусть $E\subset\mathbb{R}$, $\alpha\in\overline{\mathbb{R}}$ — точка сгущения $E$, $f:E\to\mathbb{R}$. Конечный предел $\lim_{x\to\alpha}f(x)$ существует тогда и только тогда, когда</p>
-<p>$$\forall\varepsilon&gt;0\ \exists\,\omega(\alpha):\ \forall x_1,x_2\in E\cap\omega(\alpha),\ x_1\neq\alpha,\ x_2\neq\alpha\qquad |f(x_1)-f(x_2)|&lt;\varepsilon.$$</p>
-<div class="formula-box" role="note">
-  <div class="formula-box-label">Коши для функций</div>
-  <div class="formula-box-body">$\exists\lim_{x\to\alpha}f(x)\in\mathbb{R}\iff$ значения $f$ «почти постоянны» в достаточно узкой проколотой окрестности $\alpha$</div>
-</div>
-
-<p><em>Своими словами.</em> Как у последовательностей: предел конечен $\iff$ любые два значения $f$ на хвосте (здесь — в маленькой дырке вокруг $\alpha$) отличаются меньше чем на $\varepsilon$. Саму точку $\alpha$ не трогаем.</p>
-<p><strong>Необходимость (из записей).</strong> Пусть $f(x)\to A\in\mathbb{R}$. Возьмём $\varepsilon&gt;0$ и найдём $\omega(\alpha)$ так, что при $x\in\omega(\alpha)\cap E$, $x\neq\alpha$ выполняется $|f(x)-A|&lt;\varepsilon/2$. Тогда для любых двух таких $x_1,x_2$:</p>
-<p>$$|f(x_2)-f(x_1)|=\bigl|(f(x_2)-A)-(f(x_1)-A)\bigr|\le |f(x_2)-A|+|f(x_1)-A|&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$</p>
-<p><strong>Достаточность (идея через Гейне, из записей).</strong> Пусть условие Коши выполнено. Возьмём любую $\{x_n\}\subset E$, $x_n\neq\alpha$, $x_n\to\alpha$. Для $\varepsilon&gt;0$ есть $\omega(\alpha)$ из условия; с некоторого $N$ все $x_n$ лежат в $\omega(\alpha)\cap E$. Тогда при $m,n&gt;N$ имеем $|f(x_m)-f(x_n)|&lt;\varepsilon$, то есть $\{f(x_n)\}$ — последовательность Коши и сходится в $\mathbb{R}$. По Гейне (МТ-§15) предел $f$ при $x\to\alpha$ существует и конечен.</p>
-<p><strong>Пример.</strong> $f(x)=x$ при $x\to 0$: в $\omega=(-\varepsilon/2,\varepsilon/2)$ любые два значения отличаются меньше чем на $\varepsilon$.<br>
-<strong>Не-пример.</strong> $f(x)=\sin(1/x)$ при $x\to 0$: в любой дырке около $0$ есть точки с $f=1$ и с $f=-1$, разность $=2$ — критерий Коши нарушен, предела нет.</p>
-<h3 id="16-2-предел-монотонной-функции">16.2. Предел монотонной функции</h3>
-<p>Пусть $E\subset\mathbb{R}$, $\alpha\in\overline{\mathbb{R}}$ — точка сгущения $E$, и $\forall x\in E$ выполняется $x&lt;\alpha$ (подходим к $\alpha$ <strong>слева</strong>). Функция $f:E\to\mathbb{R}$ <strong>возрастает</strong> (нестрого: $x_1&lt;x_2\Rightarrow f(x_1)\le f(x_2)$).</p>
-<p><strong>Теорема (возрастающая слева от $\alpha$).</strong> Тогда существует $\lim_{x\to\alpha}f(x)\in\overline{\mathbb{R}}$. Причём</p>
-<ul>
-<li>предел <strong>конечен</strong> $\iff$ $f$ ограничена сверху на $E$: $\exists M\in\mathbb{R}\ \forall x\in E:\ f(x)\le M$;</li>
-<li>если $B=\sup\{f(x):x\in E\}\in\mathbb{R}$, то $\lim_{x\to\alpha}f(x)=B$ и $\forall x\in E:\ f(x)\le B$.</li>
-</ul>
-<div class="formula-box" role="note">
-  <div class="formula-box-label">Монотонная → предел</div>
-  <div class="formula-box-body">$f$ возр. слева от $\alpha$ $\Rightarrow$ $\exists\lim_{x\to\alpha}f(x)\in\overline{\mathbb{R}}$; конечен $\iff$ огр. сверху</div>
-</div>
-
-<p><em>Своими словами.</em> Возрастающая функция «ползёт вверх» к $\alpha$; ей некуда дёргаться — остаётся упереться в супремум значений (или уйти в $+\infty$, если сверху нет крышки). Это аналог теоремы Вейерштрасса для последовательностей (МТ-§11), только «номер $n$» заменён на «точку $x$ ближе к $\alpha$».</p>
-<p><em>Доказательство по шагам (из записей, склеено).</em></p>
-<p><strong>Шаг 1. Образ ограничен сверху $\Rightarrow$ есть $B=\sup G$.</strong> Пусть $G=\{y\in\mathbb{R}:\exists x\in E,\ f(x)=y\}$ — множество значений. Если $f$ ограничена сверху, то $B=\sup G\in\mathbb{R}$.</p>
-<p><strong>Шаг 2. Покажем $f(x)\to B$.</strong> Возьмём $\varepsilon&gt;0$. Число $B-\varepsilon$ <strong>не</strong> верхняя граница $G$, значит $\exists x_0\in E$ с $f(x_0)&gt;B-\varepsilon$. Положим $\delta=\alpha-x_0&gt;0$ (случай $\alpha\in\mathbb{R}$) и $\omega(\alpha)=(\alpha-\delta,\alpha+\delta)$. Тогда для $x\in E\cap\omega(\alpha)$, $x\neq\alpha$ автоматически $x_0&lt;x&lt;\alpha$ (мы подходим слева), и по возрастанию</p>
-<p>$$B-\varepsilon &lt; f(x_0)\le f(x)\le B &lt; B+\varepsilon,$$</p>
-<p>то есть $|f(x)-B|&lt;\varepsilon$. ■</p>
-<p><strong>Шаг 3. Если сверху не ограничена.</strong> Тогда для любого $M$ найдётся $x_0$ с $f(x_0)&gt;M$; в левой полуокрестности правее $x_0$ все значения ещё больше — значит $f(x)\to+\infty$.</p>
-<p><strong>Пример.</strong> $E=(0,1)$, $\alpha=1$, $f(x)=x$: возрастает, ограничена сверху, $\lim_{x\to 1^-}f(x)=1=\sup E$ по значениям.<br>
-<strong>Пример без конечного предела.</strong> $E=(0,+\infty)$, $\alpha=+\infty$ в роли «крышки справа» / или $\beta=0$ слева для $f(x)=1/x$ на $(0,1]$: убывает к $+\infty$ при $x\to 0^+$ — предел в $\overline{\mathbb{R}}$ есть, но не в $\mathbb{R}$.</p>
-<p><strong>Случай убывающей.</strong> Если $g$ убывает слева от $\alpha$, то $\exists\lim g\in\overline{\mathbb{R}}$; предел конечен $\iff$ $g$ ограничена снизу; тогда $\lim g=\inf$ значений и $g(x)\ge\lim g$.</p>
-<p><strong>Случай подхода справа / снизу.</strong> Если $\beta$ — нижняя грань (все $x\in E$ удовлетворяют $x&gt;\beta$) и $f$ возрастает, то $\exists\lim_{x\to\beta}f(x)\in\overline{\mathbb{R}}$; конечен $\iff$ ограничена снизу.</p>
-<p><strong>Сведение через минус.</strong> Убывание $g$ сводится к возрастанию $f=-g$ (как для последовательностей в МТ-§11).</p>
-<h3 id="16-3-неравенства-для-ln-1-x-из-числа-e">16.3. Неравенства для $\ln(1+x)$ из числа $e$</h3>
-<p>Напоминание из МТ-§14: $2&lt;e&lt;3$ и</p>
-<p>$$\Bigl(1+\frac{1}{n}\Bigr)^n &lt; e &lt; \Bigl(1+\frac{1}{n}\Bigr)^{n+1}.$$</p>
-<p>Логарифмируем (строго возрастающий $\ln$) и делим на положительные множители:</p>
-<p>$$\frac{1}{n+1} &lt; \ln\Bigl(1+\frac{1}{n}\Bigr) &lt; \frac{1}{n}.\tag{1}$$</p>
-<p><em>Своими словами.</em> $\ln(1+1/n)$ зажат между двумя соседними единичными дробями — чуть меньше $1/n$ и чуть больше $1/(n+1)$.</p>
-<h4>Случай $x&gt;0$</h4>
-<p>Пусть $0&lt;x\le 1$. Выберем $n\in\mathbb{N}$ так, что</p>
-<p>$$\frac{1}{n+1}&lt;x\le\frac{1}{n}\iff n\le\frac{1}{x}&lt;n+1.$$</p>
-<p>Тогда $1+x\le 1+1/n$, и из монотонности $\ln$ плюс $(1)$:</p>
-<p>$$\ln(1+x)\le\ln\Bigl(1+\frac{1}{n}\Bigr)&lt;\frac{1}{n}.$$</p>
-<p>Из $n&gt;1/x-1$ (точнее $1/x-1&lt;n$) получаем $1/n&lt;1/(1/x-1)=x/(1-x)$, значит</p>
-<p>$$\ln(1+x)&lt;\frac{x}{1-x}.\tag{4}$$</p>
-<p>Нижняя оценка: $x&gt;1/(n+1)\Rightarrow 1+x&gt;1+1/(n+1)$,</p>
-<p>$$\ln(1+x)&gt;\ln\Bigl(1+\frac{1}{n+1}\Bigr)\ge\frac{1}{n+2}$$</p>
-<p>(второе — снова $(1)$ со сдвигом номера). А $n\le 1/x\Rightarrow n+2\le 1/x+2$, откуда $1/(n+2)\ge 1/(1/x+2)=x/(1+2x)$. Итого</p>
-<p>$$\frac{x}{1+2x}&lt;\ln(1+x)&lt;\frac{x}{1-x}\qquad (0&lt;x\le\tfrac12\text{ достаточно; на доске — в зоне, где знаменатели }&gt;0).\tag{6}$$</p>
-<p><strong>Пример.</strong> $x=0{,}1$: $0{,}1/1{,}2\approx 0{,}083$, $\ln(1{,}1)\approx 0{,}095$, $0{,}1/0{,}9\approx 0{,}111$ — неравенство $(6)$ выполняется.</p>
-<h4>Случай $x&lt;0$</h4>
-<p>Пусть $x\in[-1/3,0)$. Положим $y=-x/(1+x)$. Тогда $1+y=1/(1+x)$, откуда</p>
-<p>$$\ln(1+x)=-\ln(1+y),\qquad 0&lt;y\le\frac12.$$</p>
-<p>Подставляем в уже доказанное для $y&gt;0$ и аккуратно меняем знаки (домножение на $-1$ переворачивает неравенства). После алгебры (на доске шаги $(9)$–$(11)$: выражения вида $-y/(1-y)=-x/(1-x)$ и $-y/(1+2y)=-x/(1+2x)$) снова получается</p>
-<p>$$\frac{x}{1+2x}&lt;\ln(1+x)&lt;\frac{x}{1-x},\qquad x\in\Bigl[-\frac13,\frac12\Bigr],\ x\neq 0.\tag{12}$$</p>
-<h4>Единая форма через $|x|$</h4>
-<p>Деля $(12)$ на $x$ (с учётом знака) и оценивая грубее через $|x|$, на доске получают удобный «симметричный» зажим:</p>
-<p>$$\frac{1}{1+2|x|}&lt;\frac{\ln(1+x)}{x}&lt;\frac{1}{1-2|x|}$$</p>
-<p>при достаточно малых $x\neq 0$ (чтобы $1-2|x|&gt;0$, то есть $|x|&lt;1/2$).</p>
-<div class="formula-box" role="note">
-  <div class="formula-box-label">Оценка для $\ln$</div>
-  <div class="formula-box-body">$\dfrac{1}{1+2|x|}\lt\dfrac{\ln(1+x)}{x}\lt\dfrac{1}{1-2|x|}$ ($0\lt |x|\lt 1/2$)</div>
-</div>
-
-<p><strong>Не-пример области.</strong> При $x=0{,}6$ знаменатель $1-x=0{,}4$ ещё положителен, но форма с $1-2|x|$ уже ломается ($1-1{,}2&lt;0$) — поэтому в единой записи держат $|x|&lt;1/2$.</p>
-<h3 id="16-4-предел-ln-1-x-x-и-символ-o">16.4. Предел $\ln(1+x)/x$ и символ $o$</h3>
-<p><strong>Теорема.</strong> $\displaystyle\lim_{x\to 0}\frac{\ln(1+x)}{x}=1$.</p>
-<p><em>Доказательство.</em> При $0&lt;|x|&lt;1/2$ обе «стенки» $1/(1+2|x|)$ и $1/(1-2|x|)$ стремятся к $1$ при $x\to 0$. По теореме о двух милиционерах (МТ-§10 / для функций — МТ-§15) зажатая между ними $\ln(1+x)/x$ тоже $\to 1$. ■</p>
-<p><strong>Пример.</strong> $x=0{,}01$: $\ln(1{,}01)/0{,}01\approx 0{,}995\to 1$. $x=-0{,}01$: $\ln(0{,}99)/(-0{,}01)\approx 1{,}005\to 1$.</p>
-<h4>Бесконечно малые и $o$-малое</h4>
-<p><strong>Определение.</strong> Пусть $\alpha$ — точка сгущения $E$, $f:E\to\mathbb{R}$. Говорят, что $f$ <strong>бесконечно малая</strong> при $x\to\alpha$, если $f(x)\to 0$. Функция $g$ <strong>бесконечно большая</strong>, если $|g(x)|\to+\infty$ (при $g(x)\neq 0$ тогда $1/g$ — бесконечно малая).</p>
-<p><strong>Определение.</strong> $h(x)=o\bigl(l(x)\bigr)$ при $x\to\alpha$, если существует бесконечно малая $\varphi$ такая, что $h(x)=\varphi(x)\,l(x)$ (в проколотой окрестности $\alpha$). Эквивалентно (когда $l(x)\neq 0$): $h(x)/l(x)\to 0$.</p>
-<p><em>Своими словами.</em> «$h$ есть $o(l)$» = «$h$ пренебрежимо мала по сравнению с $l$»: отношение $h/l$ сжимается к нулю.</p>
-<p><strong>Пример.</strong> Из предела выше: $\dfrac{\ln(1+x)}{x}-1\to 0$, то есть $\ln(1+x)-x=o(x)$ при $x\to 0$. Пишут также $\ln(1+x)=x+o(x)$.</p>
-<p><strong>Не-пример.</strong> $x$ не есть $o(x)$ при $x\to 0$: отношение $x/x=1\not\to 0$. А $x^2=o(x)$ — да, $x^2/x=x\to 0$.</p>
-<h3 id="что-взять-с-собой">Что взять с собой</h3>
-<ul>
-<li>Конечный $\lim f$ $\iff$ критерий Коши: любые два значения $f$ в узкой дырке около $\alpha$ близки.</li>
-<li>Монотонная у точки сгущения $\Rightarrow$ предел в $\overline{\mathbb{R}}$; конечен $\iff$ есть подходящая ограниченность (сверху / снизу).</li>
-<li>Из $e$ следует зажим для $\ln(1+1/n)$, затем для $\ln(1+x)$, затем $\ln(1+x)/x\to 1$.</li>
-<li>$\ln(1+x)=x+o(x)$ при $x\to 0$.</li>
-</ul>
+<p><strong>Пример.</strong> $lim_\{x\to 2\}$ ($x^2 - 4$)/($x - 2$) $= lim_\{x\to 2\}$ (x + 2) = 4 (сократили при $x \neq 2$).</p>
 <hr>
 <blockquote>
 <p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МТ-§16</code> — по всему блоку</p>
