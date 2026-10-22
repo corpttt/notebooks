@@ -9,7 +9,7 @@
  *   <div class="sort-anim" data-algo="quick|merge" data-title="…"
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted"></div>
  *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur"></div>
- *   recur: optional data-preset="cbrt7|heron|sqrt2"
+ *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"
  *
  * Notebook-specific widget (inline script, any order relative to viz.js):
  *   <div class="lab" data-lab="mywidget"></div>
@@ -1081,7 +1081,11 @@ window.Viz = window.Viz || {};
     heron: { title: 'xₙ₊₁ = (xₙ + 2/xₙ)/2, x₁ = 2', f: function (x) { return (x + 2 / x) / 2; },
       fs: '(x + 2/x)/2', x1: 2, lo: 1, hi: 2.2, L: Math.SQRT2, Ls: '√2', n: 5 },
     sqrt2: { title: 'xₙ₊₁ = √(2 + xₙ), x₁ = 1', f: function (x) { return Math.sqrt(2 + x); },
-      fs: '√(2+x)', x1: 1, lo: 0, hi: 2.5, L: 2, Ls: '2', n: 7 }
+      fs: '√(2+x)', x1: 1, lo: 0, hi: 2.5, L: 2, Ls: '2', n: 7 },
+    half: { title: 'xₙ₊₁ = (xₙ + 2)/2, x₁ = 1', f: function (x) { return (x + 2) / 2; },
+      fs: '(x + 2)/2', x1: 1, lo: 0, hi: 2.5, L: 2, Ls: '2', n: 7 },
+    p68: { title: 'xₙ₊₁ = 1/(4(1 − xₙ)), x₁ = 0', f: function (x) { return 1 / (4 * (1 - x)); },
+      fs: '1/(4(1−x))', x1: 0, lo: 0, hi: 0.6, L: 0.5, Ls: '1/2', n: 8 }
   };
   function sub(n) { return String(n).replace(/\d/g, function (d) { return '₀₁₂₃₄₅₆₇₈₉'[d]; }); }
   function labRecur(box) {
@@ -1144,6 +1148,8 @@ window.Viz = window.Viz || {};
     btn(ctr, '∛(7x)', function () { setKey('cbrt7'); });
     btn(ctr, 'Герон, √2', function () { setKey('heron'); });
     btn(ctr, '√(2+x)', function () { setKey('sqrt2'); });
+    btn(ctr, '(x+2)/2', function () { setKey('half'); });
+    btn(ctr, '1/(4(1−x))', function () { setKey('p68'); });
     box.appendChild(el('div', 'sa-legend',
       '<i style="background:#1f5c4d"></i>график y = f(x) <i style="background:#9a948a"></i>прямая y = x <i style="background:#c45c26"></i>текущий шаг <i style="background:#8a4b1f"></i>прошлые шаги'));
     draw(0);
