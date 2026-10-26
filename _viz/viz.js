@@ -6,10 +6,13 @@
  *   <script src="../_viz/viz.js" defer></script>
  *
  * Built-in widgets (markup only, no JS in the notebook):
- *   <div class="sort-anim" data-algo="quick|merge" data-title="…"
- *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted"></div>
- *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur"></div>
+ *   <div class="sort-anim" data-algo="quick|merge|insertion" data-title="…"
+ *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted,reversed"></div>
+ *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur
+ *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec"></div>
+ *   heap: optional data-mode="ops|sort"
  *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"
+ *   bisect: optional data-preset="sq2|cub|cos"
  *
  * Notebook-specific widget (inline script, any order relative to viz.js):
  *   <div class="lab" data-lab="mywidget"></div>
@@ -120,8 +123,49 @@ window.Viz = window.Viz || {};
     return steps;
   }
 
+  function insertionSteps(src) {
+    var a = src.slice(), steps = [], cmp = 0, swaps = 0;
+    function snap(o) {
+      var st = { arr: a.slice(), cmp: cmp, swaps: swaps };
+      for (var k in o) st[k] = o[k];
+      steps.push(st);
+    }
+    snap({ sorted: 1, msg: 'Исходный массив. Префикс из одного элемента ' + fmt(a[0]) +
+      ' уже отсортирован. Нажми «▶» или «Шаг →».' });
+    for (var i = 1; i < a.length; i++) {
+      var j = i;
+      snap({ sorted: i, cur: j, msg: 'Берём ' + fmt(a[j]) + ' (позиция ' + i +
+        ') и двигаем влево, пока сосед слева больше него.' });
+      while (j > 0) {
+        cmp++;
+        if (a[j - 1].v > a[j].v) {
+          var big = a[j - 1];
+          a[j - 1] = a[j]; a[j] = big; swaps++; j--;
+          snap({ sorted: i + 1, cur: j, msg: 'Слева стоял ' + fmt(big) + ' — он больше ' + fmt(a[j]) +
+            ' → swap. ' + fmt(a[j]) + ' теперь на позиции ' + j + '.' });
+        } else {
+          snap({ sorted: i + 1, cur: j, msg: 'Сосед слева ' + fmt(a[j - 1]) + ' не больше ' + fmt(a[j]) +
+            ' → стоп, элемент на месте. Отсортирован префикс длины ' + (i + 1) + '.' });
+          break;
+        }
+      }
+      if (j === 0) {
+        snap({ sorted: i + 1, cur: 0, msg: fmt(a[0]) + ' дошёл до начала — он меньше всех левее. ' +
+          'Отсортирован префикс длины ' + (i + 1) + '.' });
+      }
+    }
+    snap({ all: true, msg: 'Готово. Сравнений: ' + cmp + ', обменов: ' + swaps +
+      '. Обменов ровно столько, сколько пар стояло «не по порядку» (инверсий).' });
+    return steps;
+  }
+
   function classFor(st, k, algo) {
     if (st.all) return 'done';
+    if (algo === 'insertion') {
+      if (k === st.cur) return 'cur';
+      if (st.sorted !== undefined && k < st.sorted) return 'less';
+      return '';
+    }
     if (algo === 'quick') {
       if (k === st.pivot) return 'pivot';
       if (st.done && st.done[k]) return 'done';
@@ -146,6 +190,11 @@ window.Viz = window.Viz || {};
     for (var i = 0; i < n; i++) r.push({ v: i + 1, l: '', id: i });
     return r;
   }
+  function reversedItems(n) {
+    var r = [];
+    for (var i = 0; i < n; i++) r.push({ v: n - i, l: '', id: i });
+    return r;
+  }
 
   function init(box) {
     var algo = box.dataset.algo;
@@ -161,7 +210,9 @@ window.Viz = window.Viz || {};
     var legend = document.createElement('div'); legend.className = 'sa-legend'; box.appendChild(legend);
     legend.innerHTML = algo === 'quick'
       ? '<i style="background:#c45c26"></i>опорный<i style="background:#e0a24a"></i>сравниваем<i style="background:#7fb8a4"></i>меньше опорного<i style="background:#b9d3c9"></i>текущий отрезок<i style="background:#1f5c4d"></i>на своём месте'
-      : '<i style="background:#1f5c4d"></i>уже слито<i style="background:#7fb8a4"></i>левая половина<i style="background:#e7c7a0"></i>правая половина';
+      : algo === 'insertion'
+        ? '<i style="background:#e0a24a"></i>двигаем влево<i style="background:#7fb8a4"></i>отсортированный префикс<i style="background:#1f5c4d"></i>всё готово'
+        : '<i style="background:#1f5c4d"></i>уже слито<i style="background:#7fb8a4"></i>левая половина<i style="background:#e7c7a0"></i>правая половина';
 
     function btn(text, fn) {
       var b = document.createElement('button'); b.type = 'button'; b.textContent = text;
@@ -171,7 +222,8 @@ window.Viz = window.Viz || {};
 
     function load(items) {
       stop();
-      steps = algo === 'quick' ? quickSteps(items) : mergeSteps(items);
+      steps = algo === 'quick' ? quickSteps(items)
+        : algo === 'insertion' ? insertionSteps(items) : mergeSteps(items);
       pos = 0; n = items.length; stage.innerHTML = ''; els = {};
       maxV = Math.max.apply(null, items.map(function (x) { return x.v; }));
       minV = Math.min.apply(null, items.map(function (x) { return x.v; }));
@@ -197,7 +249,8 @@ window.Viz = window.Viz || {};
       });
       msg.textContent = st.msg || '';
       var s = 'Шаг ' + pos + ' из ' + (steps.length - 1) + ' · сравнений: ' + st.cmp;
-      if (algo === 'quick' && n > 3) {
+      if (st.swaps !== undefined) s += ' · обменов: ' + st.swaps;
+      if ((algo === 'quick' || algo === 'insertion') && n > 3) {
         s += ' · для сравнения при n = ' + n + ': n(n−1)/2 = ' + (n * (n - 1) / 2) +
           ', n·log₂n ≈ ' + Math.round(n * Math.log2(n));
       }
@@ -230,6 +283,7 @@ window.Viz = window.Viz || {};
     if (presets.length) btn('Исходный', function () { load(initial); });
     if (presets.indexOf('random') >= 0) btn('Случайный', function () { load(randomItems(initial.length)); });
     if (presets.indexOf('sorted') >= 0) btn('Уже отсортированный', function () { load(sortedItems(initial.length)); });
+    if (presets.indexOf('reversed') >= 0) btn('Обратный порядок', function () { load(reversedItems(initial.length)); });
     load(initial);
   }
 
@@ -1155,11 +1209,546 @@ window.Viz = window.Viz || {};
     draw(0);
   }
 
+  /* ---------- деление отрезка пополам (теорема Больцано–Коши о нуле) ---------- */
+  var BISECT = {
+    sq2: { f: function (x) { return x * x - 2; }, fs: 'x² − 2', a: 0, b: 2, ylo: -2.5, yhi: 2.5, root: '√2' },
+    cub: { f: function (x) { return x * x * x - x - 1; }, fs: 'x³ − x − 1', a: 1, b: 2, ylo: -1.5, yhi: 5.5, root: '≈ 1,3247' },
+    cos: { f: function (x) { return Math.cos(x) - x; }, fs: 'cos x − x', a: 0, b: 1, ylo: -0.6, yhi: 1.1, root: '≈ 0,7391' }
+  };
+  function labBisect(box) {
+    var key = box.getAttribute('data-preset') || 'sq2';
+    var title = el('div', 'sa-title'); box.appendChild(title);
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var P, S, N = 7;
+    function f4(v) { return v.toFixed(4).replace('.', ','); }
+    function sg(v) { return v > 0 ? '+' : v < 0 ? '−' : '0'; }
+    function build() {
+      P = BISECT[key];
+      var a = P.a, b = P.b, steps = [];
+      steps.push({ a: a, b: b, n: 1, msg: 'Отрезок [a₁, b₁] = [' + f4(a) + '; ' + f4(b) + ']. На концах знаки разные: f(a₁) = ' +
+        f4(P.f(a)) + ' (' + sg(P.f(a)) + '), f(b₁) = ' + f4(P.f(b)) + ' (' + sg(P.f(b)) + '), т.е. f(a₁)·f(b₁) < 0.' });
+      for (var n = 1; n <= N; n++) {
+        var c = (a + b) / 2, fc = P.f(c);
+        steps.push({ a: a, b: b, c: c, n: n, msg: 'Середина c' + sub(n) + ' = (a' + sub(n) + ' + b' + sub(n) + ')/2 = ' + f4(c) +
+          ', f(c' + sub(n) + ') = ' + f4(fc) + ' (' + sg(fc) + '). Ноль в середине не попал — смотрим, на какой половине знаки разные.' });
+        if (P.f(a) * fc < 0) { b = c; steps.push({ a: a, b: b, n: n + 1, msg: 'f(a' + sub(n) + ')·f(c' + sub(n) + ') < 0 → берём ЛЕВУЮ половину: a' + sub(n + 1) + ' = a' + sub(n) + ', b' + sub(n + 1) + ' = c' + sub(n) + '. Длина стала ' + f4(b - a) + '.' }); }
+        else { a = c; steps.push({ a: a, b: b, n: n + 1, msg: 'f(c' + sub(n) + ')·f(b' + sub(n) + ') < 0 → берём ПРАВУЮ половину: a' + sub(n + 1) + ' = c' + sub(n) + ', b' + sub(n + 1) + ' = b' + sub(n) + '. Длина стала ' + f4(b - a) + '.' }); }
+      }
+      steps.push({ a: a, b: b, n: N + 1, fin: true, msg: 'Отрезки вложены и их длины (b − a)/2ⁿ⁻¹ → 0. По теореме Кантора у них одна общая точка x₀, и aₙ → x₀, bₙ → x₀. ' +
+        'Так как f(aₙ)·f(bₙ) < 0 и f непрерывна, в пределе f(x₀)² ≤ 0, т.е. f(x₀) = 0. Здесь x₀ = ' + P.root + '.' });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], W = 520, H = 300, pad = 34, lo = P.a, hi = P.b;
+      function X(v) { return pad + (v - lo) / (hi - lo) * (W - 2 * pad); }
+      function Y(v) { return H - pad - (v - P.ylo) / (P.yhi - P.ylo) * (H - 2 * pad); }
+      var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">';
+      svg += '<rect x="' + X(o.a) + '" y="' + pad + '" width="' + Math.max(1, X(o.b) - X(o.a)) + '" height="' + (H - 2 * pad) + '" fill="#e0a24a" opacity="0.18"/>';
+      svg += '<line x1="' + X(lo) + '" y1="' + Y(0) + '" x2="' + X(hi) + '" y2="' + Y(0) + '" stroke="#6b665c"/>';
+      var pts = [];
+      for (var i = 0; i <= 160; i++) { var x = lo + (hi - lo) * i / 160; pts.push(X(x).toFixed(1) + ',' + Y(P.f(x)).toFixed(1)); }
+      svg += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#1f5c4d" stroke-width="2.2"/>';
+      [['a', o.a], ['b', o.b]].forEach(function (q) {
+        var fv = P.f(q[1]);
+        svg += '<line x1="' + X(q[1]) + '" y1="' + Y(0) + '" x2="' + X(q[1]) + '" y2="' + Y(fv) + '" stroke="#8a4b1f" stroke-dasharray="3 3"/>';
+        svg += '<circle cx="' + X(q[1]) + '" cy="' + Y(fv) + '" r="4" fill="' + (fv > 0 ? '#1f5c4d' : '#c45c26') + '"/>';
+        if (!o.fin) svg += txt(X(q[1]), Y(0) + 15, q[0] + sub(o.n), ' text-anchor="middle" font-size="11" fill="#6b665c"');
+        svg += txt(X(q[1]) + (q[0] === 'a' ? -6 : 6), Y(fv) - 7, sg(fv), ' text-anchor="middle" font-size="13" font-weight="700" fill="' + (fv > 0 ? '#1f5c4d' : '#c45c26') + '"');
+      });
+      if (o.c != null) {
+        var fc = P.f(o.c);
+        svg += '<line x1="' + X(o.c) + '" y1="' + Y(0) + '" x2="' + X(o.c) + '" y2="' + Y(fc) + '" stroke="#e0a24a" stroke-width="1.6"/>';
+        svg += '<circle cx="' + X(o.c) + '" cy="' + Y(fc) + '" r="4.5" fill="#e0a24a"/>';
+        svg += txt(X(o.c), Y(0) - 6, 'c' + sub(o.n), ' text-anchor="middle" font-size="11" font-weight="600" fill="#8a4b1f"');
+      }
+      if (o.fin) {
+        var m = (o.a + o.b) / 2;
+        svg += '<circle cx="' + X(m) + '" cy="' + Y(0) + '" r="5" fill="none" stroke="#c45c26" stroke-width="2"/>';
+        svg += txt(X(m), Y(0) + 30, 'x₀', ' text-anchor="middle" font-size="12" font-weight="700" fill="#c45c26"');
+      }
+      svg += txt(X(lo) + 6, pad - 8, 'y = ' + P.fs, ' font-size="11" fill="#1f5c4d"');
+      holder.innerHTML = svg + '</svg>';
+      title.textContent = 'Деление пополам: ищем ноль f(x) = ' + P.fs + ' на [' + P.a + '; ' + P.b + ']';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + (p + 1) + ' из ' + S.length + ' · текущий отрезок [' + f4(o.a) + '; ' + f4(o.b) + '], длина ' + f4(o.b - o.a);
+    }
+    S = build();
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1700 });
+    function setKey(k) { key = k; S = build(); sp.reset(); }
+    btn(ctr, 'x² − 2', function () { setKey('sq2'); });
+    btn(ctr, 'x³ − x − 1', function () { setKey('cub'); });
+    btn(ctr, 'cos x − x', function () { setKey('cos'); });
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#1f5c4d"></i>график, точка «+» <i style="background:#c45c26"></i>точка «−» <i style="background:#e0a24a"></i>середина cₙ и текущий отрезок'));
+    draw(0);
+  }
+
+  function randDistinct(n, maxV) {
+    var pool = [];
+    for (var v = 0; v <= maxV; v++) pool.push(v);
+    for (var i = pool.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+    }
+    return pool.slice(0, n);
+  }
+  function cell(x, y, w, h, fill, label, extra) {
+    return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="5" fill="' + fill +
+      '" stroke="' + (extra && extra.stroke || '#1f5c4d') + '" stroke-width="' + (extra && extra.sw || 1.5) + '"' +
+      (extra && extra.dash ? ' stroke-dasharray="4 3"' : '') + '/>' +
+      (label === '' || label == null ? '' : txt(x + w / 2, y + h / 2 + 5, label,
+        ' text-anchor="middle" font-size="' + (extra && extra.fs || 14) + '" font-weight="600"' +
+        (extra && extra.white ? ' fill="#fff"' : '')));
+  }
+
+  /* ---------- двоичная куча (минимум в корне): sift up / sift down, сортировка кучей ---------- */
+  function labHeap(box) {
+    var mode = box.dataset.mode === 'sort' ? 'sort' : 'ops';
+    var OPS = [7, 3, 9, 1, 5, 2, 8], SORT = [9, 4, 7, 1, 8, 2, 6, 3, 5, 0];
+    head(box, 'Двоичная куча (минимум в корне): дерево сверху, тот же массив снизу');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>просеиваемый элемент <i style="background:#b9d3c9"></i>с кем сравниваем ' +
+      '<i style="background:#1f5c4d"></i>уже в ответе <i style="background:#c45c26"></i>дуги: дети в массиве (2i+1, 2i+2)'));
+
+    function build(md, input) {
+      var a = [], out = [], steps = [], cmp = 0, sw = 0;
+      function snap(m, hl) { steps.push({ a: a.slice(), out: out.slice(), msg: m, hl: hl || {}, cmp: cmp, sw: sw }); }
+      function one(i, c) { var h = {}; h[i] = c || 'cur'; return h; }
+      function siftUp(i) {
+        while (i > 0) {
+          var p = (i - 1) >> 1, h = one(i);
+          h[p] = 'cmp'; cmp++;
+          if (a[p] > a[i]) {
+            snap('Родитель ' + a[p] + ' (позиция (' + i + '−1)/2 = ' + p + ') больше ' + a[i] +
+              ' → свойство кучи нарушено, меняем их местами.', h);
+            var t = a[p]; a[p] = a[i]; a[i] = t; sw++; i = p;
+            snap(a[i] + ' поднялся на позицию ' + i + '.', one(i));
+          } else {
+            snap('Родитель ' + a[p] + ' ≤ ' + a[i] + ' → стоп, ' + a[i] + ' на своём месте.', h);
+            return;
+          }
+        }
+        snap(a[0] + ' дошёл до корня — теперь это минимум кучи.', one(0));
+      }
+      function siftDown(i) {
+        var n = a.length;
+        while (true) {
+          var l = 2 * i + 1, r = 2 * i + 2, m = i;
+          if (l >= n) {
+            snap(a[i] + ' — лист (позиции 2·' + i + '+1 = ' + l + ' уже нет) → стоп.', one(i));
+            return;
+          }
+          var h = one(i);
+          h[l] = 'cmp'; if (r < n) h[r] = 'cmp';
+          cmp++; if (a[l] < a[m]) m = l;
+          if (r < n) { cmp++; if (a[r] < a[m]) m = r; }
+          var kids = r < n ? 'дети ' + a[l] + ' и ' + a[r] : 'один ребёнок ' + a[l];
+          if (m === i) {
+            snap('У ' + a[i] + ' ' + kids + ' — ' + (r < n ? 'оба' : 'он') + ' не меньше → стоп, свойство кучи выполнено.', h);
+            return;
+          }
+          snap('У ' + a[i] + ' ' + kids + '. Меньший ребёнок ' + a[m] + ' < ' + a[i] +
+            ' → меняем ' + a[i] + ' с ним (берём именно меньшего, иначе наверху окажется не минимум).', h);
+          var t = a[m]; a[m] = a[i]; a[i] = t; sw++; i = m;
+        }
+      }
+      function extract() {
+        var mn = a[0], last = a.pop();
+        out.push(mn);
+        if (!a.length) { snap('Достали ' + mn + ' — куча опустела.'); return; }
+        a[0] = last;
+        snap('extract_min: корень ' + mn + ' уходит в ответ. На его место ставим последний элемент ' + last +
+          ' — форма дерева не испортилась, но порядок нарушен.', one(0));
+        siftDown(0);
+      }
+      if (md === 'ops') {
+        snap('Пустая куча. Добавим ' + input.join(', ') + ', потом трижды достанем минимум. Нажми «▶» или «Шаг →».');
+        input.forEach(function (x) {
+          a.push(x);
+          snap('add(' + x + '): кладём в конец массива, позиция ' + (a.length - 1) +
+            ' — это следующее свободное место нижнего ряда дерева.', one(a.length - 1));
+          siftUp(a.length - 1);
+        });
+        for (var e = 0; e < 3; e++) extract();
+        snap('Итог: минимум всегда в a[0] — посмотреть его O(1). add и extract_min идут по одному пути корень↔лист: O(log n).');
+      } else {
+        a = input.slice();
+        snap('Сортировка кучей. Шаг 1 — сделать из массива кучу «снизу вверх»: просеиваем вниз каждый узел, у которого есть дети, ' +
+          'начиная с последнего такого (позиция ' + ((a.length >> 1) - 1) + ') и до корня.');
+        for (var i = (a.length >> 1) - 1; i >= 0; i--) {
+          snap('Просеиваем вниз ' + a[i] + ' (позиция ' + i + '). Под ним поддеревья уже являются кучами.', one(i));
+          siftDown(i);
+        }
+        snap('Куча построена (это O(n), а не O(n log n) — см. текст). Шаг 2 — n раз достаём минимум в ответ.');
+        while (a.length) extract();
+        snap('Готово: ответ отсортирован. Сравнений: ' + cmp + ', обменов: ' + sw + '.');
+      }
+      return steps;
+    }
+
+    var S;
+    function draw(p) {
+      var o = S[p], n = o.a.length, W = 600;
+      function pos(i) {
+        var d = Math.floor(Math.log2(i + 1)), cnt = Math.pow(2, d);
+        return { x: (i - (cnt - 1) + 0.5) * W / cnt, y: 30 + d * 56 };
+      }
+      var svg = '<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">';
+      if (!n) svg += txt(300, 100, 'куча пуста', ' text-anchor="middle" font-size="14" fill="#6b665c"');
+      for (var i = 1; i < n; i++) {
+        var pa = pos((i - 1) >> 1), ch = pos(i), on = o.hl[i] && o.hl[(i - 1) >> 1];
+        svg += '<line class="gedge' + (on ? ' on' : '') + '" x1="' + pa.x + '" y1="' + pa.y + '" x2="' + ch.x + '" y2="' + ch.y + '"/>';
+      }
+      for (i = 0; i < n; i++) {
+        var q = pos(i), c = o.hl[i] === 'cur' ? ' cur' : o.hl[i] === 'cmp' ? ' frontier' : '';
+        svg += '<circle class="gnode' + c + '" cx="' + q.x + '" cy="' + q.y + '" r="17"/>' +
+          txt(q.x, q.y + 5, o.a[i], ' text-anchor="middle" font-size="14" font-weight="600"') +
+          txt(q.x + 21, q.y - 12, i, ' font-size="10" fill="#6b665c"');
+      }
+      var cw = 44, x0 = 90, y0 = 262;
+      svg += txt(x0 - 10, y0 + 27, 'a:', ' text-anchor="end" font-size="13" font-weight="600"');
+      for (i = 0; i < n; i++) {
+        var f = o.hl[i] === 'cur' ? '#e0a24a' : o.hl[i] === 'cmp' ? '#b9d3c9' : '#fff';
+        svg += cell(x0 + i * (cw + 4), y0, cw, 40, f, o.a[i]) +
+          txt(x0 + i * (cw + 4) + cw / 2, y0 - 6, i, ' text-anchor="middle" font-size="10" fill="#6b665c"');
+      }
+      for (var k in o.hl) {
+        if (o.hl[k] !== 'cur') continue;
+        var ci = +k;
+        [2 * ci + 1, 2 * ci + 2].forEach(function (cc) {
+          if (cc >= n) return;
+          var xa = x0 + ci * (cw + 4) + cw / 2, xb = x0 + cc * (cw + 4) + cw / 2;
+          svg += '<path d="M' + xa + ',' + (y0 + 42) + ' Q' + ((xa + xb) / 2) + ',' + (y0 + 42 + 12 + (xb - xa) / 6) + ' ' + xb + ',' + (y0 + 42) +
+            '" fill="none" stroke="#c45c26" stroke-width="1.8"/>';
+        });
+      }
+      if (o.out.length) {
+        svg += txt(x0 - 10, 368, 'ответ:', ' text-anchor="end" font-size="13" font-weight="600"');
+        o.out.forEach(function (v, j) { svg += cell(x0 + j * (cw + 4), 342, cw, 40, '#1f5c4d', v, { white: true }); });
+      }
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · размер кучи: ' + n +
+        ' · сравнений: ' + o.cmp + ' · обменов: ' + o.sw;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1300 });
+    var bOps, bSort;
+    function setMode(m, input) {
+      mode = m; S = build(m, input || (m === 'ops' ? OPS : SORT)); sp.reset();
+      bOps.classList.toggle('on', m === 'ops'); bSort.classList.toggle('on', m === 'sort');
+    }
+    bOps = btn(ctr, 'add + extract_min', function () { setMode('ops'); });
+    bSort = btn(ctr, 'Сортировка кучей', function () { setMode('sort'); });
+    btn(ctr, 'Случайные числа', function () { setMode(mode, randDistinct(mode === 'ops' ? 7 : 10, 30)); });
+    setMode(mode);
+  }
+
+  /* ---------- сортировка подсчётом ---------- */
+  function labCountSort(box) {
+    head(box, 'Сортировка подсчётом: сравнений нет — считаем, сколько раз встретилось каждое значение');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>текущая клетка <i style="background:#e8f1ee"></i>cnt[v] &gt; 0 <i style="background:#1f5c4d"></i>выписано в ответ'));
+    var A, C, S;
+    function build() {
+      var cnt = [], out = [], steps = [], ops = 0;
+      for (var v = 0; v <= C; v++) cnt.push(0);
+      function snap(m, o) {
+        var st = { cnt: cnt.slice(), out: out.slice(), msg: m, ai: -1, ci: -1, oi: -1, ops: ops };
+        for (var q in o) st[q] = o[q];
+        steps.push(st);
+      }
+      snap('Массив из n = ' + A.length + ' чисел, все от 0 до C = ' + C + '. Заводим cnt[0…' + C + '] из нулей — это O(C).', {});
+      A.forEach(function (x, i) {
+        cnt[x]++; ops++;
+        snap('a[' + i + '] = ' + x + ' → cnt[' + x + ']++ (стало ' + cnt[x] + ').', { ai: i, ci: x });
+      });
+      snap('Проход по массиву закончен: n шагов. Теперь идём по значениям v = 0…' + C + ' и выписываем v ровно cnt[v] раз.', {});
+      for (v = 0; v <= C; v++) {
+        ops++;
+        if (!cnt[v]) {
+          snap('cnt[' + v + '] = 0 → значения ' + v + ' не было, ничего не пишем. Но клетку посмотрели — отсюда слагаемое C.', { ci: v });
+          continue;
+        }
+        for (var j = 0; j < cnt[v]; j++) {
+          out.push(v); ops++;
+          snap('cnt[' + v + '] = ' + cnt[v] + ' → пишем ' + v + ' (' + (j + 1) + '-й раз из ' + cnt[v] + ').', { ci: v, oi: out.length - 1 });
+        }
+      }
+      snap('Готово: ' + out.join(', ') + '. Ни одного сравнения элементов. Время O(n + C), память O(C).', {});
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], w = 40, gap = 4, x0 = 110;
+      var svg = '<svg viewBox="0 0 600 270" xmlns="http://www.w3.org/2000/svg">';
+      svg += txt(x0 - 12, 52, 'a:', ' text-anchor="end" font-size="13" font-weight="600"');
+      A.forEach(function (v, i) {
+        svg += cell(x0 + i * (w + gap), 28, w, 38, i === o.ai ? '#e0a24a' : '#fff', v) +
+          txt(x0 + i * (w + gap) + w / 2, 22, i, ' text-anchor="middle" font-size="10" fill="#6b665c"');
+      });
+      svg += txt(x0 - 12, 142, 'cnt:', ' text-anchor="end" font-size="13" font-weight="600"');
+      svg += txt(x0 - 12, 112, 'v =', ' text-anchor="end" font-size="11" fill="#6b665c"');
+      o.cnt.forEach(function (c, v) {
+        var f = v === o.ci ? '#e0a24a' : c ? '#e8f1ee' : '#fff';
+        svg += cell(x0 + v * (w + gap), 118, w, 38, f, c) +
+          txt(x0 + v * (w + gap) + w / 2, 112, v, ' text-anchor="middle" font-size="11" fill="#8a4b1f" font-weight="600"');
+      });
+      svg += txt(x0 - 12, 232, 'ответ:', ' text-anchor="end" font-size="13" font-weight="600"');
+      for (var i = 0; i < A.length; i++) {
+        var has = i < o.out.length;
+        svg += cell(x0 + i * (w + gap), 208, w, 38, has ? (i === o.oi ? '#c45c26' : '#1f5c4d') : '#fff', has ? o.out[i] : '',
+          { white: true, dash: !has });
+      }
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · элементарных действий: ' + o.ops +
+        ' · n + C = ' + (A.length + C + 1) + ' (+ n на выписывание)';
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1100 });
+    function load(a, c) { A = a; C = c; S = build(); sp.reset(); }
+    btn(ctr, 'Пример', function () { load([3, 1, 4, 1, 5, 2, 0, 3, 1, 4], 5); });
+    btn(ctr, 'Случайный', function () {
+      var a = []; for (var i = 0; i < 10; i++) a.push(Math.floor(Math.random() * 8)); load(a, 7);
+    });
+    btn(ctr, 'Большое C, мало чисел', function () { load([9, 0, 9, 4, 2], 9); });
+    load([3, 1, 4, 1, 5, 2, 0, 3, 1, 4], 5);
+  }
+
+  /* ---------- бинарный поиск: L = -1, R = n ---------- */
+  function labBinSearch(box) {
+    var arr = [1, 3, 3, 5, 7, 7, 7, 9, 12, 15], x = 7, mode = 'lower', S;
+    head(box, 'Бинарный поиск: L = −1, R = n; слева от ответа нули, справа единицы');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#1f5c4d"></i>L — последний известный 0 <i style="background:#c45c26"></i>R — первый известный 1 ' +
+      '<i style="background:#e0a24a"></i>M — середина <i style="background:#e2ddd2"></i>уже отброшено'));
+    function pred(v) { return mode === 'lower' ? (v >= x ? 1 : 0) : (v > x ? 1 : 0); }
+    function build() {
+      var n = arr.length, L = -1, R = n, steps = [], it = 0;
+      var name = (mode === 'lower' ? 'lower_bound(' : 'upper_bound(') + x + ')';
+      var cond = mode === 'lower' ? 'a[i] ≥ ' + x : 'a[i] > ' + x;
+      steps.push({ L: L, R: R, M: null, it: 0, msg: name + ' ищет первый индекс, где ' + cond +
+        '. Под числами — 0/1: выполнено ли условие. L = −1 и R = n — «воображаемые» клетки за краями: там считаем 0 и 1.' });
+      while (R - L > 1) {
+        var M = (L + R) >> 1, b = pred(arr[M]);
+        it++;
+        steps.push({ L: L, R: R, M: M, it: it, msg: 'R − L = ' + (R - L) + ' > 1 → M = (' + L + ' + ' + R + ') / 2 = ' + M +
+          '. a[' + M + '] = ' + arr[M] + ' → условие ' + (b ? 'выполнено (1).' : 'не выполнено (0).') });
+        if (b) R = M; else L = M;
+        steps.push({ L: L, R: R, M: null, it: it, msg: b
+          ? 'Единица → ответ не правее M: R = ' + M + '. Половина справа отброшена.'
+          : 'Ноль → ответ правее M: L = ' + M + '. Половина слева отброшена.' });
+      }
+      steps.push({ L: L, R: R, M: null, it: it, done: true, msg: 'R − L = 1: L — последний 0, R — первый 1. Ответ ' + name + ' = ' + R +
+        (R === n ? ' = n: подходящих элементов нет.' : ' (a[' + R + '] = ' + arr[R] + ').') +
+        ' Итераций: ' + it + ', а log₂(n + 1) ≈ ' + Math.log2(n + 1).toFixed(1) + '.' });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], n = arr.length, w = 42, gap = 4, x0 = 22;
+      function cx(i) { return x0 + (i + 1) * (w + gap); }
+      var svg = '<svg viewBox="0 0 600 205" xmlns="http://www.w3.org/2000/svg">';
+      for (var i = -1; i <= n; i++) {
+        var virt = i === -1 || i === n, out = !virt && (i <= o.L || i >= o.R);
+        var f = virt ? '#faf9f6' : i === o.M ? '#e0a24a' : out ? '#e2ddd2' : '#fff';
+        svg += cell(cx(i), 62, w, 38, f, virt ? '' : arr[i], { dash: virt, stroke: virt ? '#9a948a' : '#1f5c4d' });
+        var b = i === -1 ? 0 : i === n ? 1 : pred(arr[i]);
+        svg += txt(cx(i) + w / 2, 124, b, ' text-anchor="middle" font-size="14" font-weight="700" fill="' + (b ? '#c45c26' : '#1f5c4d') + '"' +
+          (virt ? ' opacity="0.55"' : ''));
+        svg += txt(cx(i) + w / 2, 146, i, ' text-anchor="middle" font-size="11" fill="#6b665c"');
+      }
+      svg += txt(x0 + 2, 128, '0/1', ' font-size="10" fill="#6b665c"');
+      function ptr(i, label, color, dy) {
+        var xm = cx(i) + w / 2;
+        return '<path d="M' + (xm - 7) + ',' + (42 - dy) + ' L' + (xm + 7) + ',' + (42 - dy) + ' L' + xm + ',' + (55 - dy) + ' Z" fill="' + color + '"/>' +
+          txt(xm, 36 - dy, label, ' text-anchor="middle" font-size="13" font-weight="700" fill="' + color + '"');
+      }
+      svg += ptr(o.L, 'L', '#1f5c4d', 0) + ptr(o.R, 'R', '#c45c26', 0);
+      if (o.M != null) svg += ptr(o.M, 'M', '#e0a24a', 0);
+      if (o.done) svg += txt(300, 185, 'ответ = R = ' + o.R, ' text-anchor="middle" font-size="15" font-weight="700" fill="#c45c26"');
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · L = ' + o.L + ', R = ' + o.R + ' · итераций: ' + o.it;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1400 });
+    var bL, bU, bx = {};
+    function reload() {
+      S = build(); sp.reset();
+      bL.classList.toggle('on', mode === 'lower'); bU.classList.toggle('on', mode === 'upper');
+      for (var k in bx) bx[k].classList.toggle('on', +k === x);
+    }
+    bL = btn(ctr2, 'lower_bound', function () { mode = 'lower'; reload(); });
+    bU = btn(ctr2, 'upper_bound', function () { mode = 'upper'; reload(); });
+    [7, 4, 20].forEach(function (v) { bx[v] = btn(ctr2, 'x = ' + v, function () { x = v; reload(); }); });
+    reload();
+  }
+
+  /* ---------- push_back: удвоение и потенциал ---------- */
+  function labVecGrow(box) {
+    var N = 17, S;
+    head(box, 'push_back в вектор: удвоение ёмкости, реальная и амортизированная стоимость');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#1f5c4d"></i>живые элементы <i style="background:#e0a24a"></i>скопированы при переезде ' +
+      '<i style="background:#c45c26"></i>только что записан <i style="background:#9aa59f"></i>столбик = реальное время tᵢ, пунктир = 3'));
+    function build() {
+      var size = 0, cap = 1, total = 0, steps = [], costs = [], phi = -1;
+      steps.push({ size: 0, cap: 1, copied: 0, total: 0, costs: [], msg: 'Пустой вектор, ёмкость cap = 1. Потенциал φ = 2·size − cap = −1. Нажми «▶».' });
+      for (var k = 1; k <= N; k++) {
+        var copied = 0, oldCap = cap, before = phi;
+        if (size === cap) { copied = size; cap *= 2; }
+        size++;
+        var t = copied + 1;
+        total += t; costs.push(t);
+        phi = 2 * size - cap;
+        var d = phi - before;
+        steps.push({ size: size, cap: cap, copied: copied, total: total, costs: costs.slice(), msg:
+          (copied ? 'push_back(' + k + '): места нет (size = cap = ' + oldCap + '). Новый буфер на ' + cap + ', копируем ' + copied +
+            ' старых и пишем новый: t = ' + t + '. '
+            : 'push_back(' + k + '): место есть, просто пишем: t = 1. ') +
+          'φ: ' + before + ' → ' + phi + ', Δφ = ' + d + ', aᵢ = t + Δφ = ' + (t + d) + '.' });
+      }
+      steps.push({ size: size, cap: cap, copied: 0, total: total, costs: costs.slice(), final: true, msg:
+        'Итого ' + N + ' push_back: реальное время ' + total + ' ≤ 3·' + N + ' = ' + (3 * N) + '. В среднем ' + (total / N).toFixed(2) +
+        ' на операцию — O(1), хотя отдельные операции стоили до ' + Math.max.apply(null, costs) + '.' });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], cw = Math.min(34, 560 / o.cap), x0 = 20;
+      var svg = '<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">';
+      svg += txt(x0, 18, 'буфер: size = ' + o.size + ', cap = ' + o.cap, ' font-size="13" font-weight="600"');
+      for (var i = 0; i < o.cap; i++) {
+        var live = i < o.size, isNew = !o.final && p > 0 && i === o.size - 1, cop = i < o.copied;
+        var f = !live ? '#fff' : isNew ? '#c45c26' : cop ? '#e0a24a' : '#1f5c4d';
+        svg += cell(x0 + i * cw, 28, cw - 2, 32, f, live ? i + 1 : '', { dash: !live, fs: cw < 24 ? 10 : 13, white: live && !cop });
+      }
+      var base = 278, bw = 560 / (N + 1), unit = 9;
+      svg += txt(x0, 96, 'реальное время каждой операции tᵢ', ' font-size="12" fill="#6b665c"');
+      svg += '<line x1="' + x0 + '" y1="' + base + '" x2="' + (x0 + 560) + '" y2="' + base + '" stroke="#9a948a"/>';
+      o.costs.forEach(function (t, j) {
+        var h = t * unit, x = x0 + j * bw + 3;
+        svg += '<rect x="' + x + '" y="' + (base - h) + '" width="' + (bw - 6) + '" height="' + h + '" rx="3" fill="' +
+          (t > 1 ? '#e0a24a' : '#9aa59f') + '"/>' +
+          txt(x + (bw - 6) / 2, base - h - 4, t, ' text-anchor="middle" font-size="10"') +
+          txt(x + (bw - 6) / 2, base + 14, j + 1, ' text-anchor="middle" font-size="9" fill="#6b665c"');
+      });
+      svg += '<line x1="' + x0 + '" y1="' + (base - 3 * unit) + '" x2="' + (x0 + 560) + '" y2="' + (base - 3 * unit) +
+        '" stroke="#c45c26" stroke-width="1.6" stroke-dasharray="6 4"/>' +
+        txt(x0 + 560, base - 3 * unit - 5, 'aᵢ = 3', ' text-anchor="end" font-size="11" fill="#c45c26" font-weight="600"');
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · сумма tᵢ = ' + o.total + ' · 3 · (число push) = ' + 3 * o.costs.length;
+    }
+    S = build();
+    stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1100 });
+    draw(0);
+  }
+
+  /* ---------- корневая декомпозиция ---------- */
+  function labSqrtDec(box) {
+    var base = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3], k = 4, S;
+    head(box, 'Корневая декомпозиция: n = 16, блоки по k = √16 = 4, b[j] — сумма блока j');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>берём сейчас <i style="background:#b9d3c9"></i>уже учтено <i style="background:#fff4e5"></i>отрезок запроса'));
+    function build(kind, l, r) {
+      var a = base.slice(), b = [], steps = [];
+      for (var j = 0; j < base.length / k; j++) b.push(a.slice(j * k, j * k + k).reduce(function (s, v) { return s + v; }, 0));
+      function snap(m, o) {
+        var st = { a: a.slice(), b: b.slice(), msg: m, cells: {}, blocks: {}, sum: null, ops: 0, l: l, r: r, curCell: -1, curBlock: -1 };
+        for (var q in o) st[q] = o[q];
+        steps.push(st);
+      }
+      if (kind === 'query') {
+        var s = 0, ops = 0, i = l, cells = {}, blocks = {};
+        snap('Запрос sum(' + l + ', ' + r + '). Наивно это ' + (r - l + 1) + ' сложений. Идём слева: неполный блок — по элементам, ' +
+          'целый блок — одним b[j], правый хвост — снова по элементам.', {});
+        while (i <= r) {
+          if (i % k === 0 && i + k - 1 <= r) {
+            var jb = i / k;
+            s += b[jb]; ops++; blocks[jb] = 1;
+            snap('Блок ' + jb + ' (позиции ' + i + '…' + (i + k - 1) + ') целиком внутри → прибавляем b[' + jb + '] = ' + b[jb] +
+              ' за один шаг. Сумма = ' + s + '.', { cells: copy(cells), blocks: copy(blocks), sum: s, ops: ops, curBlock: jb });
+            i += k;
+          } else {
+            s += a[i]; ops++; cells[i] = 1;
+            snap('Позиция ' + i + ' лежит в блоке ' + Math.floor(i / k) + ', который не входит целиком → прибавляем a[' + i + '] = ' + a[i] +
+              '. Сумма = ' + s + '.', { cells: copy(cells), blocks: copy(blocks), sum: s, ops: ops, curCell: i });
+            i++;
+          }
+        }
+        snap('Ответ: ' + s + '. Шагов ' + ops + ' вместо ' + (r - l + 1) + '. Хвостов не больше 2(k − 1), целых блоков не больше n/k — ' +
+          'при k = √n это O(√n).', { cells: copy(cells), blocks: copy(blocks), sum: s, ops: ops });
+      } else {
+        var x = r;
+        snap('Запрос a[' + l + '] += ' + x + '. Меняются ровно две вещи: сама ячейка и сумма её блока.', { r: l });
+        a[l] += x;
+        snap('a[' + l + '] = ' + (a[l] - x) + ' + ' + x + ' = ' + a[l] + '.', { curCell: l, ops: 1, r: l });
+        var jj = Math.floor(l / k);
+        b[jj] += x;
+        snap('Номер блока = ' + l + ' / ' + k + ' (нацело) = ' + jj + ': b[' + jj + '] += ' + x + ' → ' + b[jj] + '. Всё за O(1).',
+          { curCell: l, curBlock: jj, ops: 2, r: l });
+      }
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], w = 32;
+      function cx(i) { return 14 + i * (w + 2) + Math.floor(i / k) * 12; }
+      var svg = '<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">';
+      for (var j = 0; j < o.b.length; j++) {
+        var x1 = cx(j * k), x2 = cx(j * k + k - 1) + w;
+        var f = j === o.curBlock ? '#e0a24a' : o.blocks[j] ? '#b9d3c9' : '#e8f1ee';
+        svg += cell(x1, 20, x2 - x1, 34, f, 'b[' + j + '] = ' + o.b[j], { fs: 13 });
+      }
+      for (var i = 0; i < o.a.length; i++) {
+        var inQ = i >= o.l && i <= o.r;
+        var fc = i === o.curCell ? '#e0a24a' : o.cells[i] ? '#b9d3c9' : inQ ? '#fff4e5' : '#fff';
+        svg += cell(cx(i), 92, w, 36, fc, o.a[i], { stroke: inQ ? '#8a4b1f' : '#1f5c4d' }) +
+          txt(cx(i) + w / 2, 146, i, ' text-anchor="middle" font-size="10" fill="#6b665c"');
+      }
+      svg += '<line x1="' + (cx(o.l) + 2) + '" y1="160" x2="' + (cx(o.r) + w - 2) + '" y2="160" stroke="#8a4b1f" stroke-width="2.5"/>' +
+        txt((cx(o.l) + cx(o.r) + w) / 2, 178, o.l === o.r ? 'i = ' + o.l : '[' + o.l + ', ' + o.r + ']',
+          ' text-anchor="middle" font-size="12" fill="#8a4b1f" font-weight="600"');
+      if (o.sum != null) svg += txt(590, 178, 'сумма = ' + o.sum, ' text-anchor="end" font-size="13" font-weight="700" fill="#c45c26"');
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · действий: ' + o.ops;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1300 });
+    function load(kind, l, r) { S = build(kind, l, r); sp.reset(); }
+    btn(ctr2, 'sum(2, 13)', function () { load('query', 2, 13); });
+    btn(ctr2, 'sum(5, 6)', function () { load('query', 5, 6); });
+    btn(ctr2, 'sum(0, 15)', function () { load('query', 0, 15); });
+    btn(ctr2, 'a[6] += 4', function () { load('update', 6, 4); });
+    load('query', 2, 13);
+  }
+
   var LABS = {
     switches: labSwitches, gates: labGates, fulladder: labFullAdder, ripple: labRipple,
     rs: labRS, vn: labVN, timeline: labTimeline,
     bfs: labBFS, dfs: labDFS, stackqueue: labStackQueue, epsn: labEpsN, induct: labInduct,
-    recur: labRecur
+    recur: labRecur, bisect: labBisect, heap: labHeap, countsort: labCountSort, binsearch: labBinSearch,
+    vecgrow: labVecGrow, sqrtdec: labSqrtDec
   };
   var Viz = window.Viz;
   var api = {
