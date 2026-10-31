@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Информатика · тетрадь (лекции 0–4 + семинары 1–2)</title>
+<title>Информатика · тетрадь (лекции 0–5 + семинары 1–2)</title>
 <style>
 :root {
   --bg: #f6f4ef; --card: #fff; --ink: #1c1b19; --muted: #6b665c;
@@ -98,7 +98,7 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 
 <header>
   <h1>Информатика · тетрадь</h1>
-  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · лекция 4 (трансляции, парадигмы, типизация) · осень 2026</p>
+  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · лекция 4 (трансляции, парадигмы, типизация) · лекция 5 (SOLID и паттерны) · осень 2026</p>
   <nav class="toc">
     <a href="#intro">Введение</a>
     <a href="#format">Формат и зачёт</a>
@@ -135,6 +135,11 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
     <a href="#oop">ООП</a>
     <a href="#declarative">Декларативные</a>
     <a href="#typing">Типизация</a>
+    <a href="#solid">SOLID</a>
+    <a href="#patterns">Паттерны</a>
+    <a href="#builder-l5">Строитель</a>
+    <a href="#strategy">Стратегия</a>
+    <a href="#facade">Фасад</a>
     <a href="#cheat">Шпаргалка</a>
     <a href="#video">Видео</a>
   </nav>
@@ -143,8 +148,8 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 
 <section class="card" id="intro">
   <h2>Введение</h2>
-  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ, трансляции / парадигмы / типизация. Текст собран <span class="tag">из записей</span> презентаций Есина / Абрамова и развёрнут «своими словами» с примерами — чтобы готовиться к тестам Google Forms без дыр между слайдами.</p>
-  <p class="src">Источники в <span class="mono">материалы/</span>: <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>, <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>, <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">лекция №4</a>.</p>
+  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ, трансляции / парадигмы / типизация, SOLID и паттерны проектирования. Текст собран <span class="tag">из записей</span> презентаций Есина / Абрамова и развёрнут «своими словами» с примерами — чтобы готовиться к тестам Google Forms без дыр между слайдами.</p>
+  <p class="src">Источники в <span class="mono">материалы/</span>: <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>, <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>, <span class="mono">10_лекция_Паттерны_проектирования.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>, <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">лекция №4</a>, <a href="https://forms.gle/fdzZ1CM8ZZPZgjeFA">лекция №5</a>.</p>
 </section>
 
 <section class="card" id="format">
@@ -1109,8 +1114,175 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   <p class="src"><span class="tag">из записей</span> лекция №4, 15.10.2026 · форма <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">Лекция №4 Парадигмы, трансляции, типизации</a>.</p>
 </section>
 
-<section class="card" id="cheat">
+<section class="card" id="solid">
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-парадигмы</code> — несколько коротких вопросов по лекции 4.</p>
+
+  <h2>Принципы SOLID <span class="tag">лекция 5</span></h2>
+  <div class="def"><strong>SOLID</strong> — пять принципов гибкой ООП‑архитектуры. Они уменьшают избыточную связность («всё зависит от всего») и помогают менять систему по частям: масштабируемость, командная согласованность, надёжность.</div>
+  <p class="own"><em>Своими словами.</em> ООП даёт классы и объекты; SOLID говорит, <em>как</em> их резать и связывать, чтобы завтрашнее изменение не ломало вчерашний код. Паттерны (ниже) — готовые приёмы, которыми эти принципы удобно соблюдать.</p>
+  <div class="fig" aria-label="Буквы SOLID">
+    <svg viewBox="0 0 560 90" width="560" height="90" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <rect x="8" y="18" width="100" height="54" rx="10" fill="#1f5c4d"/><text x="58" y="42" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">S</text><text x="58" y="60" text-anchor="middle" fill="#e8f1ee" font-size="10">единая отв.</text>
+      <rect x="118" y="18" width="100" height="54" rx="10" fill="#3d8b6e"/><text x="168" y="42" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">O</text><text x="168" y="60" text-anchor="middle" fill="#e8f1ee" font-size="10">откр./закр.</text>
+      <rect x="228" y="18" width="100" height="54" rx="10" fill="#5b4fc7"/><text x="278" y="42" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">L</text><text x="278" y="60" text-anchor="middle" fill="#eee" font-size="10">Лисков</text>
+      <rect x="338" y="18" width="100" height="54" rx="10" fill="#8a4b1f"/><text x="388" y="42" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">I</text><text x="388" y="60" text-anchor="middle" fill="#fff4e5" font-size="10">раздел. инт.</text>
+      <rect x="448" y="18" width="100" height="54" rx="10" fill="#c45c26"/><text x="498" y="42" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">D</text><text x="498" y="60" text-anchor="middle" fill="#fff4e5" font-size="10">инверс. зав.</text>
+    </svg>
+    <p class="caption">Пять букв = пять правил (слайды 9–26).</p>
+  </div>
+
+  <h3>S — Single Responsibility (единая ответственность)</h3>
+  <div class="def"><strong>SRP.</strong> У класса должна быть <em>одна</em> зона ответственности — одна причина менять класс.</div>
+  <p class="own"><em>Своими словами.</em> Не пихай в <code>User</code> и БД, и письма, и отчёты. Разнеси: <code>User</code>, <code>EmailSender</code>, <code>ReportGenerator</code> (как на слайде 12).</p>
+  <div class="ex"><strong>Для формы.</strong> Верно: нарушение SRP → класс с кучей задач трудно поддерживать; разделение обязанностей делает код гибче. Неверно: «SRP = один класс на всю бизнес‑логику» (это наоборот) и «SRP увеличивает связность» (цель — как раз снизить хаотичные зависимости).</div>
+
+  <h3>O — Open/Closed (открытости/закрытости)</h3>
+  <div class="def"><strong>OCP.</strong> Сущности открыты для <em>расширения</em>, но закрыты для <em>модификации</em> существующего кода. Обычно через абстракции + наследование/полиморфизм.</div>
+  <div class="ex"><strong>Пример.</strong> <code>AreaCalculator</code> работает с абстрактным <code>Shape</code>. Добавили <code>Triangle</code> — калькулятор не трогали. Для формы: верно про абстракции/интерфейсы, позволяющие расширять без правки старого кода. Неверно: «закрыты для наследования» и «все классы заранее на все случаи».</div>
+
+  <h3>L — Liskov Substitution (подстановка Барбары Лисков)</h3>
+  <div class="def"><strong>LSP.</strong> Объект подкласса должен быть <em>взаимозаменяем</em> с объектом родителя: те же запросы, ожидаемое поведение/контракт. Переопределять методы можно, но нельзя ломать смысл родителя.</div>
+  <div class="ex"><strong>Не‑пример со слайда.</strong> <code>CustomLogger</code> принимает в <code>level</code> строку <code>'boom!'</code>, а родитель ждал только уровни вроде debug/info — иерархия нарушает LSP. Для формы: верны «можно переопределять, не ломая контракт» и «дочерний заменяет родителя без смены поведения программы». Неверно: «подклассы никогда не переопределяют методы».</div>
+
+  <h3>I — Interface Segregation (разделение интерфейсов)</h3>
+  <div class="def"><strong>ISP.</strong> Класс не должен реализовывать методы, которые ему не нужны. Лучше несколько узких интерфейсов, чем один «божественный».</div>
+  <div class="ex"><strong>Пример.</strong> Если в общий <code>Shape</code> добавить <code>calculate_volume</code>, прямоугольник вынужден «уметь» объём. Правильно: <code>Shape</code> (площадь) и <code>VolumeShape</code> (объём). Для формы: верно — реализовывать только нужные методы. Неверно — «один интерфейс со всеми методами».</div>
+
+  <h3>D — Dependency Inversion (инверсия зависимостей)</h3>
+  <div class="def"><strong>DIP.</strong> Высокоуровневые модули (бизнес‑логика) не зависят от низкоуровневых деталей. Оба зависят от <em>абстракций</em>. Детали зависят от абстракций, а не наоборот.</div>
+  <div class="fig" aria-label="DIP до и после">
+    <svg viewBox="0 0 560 170" width="560" height="170" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <text x="130" y="18" text-anchor="middle" font-weight="700" fill="#c45c26">Плохо: User → EmailSender</text>
+      <rect x="40" y="40" width="90" height="36" rx="8" fill="#1f5c4d"/><text x="85" y="63" text-anchor="middle" fill="#fff" font-weight="600">User</text>
+      <line x1="130" y1="58" x2="180" y2="58" stroke="#6b665c" stroke-width="2"/>
+      <rect x="180" y="40" width="110" height="36" rx="8" fill="#8a4b1f"/><text x="235" y="63" text-anchor="middle" fill="#fff" font-weight="600">EmailSender</text>
+      <text x="160" y="100" text-anchor="middle" fill="#6b665c" font-size="11">жёсткая связь с деталью</text>
+      <text x="420" y="18" text-anchor="middle" font-weight="700" fill="#1f5c4d">Лучше: оба → Notification</text>
+      <rect x="340" y="40" width="80" height="36" rx="8" fill="#1f5c4d"/><text x="380" y="63" text-anchor="middle" fill="#fff" font-weight="600">User</text>
+      <line x1="420" y1="58" x2="455" y2="58" stroke="#6b665c" stroke-width="2"/>
+      <rect x="455" y="30" width="95" height="56" rx="8" fill="#5b4fc7"/><text x="502" y="55" text-anchor="middle" fill="#fff" font-weight="600">Notification</text><text x="502" y="72" text-anchor="middle" fill="#eee" font-size="10">(абстракция)</text>
+      <line x1="502" y1="86" x2="460" y2="120" stroke="#6b665c"/><line x1="502" y1="86" x2="545" y2="120" stroke="#6b665c"/>
+      <rect x="410" y="122" width="90" height="30" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="455" y="142" text-anchor="middle">EmailSender</text>
+      <rect x="510" y="122" width="45" height="30" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="532" y="142" text-anchor="middle">SMS</text>
+    </svg>
+    <p class="caption">Слайды 24–25: User принимает любой Notification — полиморфизм + DIP.</p>
+  </div>
+  <div class="ex"><strong>Для формы.</strong> Верны формулировки: high‑level не зависит от low‑level, оба зависят от абстракций; нарушение DIP → правки деталей тянут правки бизнес‑логики; через абстракции систему легче расширять. (В форме часто несколько галочек — отмечай все верные.)</div>
+  <p class="src"><span class="tag">из записей</span> <span class="mono">10_лекция_Паттерны_проектирования.pdf</span>, 29.10.2026.</p>
+</section>
+
+<section class="card" id="patterns">
+  <h2>Паттерны проектирования</h2>
+  <div class="def"><strong>Паттерн</strong> — готовое решение часто встречающейся задачи проектирования. SOLID задаёт <em>требования</em> к архитектуре; паттерны помогают их <em>реализовать</em>.</div>
+  <p>По «Банде четырёх» у паттерна четыре элемента: <strong>имя</strong>, <strong>задача</strong> (когда применять), <strong>решение</strong> (структура и роли), <strong>результаты</strong> (плюсы/минусы).</p>
+  <div class="nb-table-scroll"><table>
+    <tr><th>Группа</th><th>О чём</th><th>В лекции</th></tr>
+    <tr><td>Порождающие</td><td>как создавать объекты гибко</td><td>Строитель</td></tr>
+    <tr><td>Поведенческие</td><td>как объекты взаимодействуют / меняют алгоритм</td><td>Стратегия</td></tr>
+    <tr><td>Структурные</td><td>как собрать большую систему из частей</td><td>Фасад</td></tr>
+  </table></div>
+  <div class="ex"><strong>Как паттерны помогают SOLID (форма).</strong> Верно: разделяют задачи → SRP; расширяемость без правки старого → OCP; интерфейсы/абстракции → DIP. Неверно: «паттерны требуют переопределять поведение родителей» (это не про LSP) и «стимулируют избыточные интерфейсы» (это анти‑ISP).</div>
+</section>
+
+<section class="card" id="builder-l5">
+  <h2>Порождающий паттерн: Строитель (Builder)</h2>
+  <p class="src">Краткий разбор доклада — в <a href="#builder">§ «Пример: Строитель»</a>. Здесь — как в лекции №5 и в форме.</p>
+  <div class="def"><strong>Задача.</strong> Объект с кучей опциональных параметров (дом: стены, дверь, бассейн… / заказ мебели: материал, размер, цвет, полки). Один длинный конструктор быстро становится нечитаемым; лес подклассов — тоже плохо.</div>
+  <div class="def"><strong>Решение.</strong> Поэтапное конструирование выносят из конструктора в <strong>Строителя</strong>: клиент вызывает методы шагов, объект инкапсулирован внутри строителя. Несколько строителей могут реализовать один интерфейс (DIP). <strong>Директор</strong> (опционально) задаёт порядок шагов.</div>
+  <div class="fig" aria-label="Шаги строителя">
+    <svg viewBox="0 0 520 110" width="520" height="110" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <rect x="10" y="30" width="90" height="40" rx="8" fill="#e8f1ee" stroke="#1f5c4d"/><text x="55" y="55" text-anchor="middle">материал</text>
+      <text x="110" y="55" fill="#6b665c">→</text>
+      <rect x="125" y="30" width="80" height="40" rx="8" fill="#e8f1ee" stroke="#1f5c4d"/><text x="165" y="55" text-anchor="middle">размер</text>
+      <text x="215" y="55" fill="#6b665c">→</text>
+      <rect x="230" y="30" width="70" height="40" rx="8" fill="#e8f1ee" stroke="#1f5c4d"/><text x="265" y="55" text-anchor="middle">цвет</text>
+      <text x="310" y="55" fill="#6b665c">→</text>
+      <rect x="325" y="30" width="80" height="40" rx="8" fill="#e8f1ee" stroke="#1f5c4d"/><text x="365" y="55" text-anchor="middle">опции</text>
+      <text x="415" y="55" fill="#6b665c">→</text>
+      <rect x="430" y="30" width="80" height="40" rx="8" fill="#1f5c4d"/><text x="470" y="55" text-anchor="middle" fill="#fff" font-weight="700">заказ</text>
+      <text x="260" y="95" text-anchor="middle" fill="#6b665c">FurnitureOrderBuilder: шаги вместо «монстр‑конструктора»</text>
+    </svg>
+    <p class="caption">Идея слайдов 31–34: шаг за шагом, промежуточный результат защищён.</p>
+  </div>
+  <div class="ex"><strong>Форма (мебель).</strong> Верно: разделить создание на методы, возвращающие <code>FurnitureOrderBuilder</code>, и добавлять параметры по шагам. Неверно: один конструктор со всеми параметрами; массив всех комбинаций; отдельный класс на каждый вариант заказа.</div>
+</section>
+
+<section class="card" id="strategy">
+  <h2>Поведенческий паттерн: Стратегия (Strategy)</h2>
+  <div class="def"><strong>Задача.</strong> Нужно переключать алгоритмы на лету (навигатор: пешком / авто / общественный; билеты: кратчайший / дешёвый / быстрый). Если все варианты свалены в один класс через <code>if</code>, класс раздувается, а правка одного способа ломает другой.</div>
+  <div class="def"><strong>Решение.</strong> Вынести алгоритмы в классы‑стратегии с общим интерфейсом. <strong>Контекст</strong> хранит текущую стратегию и делегирует ей работу; клиент подставляет нужную стратегию.</div>
+  <div class="fig" aria-label="Стратегия схема">
+    <svg viewBox="0 0 520 180" width="520" height="180" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <rect x="20" y="60" width="100" height="50" rx="8" fill="#fff4e5" stroke="#8a4b1f"/><text x="70" y="90" text-anchor="middle" font-weight="700">Client</text>
+      <rect x="160" y="50" width="120" height="70" rx="8" fill="#1f5c4d"/><text x="220" y="80" text-anchor="middle" fill="#fff" font-weight="700">Context</text><text x="220" y="98" text-anchor="middle" fill="#e8f1ee" font-size="10">setStrategy / do</text>
+      <rect x="340" y="20" width="160" height="40" rx="8" fill="#5b4fc7"/><text x="420" y="45" text-anchor="middle" fill="#fff" font-weight="600">«Strategy»</text>
+      <rect x="340" y="80" width="75" height="40" rx="8" fill="#e8f1ee" stroke="#e2ddd2"/><text x="377" y="105" text-anchor="middle" font-size="11">Shortest</text>
+      <rect x="425" y="80" width="75" height="40" rx="8" fill="#e8f1ee" stroke="#e2ddd2"/><text x="462" y="105" text-anchor="middle" font-size="11">Cheapest</text>
+      <rect x="382" y="130" width="75" height="40" rx="8" fill="#e8f1ee" stroke="#e2ddd2"/><text x="420" y="155" text-anchor="middle" font-size="11">Fastest</text>
+      <line x1="120" y1="85" x2="160" y2="85" stroke="#6b665c"/><line x1="280" y1="85" x2="340" y2="40" stroke="#6b665c"/><line x1="280" y1="95" x2="340" y2="100" stroke="#6b665c"/>
+      <text x="260" y="30" fill="#6b665c" font-size="11">клиент выбирает стратегию → контекст вызывает calculateRoute()</text>
+    </svg>
+    <p class="caption">Слайды 36–37 (навигатор / маршруты).</p>
+  </div>
+  <div class="lab" data-lab="strategy"></div>
+  <script>
+  (window.VizLabs = window.VizLabs || {}).strategy = function (box, V) {
+    V.head(box, 'Анимация: Стратегия расчёта маршрута');
+    var strategies = {
+      short: { name: 'Кратчайший', path: 'A -> C -> E (12 км)', tip: 'Минимум расстояния.' },
+      cheap: { name: 'Дешёвый', path: 'A -> B -> D -> E (90 руб.)', tip: 'Минимум цены, путь может быть длиннее.' },
+      fast: { name: 'Быстрый', path: 'A -> toll -> E (18 мин)', tip: 'Минимум времени (платная дорога).' }
+    };
+    var keys = ['short', 'cheap', 'fast'];
+    var st = { i: 0 };
+    var msg = V.el('div', 'sa-msg'); box.appendChild(msg);
+    var pathEl = V.el('div', null, '');
+    pathEl.style.cssText = 'font-family:ui-monospace,Consolas,monospace;margin:.4rem 0;padding:.5rem;background:#f0ebe3;border-radius:8px;';
+    box.appendChild(pathEl);
+    var ctr = V.el('div', 'sa-controls'); box.appendChild(ctr);
+    var bs = {};
+    function render() {
+      var s = strategies[keys[st.i]];
+      msg.textContent = 'Контекст держит стратегию "' + s.name + '". ' + s.tip + ' Клиент может сменить стратегию без переписывания контекста.';
+      pathEl.textContent = 'calculateRoute() => ' + s.path;
+      keys.forEach(function (k, j) {
+        bs[k].classList.toggle('on', j === st.i);
+      });
+    }
+    keys.forEach(function (k) {
+      bs[k] = V.btn(ctr, strategies[k].name, function () { st.i = keys.indexOf(k); render(); });
+      bs[k].classList.add('bit-btn');
+    });
+    V.btn(ctr, 'Шаг ->', function () { st.i = (st.i + 1) % keys.length; render(); });
+    render();
+  };
+  </script>
+  <p class="own"><em>Как смотреть.</em> Кнопки — смена стратегии у контекста. Логика маршрута живёт в стратегиях, а не в гигантском <code>if</code>.</p>
+  <div class="ex"><strong>Форма (билеты).</strong> Верно: интерфейс <code>RouteStrategy</code> с <code>calculateRoute()</code> и подклассы под каждый алгоритм. Неверно: всё в одном классе через условные операторы; отдельные методы, вызываемые напрямую из клиента без общей абстракции.</div>
+</section>
+
+<section class="card" id="facade">
+  <h2>Структурный паттерн: Фасад (Facade)</h2>
+  <div class="def"><strong>Задача.</strong> Клиенту нужен простой интерфейс к куче переплетённых классов (колл‑центр вместо звонков на склад/поставщикам; банк: баланс, перевод, счета поверх API, транзакций и БД).</div>
+  <div class="def"><strong>Решение.</strong> Класс‑<strong>Фасад</strong> — прослойка: знает, куда перенаправить запрос, и отдаёт клиенту только нужные простые методы. Фасад не обязан дублировать всю подсистему — только то, что нужно снаружи.</div>
+  <div class="fig" aria-label="Фасад">
+    <svg viewBox="0 0 520 160" width="520" height="160" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="12">
+      <rect x="20" y="60" width="90" height="40" rx="8" fill="#fff4e5" stroke="#8a4b1f"/><text x="65" y="85" text-anchor="middle" font-weight="700">Клиент</text>
+      <line x1="110" y1="80" x2="160" y2="80" stroke="#6b665c" stroke-width="2"/>
+      <rect x="160" y="45" width="140" height="70" rx="10" fill="#1f5c4d"/><text x="230" y="75" text-anchor="middle" fill="#fff" font-weight="700">BankingFacade</text><text x="230" y="95" text-anchor="middle" fill="#e8f1ee" font-size="10">checkBalance / transfer</text>
+      <line x1="300" y1="60" x2="360" y2="35" stroke="#6b665c"/><line x1="300" y1="80" x2="360" y2="80" stroke="#6b665c"/><line x1="300" y1="100" x2="360" y2="125" stroke="#6b665c"/>
+      <rect x="360" y="15" width="140" height="30" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="430" y="35" text-anchor="middle">API счетов</text>
+      <rect x="360" y="65" width="140" height="30" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="430" y="85" text-anchor="middle">транзакции</text>
+      <rect x="360" y="115" width="140" height="30" rx="6" fill="#e8f1ee" stroke="#e2ddd2"/><text x="430" y="135" text-anchor="middle">БД клиентов</text>
+    </svg>
+    <p class="caption">Слайды 39–40: клиент говорит с фасадом, не с облаком подсистем.</p>
+  </div>
+  <div class="ex"><strong>Форма (банк).</strong> Верно: <code>BankingFacade</code> внутри дергает подсистемы и даёт простые методы вроде <code>checkBalance()</code> / <code>transferFunds()</code>. Неверно: свалить все методы всех подсистем наружу «оптом» или дать клиенту прямой доступ ко всем подсистемам.</div>
+  <p class="src"><span class="tag">из записей</span> лекция №5 · форма <a href="https://forms.gle/fdzZ1CM8ZZPZgjeFA">Лекция №5 Принципы SOLID и паттерны</a>.</p>
+</section>
+
+<section class="card" id="cheat">
+<p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-SOLID</code> — несколько коротких вопросов по лекции 5.</p>
 
 <h2>Что взять с собой</h2>
   <div class="cheat">
@@ -1137,6 +1309,8 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
       <li>Класс = чертёж · объект = экземпляр · инкапсуляция = данные+методы вместе · полиморфизм = один интерфейс, разное поведение</li>
       <li>Множественное наследование → конфликт имён · абстрактный класс может иметь реализацию, интерфейс — только контракт</li>
       <li>Static/dynamic = <em>когда</em> проверка типов · strong/weak = <em>насколько строго</em></li>
+      <li>SOLID: S одна ответственность · O расширяй без правки старого · L подкласс не ломает контракт · I узкие интерфейсы · D зависеть от абстракций</li>
+      <li>Паттерны = готовые решения: Строитель (шаги) · Стратегия (сменный алгоритм) · Фасад (простой вход в сложную подсистему)</li>
     </ul>
   </div>
 </section>
@@ -1147,6 +1321,7 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   <p class="video"><a href="https://www.lektorium.tv/lecture/26234" target="_blank" rel="noopener">Лекториум — Введение в теорию информации (вероятностный подход, энтропия Шеннона)</a></p>
   <p class="video"><a href="https://www.youtube.com/watch?v=ZCOIxQTd7Gw" target="_blank" rel="noopener">CSC / «К первой паре» — Архитектура ЭВМ, лекция 1 (введение)</a></p>
   <p class="video"><a href="https://www.youtube.com/watch?v=E7Fbf7R3x6I" target="_blank" rel="noopener">Imperative vs Declarative Programming (коротко: «как» vs «что»)</a></p>
+  <p class="video"><a href="https://refactoring.guru/ru/design-patterns" target="_blank" rel="noopener">Refactoring Guru — каталог паттернов (Строитель, Стратегия, Фасад и др.)</a></p>
 </section>
 </main>
   <script src="./site.js?v=3"></script>
