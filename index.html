@@ -7,13 +7,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Тетради">
-  <meta name="description" content="Учебные тетради Б84">
+  <meta name="description" content="Учебные тетради Б83 / Б84">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <title>Тетради Б84</title>
-  <link rel="stylesheet" href="./site.css?v=3">
-  <script src="./theme.js?v=3"></script>
+  <title>Тетради</title>
+  <link rel="stylesheet" href="./site.css?v=4">
+  <script src="./theme.js?v=4"></script>
 </head>
 <body class="nb-index-body" data-no-section-nav>
 <header class="nb-app-header">
@@ -30,28 +30,141 @@
 </header>
 
   <div class="nb-index-wrap">
-    <h1>Тетради · Б84</h1>
-    <p>Устанавливаемое приложение (отдельно от расписания). После публикации
-      нажми <strong>↻ Обновить</strong>. Расписание:
-      <a href="https://corpttt.github.io/timetable/">timetable</a>.</p>
-    <ol>
-    <li><a href="./geometry-theory.html">Геометрия · теория</a> <span class="sub">Геометрия и топология</span></li>
-    <li><a href="./geometry-practice.html">Геометрия · практика</a> <span class="sub">Практическая геометрия</span></li>
-    <li><a href="./matan-theory.html">Матанализ · теория</a> <span class="sub">Математический анализ (теория)</span></li>
-    <li><a href="./algebra-theory.html">Алгебра · теория</a> <span class="sub">Алгебра (теория)</span></li>
-    <li><a href="./discrete-theory.html">Дискретная · теория</a> <span class="sub">Дискретная математика (теория)</span></li>
-    <li><a href="./matan-practice.html">Матанализ · практика</a> <span class="sub">Математический анализ</span></li>
-    <li><a href="./matan-kr1.html">Матанализ · КР-1</a> <span class="sub">Математический анализ</span></li>
-    <li><a href="./algebra-practice.html">Алгебра · практика</a> <span class="sub">Алгебра</span></li>
-    <li><a href="./algebra-colloquium.html">Алгебра · коллоквиум</a> <span class="sub">Алгебра</span></li>
-    <li><a href="./algorithms.html">Алгоритмы и структуры данных</a> <span class="sub">Алгоритмы</span></li>
-    <li><a href="./informatics.html">Информатика</a> <span class="sub">Информатика</span></li>
-    <li><a href="./cpp.html">C++ · тетрадь</a> <span class="sub">Программирование (C++)</span></li>
-    <li><a href="./discrete.html">Дискретная математика · индукция</a> <span class="sub">Дискретная математика</span></li>
-    <li><a href="./english.html">Английский · Unit 1 Study and Work</a> <span class="sub">Английский (с ответами)</span></li>
-    </ol>
-    <p class="sub">updated 2026-10-31 16:57 UTC</p>
+    <h1>Тетради</h1>
+    <p class="nb-index-lead">Папки по предметам — нажми, чтобы раскрыть.
+      После публикации жми <strong>↻ Обновить</strong>.
+      Расписание: <a href="https://corpttt.github.io/timetable/">timetable</a>.</p>
+    <div class="nb-folders">
+    <section class="nb-folder" data-folder="matan" style="--folder-accent:#6ba3f0">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-matan">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/matan.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Математический анализ</span>
+          <span class="nb-folder-count">3 тетради</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-matan">
+        <ul class="nb-folder-list">
+          <li><a href="./matan-theory.html">Теория</a></li>
+          <li><a href="./matan-practice.html">Практика</a></li>
+          <li><a href="./matan-kr1.html">КР-1</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="algebra" style="--folder-accent:#8b9cf0">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-algebra">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/algebra.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Алгебра</span>
+          <span class="nb-folder-count">4 тетради</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-algebra">
+        <ul class="nb-folder-list">
+          <li><a href="./algebra-theory.html">Теория</a></li>
+          <li><a href="./algebra-practice.html">Практика</a></li>
+          <li><a href="./algebra-colloquium.html">Коллоквиум · билеты</a></li>
+          <li><a href="./algebra-colloquium-checklist.html">Коллоквиум · чеклист</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="geometry" style="--folder-accent:#6bc5d8">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-geometry">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/geometry.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Геометрия и топология</span>
+          <span class="nb-folder-count">2 тетради</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-geometry">
+        <ul class="nb-folder-list">
+          <li><a href="./geometry-theory.html">Теория</a></li>
+          <li><a href="./geometry-practice.html">Практика</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="discrete" style="--folder-accent:#7ab8e8">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-discrete">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/discrete.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Дискретная математика</span>
+          <span class="nb-folder-count">2 тетради</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-discrete">
+        <ul class="nb-folder-list">
+          <li><a href="./discrete-theory.html">Теория</a></li>
+          <li><a href="./discrete.html">Индукция</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="algorithms" style="--folder-accent:#7c8ce0">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-algorithms">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/algorithms.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Алгоритмы</span>
+          <span class="nb-folder-count">1 тетрадь</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-algorithms">
+        <ul class="nb-folder-list">
+          <li><a href="./algorithms.html">Тетрадь</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="informatics" style="--folder-accent:#5a9fd4">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-informatics">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/informatics.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Информатика</span>
+          <span class="nb-folder-count">1 тетрадь</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-informatics">
+        <ul class="nb-folder-list">
+          <li><a href="./informatics.html">Тетрадь</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="cpp" style="--folder-accent:#6bb8a8">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-cpp">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/cpp.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">C++</span>
+          <span class="nb-folder-count">1 тетрадь</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-cpp">
+        <ul class="nb-folder-list">
+          <li><a href="./cpp.html">Тетрадь</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="nb-folder" data-folder="english" style="--folder-accent:#9aa5e8">
+      <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-english">
+        <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/english.png')" role="img" aria-hidden="true"></span></span>
+        <span class="nb-folder-meta">
+          <span class="nb-folder-title">Английский</span>
+          <span class="nb-folder-count">1 тетрадь</span>
+        </span>
+        <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
+      </button>
+      <div class="nb-folder-body" id="folder-english">
+        <ul class="nb-folder-list">
+          <li><a href="./english.html">Unit 1 · Study and Work</a></li>
+        </ul>
+      </div>
+    </section>
+    </div>
+    <p class="sub">updated 2026-11-01 11:59 UTC</p>
   </div>
-  <script src="./site.js?v=3"></script>
+  <script src="./site.js?v=4"></script>
 </body>
 </html>

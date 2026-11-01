@@ -45,7 +45,7 @@
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker
-      .register("./sw.js?v=3")
+      .register("./sw.js?v=4")
       .then((reg) => {
         reg.update().catch(() => {});
         reg.addEventListener("updatefound", () => {
@@ -61,10 +61,44 @@
       .catch(() => {});
   }
 
+  function wireFolders() {
+    const root = document.querySelector(".nb-folders");
+    if (!root) return;
+    const key = "nb-open-folders";
+    let open = new Set();
+    try {
+      open = new Set(JSON.parse(localStorage.getItem(key) || "[]"));
+    } catch (_) {}
+
+    root.querySelectorAll(".nb-folder").forEach((folder) => {
+      const id = folder.dataset.folder;
+      const btn = folder.querySelector(".nb-folder-toggle");
+      if (!btn) return;
+      if (open.has(id)) {
+        folder.classList.add("is-open");
+        folder.setAttribute("open", "");
+        btn.setAttribute("aria-expanded", "true");
+      }
+      btn.addEventListener("click", () => {
+        const next = !folder.classList.contains("is-open");
+        folder.classList.toggle("is-open", next);
+        if (next) folder.setAttribute("open", "");
+        else folder.removeAttribute("open");
+        btn.setAttribute("aria-expanded", next ? "true" : "false");
+        if (next) open.add(id);
+        else open.delete(id);
+        try {
+          localStorage.setItem(key, JSON.stringify([...open]));
+        } catch (_) {}
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     document
       .getElementById("btn-refresh")
       ?.addEventListener("click", hardRefresh);
+    wireFolders();
     registerSW();
   });
 })();

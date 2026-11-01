@@ -1,13 +1,13 @@
-const CACHE = "notebooks-shell-v3";
+const CACHE = "notebooks-shell-v4";
 const SHELL = [
   "./",
   "./index.html",
   "./site.css",
-  "./site.css?v=3",
+  "./site.css?v=4",
   "./site.js",
-  "./site.js?v=3",
+  "./site.js?v=4",
   "./theme.js",
-  "./theme.js?v=3",
+  "./theme.js?v=4",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",

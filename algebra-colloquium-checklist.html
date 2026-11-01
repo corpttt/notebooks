@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru" data-nb-id="algebra-colloquium-checklist" data-nb-title="Алгебра · коллоквиум · чеклист" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Алгебра · коллоквиум · чеклист</title>
+<style>
+:root {
+  --bg: #f4f1ea; --card: #fff; --ink: #1a1a18; --muted: #6a655c;
+  --line: #e0dbd0; --acc: #1f5c4d; --acc2: #8a4b1f; --soft: #e7f2ee;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 16px/1.55 "Segoe UI", "Cambria Math", "Segoe UI Symbol", system-ui, sans-serif;
+  color: var(--ink); background: var(--bg);
+}
+header {
+  max-width: 48rem; margin: 0 auto; padding: 1.25rem 1.25rem 0.5rem;
+}
+h1 { font-size: 1.4rem; margin: 0 0 0.35rem; }
+.note { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.75rem; }
+main { max-width: 48rem; margin: 0 auto 3rem; padding: 0 1.25rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 1rem 1.15rem 1.25rem; margin-bottom: 0.9rem;
+  border-top: 3px solid var(--acc);
+}
+.prose h1 { font-size: 1.35rem; margin: 0.2rem 0 0.8rem; }
+.prose h2 {
+  font-size: 1.15rem; margin: 1.6rem 0 0.55rem; padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--line); color: var(--acc);
+}
+.prose h3 { font-size: 1.02rem; margin: 1.2rem 0 0.4rem; }
+.prose p { margin: 0.55rem 0; }
+.prose ul, .prose ol { margin: 0.4rem 0 0.55rem 1.2rem; padding: 0; }
+.prose li { margin: 0.2rem 0; }
+.prose hr { border: none; border-top: 1px solid var(--line); margin: 1.4rem 0; }
+.prose blockquote {
+  margin: 0.75rem 0; padding: 0.55rem 0.85rem; background: #f7f5f0;
+  border-left: 3px solid var(--line); color: var(--muted);
+}
+.prose a { color: var(--acc); }
+table {
+  border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.94rem;
+}
+th, td {
+  border: 1px solid var(--line); padding: 0.4rem 0.55rem;
+  text-align: left; vertical-align: top;
+}
+th { background: #f0eee8; }
+code {
+  background: #efece4; padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.9em;
+}
+pre {
+  background: #1e1e1e; color: #eee; padding: 0.85rem 1rem;
+  overflow: auto; border-radius: 8px; font-size: 0.88rem;
+}
+.formula-box {
+  margin: 0.9rem 0; padding: 0.85rem 1rem 0.95rem; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--acc) 35%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 8%, var(--card)), var(--card));
+}
+.formula-box-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--acc); margin-bottom: 0.35rem;
+}
+.formula-box-body {
+  font-family: "Cambria Math", "Segoe UI Symbol", "Segoe UI", serif;
+  font-size: 1.12rem; line-height: 1.45;
+}
+.fig {
+  margin: 0.85rem 0; padding: 0.65rem; background: #faf9f6;
+  border: 1px dashed var(--line); border-radius: 10px;
+  overflow-x: auto; text-align: center;
+}
+.fig figcaption {
+  color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; text-align: left;
+}
+.figs { display: grid; gap: 0.65rem; margin: 0.85rem 0; }
+@media (min-width: 640px) { .figs.two { grid-template-columns: 1fr 1fr; } }
+.prose svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+html[data-theme="dark"] {
+  --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e; --line: #30363d;
+}
+html[data-theme="dark"] .fig { background: #12171e; }
+.katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+</style>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=3cbcc131">
+<script src="./общее/тетрадь.js?v=3cbcc131" defer></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
+
+
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Тетради">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./site.css?v=4">
+</head>
+<body>
+<header>
+  <h1>Алгебра · коллоквиум · чеклист</h1>
+  <p class="note">Билеты 1–22 · что обязательно сказать</p>
+</header>
+<main>
+  <div class="card">
+    <div class="prose">
+<h1>Коллоквиум · чеклист «что сказать» по билетам 1–22</h1>
+<p><em>Не конспект и не доказательства — только карта ответа. Полный текст: <a href="коллоквиум-билеты.md"><code>коллоквиум-билеты.md</code></a>. Разбор своими словами: <a href="тетрадь-теория.md"><code>тетрадь-теория.md</code></a>.</em></p>
+<p><strong>Как читать.</strong> Название билета = тема. В ответе: определения из списка → формулировки → доказательства помеченных пунктов. В скобках — то, чего нет в названии, но без чего билет дырявый.</p>
+<hr>
+<h2 id="билет-1-множества-операции-де-морган">Билет 1. Множества, операции, де Морган</h2>
+<ul>
+<li><strong>Опр.</strong> принадлежность; подмножество; равенство множеств; \(\varnothing\).</li>
+<li><strong>Опр.</strong> \(\cup\), \(\cap\), \(\setminus\), дополнение \(\overline{A}\) до \(U\).</li>
+<li><strong>Доказать.</strong> законы де Моргана (хотя бы для двух множеств; лучше и для семейства).</li>
+</ul>
+<h2 id="билет-2-мощность-декартово-произведение-счётность-mathbb-q">Билет 2. Мощность, декартово произведение, счётность, \(\mathbb{Q}\)</h2>
+<ul>
+<li><strong>Опр.</strong> равномощность \(|A|=|B|\); \(|A|\le|B|\), \(|A|&lt;|B|\); конечное множество; <strong>счётное</strong> (\(=|\mathbb{N}|\)); декартово произведение \(A\times B\); мощность континуума.</li>
+<li><strong>Доказать.</strong> лемма: \(\mathbb{N}\times\mathbb{N}\) счётно <em>(в названии нет — нужна для \(\mathbb{Q}\) и объединений)</em>.</li>
+<li><strong>Доказать.</strong> объединение счётного числа счётных множеств счётно.</li>
+<li><strong>Доказать.</strong> \(\mathbb{Q}\) счётно.</li>
+<li><strong>Доказать.</strong> \((0;1)\) несчётно (диагональ Кантора) + сказать, что такое континуум.</li>
+</ul>
+<h2 id="билет-3-отображения-инъекция-сюръекция-биекция-композиция">Билет 3. Отображения, инъекция / сюръекция / биекция, композиция</h2>
+<ul>
+<li><strong>Опр.</strong> отображение \(f:A\to B\) (как отношение); образ / прообраз элемента.</li>
+<li><strong>Опр.</strong> инъекция, сюръекция, биекция (+ по одному примеру / не-примеру).</li>
+<li><strong>Опр.</strong> композиция \(f\circ g\); ограничение / сужение (если есть в конспекте).</li>
+<li><strong>Сказать.</strong> ассоциативность композиции; \(\mathrm{id}\) как нейтральный элемент.</li>
+</ul>
+<h2 id="билет-4-обратное-отображение">Билет 4. Обратное отображение</h2>
+<ul>
+<li><strong>Опр.</strong> \(\mathrm{id}_A\); левое / правое обратное; обратимое отображение.</li>
+<li><strong>Доказать.</strong> теорема об обратном: \(f\) биекция \(\iff\) существует двустороннее обратное \(\iff\) существуют левое и правое обратные (формулировка как в §4).</li>
+<li><strong>Следствие.</strong> \((f\circ g)^{-1}=g^{-1}\circ f^{-1}\) (если есть в конспекте).</li>
+</ul>
+<h2 id="билет-5-отношения-эквивалентность-классы">Билет 5. Отношения, эквивалентность, классы</h2>
+<ul>
+<li><strong>Опр.</strong> бинарное отношение; рефлексивность, симметричность, транзитивность; отношение эквивалентности.</li>
+<li><strong>Опр.</strong> класс эквивалентности \([a]\); фактор-множество \(A/{\sim}\); разбиение множества.</li>
+<li><strong>Доказать.</strong> два класса либо не пересекаются, либо совпадают.</li>
+<li><strong>Доказать.</strong> эквивалентность \(\iff\) разбиение на классы.</li>
+</ul>
+<h2 id="билет-6-перестановки-независимые-циклы-и-транспозиции">Билет 6. Перестановки → независимые циклы и транспозиции</h2>
+<ul>
+<li><strong>Опр.</strong> \(S_n\) (как множество биекций \(\{1,\ldots,n\}\)); цикл; независимые циклы; транспозиция.</li>
+<li><strong>Опр.</strong> \(\pi\)-эквивалентность (орбиты) — зачем нужна для разложения.</li>
+<li><strong>Доказать.</strong> любая \(\pi\neq e\) однозначно (с точностью до порядка) = произведение независимых циклов длины \(\ge 2\).</li>
+<li><strong>Следствие.</strong> любая перестановка = произведение транспозиций <em>(как именно цикл \(\to\) транспозиции)</em>.</li>
+</ul>
+<h2 id="билет-7-группа-s_n-и-a_n-порядки">Билет 7. Группа; \(S_n\) и \(A_n\); порядки</h2>
+<ul>
+<li><strong>Опр.</strong> группа (ассоциативность, \(e\), обратный); абелева группа; порядок группы.</li>
+<li><strong>Пример.</strong> \(S_n\) — группа, \(|S_n|=n!\).</li>
+<li><strong>Опр. / теор.</strong> знак \(\varepsilon_\pi=(-1)^k\) не зависит от разложения в транспозиции; мультипликативность знака.</li>
+<li><strong>Опр.</strong> чётная / нечётная перестановка; чётность через длины независимых циклов.</li>
+<li><strong>Доказать.</strong> \(A_n\) — группа; при \(n\ge 2\) имеем \(|A_n|=n!/2\).</li>
+</ul>
+<h2 id="билет-8-кольцо-область-целостности-mathbb-z-m-mathbb-z">Билет 8. Кольцо, область целостности, \(\mathbb{Z}/m\mathbb{Z}\)</h2>
+<ul>
+<li><strong>Опр.</strong> кольцо (аксиомы \(+\) и \(\cdot\)); коммутативное; с единицей; тело; поле.</li>
+<li><strong>Примеры.</strong> \(\mathbb{Z},\mathbb{Q},\mathbb{R}\); \(2\mathbb{Z}\) без единицы; кольцо с нулевым умножением.</li>
+<li><strong>Опр.</strong> делитель нуля; область целостности.</li>
+<li><strong>Доказать / сказать.</strong> в \(\mathbb{Z}_m\): \(\mathrm{НОД}(a,m)=1\Rightarrow \bar a\) обратим; \(\mathrm{НОД}&gt;1\Rightarrow \bar a\) делитель нуля.</li>
+<li><strong>Следствие.</strong> \(\mathbb{Z}_p\) — поле \(\iff\) \(p\) простое; при составном \(m\) — не область целостности.</li>
+</ul>
+<h2 id="билет-9-делимость-в-mathbb-z-деление-с-остатком">Билет 9. Делимость в \(\mathbb{Z}\); деление с остатком</h2>
+<ul>
+<li><strong>Опр.</strong> \(b\mid a\) (\(a\vdots b\)).</li>
+<li><strong>Свойства.</strong> \(0\) делится на всё; \(a\mid a\), \(1\mid a\); транзитивность; линейные комбинации.</li>
+<li><strong>Доказать.</strong> \(\forall a\), \(b\neq 0\) существуют единственные \(q,r\): \(a=bq+r\), \(0\le r&lt;|b|\) (существование + единственность).</li>
+</ul>
+<h2 id="билет-10-нод-и-свойства-без-евклида">Билет 10. НОД и свойства (без Евклида)</h2>
+<ul>
+<li><strong>Опр.</strong> НОД пары / семейства (общий делитель, делящийся на любой общий); \(\pm d\), выбор \(d&gt;0\).</li>
+<li><strong>Сказать.</strong> НОД определён с точностью до ассоциированности (\(d\sim d'\)).</li>
+<li><strong>Доказать.</strong> лемма: \(\mathrm{НОД}(a,b)=\mathrm{НОД}(a+bq,b)\).</li>
+<li><strong>Свойства.</strong> \(\mathrm{НОД}(ca,cb)=|c|\,\mathrm{НОД}(a,b)\); \(\mathrm{НОД}(a,0)=|a|\); если \(b\mid a\), то \(\mathrm{НОД}=|b|\); и др. из §10.</li>
+</ul>
+<h2 id="билет-11-алгоритм-евклида-безу">Билет 11. Алгоритм Евклида; Безу</h2>
+<ul>
+<li><strong>Алгоритм.</strong> цепочка остатков до \(0\); почему даёт НОД (через лемму сдвига).</li>
+<li><strong>Доказать.</strong> теорема Безу: \(d=\mathrm{НОД}((a_i))\) представим как \(\sum a_i u_i\) (линейное представление).</li>
+<li><strong>Практика.</strong> уметь найти \(u,v\) для пары (расширенный Евклид) — часто спрашивают на доске.</li>
+</ul>
+<h2 id="билет-12-взаимная-простота-нод-и-нок">Билет 12. Взаимная простота; НОД и НОК</h2>
+<ul>
+<li><strong>Опр.</strong> взаимно простые (\(\mathrm{НОД}=1\)); взаимно простое семейство.</li>
+<li><strong>Свойства.</strong> \(\mathrm{НОД}=1\iff\) существует линейная комбинация \(=1\); если все \(a_i\) взаимно просты с \(b\), то и \(\prod a_i\); если \(ab\vdots c\) и \(\mathrm{НОД}(a,c)=1\), то \(b\vdots c\); если \(a\vdots b\), \(a\vdots c\) и \(\mathrm{НОД}(b,c)=1\), то \(a\vdots bc\).</li>
+<li><strong>Опр.</strong> НОК.</li>
+<li><strong>Связь.</strong> через каноническое разложение: \(\min/\max\) показателей; \(\mathrm{НОД}\cdot\mathrm{НОК}=nm\); при взаимной простоте \(\mathrm{НОК}=nm\).</li>
+</ul>
+<h2 id="билет-13-простые-наименьший-делитель-бесконечность">Билет 13. Простые; наименьший делитель; бесконечность</h2>
+<ul>
+<li><strong>Опр.</strong> простое / составное; \(1\) ни то ни другое.</li>
+<li><strong>Доказать.</strong> наименьший натуральный делитель \(n&gt;1\), отличный от \(1\), — простое.</li>
+<li><strong>Доказать.</strong> простых бесконечно много (Евклид: \(N=p_1\cdots p_r+1\)).</li>
+</ul>
+<h2 id="билет-14-две-леммы-о-простых">Билет 14. Две леммы о простых</h2>
+<ul>
+<li><strong>Лемма.</strong> сдвиг делителей / \(\mathrm{НОД}(a,b)=\mathrm{НОД}(a+bq,b)\) (если в билете).</li>
+<li><strong>Лемма.</strong> если \(ab\vdots c\) и \(\mathrm{НОД}(a,c)=1\), то \(b\vdots c\).</li>
+<li><strong>Лемма.</strong> если \(ab\vdots p\) и \(p\) простое, то \(a\vdots p\) или \(b\vdots p\) (и обобщение на произведение).</li>
+<li><em>Зачем:</em> это мост к единственности в ОТА (билет 15).</li>
+</ul>
+<h2 id="билет-15-ота-канонический-нод-и-нок">Билет 15. ОТА; канонический НОД и НОК</h2>
+<ul>
+<li><strong>Доказать.</strong> ОТА: существование + единственность разложения на простые.</li>
+<li><strong>Сказать.</strong> канонический вид \(n=p_1^{k_1}\cdots p_m^{k_m}\).</li>
+<li><strong>Вывести.</strong> \(\mathrm{НОД}\) / \(\mathrm{НОК}\) через \(\min\) / \(\max\) показателей; \(\mathrm{НОД}\cdot\mathrm{НОК}=nm\).</li>
+</ul>
+<h2 id="билет-16-непрерывные-дроби-подходящие">Билет 16. Непрерывные дроби; подходящие</h2>
+<ul>
+<li><strong>Опр.</strong> непрерывная (цепная) дробь; конечная / бесконечная; правильная \([b_0;b_1,\ldots]\).</li>
+<li><strong>Опр.</strong> \(n\)-я подходящая дробь \(P_n/Q_n\).</li>
+<li><strong>Формулы.</strong> рекурренты для \(P_k,Q_k\) (для правильных: \(P_k=b_k P_{k-1}+P_{k-2}\)).</li>
+<li><strong>Алгоритм.</strong> разложение \(\alpha\) через целую и дробную части.</li>
+<li><strong>Сказать.</strong> рациональные \(\leftrightarrow\) конечные; иррациональные \(\leftrightarrow\) бесконечные (предел подходящих).</li>
+<li><strong>Пример.</strong> разложить \(p/q\) или \(\sqrt{2}\) / золотое сечение — часто просят посчитать.</li>
+</ul>
+<h2 id="билет-17-сравнения-и-свойства">Билет 17. Сравнения и свойства</h2>
+<ul>
+<li><strong>Опр.</strong> \(a\equiv b\pmod m\iff m\mid(a-b)\).</li>
+<li><strong>Сказать.</strong> это эквивалентность на \(\mathbb{Z}\).</li>
+<li><strong>Свойства.</strong> почленное \(+\), \(-\), \(\cdot\); сокращение на \(c\) с модулем \(m/\mathrm{НОД}(c,m)\); при \(\mathrm{НОД}(m,n)=1\): сравнение по \(mn\) \(\iff\) система по \(m\) и по \(n\).</li>
+<li><strong>Доказать.</strong> хотя бы сложение/умножение и сокращение (или п. 3).</li>
+</ul>
+<h2 id="билет-18-полная-система-вычетов-кольцо-mathbb-z-m-mathbb-z">Билет 18. Полная система вычетов; кольцо \(\mathbb{Z}/m\mathbb{Z}\)</h2>
+<ul>
+<li><strong>Опр.</strong> класс \(\bar a=[a]_m\); полная система вычетов (представители всех классов).</li>
+<li><strong>Доказать.</strong> операции на классах корректны (конгруэнция: не зависят от выбора представителей).</li>
+<li><strong>Доказать / сказать.</strong> \(\mathbb{Z}_m=\mathbb{Z}/m\mathbb{Z}\) — коммутативное кольцо с единицей.</li>
+</ul>
+<h2 id="билет-19-приведённая-система-varphi-без-док-ва-мультипликати">Билет 19. Приведённая система; \(\varphi\) (без док-ва мультипликативности)</h2>
+<ul>
+<li><strong>Опр.</strong> \((\mathbb{Z}/m\mathbb{Z})^*\); приведённая система вычетов; критерий обратимости \(\mathrm{НОД}(a,m)=1\).</li>
+<li><strong>Опр.</strong> \(\varphi(n)=\#\{k:1\le k\le n,\ \mathrm{НОД}(k,n)=1\}\).</li>
+<li><strong>Доказать.</strong> \(\varphi(p^k)=p^k-p^{k-1}=p^k(1-1/p)\).</li>
+<li><strong>Формула.</strong> через каноническое разложение \(\varphi(n)=n\prod_{p\mid n}(1-1/p)\) — <em>сформулировать</em>; мультипликативность здесь можно взять как факт (доказательство — билет 21).</li>
+</ul>
+<h2 id="билет-20-системы-сравнений-кто">Билет 20. Системы сравнений; КТО</h2>
+<ul>
+<li><strong>Лемма.</strong> при \(\mathrm{НОД}(a,m)=1\) сравнение \(ax\equiv b\pmod m\) имеет единственное решение по модулю \(m\).</li>
+<li><strong>Доказать.</strong> КТО: попарно взаимно простые модули \(\Rightarrow\) система разрешима и единственна по модулю \(M=\prod m_i\).</li>
+<li><strong>Алгоритм.</strong> последовательное замещение (уметь решить маленькую систему на доске).</li>
+</ul>
+<h2 id="билет-21-мультипликативность-varphi">Билет 21. Мультипликативность \(\varphi\)</h2>
+<ul>
+<li><strong>Доказать.</strong> \(\mathrm{НОД}(a,b)=1\Rightarrow \varphi(ab)=\varphi(a)\varphi(b)\) (обычно через КТО / биекцию приведённых систем).</li>
+<li><strong>Следствие.</strong> формула \(\varphi\) через простые множители (если не закрыли в 19).</li>
+</ul>
+<h2 id="билет-22-теорема-эйлера-малая-ферма">Билет 22. Теорема Эйлера; малая Ферма</h2>
+<ul>
+<li><strong>Доказать.</strong> \(\mathrm{НОД}(a,m)=1\Rightarrow a^{\varphi(m)}\equiv 1\pmod m\) (умножение в \((\mathbb{Z}/m\mathbb{Z})^*\) — перестановка).</li>
+<li><strong>Следствие.</strong> малая Ферма: \(p\nmid a\Rightarrow a^{p-1}\equiv 1\pmod p\); для всех \(a\): \(a^p\equiv a\pmod p\).</li>
+</ul>
+<hr>
+<h2 id="что-взять-с-собой">Что взять с собой</h2>
+<ul>
+<li>Билет = <strong>пакет</strong>: определения + нужные леммы, даже если леммы нет в названии (классика: \(\mathbb{N}\times\mathbb{N}\) в билете 2).</li>
+<li>На доске чаще всего: <strong>чёткие определения</strong> и <strong>одно-два полных доказательства</strong>; остальное могут уточнить вопросом.</li>
+<li>Связки, которые любят: 14→15 (леммы → ОТА), 11→20 (Безу → линейные сравнения → КТО), 19→21→22 (\(\varphi\) → Эйлер → Ферма).</li>
+</ul>
+    </div>
+  </div>
+</main>
+  <script src="./site.js?v=4"></script>
+</body>
+</html>
