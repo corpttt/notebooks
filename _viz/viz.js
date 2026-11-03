@@ -9,7 +9,8 @@
  *   <div class="sort-anim" data-algo="quick|merge|insertion" data-title="…"
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted,reversed"></div>
  *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur
- *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec"></div>
+ *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp"></div>
+ *   fibtree / calcdp: optional data-n
  *   heap: optional data-mode="ops|sort"
  *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"
  *   bisect: optional data-preset="sq2|cub|cos"
@@ -1743,7 +1744,284 @@ window.Viz = window.Viz || {};
     load('query', 2, 13);
   }
 
+  /* ---------- Фибоначчи: дерево вызовов без памяти и с мемоизацией ---------- */
+  function labFibTree(box) {
+    var N = +(box.dataset.n || 5), memo = false, S, nodes;
+    head(box, 'Дерево вызовов F(N): обычная рекурсия против рекурсии с памятью');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>вызов ещё работает (лежит в стеке) <i style="background:#1f5c4d"></i>вернул значение ' +
+      '<i style="background:#b9d3c9"></i>взято из mem — новых вызовов нет'));
+    function build() {
+      var steps = [], mem = {}, calls = 0, state = {};
+      nodes = [];
+      function snap(m, cur) { steps.push({ st: copy(state), mem: copy(mem), calls: calls, msg: m, cur: cur }); }
+      function rec(n, parent, depth) {
+        var id = nodes.length;
+        nodes.push({ n: n, parent: parent, depth: depth, kids: [], v: null });
+        if (parent >= 0) nodes[parent].kids.push(id);
+        calls++;
+        if (memo && mem[n] !== undefined) {
+          state[id] = 'hit'; nodes[id].v = mem[n];
+          snap('F(' + n + '): mem[' + n + '] = ' + mem[n] + ' уже посчитано → сразу возвращаем, дальше не спускаемся.', id);
+          return mem[n];
+        }
+        state[id] = 'act';
+        if (n <= 1) {
+          state[id] = 'done'; nodes[id].v = n;
+          if (memo) mem[n] = n;
+          snap('F(' + n + ') — база: возвращаем ' + n + (memo ? ' и записываем mem[' + n + '] = ' + n + '.' : '.'), id);
+          return n;
+        }
+        snap('Вызов F(' + n + '): чтобы ответить, нужны F(' + (n - 1) + ') и F(' + (n - 2) + ').', id);
+        var a = rec(n - 1, id, depth + 1);
+        var b = rec(n - 2, id, depth + 1);
+        var v = a + b;
+        nodes[id].v = v; state[id] = 'done';
+        if (memo) mem[n] = v;
+        snap('F(' + n + ') = F(' + (n - 1) + ') + F(' + (n - 2) + ') = ' + a + ' + ' + b + ' = ' + v +
+          (memo ? ' → записали в mem[' + n + '].' : '.'), id);
+        return v;
+      }
+      snap((memo ? 'С мемоизацией: mem заполнен −1 («ещё не считали»).' : 'Обычная рекурсия: каждый вызов честно спускается до F(1) и F(0).') +
+        ' Нажми «▶» или «Шаг →».', -1);
+      var res = rec(N, -1, 0);
+      snap('Готово: F(' + N + ') = ' + res + '. Всего вызовов функции: ' + calls +
+        (memo ? ' = 2N − 1 — каждое значение считается один раз, O(N).' : ' — дерево растёт почти вдвое с каждым N, это экспонента.'), -1);
+      var leaf = 0;
+      (function place(id) {
+        var nd = nodes[id];
+        if (!nd.kids.length) { nd.x = leaf++; return; }
+        nd.kids.forEach(place);
+        nd.x = (nodes[nd.kids[0]].x + nodes[nd.kids[nd.kids.length - 1]].x) / 2;
+      })(0);
+      nodes.leaves = leaf;
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], maxD = 0;
+      nodes.forEach(function (nd) { if (nd.depth > maxD) maxD = nd.depth; });
+      var W = 600, step = (W - 40) / Math.max(nodes.leaves, 1), dy = Math.min(56, 250 / Math.max(maxD, 1));
+      var r = Math.min(17, step / 2 - 2);
+      function X(nd) { return 20 + (nd.x + 0.5) * step; }
+      function Y(nd) { return 26 + nd.depth * dy; }
+      var H = memo ? 26 + maxD * dy + 90 : 26 + maxD * dy + 30;
+      var svg = '<svg viewBox="0 0 600 ' + H + '" xmlns="http://www.w3.org/2000/svg">';
+      nodes.forEach(function (nd, id) {
+        if (!o.st[id] || nd.parent < 0) return;
+        var pa = nodes[nd.parent];
+        svg += '<line class="gedge' + (o.st[id] === 'act' ? ' on' : '') + '" x1="' + X(pa) + '" y1="' + Y(pa) + '" x2="' + X(nd) + '" y2="' + Y(nd) + '"/>';
+      });
+      nodes.forEach(function (nd, id) {
+        var s = o.st[id];
+        if (!s) return;
+        var fill = s === 'act' ? '#e0a24a' : s === 'done' ? '#1f5c4d' : '#b9d3c9';
+        svg += '<circle cx="' + X(nd) + '" cy="' + Y(nd) + '" r="' + r + '" fill="' + fill + '" stroke="' +
+          (id === o.cur ? '#c45c26' : '#1f5c4d') + '" stroke-width="' + (id === o.cur ? 3 : 1.4) + '"' + (s === 'hit' ? ' stroke-dasharray="3 2"' : '') + '/>' +
+          txt(X(nd), Y(nd) + 4, nd.n, ' text-anchor="middle" font-size="12" font-weight="700"' + (s === 'done' ? ' fill="#fff"' : ''));
+        if (s !== 'act' && nd.v != null) {
+          svg += txt(X(nd) + r + 2, Y(nd) + r + 2, '=' + nd.v, ' font-size="10" fill="#8a4b1f"');
+        }
+      });
+      if (memo) {
+        var yb = 26 + maxD * dy + 40, cw = Math.min(46, 520 / (N + 1));
+        svg += txt(60, yb + 22, 'mem:', ' text-anchor="end" font-size="13" font-weight="600"');
+        for (var k = 0; k <= N; k++) {
+          var has = o.mem[k] !== undefined;
+          svg += cell(70 + k * cw, yb, cw - 4, 34, has ? '#e8f1ee' : '#fff', has ? o.mem[k] : '−1', { fs: 12 }) +
+            txt(70 + k * cw + (cw - 4) / 2, yb - 5, k, ' text-anchor="middle" font-size="10" fill="#6b665c"');
+        }
+      }
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · вызовов F: ' + o.calls;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1100 });
+    var bN = btn(ctr2, 'Без памяти', function () { memo = false; reload(); });
+    var bM = btn(ctr2, 'С мемоизацией', function () { memo = true; reload(); });
+    var bn = {};
+    [4, 5, 6].forEach(function (v) { bn[v] = btn(ctr2, 'N = ' + v, function () { N = v; reload(); }); });
+    function reload() {
+      S = build(); sp.reset();
+      bN.classList.toggle('on', !memo); bM.classList.toggle('on', memo);
+      for (var k in bn) bn[k].classList.toggle('on', +k === N);
+    }
+    reload();
+  }
+
+  /* ---------- калькулятор +1, ×2, ×3: таблица ans снизу вверх и восстановление ---------- */
+  function labCalcDP(box) {
+    var N = +(box.dataset.n || 10), S;
+    head(box, 'Калькулятор (+1, ×2, ×3): ans[k] — минимум операций, чтобы из 1 получить k');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>считаем ans[k] <i style="background:#b9d3c9"></i>кандидаты: k−1, k/2, k/3 ' +
+      '<i style="background:#c45c26"></i>выбранный переход <i style="background:#1f5c4d"></i>цепочка ответа'));
+    function build() {
+      var ans = [], from = [], op = [], steps = [];
+      function snap(m, o) {
+        var st = { ans: ans.slice(), from: from.slice(), msg: m, cur: -1, cand: [], pick: -1, chain: {} };
+        for (var q in o) st[q] = o[q];
+        steps.push(st);
+      }
+      ans[1] = 0;
+      snap('База: ans[1] = 0 — единица уже на экране, операций не нужно. Дальше k = 2, 3, …, ' + N + ' по порядку: ' +
+        'к моменту k все меньшие ответы уже готовы.', { cur: 1 });
+      for (var k = 2; k <= N; k++) {
+        var cand = [k - 1], txtc = ['ans[' + (k - 1) + '] + 1 = ' + (ans[k - 1] + 1) + ' (последняя операция +1)'];
+        if (k % 2 === 0) { cand.push(k / 2); txtc.push('ans[' + (k / 2) + '] + 1 = ' + (ans[k / 2] + 1) + ' (×2)'); }
+        if (k % 3 === 0) { cand.push(k / 3); txtc.push('ans[' + (k / 3) + '] + 1 = ' + (ans[k / 3] + 1) + ' (×3)'); }
+        var best = cand[0];
+        cand.forEach(function (c) { if (ans[c] < ans[best]) best = c; });
+        snap('k = ' + k + ': откуда можно прийти? ' + txtc.join('; ') + '.', { cur: k, cand: cand });
+        ans[k] = ans[best] + 1; from[k] = best;
+        op[k] = best === k - 1 ? '+1' : best * 2 === k ? '×2' : '×3';
+        snap('Минимум даёт ' + best + ' → ans[' + k + '] = ' + ans[k] + ' (последняя операция ' + op[k] + ').', { cur: k, cand: cand, pick: best });
+      }
+      var chain = {}, list = [], v = N;
+      while (v !== 1) { chain[v] = 1; list.push(v); v = from[v]; }
+      chain[1] = 1; list.push(1);
+      var fwd = list.slice().reverse(), ops = [];
+      for (var i = 1; i < fwd.length; i++) ops.push(fwd[i - 1] + ' ' + op[fwd[i]] + ' → ' + fwd[i]);
+      snap('Таблица готова: ответ ans[' + N + '] = ' + ans[N] + '. Восстанавливаем цепочку с конца по «откуда пришли»: ' +
+        list.join(' ← ') + '.', { chain: chain });
+      snap('Вперёд: ' + ops.join(', ') + '. Число операций: ' + ans[N] + '.', { chain: chain });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], cw = Math.min(46, 570 / N), x0 = 16, y0 = 120;
+      function cx(k) { return x0 + (k - 1) * cw + (cw - 3) / 2; }
+      var svg = '<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">';
+      svg += txt(x0, 190, 'k (сверху) и ans[k] (в клетке)', ' font-size="11" fill="#6b665c"');
+      for (var k = 1; k <= N; k++) {
+        var inC = o.cand.indexOf(k) >= 0;
+        var f = k === o.cur ? '#e0a24a' : o.chain[k] ? '#1f5c4d' : k === o.pick ? '#c45c26' : inC ? '#b9d3c9' : '#fff';
+        var has = o.ans[k] !== undefined && !(k === o.cur && o.pick < 0 && k !== 1);
+        svg += cell(x0 + (k - 1) * cw, y0, cw - 3, 34, f, has ? o.ans[k] : '', { fs: 12, white: !!o.chain[k] || k === o.pick }) +
+          txt(cx(k), y0 + 50, k, ' text-anchor="middle" font-size="11" fill="#8a4b1f" font-weight="600"');
+      }
+      function arc(a, b, color, w) {
+        var xa = cx(a), xb = cx(b), hgt = Math.min(100, 14 + Math.abs(xa - xb) * 0.35);
+        return '<path d="M' + xb + ',' + (y0 - 2) + ' Q' + ((xa + xb) / 2) + ',' + (y0 - 2 - hgt) + ' ' + xa + ',' + (y0 - 2) +
+          '" fill="none" stroke="' + color + '" stroke-width="' + w + '"/>';
+      }
+      if (o.cur > 1) o.cand.forEach(function (c) { svg += arc(o.cur, c, c === o.pick ? '#c45c26' : '#9aa59f', c === o.pick ? 3 : 1.6); });
+      var ks = Object.keys(o.chain).map(Number).sort(function (a, b) { return a - b; });
+      for (var i = 1; i < ks.length; i++) svg += arc(ks[i], ks[i - 1], '#1f5c4d', 2.6);
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · состояний всего N = ' + N + ', на каждое ≤ 3 сравнения → O(N)';
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1100 });
+    var bn = {};
+    [10, 15, 20].forEach(function (v) { bn[v] = btn(ctr2, 'N = ' + v, function () { N = v; reload(); }); });
+    function reload() { S = build(); sp.reset(); for (var k in bn) bn[k].classList.toggle('on', +k === N); }
+    reload();
+  }
+
+  /* ---------- робот на поле: dp[i][j] и восстановление пути через prev ---------- */
+  function labGridDP(box) {
+    var EX = [[12, -40, 35, 8, -5], [-7, 60, -90, 20, 14], [25, -15, 45, -30, 70], [-60, 80, 10, 55, -20], [30, -25, 65, -10, 40]];
+    var A = EX, n = 5, S;
+    head(box, 'Робот: dp[i][j] — лучшая сумма пути из (0, 0) в (i, j); стрелка — откуда пришли (prev)');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>считаем клетку <i style="background:#b9d3c9"></i>сравниваем: слева и сверху ' +
+      '<i style="background:#e8f1ee"></i>dp уже посчитан <i style="background:#1f5c4d"></i>восстановленный путь'));
+    function build() {
+      var dp = [], prev = [], steps = [];
+      for (var i = 0; i < n; i++) { dp.push([]); prev.push([]); }
+      function snap(m, o) {
+        var st = { dp: dp.map(function (r) { return r.slice(); }), prev: prev.map(function (r) { return r.slice(); }),
+          msg: m, cur: null, cmp: [], path: {} };
+        for (var q in o) st[q] = o[q];
+        steps.push(st);
+      }
+      dp[0][0] = A[0][0]; prev[0][0] = null;
+      snap('dp[0][0] = a[0][0] = ' + A[0][0] + ': робот стартует здесь, это число уже в сумме. Нажми «▶».', { cur: [0, 0] });
+      for (var j = 1; j < n; j++) {
+        dp[0][j] = dp[0][j - 1] + A[0][j]; prev[0][j] = [0, j - 1];
+        snap('Верхняя строка: в (0, ' + j + ') можно прийти только слева. dp = ' + dp[0][j - 1] + ' + (' + A[0][j] + ') = ' + dp[0][j] + '.',
+          { cur: [0, j], cmp: [[0, j - 1]] });
+      }
+      for (i = 1; i < n; i++) {
+        dp[i][0] = dp[i - 1][0] + A[i][0]; prev[i][0] = [i - 1, 0];
+        snap('Левый столбец: в (' + i + ', 0) можно прийти только сверху. dp = ' + dp[i - 1][0] + ' + (' + A[i][0] + ') = ' + dp[i][0] + '.',
+          { cur: [i, 0], cmp: [[i - 1, 0]] });
+      }
+      for (i = 1; i < n; i++) {
+        for (j = 1; j < n; j++) {
+          var L = dp[i][j - 1], U = dp[i - 1][j], left = L > U;
+          dp[i][j] = (left ? L : U) + A[i][j]; prev[i][j] = left ? [i, j - 1] : [i - 1, j];
+          snap('(' + i + ', ' + j + '): слева dp = ' + L + ', сверху dp = ' + U + ' → берём ' + (left ? 'слева' : 'сверху') +
+            (L === U ? ' (равны — как в коде, берём сверху)' : '') + '. dp = ' + (left ? L : U) + ' + (' + A[i][j] + ') = ' + dp[i][j] + '.',
+            { cur: [i, j], cmp: [[i, j - 1], [i - 1, j]] });
+        }
+      }
+      var path = {}, list = [], c = [n - 1, n - 1];
+      snap('Таблица заполнена: максимальная сумма dp[' + (n - 1) + '][' + (n - 1) + '] = ' + dp[n - 1][n - 1] +
+        '. Теперь путь: идём от финиша назад по стрелкам prev.', { cur: [n - 1, n - 1] });
+      while (c) {
+        path[c[0] + ',' + c[1]] = 1; list.push('(' + c[0] + ', ' + c[1] + ')');
+        var nx = prev[c[0]][c[1]];
+        snap('Клетка (' + c[0] + ', ' + c[1] + ') в пути. ' + (nx ? 'prev = (' + nx[0] + ', ' + nx[1] + ') → переходим туда.' :
+          'prev = (−1, −1) — это старт, стоп.'), { path: copy(path), cur: c });
+        c = nx;
+      }
+      snap('Путь (развернули список): ' + list.reverse().join(' → ') + '. Сумма ' + dp[n - 1][n - 1] + '.', { path: copy(path) });
+      return steps;
+    }
+    function draw(p) {
+      var o = S[p], cs = 62, x0 = 20, y0 = 26;
+      var svg = '<svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">';
+      for (var j = 0; j < n; j++) svg += txt(x0 + j * cs + cs / 2, 18, 'j=' + j, ' text-anchor="middle" font-size="10" fill="#6b665c"');
+      function isIn(arr, i, j) { return arr.some(function (c) { return c[0] === i && c[1] === j; }); }
+      for (var i = 0; i < n; i++) {
+        svg += txt(x0 - 4, y0 + i * cs + cs / 2 + 4, i, ' text-anchor="end" font-size="10" fill="#6b665c"');
+        for (j = 0; j < n; j++) {
+          var x = x0 + j * cs, y = y0 + i * cs, on = o.path[i + ',' + j];
+          var cur = o.cur && o.cur[0] === i && o.cur[1] === j, has = o.dp[i][j] !== undefined;
+          var f = on ? '#1f5c4d' : cur ? '#e0a24a' : isIn(o.cmp, i, j) ? '#b9d3c9' : has ? '#e8f1ee' : '#fff';
+          svg += '<rect x="' + x + '" y="' + y + '" width="' + (cs - 3) + '" height="' + (cs - 3) + '" rx="6" fill="' + f + '" stroke="#1f5c4d" stroke-width="1.4"/>' +
+            txt(x + 8, y + 18, A[i][j], ' font-size="13" font-weight="600"' + (on ? ' fill="#fff"' : ''));
+          if (has) {
+            svg += txt(x + cs - 9, y + cs - 10, o.dp[i][j], ' text-anchor="end" font-size="11" fill="' + (on ? '#fde3c8' : '#8a4b1f') + '" font-weight="700"');
+            var pv = o.prev[i][j];
+            if (pv) svg += txt(x + 8, y + cs - 10, pv[0] === i ? '←' : '↑', ' font-size="13" fill="' + (on ? '#fff' : '#c45c26') + '"');
+          }
+        }
+      }
+      var tx = x0 + n * cs + 20;
+      svg += txt(tx, 50, 'в клетке:', ' font-size="12" font-weight="600"') +
+        txt(tx, 70, 'слева сверху — a[i][j]', ' font-size="11"') +
+        txt(tx, 88, 'справа снизу — dp[i][j]', ' font-size="11" fill="#8a4b1f"') +
+        txt(tx, 106, '← / ↑ — prev: откуда пришли', ' font-size="11" fill="#c45c26"');
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + p + ' из ' + (S.length - 1) + ' · клеток ' + (n * n) + ', на каждую одно сравнение → O(N²)';
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 900 });
+    btn(ctr, 'Пример', function () { A = EX; S = build(); sp.reset(); });
+    btn(ctr, 'Случайное поле', function () {
+      A = []; for (var i = 0; i < n; i++) { A.push([]); for (var j = 0; j < n; j++) A[i].push(Math.floor(Math.random() * 201) - 100); }
+      S = build(); sp.reset();
+    });
+    S = build(); sp.reset();
+  }
+
   var LABS = {
+    fibtree: labFibTree, calcdp: labCalcDP, griddp: labGridDP,
     switches: labSwitches, gates: labGates, fulladder: labFullAdder, ripple: labRipple,
     rs: labRS, vn: labVN, timeline: labTimeline,
     bfs: labBFS, dfs: labDFS, stackqueue: labStackQueue, epsn: labEpsN, induct: labInduct,

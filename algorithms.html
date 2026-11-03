@@ -63,8 +63,8 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
-<link rel="stylesheet" href="./_viz/viz.css?v=5d91c027">
-<script src="./_viz/viz.js?v=5d91c027" defer></script>
+<link rel="stylesheet" href="./_viz/viz.css?v=2843f9a4">
+<script src="./_viz/viz.js?v=2843f9a4" defer></script>
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -77,7 +77,7 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <body>
 <header>
   <h1>Алгоритмы · тетрадь</h1>
-  <p class="note">Лекции 1–2 (Пальченков): асимптотика · Карацуба · структуры · префиксы · два указателя · стек/дек + практика 1 и 30 задач к лекции 2 · Лекция 3: бинпоиск · амортизация · куча · сортировки (с анимациями) · корневая декомпозиция</p>
+  <p class="note">Лекции 1–2 (Пальченков): асимптотика · Карацуба · структуры · префиксы · два указателя · стек/дек + практика 1 и 30 задач к лекции 2 · Лекция 3: бинпоиск · амортизация · куча · сортировки (с анимациями) · корневая декомпозиция · Практика 2: рекурсия, мемоизация, ДП</p>
   <nav class="toc">
     <a href="#intro">Введение</a>
     <a href="#ops">Операции</a>
@@ -118,6 +118,10 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
     <a href="#sort-heap">Кучей</a>
     <a href="#sort-count">Подсчётом</a>
     <a href="#sqrt">Корневая</a>
+    <a href="#practice2">Практика 2 · ДП</a>
+    <a href="#dp-fib">Фибоначчи</a>
+    <a href="#dp-calc">Калькулятор</a>
+    <a href="#dp-grid">Робот на поле</a>
     <a href="#cheat">Шпаргалка</a>
     <a href="#video">Видео</a>
   </nav>
@@ -1736,6 +1740,231 @@ struct SqrtSum {
   <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы лекция 3</code> — несколько коротких вопросов по всему блоку (бинпоиск, амортизация, корневая), потом сверка.</p>
 </section>
 
+<section class="card" id="practice2">
+
+<h2>Практика 2 · рекурсия, мемоизация, динамическое программирование</h2>
+  <p>Разбор по доске Miro с практики (по формату — скорее лекция). Скриншоты: <span class="mono">материалы/_архив/алгоритмы-практика-2-ДП-miro/</span>. На доске три задачи по порядку: <a href="#dp-fib">N-е число Фибоначчи</a> → <a href="#dp-calc">калькулятор «+1, ×2, ×3»</a> → <a href="#dp-grid">робот на поле N×N с максимальной суммой и восстановлением пути</a>. Слова «динамическое программирование» на доске не написано, но таблица называется <span class="mono">dp</span>, и все три задачи — это оно.</p>
+  <div class="def"><strong>Определение (дополнено).</strong> <em>Динамическое программирование (ДП)</em> — способ решать задачу через ответы на <em>меньшие задачи того же вида</em>, причём ответ на каждую меньшую задачу считается <strong>один раз</strong> и запоминается в таблице. Чтобы записать ДП, отвечают на пять вопросов:<br>
+  1) <strong>состояние</strong> — что хранит клетка таблицы ($F(k)$, $ans[k]$, $dp[i][j]$);<br>
+  2) <strong>база</strong> — ответы, известные сразу ($F(0)=0$, $F(1)=1$; $ans[1]=0$; $dp[0][0]=a[0][0]$);<br>
+  3) <strong>переход</strong> — как ответ выражается через меньшие;<br>
+  4) <strong>порядок</strong> — в каком порядке считать, чтобы нужные меньшие ответы были уже готовы;<br>
+  5) <strong>где ответ</strong> — какая клетка таблицы и надо ли восстанавливать сам путь.</div>
+  <p class="own"><em>Своими словами.</em> Обычная рекурсия решает одну и ту же подзадачу много раз и забывает результат. ДП — та же рекурсия, но с блокнотом: посчитал один раз — записал, в следующий раз просто прочитал.</p>
+  <p>Как оценивать время — на доске (задача про калькулятор): «$O$(кол-во значений, которые смотрим в рекурсии)». Точнее:</p>
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Формула</div>
+    <div class="formula-box-body">время ДП $=$ (число различных состояний) $\times$ (работа на один переход)</div>
+  </div>
+  <div class="ex"><strong>Пример.</strong> Фибоначчи: состояний $N+1$ ($F(0), \ldots, F(N)$), на каждое одно сложение → $O(N)$. Робот на поле: состояний $N^2$, на каждое одно сравнение → $O(N^2)$.</div>
+</section>
+
+<section class="card" id="dp-fib">
+
+<h2>Задача 1. N-е число Фибоначчи</h2>
+  <p><strong>Условие (с доски).</strong> Дано число $N &gt; 0$. Найти $N$-е по счёту число Фибоначчи.</p>
+  <div class="def"><strong>Определение.</strong> Числа Фибоначчи: $F(0) = 0$, $F(1) = 1$, $F(N) = F(N-1) + F(N-2)$ при $N \ge 2$.</div>
+  <p class="own"><em>Своими словами.</em> Каждое следующее число — сумма двух предыдущих.</p>
+  <div class="ex"><strong>Пример.</strong> $F(0..10)$: $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55$. Например, $F(5) = F(4) + F(3) = 3 + 2 = 5$.</div>
+
+<h3>Способ 1. Рекурсия «в лоб»</h3>
+  <p>На доске: «Рекурсия (когда вызываем функцию внутри себя)».</p>
+  <pre class="cheat">int F(int N) {
+    if (N == 0) return 0;
+    if (N == 1) return 1;
+    return F(N - 1) + F(N - 2);
+}</pre>
+  <p><strong>Сколько работает.</strong> На доске: при $N \le 1$ — $O(1)$; при $N \ge 2$: $T(N) = T(N-1) + T(N-2)$ (плюс $O(1)$ на сложение); итог $O(2^N)$.</p>
+  <p><strong>Шаг 1. Откуда $2^N$.</strong> $T(N-2) \le T(N-1)$, поэтому $T(N) \le 2\,T(N-1) \le 4\,T(N-2) \le \ldots \le 2^N\,T(0)$. Это оценка <em>сверху</em>.</p>
+  <p><strong>Шаг 2. Почему так много.</strong> Нарисуем дерево вызовов для $N = 5$, как на доске: $F(5)$ вызывает $F(4)$ и $F(3)$; $F(4)$ — снова $F(3)$ и $F(2)$; … Одна и та же $F(3)$ считается 2 раза, $F(2)$ — 3 раза, $F(1)$ — 5 раз. Вызовов всего 15, а различных значений всего 6.</p>
+  <p><strong>Шаг 3. Точнее (дополнено).</strong> Число вызовов $C(N)$ удовлетворяет $C(N) = C(N-1) + C(N-2) + 1$, откуда $C(N) = 2F(N+1) - 1$. А $F(N)$ растёт как $\varphi^N$, где $\varphi = \frac{1+\sqrt5}{2} \approx 1{,}618$. Значит, на самом деле $\Theta(1{,}618^N)$ — тоже экспонента, просто основание меньше 2.</p>
+  <div class="ex"><strong>Пример с числами.</strong> $N = 30$: вызовов $2F(31) - 1 \approx 2{,}7 \cdot 10^6$ — ещё быстро. $N = 40$: $\approx 3{,}3 \cdot 10^8$ — секунды. $N = 50$: $\approx 4 \cdot 10^{10}$ — минуты. Каждые $+1$ к $N$ умножают время примерно на 1,6. На доске рядом с $O(2^N)$ написано «$\sim 10^9$» — видимо, имелось в виду, что при $N \approx 30$ оценка $2^{30} \approx 10^9$ — уже предел «за секунду».</div>
+
+<h3>Способ 2. Рекурсия с мемоизацией</h3>
+  <pre class="cheat">std::vector&lt;long long&gt; mem(1000, -1);   // -1 = «ещё не считали»
+
+long long F(int N) {
+    if (mem[N] != -1) return mem[N];         // уже знаем — сразу ответ
+    if (N == 0) return mem[N] = 0;
+    if (N == 1) return mem[N] = 1;
+    return mem[N] = F(N - 1) + F(N - 2);     // посчитали — запомнили
+}</pre>
+  <p>На доске: «Рекурсия с мемоизацией — асимптотика? $O(N)$».</p>
+  <p><strong>Почему $O(N)$.</strong> Тело функции (два вызова и сложение) выполняется не больше одного раза для каждого $N' = 0, 1, \ldots, N$: после первого раза ответ лежит в <span class="mono">mem</span>, и следующие вызовы возвращаются сразу. Значений $N + 1$, на каждое $O(1)$ работы плюс не больше двух «быстрых» вызовов. Всего вызовов $2N - 1$.</p>
+  <div class="ex"><strong>Пример.</strong> $N = 5$: вызовы $F(5), F(4), F(3), F(2), F(1), F(0)$, затем $F(1)$ из <span class="mono">mem</span> (внутри $F(3)$), $F(2)$ из <span class="mono">mem</span> (внутри $F(4)$), $F(3)$ из <span class="mono">mem</span> (внутри $F(5)$). Девять вызовов вместо пятнадцати; при $N = 40$ — 79 вместо $3{,}3 \cdot 10^8$.</div>
+  <p><em>Как смотреть.</em> Переключай «Без памяти» / «С мемоизацией» и $N = 4, 5, 6$. Оранжевые вершины — вызовы, которые ещё не вернули ответ (они лежат в стеке вызовов: это путь от корня до текущей вершины). Тёмные — вернули значение (оно подписано рядом). Пунктирные светлые — ответ взят из <span class="mono">mem</span>, поддерева под ними нет. Внизу в режиме мемоизации — массив <span class="mono">mem</span>.</p>
+  <div class="lab" data-lab="fibtree" data-n="5"></div>
+
+<h3>Способ 3. Цикл (ДП снизу вверх)</h3>
+  <p>Можно не спускаться рекурсией сверху, а сразу заполнять таблицу снизу: $F(0)$, $F(1)$, потом $F(2)$, … — к моменту $i$ оба нужных значения уже посчитаны.</p>
+  <pre class="cheat">std::vector&lt;long long&gt; mem(N + 1);
+mem[0] = 0;  mem[1] = 1;
+for (int i = 2; i &lt;= N; i++)
+    mem[i] = mem[i - 1] + mem[i - 2];
+// ответ: mem[N]</pre>
+  <div class="ex"><strong>Где легко ошибиться (было на доске).</strong> На доске написано <span class="mono">mem[0] = mem[1] = 1</span>. При нашем определении ($F(0) = 0$) так нельзя: получится последовательность $1, 1, 2, 3, 5, \ldots$, сдвинутая на один номер, — в <span class="mono">mem[5]</span> окажется 8, а не 5. Нужно <span class="mono">mem[0] = 0, mem[1] = 1</span>.</div>
+  <p><strong>Ещё экономнее: две переменные.</strong> Для следующего числа нужны только два предыдущих, массив целиком не нужен (последний вариант на доске):</p>
+  <pre class="cheat">long long pre_prev = 0, prev = 1;     // F(0), F(1)
+for (int i = 2; i &lt;= N; i++) {
+    long long next = prev + pre_prev;  // F(i)
+    pre_prev = prev;                   // сдвигаем «окно» из двух чисел
+    prev = next;
+}
+// ответ: prev (при N == 0 ответ 0 — отдельный случай)</pre>
+  <div class="ex"><strong>Пример: прогон для $N = 5$.</strong>
+  <div class="nb-table-scroll"><table>
+    <tr><th>$i$</th><th>next</th><th>pre_prev после</th><th>prev после</th></tr>
+    <tr><td>старт</td><td>—</td><td>0</td><td>1</td></tr>
+    <tr><td>2</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>3</td><td>2</td><td>1</td><td>2</td></tr>
+    <tr><td>4</td><td>3</td><td>2</td><td>3</td></tr>
+    <tr><td>5</td><td>5</td><td>3</td><td>5</td></tr>
+  </table></div>
+  Ответ $F(5) = 5$. Время $O(N)$, память $O(1)$.</div>
+  <div class="ex"><strong>Не-пример (переполнение, дополнено).</strong> $F(47) = 2\,971\,215\,073 &gt; 2^{31} - 1$ — в <span class="mono">int</span> уже не помещается. В <span class="mono">long long</span> влезает до $F(92)$.</div>
+  <div class="nb-table-scroll"><table>
+    <tr><th>Способ</th><th>Время</th><th>Память</th></tr>
+    <tr><td>рекурсия в лоб</td><td>$O(2^N)$, точнее $\Theta(\varphi^N)$</td><td>$O(N)$ — глубина стека</td></tr>
+    <tr><td>рекурсия + mem</td><td>$O(N)$</td><td>$O(N)$ — mem и стек</td></tr>
+    <tr><td>цикл с массивом</td><td>$O(N)$</td><td>$O(N)$</td></tr>
+    <tr><td>цикл с двумя переменными</td><td>$O(N)$</td><td>$O(1)$</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="dp-calc">
+
+<h2>Задача 2. Калькулятор: +1, ×2, ×3</h2>
+  <p><strong>Условие (с доски).</strong> Калькулятор умеет три операции: $+1$, $\times 2$, $\times 3$. Изначально на нём написано 1. Нужно получить из 1 число $N$. Найти минимальное количество действий, чтобы это сделать. (Сначала на доске были записаны другие операции — «$\times5+3$, $\times2+7$, $\times9+1$» — потом их заменили на $+1, \times2, \times3$.)</p>
+  <p><strong>Идея.</strong> Смотрим на <em>последнюю</em> операцию. Если в конце было $+1$, то перед этим на экране было $N - 1$; если $\times 2$ — было $N/2$ (только если $N$ чётно); если $\times 3$ — было $N/3$ (если $N$ делится на 3). Из этих вариантов берём тот, куда добраться дешевле, и прибавляем 1 за саму последнюю операцию.</p>
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Формула</div>
+    <div class="formula-box-body">$ans[1] = 0,\qquad ans[N] = 1 + \min\bigl(ans[N-1],\ ans[N/2]\ \text{если } 2 \mid N,\ ans[N/3]\ \text{если } 3 \mid N\bigr)$</div>
+  </div>
+  <p>По «пяти вопросам» ДП: состояние — $ans[k]$, минимум операций от 1 до $k$; база — $ans[1] = 0$; переход — формула выше; порядок — меньшие $k$ раньше больших; ответ — $ans[N]$.</p>
+  <div class="ex"><strong>Пример: $N = 10$.</strong>
+  <div class="nb-table-scroll"><table>
+    <tr><th>$k$</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr><td>$ans[k]$</td><td>0</td><td>1</td><td>1</td><td>2</td><td>3</td><td>2</td><td>3</td><td>3</td><td>2</td><td>3</td></tr>
+  </table></div>
+  Например, $ans[9] = 1 + \min(ans[8], ans[3]) = 1 + \min(3, 1) = 2$, $ans[10] = 1 + \min(ans[9], ans[5]) = 1 + \min(2, 3) = 3$.<br>
+  Цепочка: $1 \xrightarrow{\times 3} 3 \xrightarrow{\times 3} 9 \xrightarrow{+1} 10$ — три действия.</div>
+  <div class="ex"><strong>Не-пример: жадность.</strong> Правило «с конца: дели на 3, если можно, иначе на 2, иначе вычитай 1» для $N = 10$ даёт $10 \to 5 \to 4 \to 2 \to 1$ — четыре действия, а можно за три (см. выше). Жадный выбор «самой сильной» операции не всегда оптимален — поэтому сравниваем все варианты.</div>
+
+<h3>Код с доски: рекурсия с мемоизацией</h3>
+  <pre class="cheat">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+
+std::vector&lt;int&gt; ans;   // ans.assign(N + 1, -1) перед вызовом
+
+int F(int N) {
+    if (ans[N] != -1) return ans[N];
+    if (N == 1) return ans[N] = 0;
+
+    int mn = F(N - 1);                          // последняя операция +1
+    if (N % 3 == 0) mn = std::min(mn, F(N / 3)); // последняя ×3
+    if (N % 2 == 0) mn = std::min(mn, F(N / 2)); // последняя ×2
+
+    return ans[N] = mn + 1;
+}</pre>
+  <p><strong>Сколько работает.</strong> На доске сначала «$O$(кол-во значений, которые смотрим в рекурсии)», рядом рисунок числовой прямой $0 \ldots N/3 \ldots N/2 \ldots N$ и в конце «$O(\log n)$». <strong>Для этого кода $O(\log n)$ неверно</strong>: ветка <span class="mono">F(N − 1)</span> одна уже проходит все значения $N, N-1, \ldots, 1$. Благодаря <span class="mono">ans</span> каждое считается один раз, так что время и память — $O(N)$. Возможно, имелось в виду, что сам <em>ответ</em> маленький — $O(\log N)$ действий (например, через двоичную запись: каждый бит стоит не больше двух операций «$\times 2$» и «$+1$»). Но время работы — $O(N)$.</p>
+  <div class="ex"><strong>Где легко ошибиться.</strong> 1) Без <span class="mono">ans</span> рекурсия снова станет экспоненциальной: одни и те же числа считаются много раз, как у Фибоначчи. 2) Глубина рекурсии — $N$ (цепочка $F(N) \to F(N-1) \to \ldots \to F(1)$). При $N = 10^6$ стек вызовов может переполниться — см. <a href="#lec3-intro">пункт 5 «оптимизаций»</a>. Поэтому для больших $N$ пишут цикл снизу вверх.</div>
+
+<h3>Цикл снизу вверх и восстановление операций (дополнено)</h3>
+  <pre class="cheat">#include &lt;algorithm&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+std::vector&lt;int&gt; ans(N + 1);
+ans[1] = 0;
+for (int k = 2; k &lt;= N; k++) {
+    ans[k] = ans[k - 1] + 1;
+    if (k % 2 == 0) ans[k] = std::min(ans[k], ans[k / 2] + 1);
+    if (k % 3 == 0) ans[k] = std::min(ans[k], ans[k / 3] + 1);
+}
+
+// какие операции: идём от N назад, выбирая переход, который дал минимум
+std::vector&lt;std::string&gt; ops;
+for (int k = N; k != 1; ) {
+    if (k % 3 == 0 &amp;&amp; ans[k / 3] + 1 == ans[k])      { ops.push_back("*3"); k /= 3; }
+    else if (k % 2 == 0 &amp;&amp; ans[k / 2] + 1 == ans[k]) { ops.push_back("*2"); k /= 2; }
+    else                                            { ops.push_back("+1"); k -= 1; }
+}
+std::reverse(ops.begin(), ops.end());   // теперь в порядке от 1 к N</pre>
+  <p><em>Как смотреть.</em> Клетки — $k = 1, \ldots, N$, в клетке $ans[k]$. На каждом $k$ серые дуги ведут к кандидатам $k-1$, $k/2$, $k/3$, красная — к выбранному. В конце тёмно-зелёная цепочка — восстановленный ответ.</p>
+  <div class="lab" data-lab="calcdp" data-n="10"></div>
+</section>
+
+<section class="card" id="dp-grid">
+
+<h2>Задача 3. Робот на поле: максимальная сумма и путь</h2>
+  <p><strong>Условие (с доски).</strong> Есть поле $N \times N$, в каждой клетке лежит число от $-100$ до $100$. Робот стоит в клетке $(0, 0)$ — левый верхний угол, может ходить вправо или вниз. Нужно попасть в правый нижний угол $(N-1, N-1)$ и получить максимальную возможную сумму чисел на пути. Ответ: максимальная сумма <strong>и сам путь</strong> (все клетки, через которые нужно пройти).</p>
+  <p><strong>Почему не перебор.</strong> Любой путь — это $N-1$ шагов вправо и $N-1$ вниз в каком-то порядке, путей $\binom{2N-2}{N-1}$. При $N = 10$ это $48\,620$, при $N = 20$ — уже $\approx 3{,}5 \cdot 10^{10}$.</p>
+  <p><strong>Идея (рисунок на доске: клетка $(i, j)$, в неё стрелки слева и сверху).</strong> В клетку $(i, j)$ робот может прийти только из $(i, j-1)$ (слева) или из $(i-1, j)$ (сверху). Если мы уже знаем лучшие суммы до этих двух клеток, то лучшая сумма до $(i, j)$ — большая из них плюс $a[i][j]$.</p>
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Формула</div>
+    <div class="formula-box-body">$dp[i][j] = \max\bigl(dp[i][j-1],\ dp[i-1][j]\bigr) + a[i][j]$</div>
+  </div>
+  <p>Пять вопросов ДП: состояние $dp[i][j]$ — максимальная сумма пути из $(0, 0)$ в $(i, j)$; база $dp[0][0] = a[0][0]$, верхняя строка (только слева) и левый столбец (только сверху); переход — формула; порядок — по строкам сверху вниз, в строке слева направо (тогда слева и сверху уже посчитано); ответ — $dp[N-1][N-1]$.</p>
+  <div class="ex"><strong>Пример (3×3).</strong> $a = \begin{pmatrix} 1 &amp; -2 &amp; 3 \\ 4 &amp; 5 &amp; -6 \\ -1 &amp; 2 &amp; 7 \end{pmatrix}$.<br>
+  Верхняя строка: $dp = 1,\ -1,\ 2$. Левый столбец: $dp = 1,\ 5,\ 4$.<br>
+  $dp[1][1] = \max(5, -1) + 5 = 10$ (пришли слева); $dp[1][2] = \max(10, 2) - 6 = 4$ (слева);<br>
+  $dp[2][1] = \max(4, 10) + 2 = 12$ (сверху); $dp[2][2] = \max(12, 4) + 7 = 19$ (слева).<br>
+  Ответ 19, путь $(0,0) \to (1,0) \to (1,1) \to (2,1) \to (2,2)$: $1 + 4 + 5 + 2 + 7 = 19$.</div>
+
+<h3>Код: сумма</h3>
+  <pre class="cheat">std::vector&lt;std::vector&lt;int&gt;&gt; dp(n, std::vector&lt;int&gt;(n));
+
+dp[0][0] = a[0][0];
+for (int i = 1; i &lt; n; i++) dp[0][i] = dp[0][i - 1] + a[0][i];   // верхняя строка
+for (int i = 1; i &lt; n; i++) dp[i][0] = dp[i - 1][0] + a[i][0];   // левый столбец
+
+for (int i = 1; i &lt; n; i++)
+    for (int j = 1; j &lt; n; j++)
+        dp[i][j] = std::max(dp[i][j - 1], dp[i - 1][j]) + a[i][j];
+
+// ответ — dp[n - 1][n - 1]</pre>
+  <div class="ex"><strong>Где легко ошибиться (было на доске).</strong> На доске таблица заведена как <span class="mono">vector&lt;vector&lt;int&gt;&gt; dp(n, vector&lt;int&gt;(n, 1e18))</span>. $10^{18}$ не помещается в <span class="mono">int</span> (максимум $\approx 2{,}1 \cdot 10^9$) — это ошибка. Здесь начальное значение вообще не важно: каждая клетка перезаписывается до того, как её читают. Если же «пустое» значение нужно (например, есть запрещённые клетки), для максимума берут очень <em>маленькое</em> число, а не огромное. Суммы тут не больше $2N \cdot 100$, так что <span class="mono">int</span> хватает.</div>
+
+<h3>Код: сам путь через prev</h3>
+  <p>На доске сначала была попытка <span class="mono">ans.append((i, j − 1))</span> прямо в двойном цикле. Так не работает: цикл проходит <em>все</em> клетки поля, а не только клетки пути, и в момент заполнения ещё неизвестно, войдёт ли клетка в лучший путь. Правильная идея с доски — для каждой клетки запомнить, <strong>откуда</strong> в неё выгоднее прийти, а путь собрать потом, идя от финиша назад (на доске — стрелка вверх вдоль кода).</p>
+  <pre class="cheat">#include &lt;algorithm&gt;
+#include &lt;utility&gt;
+#include &lt;vector&gt;
+
+std::vector&lt;std::vector&lt;int&gt;&gt; dp(n, std::vector&lt;int&gt;(n));
+std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; prev(n, std::vector&lt;std::pair&lt;int, int&gt;&gt;(n, {-1, -1}));
+
+dp[0][0] = a[0][0];
+prev[0][0] = {-1, -1};                       // старт: «пришли ниоткуда»
+for (int i = 1; i &lt; n; i++) { dp[0][i] = dp[0][i - 1] + a[0][i]; prev[0][i] = {0, i - 1}; }
+for (int i = 1; i &lt; n; i++) { dp[i][0] = dp[i - 1][0] + a[i][0]; prev[i][0] = {i - 1, 0}; }
+
+for (int i = 1; i &lt; n; i++)
+    for (int j = 1; j &lt; n; j++) {
+        if (dp[i][j - 1] > dp[i - 1][j]) {    // слева выгоднее
+            prev[i][j] = {i, j - 1};
+            dp[i][j] = dp[i][j - 1] + a[i][j];
+        } else {                              // сверху (в том числе при равенстве)
+            prev[i][j] = {i - 1, j};
+            dp[i][j] = dp[i - 1][j] + a[i][j];
+        }
+    }
+
+// восстановление: от финиша по prev до старта, потом развернуть
+std::vector&lt;std::pair&lt;int, int&gt;&gt; path;
+for (int i = n - 1, j = n - 1; i != -1; ) {
+    path.push_back({i, j});
+    auto p = prev[i][j];
+    i = p.first;  j = p.second;
+}
+std::reverse(path.begin(), path.end());     // теперь от (0, 0) к (n-1, n-1)</pre>
+  <p>На доске в объявлении <span class="mono">prev</span> внутри написано <span class="mono">vector&lt;int&gt;(n, {-1, -1})</span> — это описка: элементы должны быть парами, <span class="mono">vector&lt;pair&lt;int, int&gt;&gt;</span>, как выше. Ветка <span class="mono">else</span> на доске осталась многоточием — она симметрична первой.</p>
+  <p><strong>Сложность.</strong> $N^2$ клеток, на каждую одно сравнение: $O(N^2)$ времени и памяти. Восстановление пути — $2N - 1$ шагов.</p>
+  <p><em>Как смотреть.</em> В клетке слева сверху — число $a[i][j]$, справа снизу — $dp[i][j]$, стрелка ← или ↑ — <span class="mono">prev</span>, откуда пришли. Сначала заполняется таблица (оранжевая — текущая клетка, светло-зелёные — с кем сравниваем), потом от правого нижнего угла по стрелкам собирается путь (тёмно-зелёный). «Случайное поле» — числа от −100 до 100, как в условии.</p>
+  <div class="lab" data-lab="griddp"></div>
+  <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы практика 2</code> — несколько коротких вопросов по Фибоначчи, калькулятору и роботу, потом сверка.</p>
+</section>
+
 <section class="card" id="cheat">
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы сем22</code> — несколько коротких вопросов по всему блоку, потом сверка.</p>
 
@@ -1766,6 +1995,13 @@ struct SqrtSum {
       <li>Подсчётом: <span class="mono">cnt[a[i]]++</span>, выписать по ящикам → $O(n + C)$, без сравнений; только если $C$ небольшое</li>
       <li>Корневая: блоки по $k = \sqrt n$, суммы $b[i/k]$; запрос $O(\sqrt n)$, изменение $O(1)$, построение $O(n)$</li>
     </ul>
+    <p><strong>Практика 2 · ДП</strong></p>
+    <ul>
+      <li>ДП = состояние + база + переход + порядок + где ответ; время = число состояний × работа на переход</li>
+      <li>Фибоначчи: рекурсия в лоб $O(2^N)$ (точнее $\Theta(1{,}618^N)$, вызовов $2F(N+1)-1$); с <span class="mono">mem</span> — $O(N)$; цикл с двумя переменными — $O(N)$ времени, $O(1)$ памяти; база <span class="mono">mem[0] = 0</span>, а не 1</li>
+      <li>Калькулятор: $ans[N] = 1 + \min(ans[N-1], ans[N/2], ans[N/3])$ по допустимым; жадность ошибается ($N = 10$: 3, а не 4); время $O(N)$, а не $O(\log N)$</li>
+      <li>Робот: $dp[i][j] = \max(dp[i][j-1], dp[i-1][j]) + a[i][j]$, $O(N^2)$; путь — через <span class="mono">prev</span> от финиша назад и <span class="mono">reverse</span></li>
+    </ul>
   </div>
 </section>
 
@@ -1776,6 +2012,7 @@ struct SqrtSum {
   <p class="video"><a href="https://www.youtube.com/watch?v=rEBsGRunses" target="_blank" rel="noopener">YouTube — префиксные суммы и два указателя (к лекции 2)</a></p>
   <p class="src">Если вторая ссылка устарела — ищи «Тренировки по алгоритмам префиксные суммы два указателя».</p>
   <p class="video"><a href="https://www.youtube.com/watch?v=sFPHaUHSw8s" target="_blank" rel="noopener">YouTube — Павел Маврин, «АиСД S01E02. Структуры данных. Куча. Сортировка кучей» (к лекции 3)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=VgPAFaEYEo4" target="_blank" rel="noopener">YouTube — Тимофей Хирьянов, «Динамическое программирование сверху и снизу» (к практике 2)</a></p>
 </section>
 </main>
   <script src="./site.js?v=4"></script>
