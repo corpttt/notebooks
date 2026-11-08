@@ -313,6 +313,18 @@ code {
   font-size: 0.92rem;
 }
 .nb-menu-toc a:hover { color: var(--acc); }
+.nb-menu-toc-grouped .nb-toc-group { border-bottom: 1px solid var(--line); }
+.nb-menu-toc-grouped summary {
+  cursor: pointer;
+  padding: 0.55rem 0.2rem;
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--acc);
+  list-style-position: inside;
+}
+.nb-menu-toc-grouped ul { list-style: none; margin: 0 0 0.4rem; padding: 0 0 0 0.9rem; }
+.nb-menu-toc-grouped ul a { font-size: 0.9rem; }
+.nb-menu-toc-grouped ul li:last-child a { border-bottom: none; }
 .nb-menu-links {
   margin-top: auto;
   padding-top: 0.8rem;

@@ -9,7 +9,7 @@
  *   <div class="sort-anim" data-algo="quick|merge|insertion" data-title="…"
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted,reversed"></div>
  *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur
- *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp"></div>
+ *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp|dsu|kruskal"></div>
  *   fibtree / calcdp: optional data-n
  *   heap: optional data-mode="ops|sort"
  *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"
@@ -2020,7 +2020,224 @@ window.Viz = window.Viz || {};
     S = build(); sp.reset();
   }
 
+  /* ---------- DSU: лес parent[], join / ask, ранг и сжатие путей ---------- */
+  function labDSU(box) {
+    var N = 9, smart = false, scen = 'board', S;
+    var SCEN = {
+      board: [['join', 4, 8], ['join', 1, 2], ['join', 2, 8], ['ask', 2, 5], ['join', 5, 6], ['join', 6, 7],
+        ['join', 3, 5], ['ask', 7, 3], ['join', 0, 3], ['join', 8, 0], ['ask', 1, 6]],
+      chain: [['join', 0, 1], ['join', 0, 2], ['join', 0, 3], ['join', 0, 4], ['join', 0, 5], ['join', 0, 6],
+        ['join', 0, 7], ['ask', 0, 8], ['ask', 0, 7]]
+    };
+    head(box, 'DSU: каждое множество — дерево, представитель — корень (parent[x] = x)');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>путь find: идём по parent до корня <i style="background:#1f5c4d"></i>корень (представитель) ' +
+      '<i style="background:#c45c26"></i>новая или перенаправленная стрелка'));
+    function build() {
+      var p = [], h = [], steps = [], walks = 0;
+      for (var i = 0; i < N; i++) { p.push(i); h.push(0); }
+      function snap(m, o) {
+        var st = { p: p.slice(), h: h.slice(), msg: m, path: [], hot: -1, walks: walks };
+        for (var q in o) st[q] = o[q];
+        steps.push(st);
+      }
+      function find(x, label) {
+        var path = [x];
+        while (p[path[path.length - 1]] !== path[path.length - 1]) path.push(p[path[path.length - 1]]);
+        walks += path.length - 1;
+        var r = path[path.length - 1];
+        snap(label + ': find(' + x + ') идёт ' + path.join(' → ') + ' — корень ' + r + ' (' + (path.length - 1) + ' переход' +
+          (path.length - 1 === 1 ? '' : path.length - 1 >= 2 && path.length - 1 <= 4 ? 'а' : 'ов') + ').', { path: path });
+        if (smart && path.length > 2) {
+          for (var k = 0; k < path.length - 2; k++) p[path[k]] = r;
+          snap('Сжатие путей: ' + path.slice(0, -2).join(', ') + ' теперь указывают прямо на корень ' + r +
+            '. Следующий find от них — за 1 шаг.', { path: path, hot: path[0] });
+        }
+        return r;
+      }
+      snap('Старт: ' + N + ' одиночных множеств, parent[x] = x у всех — каждый сам себе корень. ' +
+        (smart ? 'Режим: объединение по рангу h + сжатие путей.' : 'Режим: наивно — корень x всегда подвешиваем к корню y.'));
+      SCEN[scen].forEach(function (op) {
+        var x = op[1], y = op[2];
+        var rx = find(x, op[0] + ' ' + x + ' ' + y), ry = find(y, op[0] + ' ' + x + ' ' + y);
+        if (op[0] === 'ask') {
+          snap('ask ' + x + ' ' + y + ': корни ' + rx + ' и ' + ry + ' → ' + (rx === ry ? 'одно множество, «да».' : 'разные множества, «нет».'),
+            { path: [rx, ry] });
+          return;
+        }
+        if (rx === ry) { snap('join ' + x + ' ' + y + ': корень общий (' + rx + ') — уже вместе, ничего не делаем.', { path: [rx] }); return; }
+        var child, par, why;
+        if (!smart) { child = rx; par = ry; why = 'наивно: parent[' + rx + '] = ' + ry + '.'; }
+        else if (h[rx] > h[ry]) { child = ry; par = rx; why = 'h[' + rx + '] = ' + h[rx] + ' > h[' + ry + '] = ' + h[ry] + ' → низкое дерево под высокое: parent[' + ry + '] = ' + rx + '.'; }
+        else {
+          child = rx; par = ry;
+          why = 'h[' + rx + '] = ' + h[rx] + ' ≤ h[' + ry + '] = ' + h[ry] + ' → parent[' + rx + '] = ' + ry + '.';
+          if (h[rx] === h[ry]) { h[ry]++; why += ' Высоты были равны → h[' + ry +']++ (стало ' + h[ry] + ').'; }
+        }
+        p[child] = par;
+        snap('join ' + x + ' ' + y + ': ' + why, { hot: child });
+      });
+      var depth = 0;
+      for (var v = 0; v < N; v++) { var d = 0, u = v; while (p[u] !== u) { u = p[u]; d++; } if (d > depth) depth = d; }
+      snap('Готово. Всего переходов по parent во всех find: ' + walks + '. Самая длинная цепочка до корня: ' + depth + '.');
+      return steps;
+    }
+    function draw(pos) {
+      var o = S[pos], kids = [], roots = [], i;
+      for (i = 0; i < N; i++) kids.push([]);
+      for (i = 0; i < N; i++) { if (o.p[i] === i) roots.push(i); else kids[o.p[i]].push(i); }
+      var X = {}, D = {}, leaf = 0, maxD = 0;
+      function place(v, d) {
+        D[v] = d; if (d > maxD) maxD = d;
+        if (!kids[v].length) { X[v] = leaf++; return; }
+        kids[v].forEach(function (c) { place(c, d + 1); });
+        X[v] = (X[kids[v][0]] + X[kids[v][kids[v].length - 1]]) / 2;
+      }
+      roots.forEach(function (r) { place(r, 0); leaf += 0.4; });
+      var step = 560 / Math.max(leaf, 1), dy = Math.min(56, 340 / Math.max(maxD, 1));
+      function px(v) { return 20 + (X[v] + 0.5) * step; }
+      function py(v) { return 28 + D[v] * dy; }
+      var top = 28 + maxD * dy + 40;
+      var svg = '<svg viewBox="0 0 600 ' + (top + 96) + '" xmlns="http://www.w3.org/2000/svg">' +
+        '<defs><marker id="dsuar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a948a"/></marker>' +
+        '<marker id="dsuar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c45c26"/></marker></defs>';
+      var onPath = {};
+      o.path.forEach(function (v) { onPath[v] = 1; });
+      for (i = 0; i < N; i++) {
+        if (o.p[i] === i) continue;
+        var a = i, b = o.p[i], ax = px(a), ay = py(a), bx = px(b), by = py(b);
+        var len = Math.sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)) || 1;
+        var ex = bx - (bx - ax) * 17 / len, ey = by - (by - ay) * 17 / len;
+        var hot = a === o.hot || (onPath[a] && onPath[b]);
+        svg += '<line x1="' + ax + '" y1="' + ay + '" x2="' + ex + '" y2="' + ey + '" stroke="' + (hot ? '#c45c26' : '#9a948a') +
+          '" stroke-width="' + (hot ? 2.6 : 1.6) + '" marker-end="url(#' + (hot ? 'dsuar2' : 'dsuar') + ')"/>';
+      }
+      for (i = 0; i < N; i++) {
+        var root = o.p[i] === i, f = onPath[i] ? '#e0a24a' : root ? '#1f5c4d' : '#fff';
+        svg += '<circle cx="' + px(i) + '" cy="' + py(i) + '" r="15" fill="' + f + '" stroke="#1f5c4d" stroke-width="1.5"/>' +
+          txt(px(i), py(i) + 5, i, ' text-anchor="middle" font-size="13" font-weight="700"' + (root && !onPath[i] ? ' fill="#fff"' : ''));
+      }
+      var cw = 52, x0 = 110;
+      svg += txt(x0 - 10, top + 20, 'x', ' text-anchor="end" font-size="12" fill="#6b665c"') +
+        txt(x0 - 10, top + 50, 'parent', ' text-anchor="end" font-size="12" font-weight="600"') +
+        (smart ? txt(x0 - 10, top + 80, 'h', ' text-anchor="end" font-size="12" font-weight="600"') : '');
+      for (i = 0; i < N; i++) {
+        svg += txt(x0 + i * cw + 22, top + 20, i, ' text-anchor="middle" font-size="12" fill="#6b665c"') +
+          cell(x0 + i * cw, top + 28, 44, 30, i === o.hot ? '#fde3c8' : o.p[i] === i ? '#e8f1ee' : '#fff', o.p[i], { fs: 12 });
+        if (smart) svg += txt(x0 + i * cw + 22, top + 80, o.h[i], ' text-anchor="middle" font-size="12"');
+      }
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + pos + ' из ' + (S.length - 1) + ' · переходов по parent во всех find: ' + o.walks;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1400 });
+    var bm = {}, bs = {};
+    function reload() {
+      S = build(); sp.reset();
+      bm.n.classList.toggle('on', !smart); bm.s.classList.toggle('on', smart);
+      bs.board.classList.toggle('on', scen === 'board'); bs.chain.classList.toggle('on', scen === 'chain');
+    }
+    bm.n = btn(ctr2, 'Наивно', function () { smart = false; reload(); });
+    bm.s = btn(ctr2, 'Ранг + сжатие путей', function () { smart = true; reload(); });
+    bs.board = btn(ctr2, 'Пример с доски', function () { scen = 'board'; reload(); });
+    bs.chain = btn(ctr2, 'Плохой случай: цепочка', function () { scen = 'chain'; reload(); });
+    reload();
+  }
+
+  /* ---------- Крускал: рёбра по возрастанию + DSU ---------- */
+  function labKruskal(box) {
+    var G = {
+      board: { pos: { 1: [70, 50], 4: [330, 50], 3: [200, 130], 2: [70, 220], 5: [330, 220] },
+        e: [[2, 3, 1], [2, 5, 2], [1, 4, 3], [3, 5, 4], [1, 3, 5], [3, 4, 7], [1, 2, 10]] },
+      big: { pos: { 1: [50, 50], 2: [200, 30], 3: [350, 55], 4: [80, 160], 5: [220, 150], 6: [110, 255], 7: [330, 245] },
+        e: [[1, 2, 7], [1, 4, 5], [2, 3, 8], [2, 4, 9], [2, 5, 7], [3, 5, 5], [4, 5, 15], [4, 6, 6], [5, 6, 8], [5, 7, 9], [6, 7, 11]] }
+    };
+    var gk = 'board', S;
+    var COL = ['#1f5c4d', '#c45c26', '#5b6fb5', '#8a4b1f', '#7a3b8f', '#2f8a6b', '#b08a1f'];
+    head(box, 'Крускал: берём рёбра от лёгких к тяжёлым, если они соединяют разные компоненты');
+    var holder = el('div'); box.appendChild(holder);
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var stats = el('div', 'sa-stats'); box.appendChild(stats);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var ctr2 = el('div', 'sa-controls'); ctr2.style.marginTop = '0.35rem'; box.appendChild(ctr2);
+    box.appendChild(el('div', 'sa-legend',
+      '<i style="background:#e0a24a"></i>рассматриваем ребро <i style="background:#1f5c4d"></i>взято в дерево ' +
+      '<i style="background:#e2ddd2"></i>отброшено (дало бы цикл) · цвет вершины = её компонента (корень в DSU)'));
+    function build() {
+      var g = G[gk], verts = Object.keys(g.pos).map(Number), p = {}, steps = [], taken = {}, rej = {}, w = 0, cnt = 0;
+      verts.forEach(function (v) { p[v] = v; });
+      function find(x) { return p[x] === x ? x : (p[x] = find(p[x])); }
+      var order = g.e.map(function (e, i) { return i; }).sort(function (a, b) { return g.e[a][2] - g.e[b][2]; });
+      function snap(m, cur) {
+        var comp = {};
+        verts.forEach(function (v) { comp[v] = find(v); });
+        steps.push({ taken: copy(taken), rej: copy(rej), comp: comp, cur: cur, msg: m, w: w, cnt: cnt });
+      }
+      snap('Сортируем рёбра по весу: ' + order.map(function (i) { return g.e[i][0] + '–' + g.e[i][1] + ':' + g.e[i][2]; }).join(', ') +
+        '. Каждая вершина пока — своя компонента.', -1);
+      for (var k = 0; k < order.length && cnt < verts.length - 1; k++) {
+        var i = order[k], a = g.e[i][0], b = g.e[i][1];
+        var ra = find(a), rb = find(b);
+        if (ra !== rb) {
+          p[ra] = rb; taken[i] = 1; w += g.e[i][2]; cnt++;
+          snap('Ребро ' + a + '–' + b + ' (вес ' + g.e[i][2] + '): find(' + a + ') = ' + ra + ', find(' + b + ') = ' + rb +
+            ' — разные → берём, join. Взято ' + cnt + ' из ' + (verts.length - 1) + ', вес ' + w + '.', i);
+        } else {
+          rej[i] = 1;
+          snap('Ребро ' + a + '–' + b + ' (вес ' + g.e[i][2] + '): ' + a + ' и ' + b + ' уже в одной компоненте (корень ' + ra +
+            ') → получился бы цикл, пропускаем.', i);
+        }
+      }
+      snap('Взято V − 1 = ' + (verts.length - 1) + ' рёбер — дерево готово, дальше можно не смотреть. Вес минимального остова: ' + w + '.', -1);
+      return steps;
+    }
+    function draw(pos) {
+      var o = S[pos], g = G[gk];
+      var svg = '<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">';
+      g.e.forEach(function (e, i) {
+        var A = g.pos[e[0]], B = g.pos[e[1]], cur = i === o.cur;
+        var color = cur ? '#e0a24a' : o.taken[i] ? '#1f5c4d' : o.rej[i] ? '#d8d2c6' : '#9aa59f';
+        svg += '<line x1="' + A[0] + '" y1="' + A[1] + '" x2="' + B[0] + '" y2="' + B[1] + '" stroke="' + color + '" stroke-width="' +
+          (o.taken[i] || cur ? 4.5 : 2) + '"' + (o.rej[i] && !cur ? ' stroke-dasharray="5 4"' : '') + '/>';
+        var mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2;
+        svg += '<rect x="' + (mx - 11) + '" y="' + (my - 10) + '" width="22" height="18" rx="4" fill="#faf9f6" stroke="' + color + '"/>' +
+          txt(mx, my + 4, e[2], ' text-anchor="middle" font-size="11" font-weight="700"');
+      });
+      var roots = [];
+      Object.keys(g.pos).forEach(function (v) { if (roots.indexOf(o.comp[v]) < 0) roots.push(o.comp[v]); });
+      Object.keys(g.pos).forEach(function (v) {
+        var P = g.pos[v], c = COL[roots.indexOf(o.comp[v]) % COL.length];
+        svg += '<circle cx="' + P[0] + '" cy="' + P[1] + '" r="16" fill="' + c + '" stroke="#1c1b19" stroke-width="1.2"/>' +
+          txt(P[0], P[1] + 5, v, ' text-anchor="middle" font-size="13" font-weight="700" fill="#fff"');
+      });
+      var order = g.e.map(function (e, i) { return i; }).sort(function (a, b) { return g.e[a][2] - g.e[b][2]; });
+      svg += txt(420, 22, 'рёбра по весу', ' font-size="12" font-weight="600"');
+      order.forEach(function (i, k) {
+        var e = g.e[i], y = 44 + k * 22, cur = i === o.cur;
+        var mark = o.taken[i] ? '✓ взято' : o.rej[i] ? '✗ цикл' : '';
+        svg += '<rect x="414" y="' + (y - 14) + '" width="176" height="20" rx="4" fill="' + (cur ? '#fde3c8' : o.taken[i] ? '#e8f1ee' : '#fff') +
+          '" stroke="#cfc8ba"/>' + txt(422, y, e[0] + '–' + e[1] + ' : ' + e[2], ' font-size="12"') +
+          txt(584, y, mark, ' text-anchor="end" font-size="11" fill="' + (o.taken[i] ? '#1f5c4d' : '#c45c26') + '"');
+      });
+      holder.innerHTML = svg + '</svg>';
+      msg.textContent = o.msg;
+      stats.textContent = 'Шаг ' + pos + ' из ' + (S.length - 1) + ' · взято рёбер: ' + o.cnt + ' · вес: ' + o.w;
+    }
+    var sp = stepper(ctr, { count: function () { return S.length; }, render: draw, delay: 1500 });
+    var b1, b2;
+    function reload() { S = build(); sp.reset(); b1.classList.toggle('on', gk === 'board'); b2.classList.toggle('on', gk === 'big'); }
+    b1 = btn(ctr2, 'Граф с доски', function () { gk = 'board'; reload(); });
+    b2 = btn(ctr2, 'Граф побольше (7 вершин)', function () { gk = 'big'; reload(); });
+    reload();
+  }
+
   var LABS = {
+    dsu: labDSU, kruskal: labKruskal,
     fibtree: labFibTree, calcdp: labCalcDP, griddp: labGridDP,
     switches: labSwitches, gates: labGates, fulladder: labFullAdder, ripple: labRipple,
     rs: labRS, vn: labVN, timeline: labTimeline,

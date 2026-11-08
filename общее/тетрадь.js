@@ -100,8 +100,7 @@
     var tocList = document.createElement("ul");
     tocList.className = "nb-menu-toc";
 
-    var links = collectTocLinks();
-    links.forEach(function (item) {
+    function tocItem(item) {
       var li = document.createElement("li");
       var a = document.createElement("a");
       a.href = item.href;
@@ -110,8 +109,40 @@
         closeMenu();
       });
       li.appendChild(a);
-      tocList.appendChild(li);
-    });
+      return li;
+    }
+
+    /* <nav class="toc"><div class="toc-group" data-title="…"><a …></div>… — меню по группам (лекциям) */
+    var groups = collectTocGroups();
+    var groupEls = [];
+    if (groups.length) {
+      tocList.classList.add("nb-menu-toc-grouped");
+      groups.forEach(function (g) {
+        var li = document.createElement("li");
+        li.className = "nb-toc-group";
+        var det = document.createElement("details");
+        var sum = document.createElement("summary");
+        sum.textContent = g.title;
+        var ul = document.createElement("ul");
+        g.links.forEach(function (item) { ul.appendChild(tocItem(item)); });
+        det.appendChild(sum);
+        det.appendChild(ul);
+        li.appendChild(det);
+        tocList.appendChild(li);
+        groupEls.push({ det: det, ids: g.links.map(function (l) { return l.href.slice(1); }) });
+      });
+    } else {
+      collectTocLinks().forEach(function (item) { tocList.appendChild(tocItem(item)); });
+    }
+
+    function openCurrentGroup() {
+      if (!groupEls.length) return;
+      var cur = currentSectionId();
+      var hit = null;
+      groupEls.forEach(function (g) { if (cur && g.ids.indexOf(cur) >= 0) hit = g; });
+      if (!hit) hit = groupEls[0];
+      groupEls.forEach(function (g) { g.det.open = g === hit; });
+    }
 
     var extra = document.createElement("div");
     extra.className = "nb-menu-links";
@@ -146,6 +177,7 @@
     document.body.appendChild(panel);
 
     function openMenu() {
+      openCurrentGroup();
       panel.classList.add("open");
       backdrop.classList.add("open");
     }
@@ -167,6 +199,26 @@
     if (a && a.getAttribute("href")) return a.getAttribute("href");
     if (location.pathname.indexOf("/notebooks/") !== -1) return "./index.html";
     return "../";
+  }
+
+  function collectTocGroups() {
+    var out = [];
+    document.querySelectorAll("nav.toc .toc-group").forEach(function (g) {
+      var links = [];
+      g.querySelectorAll("a[href^='#']").forEach(function (a) {
+        links.push({ href: a.getAttribute("href"), text: (a.textContent || "").trim() });
+      });
+      if (links.length) out.push({ title: g.getAttribute("data-title") || links[0].text, links: links });
+    });
+    return out;
+  }
+
+  function currentSectionId() {
+    var sections = findSections(), id = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.getBoundingClientRect().top <= 120) id = sections[i].id;
+    }
+    return id || (sections[0] && sections[0].id);
   }
 
   function collectTocLinks() {

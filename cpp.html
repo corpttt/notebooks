@@ -42,6 +42,8 @@ li { margin: 0.28rem 0; }
   padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
 }
 .own { color: #333; }
+html[data-theme="dark"] .own { color: inherit; opacity: 0.9; }
+html[data-theme="dark"] .nonex { background: rgba(200, 60, 60, 0.16); }
 .ex {
   border-left: 3px solid var(--acc2); background: var(--warn);
   padding: 0.55rem 0.8rem; border-radius: 0 8px 8px 0; margin: 0.55rem 0;
@@ -136,8 +138,8 @@ a { color: var(--acc); }
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
 
-<link rel="stylesheet" href="./общее/тетрадь.css?v=3cbcc131">
-<script src="./общее/тетрадь.js?v=3cbcc131" defer></script>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
+<script src="./общее/тетрадь.js?v=f7721170" defer></script>
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -152,16 +154,13 @@ a { color: var(--acc); }
 <header>
   <h1>C++ · тетрадь</h1>
   <p class="note">
-    Опора: курс
-    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Stepik 363 · Введение в программирование (C++)</a>
-    (Яндекс / ВШЭ) · задания практикума:
-    <a href="https://github.com/corpttt/cpp-lab-01" target="_blank" rel="noopener">corpttt/cpp-lab-01</a>
-    (локально <code>Documents/cpp-lab-01/tasks/</code> — открывай эту папку отдельным окном Cursor).
+    Опора: курс Stepik 363 (Яндекс / ВШЭ) и задания практикума — ссылки в разделе «Материалы».
     Индекс в чате: <code>C++-§N</code>.
     Примеры кода — во <strong>вкладках</strong> (переключай сверху блока).
     Где полезно — рядом блок <strong>С Python</strong> (ты уже знаешь Python; C++ — с нуля).
   </p>
   <nav class="toc">
+    <a href="#materials">Материалы</a>
     <a href="#intro">С чего начать</a>
     <a href="#feel">Как это ощущается</a>
     <a href="#s0">§0 Устройство программы</a>
@@ -170,12 +169,26 @@ a { color: var(--acc); }
     <a href="#s2">§2 Ветвления</a>
     <a href="#s3">§3 Циклы и ввод</a>
     <a href="#s4">§4 Функции</a>
+    <a href="#lec2">Лекция 2</a>
+    <a href="#s5">§5 Структуры</a>
+    <a href="#s6">§6 Методы и конструкторы</a>
+    <a href="#s7">§7 Классы и доступ</a>
+    <a href="#s8">§8 Ссылки</a>
     <a href="#tasks">Задания 1–4</a>
-    <a href="#cheat">Шпаргалка</a>
-  </nav>
+</nav>
 </header>
 
 <main>
+
+<section class="card" id="materials">
+  <h2>Материалы</h2>
+  <ul>
+    <li>Курс: <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Stepik 363 · Введение в программирование (C++)</a> (Яндекс / ВШЭ).</li>
+    <li>Задания практикума: <a href="https://github.com/corpttt/cpp-lab-01" target="_blank" rel="noopener">corpttt/cpp-lab-01</a> (локально <code>C:\dev\cpp-lab-01</code> — открывай эту папку отдельным окном Cursor).</li>
+    <li>Лекция 2: скриншоты кода <code>материалы/лекция-02/код-31.png … код-75.png</code> (по порядку = по ходу лекции).</li>
+    <li>Видео к §0–§1: <a href="https://www.youtube.com/watch?v=0T3XGzqVqLM" target="_blank" rel="noopener">переменные и типы</a>.</li>
+  </ul>
+</section>
 
 <!-- ========== INTRO ========== -->
 <section class="card" id="intro">
@@ -183,7 +196,7 @@ a { color: var(--acc); }
   <p>
     Ты открываешь C++ не «с нуля вселенной», а с понятной цели:
     есть курс
-    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Stepik 363 · Введение в программирование (C++)</a>
+    Stepik 363 «Введение в программирование (C++)»
     и рядом — четыре своих задания в папке <code>tasks/</code>.
     Эта тетрадь — мостик между ними: сначала спокойно разобрать <em>идеи</em>,
     потом уже смотреть на файлы заданий.
@@ -502,11 +515,6 @@ print(n)</code></pre>
   <p>
     Когда этот каркас стал понятен, можно смотреть карту курса и переходить к §1 —
     уже зная, <em>куда</em> в программе вставляются типы и операции.
-  </p>
-  <p class="video">
-    Видео (одно):
-    <a href="https://www.youtube.com/watch?v=0T3XGzqVqLM" target="_blank" rel="noopener">переменные и типы</a>
-    — удобнее после §0 и начала §1.
   </p>
   <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§0</code> — main, порядок, операторы</blockquote>
 </section>
@@ -1115,6 +1123,893 @@ return "ok";
   <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§4</code> — функции, флаг, вердикт</blockquote>
 </section>
 
+<!-- ========== LECTURE 2 INTRO ========== -->
+<section class="card" id="lec2">
+  <h2>Лекция 2 · «Зачётная книжка»: структуры, классы, ссылки</h2>
+  <p>
+    Вторая лекция целиком построена на одной задаче: хранить данные студента —
+    <strong>имя, группу и две оценки</strong> (экзамен и зачёт) — и постепенно делать это всё аккуратнее.
+    Код удобно запускать в онлайн-компиляторе <code>cpp.sh</code> (стандарт C++20, флаг <code>-Wall</code>);
+    программа меняется шаг за шагом.
+  </p>
+  <p>План:</p>
+  <ol>
+    <li>Структуры → <a href="#s5">C++-§5</a> (и методы/конструкторы → <a href="#s6">C++-§6</a>);</li>
+    <li>Классы → <a href="#s7">C++-§7</a>;</li>
+    <li>Ссылки → <a href="#s8">C++-§8</a>;</li>
+    <li>Указатели — здесь почти не разобраны: были только <code>int* x = nullptr</code> и <code>delete x</code> (кратко в §7, п. 6).</li>
+  </ol>
+</section>
+
+<!-- ========== §5 STRUCTS ========== -->
+<section class="card" id="s5">
+  <h2><span class="tag">C++-§5</span> Структуры: несколько полей в одной коробке</h2>
+  <p>
+    До сих пор у нас была одна переменная — одно значение: <code>int n</code>, <code>long long sum</code>.
+    Но студент — это не одно число. У него четыре «кусочка» данных, и они всегда ходят вместе.
+    Параграф о том, как сказать языку: «вот это — одна вещь из нескольких частей».
+  </p>
+
+  <h3>1. Проблема: переменные-близнецы</h3>
+  <p>
+    Первый вариант — завести по переменной на каждое поле каждого студента:
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Без структуры</button>
+      <button type="button" role="tab" aria-selected="false">Параллельные векторы</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>std::string name = "Ivan";
+std::string group = "B81";
+int exam = 5;
+int test = 4;
+std::string name2 = "Ivan";
+std::string group2 = "B81";
+int exam2 = 5;
+int test2 = 4;
+std::string name3 = "Ivan";
+// … и так для каждого студента
+</code></pre>
+      <div class="code-tabs-caption">3 студента — 12 переменных; 30 студентов — 120. Опечатка <code>exam2</code> вместо <code>exam3</code> — и данные перепутаны.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>std::vector&lt;std::string&gt; names;
+std::vector&lt;std::string&gt; groups;
+// … и ещё два вектора для оценок
+// студент №i = names[i], groups[i], …
+</code></pre>
+      <div class="code-tabs-caption">Связь «одного студента» держится только на одинаковом индексе — хрупко.</div>
+    </div>
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Оба варианта плохи одним и тем же: «студент» существует только у тебя в голове.
+    Язык видит отдельные строки и числа и не знает, что <code>name2</code> и <code>exam2</code> — про одного человека.
+  </p>
+
+  <h3>2. Что такое структура</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>struct</code> — пользовательский тип, составленный из нескольких именованных
+    <strong>полей</strong> (членов) разных типов. После объявления структуры её имя можно использовать
+    как обычный тип: заводить переменные, класть в векторы, передавать в функции.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Мы рисуем <em>бланк</em> зачётки: «тут имя, тут группа, тут две оценки».
+    Сам бланк — это тип <code>Student</code>. Каждый заполненный бланк — переменная этого типа.
+  </p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">struct</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>struct Student {
+    std::string name;
+    std::string group;
+    int exam;
+    int test;
+};                       // ← точка с запятой обязательна
+
+int main() {
+    Student student;             // одна переменная = вся зачётка
+    student.name = "Ivan";       // доступ к полю — через точку
+    student.group = "B81";
+    student.exam = 5;
+    student.test = 4;
+}
+</code></pre>
+      <div class="code-tabs-caption"><code>student.name</code> — «поле name у переменной student».</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>from dataclasses import dataclass
+
+@dataclass
+class Student:
+    name: str
+    group: str
+    exam: int
+    test: int
+
+student = Student("Ivan", "B81", 5, 4)
+print(student.name)
+</code></pre>
+      <div class="code-tabs-caption">Ближайший аналог — <code>@dataclass</code>. Точка для доступа к полю — та же.</div>
+    </div>
+  </div>
+  <div class="ex">
+    <strong>Пример.</strong>
+    Тип <code>Student</code> — один; переменных этого типа может быть сколько угодно:
+    <code>Student ivan;</code>, <code>Student anna;</code> — у каждой свои <code>name</code>, <code>exam</code> и т.д.
+    Изменение <code>anna.exam</code> никак не трогает <code>ivan.exam</code>.
+  </div>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    Забыть <code>;</code> после закрывающей <code>}</code> структуры. В отличие от функции,
+    объявление <code>struct</code> — это оператор и закрывается точкой с запятой.
+    Компилятор тогда ругается на <em>следующую</em> строку (обычно на <code>int main</code>), что сбивает с толку.
+  </div>
+
+  <h3>3. Три способа заполнить структуру сразу</h3>
+  <p>Писать четыре присваивания подряд скучно. Можно короче:</p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">По полям</button>
+      <button type="button" role="tab" aria-selected="false">{…} по порядку</button>
+      <button type="button" role="tab" aria-selected="false">.поле = (C++20)</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>Student student;
+student.name = "Ivan";
+student.group = "B81";
+student.exam = 5;
+student.test = 4;
+</code></pre>
+      <div class="code-tabs-caption">Длинно, но понятно.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>Student student{"Ivan", "B81", 5, 4};
+std::cout &lt;&lt; student.name &lt;&lt; "\n";   // Ivan
+</code></pre>
+      <div class="code-tabs-caption">Значения раскладываются по полям <strong>в порядке объявления</strong>: name, group, exam, test.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>Student student{
+    .name = "Ivan",
+    .group = "B81",
+    .exam = 5,
+    .test = 4
+};
+</code></pre>
+      <div class="code-tabs-caption">«Назначенные инициализаторы» (designated initializers): видно, что куда кладём.</div>
+    </div>
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Вариант «по порядку» короче, но легко перепутать <code>5, 4</code> местами — компилятор не заметит,
+    ведь оба поля <code>int</code>. Вариант с <code>.exam = 5</code> подписывает каждое значение.
+  </p>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    Назначенные инициализаторы требуют того же порядка, что в объявлении:
+    <code>{.exam = 5, .name = "Ivan"}</code> — ошибка (<code>name</code> объявлено раньше <code>exam</code>).
+    Пропускать поля можно, переставлять — нет. И они работают, только пока у структуры нет своих конструкторов (см. §6, п. 5).
+  </div>
+
+  <h3>4. Присваивание структуры = копия</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>Student copy = student;</code> создаёт <strong>новую</strong> переменную и копирует в неё каждое поле.
+    После этого <code>copy</code> и <code>student</code> — две независимые зачётки.
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">C++</button>
+      <button type="button" role="tab" aria-selected="false">Python (не так!)</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>Student student{.name = "Ivan", .group = "B81", .exam = 4, .test = 5};
+Student copy = student;
+copy.name = "Copy";
+print(student);   // Ivan B81 4 5   ← оригинал не изменился
+print(copy);      // Copy B81 4 5
+</code></pre>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>student = Student("Ivan", "B81", 4, 5)
+copy = student           # НЕ копия: второе имя того же объекта
+copy.name = "Copy"
+print(student.name)      # Copy  ← оригинал тоже изменился!
+
+import copy as cp
+real = cp.copy(student)  # настоящая копия — только так
+</code></pre>
+      <div class="code-tabs-caption">В Python <code>=</code> для объектов копирует только «ярлык».</div>
+    </div>
+  </div>
+  <div class="py-cmp">
+    <strong>С Python — важное отличие.</strong>
+    В Python <code>b = a</code> для объекта даёт <em>то же самое</em> значение под вторым именем.
+    В C++ <code>Student b = a;</code> — честная копия всех полей.
+    Если в C++ нужно именно «второе имя того же», для этого есть <strong>ссылки</strong> (§8).
+  </div>
+
+  <h3>5. Структура в функции: по значению — тоже копия</h3>
+  <p>Печать удобно вынести в функцию:</p>
+<pre><code>void print(Student copy) {
+    std::cout &lt;&lt; copy.name &lt;&lt; " " &lt;&lt; copy.group &lt;&lt; " "
+              &lt;&lt; copy.exam &lt;&lt; " " &lt;&lt; copy.test &lt;&lt; "\n";
+}
+</code></pre>
+  <p>
+    Имя параметра <code>copy</code> выбрано не случайно: при вызове <code>print(student)</code> функция получает
+    <strong>копию</strong> студента (передача <em>по значению</em>). Что бы функция ни сделала с <code>copy</code>, оригинал в <code>main</code> не меняется.
+  </p>
+  <div class="ex">
+    <strong>Пример (проверено).</strong>
+    <code>void spoil(Student s) { s.test = 0; }</code> — после <code>spoil(student)</code> у <code>student</code> по-прежнему <code>test == 5</code>:
+    обнулили копию. Как передать «сам объект», а не копию, — §8.
+  </div>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    Сначала в <code>print</code> забыли <code>"\n"</code> — и две зачётки слиплись в строку
+    <code>Ivan B81 5 4Ivan B81 5 4ok</code>. <code>cout</code> сам перевод строки не ставит.
+  </div>
+
+  <h3>6. Много студентов: массив структур и циклы</h3>
+  <p>Тип <code>Student</code> можно класть в массив, как любой другой:</p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Цикл по индексу</button>
+      <button type="button" role="tab" aria-selected="false">for по элементам</button>
+      <button type="button" role="tab" aria-selected="false">auto</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>Student group[3] = {
+    {"Ivan", "B81", 4, 5},
+    {"Anna", "B81", 3, 2},
+    {"Sergey", "B81", 4, 5},
+};
+for (int i = 0; i &lt; 3; i++) {
+    print(group[i]);
+}
+// Ivan B81 4 5
+// Anna B81 3 2
+// Sergey B81 4 5
+</code></pre>
+      <div class="code-tabs-caption"><code>Student group[3]</code> — массив ровно из 3 студентов; размер фиксирован при объявлении.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>for (Student student : group) {
+    print(student);
+}
+</code></pre>
+      <div class="code-tabs-caption">«Для каждого <code>student</code> из <code>group</code>» — индекс не нужен. <code>student</code> здесь — <em>копия</em> очередного элемента.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>for (auto student : group) {
+    print(student);
+}
+</code></pre>
+      <div class="code-tabs-caption"><code>auto</code> — «компилятор, выведи тип сам» (тут выведет <code>Student</code>).</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>group = [
+    Student("Ivan", "B81", 4, 5),
+    Student("Anna", "B81", 3, 2),
+]
+for student in group:
+    print(student)
+</code></pre>
+      <div class="code-tabs-caption"><code>for … : group</code> в C++ ≈ <code>for … in group</code> в Python.</div>
+    </div>
+  </div>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>for (Тип x : контейнер) { … }</code> — цикл «по элементам» (range-based for):
+    тело выполняется для каждого элемента по очереди, и <code>x</code> — очередной элемент.
+    <code>auto</code> вместо типа просит компилятор вывести тип из инициализации.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Индекс <code>i</code> нужен, только если важно «какой по счёту». Если надо просто
+    «пройти всех» — цикл по элементам короче и не даст ошибиться с границей <code>i &lt; 3</code>.
+  </p>
+
+  <h3>7. <code>std::vector&lt;Student&gt;</code>: список, который растёт</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>std::vector&lt;T&gt;</code> (заголовок <code>&lt;vector&gt;</code>) — массив элементов типа <code>T</code>,
+    размер которого может меняться во время работы. <code>push_back(x)</code> добавляет копию <code>x</code> в конец,
+    <code>v[i]</code> — элемент с номером <code>i</code> (с нуля).
+  </div>
+<pre><code>std::vector&lt;Student&gt; group;                       // пока пустой
+group.push_back(Student{"Ivan", "B81", 4, 5});      // теперь 1 элемент
+std::cout &lt;&lt; group[0].name &lt;&lt; "\n";                // Ivan
+</code></pre>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    <code>std::vector</code> ≈ <code>list</code>, <code>push_back</code> ≈ <code>append</code>, <code>group[0]</code> — то же.
+    Разница: в векторе все элементы одного типа (<code>vector&lt;Student&gt;</code> — только студенты),
+    а <code>Student group[3]</code> из п. 6 — вообще фиксированного размера.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Структура</div>
+    <div class="formula-box-body">struct Имя { поля; };  ·  x.поле  ·  Имя b = a; — копия всех полей</div>
+  </div>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§5</code> — struct, инициализация, копия, vector</blockquote>
+</section>
+
+<!-- ========== §6 METHODS & CONSTRUCTORS ========== -->
+<section class="card" id="s6">
+  <h2><span class="tag">C++-§6</span> Методы и конструкторы: структура, которая умеет действовать</h2>
+  <p>
+    Пока <code>Student</code> — просто бланк с полями, а всё «умное» (печать, подсчёты) живёт в отдельных функциях.
+    Следующий шаг лекции — положить действия <em>внутрь</em> структуры.
+  </p>
+
+  <h3>1. Метод — функция внутри структуры</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <strong>Метод</strong> (функция-член) — функция, объявленная внутри <code>struct</code>/<code>class</code>.
+    Вызывается через точку у конкретного объекта: <code>group[0].SumAvg()</code>.
+    Внутри метода поля этого объекта доступны просто по имени — без <code>student.</code>.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Метод знает, «чью» зачётку он считает: <code>ivan.SumAvg()</code> берёт оценки Ивана,
+    <code>anna.SumAvg()</code> — Анны. Поэтому внутри можно писать просто <code>exam</code>, а не <code>ivan.exam</code>.
+  </p>
+
+  <h3>2. Ловушка из §1 снова: среднее получилось 4, а не 4.5</h3>
+  <p>Первая версия среднего выдаёт неожиданный ответ:</p>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Ошибка: 4</button>
+      <button type="button" role="tab" aria-selected="false">Исправление: 4.5</button>
+      <button type="button" role="tab" aria-selected="false">static_cast</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>struct Student {
+    // … поля …
+    double SumAvg() {
+        return (exam + test) / 2;   // int / int
+    }
+};
+// exam = 4, test = 5
+std::cout &lt;&lt; group[0].SumAvg();     // 4
+</code></pre>
+      <div class="code-tabs-caption"><code>(4 + 5) / 2</code> — оба операнда <code>int</code>, частное <code>4</code>. Тип <code>double</code> у результата уже не поможет: дробь выброшена до него.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>return ((double)exam + (double)test) / 2;   // 4.5
+// или короче:
+return (double)(exam + test) / 2;           // 4.5
+</code></pre>
+      <div class="code-tabs-caption">Сначала сделали <code>double</code>, потом делим.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>return static_cast&lt;double&gt;(exam + test) / 2;   // 4.5
+</code></pre>
+      <div class="code-tabs-caption"><code>(double)x</code> — приведение «в стиле C»; <code>static_cast&lt;double&gt;(x)</code> — то же для чисел, но заметнее в коде (как в §1).</div>
+    </div>
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Это ровно правило из <a href="#s1">§1, шаг 3</a>: «сначала расширь тип, потом дели».
+    То, что функция возвращает <code>double</code>, не делает деление внутри неё дробным.
+  </p>
+
+  <h3>3. Метод может менять объект</h3>
+<pre><code>void IncTest(int x) {
+    test += x;          // меняет поле ЭТОГО студента
+}
+
+group[0].IncTest(2);    // было test = 5
+std::cout &lt;&lt; group[0].test;   // 7
+</code></pre>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Метод ≈ <code>def inc_test(self, x): self.test += x</code>.
+    В C++ нет явного <code>self</code>: поля объекта видны внутри метода сами.
+  </div>
+
+  <h3>4. Конструктор: как объект рождается</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <strong>Конструктор</strong> — особый метод, который вызывается автоматически при создании объекта.
+    Его имя совпадает с именем структуры, а типа возвращаемого значения нет вовсе (даже <code>void</code>).
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Конструктор</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>struct Student {
+    std::string name;
+    std::string group;
+    int exam;
+    int test;
+
+    Student(std::string name_, std::string group_, int exam_, int test_) {
+        name = name_;
+        group = group_;
+        exam = exam_;
+        test = test_;
+    }
+};
+
+Student student = Student("Ivan", "B81", 4, 5);
+print(student);     // Ivan B81 4 5
+</code></pre>
+      <div class="code-tabs-caption">Подчёркивание в <code>name_</code> — чтобы параметр не путался с полем <code>name</code>.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>class Student:
+    def __init__(self, name, group, exam, test):
+        self.name = name
+        self.group = group
+        self.exam = exam
+        self.test = test
+</code></pre>
+      <div class="code-tabs-caption">Конструктор ≈ <code>__init__</code>. В Python поле от параметра отличает <code>self.</code>, в C++ — другое имя параметра.</div>
+    </div>
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Конструктор — «процедура выдачи зачётки»: нельзя получить объект, не пройдя через неё.
+    Удобно, если при создании надо что-то проверить или посчитать.
+  </p>
+
+  <h3>5. Несколько конструкторов (перегрузка) и конструктор по умолчанию</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Конструкторов может быть несколько, если у них <strong>разные списки параметров</strong> (по количеству или типам) —
+    это перегрузка. При создании объекта компилятор выбирает тот, что подходит к переданным аргументам.
+    Конструктор без параметров — <strong>конструктор по умолчанию</strong>: он работает при <code>Student x;</code>.
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Два конструктора</button>
+      <button type="button" role="tab" aria-selected="false">Одинаковые — ошибка</button>
+      <button type="button" role="tab" aria-selected="false">По умолчанию</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>Student(std::string name_, std::string group_, int exam_, int test_) { … }
+
+Student(std::string name_, std::string group_, int exam_) {
+    name = group_;     // ← нарочно перепутано
+    group = name_;
+    exam = exam_;
+    test = 0;
+}
+
+Student student  = Student("Ivan", "B81", 4, 5);   // 4 аргумента → первый
+Student student2 = Student("Anna", "B81", 4);      // 3 аргумента → второй
+// Ivan B81 4 5
+// B81 Anna 4 0
+</code></pre>
+      <div class="code-tabs-caption">Вывод <code>B81 Anna</code> показывает: компилятор проверяет только <em>типы</em>, а не смысл. Перепутать два <code>std::string</code> он не помешает.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>Student(std::string name_, std::string group_, int exam_, int test_) { … }
+Student(std::string name_, std::string group_, int exam_, int test_) { … }
+
+// error: constructor cannot be redeclared
+</code></pre>
+      <div class="code-tabs-caption">Два конструктора с одинаковыми параметрами — компилятор не понял бы, какой звать.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>struct Student {
+    std::string name = "";
+    std::string group = "B81";   // значения полей по умолчанию
+    int exam = 0;
+    int test = 5;
+
+    Student() {}                 // конструктор по умолчанию
+    // … остальные конструкторы …
+};
+
+Student x;
+print(x);     //  B81 0 5   (имя пустое)
+</code></pre>
+      <div class="code-tabs-caption"><code>= "B81"</code> прямо у поля — значение, если конструктор ничего другого не положил.</div>
+    </div>
+  </div>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    Убрали значения у полей, оставили пустой <code>Student() {}</code> — вывод был <code>  0 0</code>.
+    Строки действительно пустые (у <code>std::string</code> свой конструктор), а вот <code>int</code> без значения
+    <strong>не обязан быть нулём</strong>: там лежит «что было в памяти». Ноль на экране — случайность;
+    на другом компьютере может быть мусор. Поэтому полям-числам лучше всегда давать начальное значение.
+  </div>
+  <div class="nonex">
+    <strong>Не-пример (проверено).</strong>
+    Как только у структуры появился хоть один свой конструктор:
+    <ul>
+      <li><code>Student x;</code> работает, только если написан и <code>Student()</code> — сам он больше не создаётся;</li>
+      <li>способ <code>{.name = "Ivan", …}</code> из §5 перестаёт работать:
+        <code>designated initializers cannot be used with a non-aggregate type</code>.</li>
+    </ul>
+  </div>
+
+  <h3>6. Список инициализации</h3>
+  <p>Конструктор можно записать иначе:</p>
+<pre><code>Student(std::string name_, std::string group_, int exam_, int test_)
+    : name(name_), group(group_), exam(exam_), test(test_) {}
+</code></pre>
+  <p class="src">На скриншоте строка обрезана справа; хвост <code>exam(exam_), test(test_) {}</code> восстановлен по смыслу.</p>
+  <div class="def">
+    <strong>Определение.</strong>
+    После <code>:</code> и до тела <code>{ }</code> конструктора идёт <strong>список инициализации</strong>:
+    <code>поле(значение)</code> через запятую. Поля получают значения сразу при создании,
+    а не «сначала пустые, потом присвоили» в теле.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Вариант с телом: «выдали пустой бланк, потом вписали имя». Вариант со списком:
+    «бланк сразу напечатан с именем». Результат для наших полей одинаковый, но второй — привычный стиль C++,
+    а для некоторых полей (константы, ссылки) — единственно возможный.
+  </p>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Конструктор</div>
+    <div class="formula-box-body">Имя(параметры) : поле(знач), … { }  ·  без типа возврата  ·  перегрузка — разные параметры</div>
+  </div>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§6</code> — методы, среднее, конструкторы</blockquote>
+</section>
+
+<!-- ========== §7 CLASSES & ACCESS ========== -->
+<section class="card" id="s7">
+  <h2><span class="tag">C++-§7</span> Классы: что можно трогать снаружи, а что нет</h2>
+  <p>
+    Сейчас любой код может написать <code>student.exam = 100;</code> — и в зачётке окажется «сотка» по пятибалльной шкале.
+    Классы и модификаторы доступа нужны, чтобы данные можно было менять только «правильными» путями.
+  </p>
+
+  <h3>1. <code>private</code> и <code>public</code></h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Внутри <code>struct</code>/<code>class</code> метки <code>public:</code> и <code>private:</code> делят члены на группы.
+    <code>public</code> — доступно отовсюду. <code>private</code> — только из методов (и конструкторов) самого типа.
+    Метка действует на всё ниже неё, до следующей метки.
+  </div>
+<pre><code>struct Student {
+    private:
+    std::string name;      // только для своих
+    public:
+    std::string group;     // для всех
+    int exam;
+    int test;
+    // … конструкторы, методы …
+};
+
+x.name = "Ivan";            // error: 'name' is a private member of 'Student'
+x.group = "B82";            // ок
+</code></pre>
+  <p class="src">Ошибка возникает и в <code>print</code>, где читают <code>copy.name</code>: снаружи нельзя даже прочитать private-поле.</p>
+  <p class="own">
+    <em>Своими словами.</em> <code>private</code> — это «внутренняя кухня» объекта. Методы самого <code>Student</code>
+    туда ходят свободно (<code>IncTest</code> спокойно меняет <code>test</code>), а <code>main</code> и чужие функции — нет.
+  </p>
+
+  <h3>2. <code>struct</code> и <code>class</code> — одно и то же, кроме умолчания</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>class</code> и <code>struct</code> в C++ отличаются только доступом <strong>по умолчанию</strong>
+    (пока не написана ни одна метка): у <code>struct</code> всё <code>public</code>, у <code>class</code> — всё <code>private</code>.
+  </div>
+  <div class="ex">
+    <strong>Пример.</strong>
+    Заменим одно слово <code>struct Student</code> на <code>class Student</code>, ничего больше не трогая.
+    Посыпались ошибки на <em>всё</em>: <code>'name' is a private member</code>, <code>'group' is a private member</code>…
+    и даже <code>calling a private constructor of class 'Student'</code> с пометкой <code>implicitly declared private</code> —
+    конструктор тоже оказался «внутренней кухней», и создать студента из <code>main</code> стало нельзя.
+  </div>
+  <p>Поэтому типичный класс выглядит так: сверху открытое «меню», снизу закрытые данные.</p>
+<pre><code>class StudentClass {
+    public:
+        StudentClass() {}
+        StudentClass(std::string name_, std::string group_, int exam_, int test_) { … }
+        double SumAvg() { return (double)(exam + test) / 2; }
+        void IncTest(int x) { test += x; }
+
+    private:
+        std::string name;
+        std::string group;
+        int exam;
+        int test;
+};
+</code></pre>
+  <div class="ex">
+    <strong>Пример — зачем это.</strong>
+    Если <code>test</code> закрыт, поменять его можно только через <code>IncTest</code>.
+    Значит, проверку «оценка от 2 до 5» достаточно написать один раз внутри метода —
+    и обойти её снаружи не получится.
+  </div>
+  <p>
+    Соглашение: <code>struct</code> берут для «просто набора полей» вроде зачётки из §5,
+    <code>class</code> — когда у объекта есть закрытые данные и правила работы с ними.
+  </p>
+
+  <h3>3. <code>friend</code>: пустить чужую функцию на кухню</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Объявление <code>friend void print(…);</code> <strong>внутри</strong> класса разрешает этой (внешней) функции
+    доступ к <code>private</code>-членам класса. Сама функция методом не становится и определяется снаружи.
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Не компилируется</button>
+      <button type="button" role="tab" aria-selected="false">Как правильно</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>class StudentClass {
+    // …
+};
+
+friend void print(StudentClass copy) {    // ← снаружи класса
+    std::cout &lt;&lt; copy.name &lt;&lt; …;
+}
+// error: 'friend' used outside of class
+</code></pre>
+      <div class="code-tabs-caption">Слово <code>friend</code> имеет смысл только внутри класса — так не компилируется.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>class StudentClass {
+public:
+    // …
+    friend void print(const StudentClass&amp; s);   // «этой функции можно»
+private:
+    std::string name;
+    // …
+};
+
+void print(const StudentClass&amp; s) {             // обычная функция
+    std::cout &lt;&lt; s.name &lt;&lt; "\n";                 // private — но ей можно
+}
+</code></pre>
+      <div class="code-tabs-caption">Исправлено (проверено). <code>const …&amp;</code> в параметре — из §8: без копии и без права менять.</div>
+    </div>
+  </div>
+
+  <h3>4. Деструктор: как объект умирает</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <strong>Деструктор</strong> <code>~Имя()</code> — метод, который вызывается автоматически, когда объект перестаёт существовать
+    (например, закончился блок <code>{ }</code>, где он объявлен). Без параметров и без типа возврата; у класса он ровно один.
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">Когда вызывается</button>
+      <button type="button" role="tab" aria-selected="false">Под private — ошибка</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>class Student {
+public:
+    Student(std::string name_) : name(name_) {}
+    ~Student() { std::cout &lt;&lt; "deleted " &lt;&lt; name &lt;&lt; "\n"; }
+private:
+    std::string name;
+};
+
+int main() {
+    Student a("Ivan");
+    {
+        Student b("Anna");
+    }                         // ← b умирает здесь: deleted Anna
+    std::cout &lt;&lt; "end\n";
+}                             // ← a умирает здесь: deleted Ivan
+// вывод:
+// deleted Anna
+// end
+// deleted Ivan
+</code></pre>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>class StudentClass {
+public:
+    StudentClass() {}
+private:
+    // …поля…
+    ~StudentClass() { std::cout &lt;&lt; "deleted"; }   // ← попал под private
+};
+
+int main() { StudentClass s; }
+// error: '~StudentClass()' is private within this context
+</code></pre>
+      <div class="code-tabs-caption">Если деструктор стоит после <code>private:</code>, объект нельзя «похоронить» из <code>main</code> — и нельзя создать. Деструктор пишут в <code>public</code>.</div>
+    </div>
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Конструктор — «выдали зачётку», деструктор — «сдали в архив».
+    В C++ момент смерти объекта на стеке точно известен: закрывающая <code>}</code> его блока.
+  </p>
+
+  <h3>5. Зачем деструктор: убрать за собой</h3>
+  <p>
+    Печать «deleted» — учебная. Настоящая работа деструктора видна в последнем кусочке класса:
+  </p>
+<pre><code>private:
+    int* x = nullptr;
+
+~StudentClass() {
+    delete x;
+    std::cout &lt;&lt; "deleted";
+}
+</code></pre>
+  <ul>
+    <li><code>int* x</code> — поле-<strong>указатель</strong>: хранит не число, а адрес, где число лежит.</li>
+    <li><code>nullptr</code> — «никуда не указывает».</li>
+    <li><code>delete x</code> — вернуть системе память, которую когда-то взяли через <code>new</code>.
+      Для <code>nullptr</code> <code>delete</code> ничего не делает — это безопасно.</li>
+  </ul>
+  <p>
+    Идея: если объект сам что-то занял (память, файл), деструктор — то место, где он это отдаёт,
+    чтобы никто не забыл. Что такое указатели и <code>new</code> по-настоящему — следующая тема,
+    здесь только самое необходимое.
+  </p>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    Настоящего <code>private</code> в Python нет: <code>_name</code> — только договорённость «не трогай», доступ всё равно открыт.
+    В C++ <code>private</code> проверяет компилятор — нарушение не скомпилируется.
+    Деструктор ≈ <code>__del__</code>, но в Python момент его вызова не гарантирован (решает сборщик мусора),
+    а в C++ для обычной переменной — ровно на <code>}</code>.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Доступ</div>
+    <div class="formula-box-body">struct: всё public по умолчанию  ·  class: всё private по умолчанию  ·  friend — только внутри класса</div>
+  </div>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§7</code> — class/struct, private, friend, деструктор</blockquote>
+</section>
+
+<!-- ========== §8 REFERENCES ========== -->
+<section class="card" id="s8">
+  <h2><span class="tag">C++-§8</span> Ссылки: второе имя той же переменной</h2>
+  <p>
+    В §5 мы видели, что <code>Student b = a;</code> и передача в функцию создают <em>копии</em>.
+    Часто это не то, что нужно: хочется, чтобы функция изменила <em>сам</em> объект, или не тратить время на копирование.
+    Для этого — ссылки.
+  </p>
+
+  <h3>1. Что такое ссылка</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    <code>int&amp; alias = x;</code> объявляет <strong>ссылку</strong> <code>alias</code> на переменную <code>x</code>:
+    это не новая коробка, а второе имя той же самой. Любое чтение или запись через <code>alias</code> —
+    это чтение или запись <code>x</code>. Ссылку обязательно связать с переменной сразу при объявлении.
+  </div>
+  <p class="own">
+    <em>Своими словами.</em> Как прозвище: «Ваня» и «Иван Петров» — один человек.
+    Дали Ване пятёрку — у Ивана Петрова тоже пятёрка, потому что это он и есть.
+  </p>
+<pre><code>int x = 5;
+int&amp; alias = x;
+std::cout &lt;&lt; x &lt;&lt; " " &lt;&lt; alias &lt;&lt; "\n";   // 5 5
+alias = 4;                                  // пишем через второе имя
+std::cout &lt;&lt; x &lt;&lt; " " &lt;&lt; alias &lt;&lt; "\n";   // 4 4  ← x тоже 4
+</code></pre>
+
+  <h3>2. Ссылку нельзя «перевесить»</h3>
+  <p>Каверзный момент:</p>
+<pre><code>int other = 10;
+alias = other;       // НЕ «теперь alias — имя other»!
+std::cout &lt;&lt; x &lt;&lt; " " &lt;&lt; alias &lt;&lt; "\n";   // 10 10
+</code></pre>
+  <div class="def">
+    <strong>Определение.</strong>
+    После объявления ссылка навсегда привязана к своей переменной.
+    <code>alias = other;</code> — это обычное присваивание: <em>значение</em> <code>other</code> записывается в <code>x</code>.
+  </div>
+  <div class="ex">
+    <strong>Пример (проверено).</strong>
+    Если после этого написать <code>other = 99;</code>, то <code>x</code> и <code>alias</code> останутся <code>10</code>:
+    связи с <code>other</code> нет, было только разовое копирование числа.
+  </div>
+  <div class="nonex">
+    <strong>Не-пример.</strong>
+    <code>int&amp; r;</code> без <code>= что-то</code> — ошибка компиляции: ссылка «ни на что» не бывает.
+  </div>
+
+  <h3>3. <code>const</code>-ссылка: смотреть, но не трогать</h3>
+<pre><code>int x = 5;
+const int&amp; alias = x;
+x += 5;
+std::cout &lt;&lt; alias &lt;&lt; "\n";   // 10 — видит изменения x
+// alias = 3;                   // ошибка: через const-ссылку менять нельзя
+</code></pre>
+  <p class="own">
+    <em>Своими словами.</em> Это «окошко только для чтения» в ту же коробку: что положили в <code>x</code>, то и видно,
+    но через само окошко ничего не положишь.
+  </p>
+
+  <h3>4. Ссылка в параметре функции</h3>
+  <div class="def">
+    <strong>Определение.</strong>
+    Если параметр функции объявлен как <code>int&amp; x</code>, функция получает не копию аргумента,
+    а ссылку на него (передача <em>по ссылке</em>): изменения <code>x</code> внутри видны снаружи.
+  </div>
+  <div class="code-tabs">
+    <div class="code-tabs-nav" role="tablist">
+      <button type="button" role="tab" aria-selected="true">По ссылке</button>
+      <button type="button" role="tab" aria-selected="false">По значению</button>
+      <button type="button" role="tab" aria-selected="false">Python</button>
+    </div>
+    <div class="code-tabs-panel is-active" role="tabpanel">
+<pre><code>void add(int&amp; x, int y) {
+    x += y;
+    std::cout &lt;&lt; x &lt;&lt; "\n";
+}
+
+int x = 0;
+add(x, 5);                 // 5
+std::cout &lt;&lt; x &lt;&lt; "\n";    // 5   ← x в main изменился
+</code></pre>
+      <div class="code-tabs-caption">Один символ <code>&amp;</code> решает, меняется ли переменная вызывающего.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>void add(int x, int y) {   // без &amp;
+    x += y;
+    std::cout &lt;&lt; x &lt;&lt; "\n";
+}
+
+int x = 0;
+add(x, 5);                 // 5
+std::cout &lt;&lt; x &lt;&lt; "\n";    // 0   ← меняли копию
+</code></pre>
+      <div class="code-tabs-caption">Для сравнения.</div>
+    </div>
+    <div class="code-tabs-panel" role="tabpanel">
+<pre><code>def add(x, y):
+    x += y        # для int — новый объект, снаружи не видно
+
+x = 0
+add(x, 5)
+print(x)          # 0
+</code></pre>
+      <div class="code-tabs-caption">В Python число из функции так не изменить. В C++ — можно, если явно написать <code>&amp;</code>.</div>
+    </div>
+  </div>
+
+  <h3>5. <code>auto&amp;</code> в цикле по элементам</h3>
+<pre><code>for (auto student : group)  student.IncTest(10);   // меняем копии → в group ничего не изменилось
+for (auto&amp; student : group) student.IncTest(10);   // меняем сами элементы group
+</code></pre>
+  <div class="ex">
+    <strong>Пример (проверено).</strong>
+    У Анны <code>test = 2</code>. После первого цикла у <code>group[0]</code> всё ещё <code>2</code>, после второго — <code>12</code>.
+    Без <code>&amp;</code> переменная цикла — копия элемента (как в §5, п. 6); с <code>&amp;</code> — второе имя самого элемента.
+  </div>
+
+  <h3>6. Как это собирает всю лекцию</h3>
+  <p>
+    Вернёмся к <code>void print(Student copy)</code> из §5: каждый вызов копирует строки имени и группы — зря, мы ведь только печатаем.
+    Три варианта параметра:
+  </p>
+  <div class="nb-table-scroll"><table>
+    <thead><tr><th>Параметр</th><th>Копия?</th><th>Может изменить оригинал?</th><th>Когда</th></tr></thead>
+    <tbody>
+      <tr><td><code>Student s</code></td><td>да</td><td>нет</td><td>маленькие типы (<code>int</code>), или нужна своя копия</td></tr>
+      <tr><td><code>Student&amp; s</code></td><td>нет</td><td>да</td><td>функция должна изменить объект</td></tr>
+      <tr><td><code>const Student&amp; s</code></td><td>нет</td><td>нет</td><td>только читать большой объект — как <code>print</code></td></tr>
+    </tbody>
+  </table></div>
+  <div class="py-cmp">
+    <strong>С Python.</strong>
+    В Python имя всегда «ярлык» на объект, и списки/объекты функция может менять, а числа и строки — нет.
+    В C++ правило одно для всех типов и видно в сигнатуре: без <code>&amp;</code> — копия, с <code>&amp;</code> — оригинал,
+    с <code>const &amp;</code> — оригинал только для чтения.
+  </div>
+
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Ссылки</div>
+    <div class="formula-box-body">T&amp; r = x; — второе имя x (навсегда)  ·  const T&amp; — без копии, только чтение  ·  r = y; — копия значения, не перепривязка</div>
+  </div>
+
+  <blockquote class="quiz-trigger">⚡ <b>Быстрый тест:</b> в чат <code>тест C++-§8</code> — ссылки, const&amp;, auto&amp;</blockquote>
+</section>
+
 <!-- ========== TASKS (NO SOLUTIONS) ========== -->
 <section class="card" id="tasks">
   <h2>Задания 1–4 (когда теория уже легла)</h2>
@@ -1186,49 +2081,6 @@ return "ok";
 </section>
 
 <!-- ========== CHEAT ========== -->
-<section class="card" id="cheat">
-  <h2>Что взять с собой</h2>
-  <div class="cheat">
-    <ul>
-      <li>Запуск начинается с <code>main</code>; внутри блока — сверху вниз; <code>;</code> закрывает оператор.</li>
-      <li>Сначала объявить переменную, потом использовать; функции сами не бегут — их вызывают.</li>
-      <li><code>return 0</code> — ок; ненулевой код — ошибка (как в задании 4).</li>
-      <li><code>int / int</code> → целое к нулю; дробь — только после приведения типа.</li>
-      <li>Большие суммы — <code>long long</code>, расширять <em>до</em> операции.</li>
-      <li>Чётность: <code>% 2 == 0</code>, не «остаток == 1».</li>
-      <li>Границы шкал и вердиктов: 59/60, 89/90, пустой набор.</li>
-      <li>Порядок в <code>Verdict</code>: empty → debt → excellent → ok.</li>
-    </ul>
-  </div>
-
-  <h3>C++ ↔ Python (коротко)</h3>
-  <div class="nb-table-scroll"><table>
-    <thead><tr><th>Идея</th><th>C++</th><th>Python 3</th></tr></thead>
-    <tbody>
-      <tr><td>Старт</td><td><code>main</code>, обычно компиляция</td><td>сверху вниз / <code>python file.py</code></td></tr>
-      <tr><td>Блоки</td><td><code>{ }</code> + <code>;</code></td><td>отступы</td></tr>
-      <tr><td>Тип переменной</td><td>пишем явно (<code>int n</code>)</td><td>из значения (<code>n = 3</code>)</td></tr>
-      <tr><td>Печать / ввод числа</td><td><code>cout</code> / <code>cin &gt;&gt;</code></td><td><code>print</code> / <code>int(input())</code></td></tr>
-      <tr><td>Деление</td><td><code>int/int</code> → целое к нулю</td><td><code>/</code> → float; <code>//</code> → вниз</td></tr>
-      <tr><td>Большие целые</td><td>следить за <code>int</code> / брать <code>long long</code></td><td><code>int</code> почти без потолка</td></tr>
-      <tr><td>Остаток (−)</td><td>может быть &lt; 0</td><td>часто ≥ 0 при делителе &gt; 0</td></tr>
-      <tr><td>Цикл n раз</td><td><code>for (int i = 0; i &lt; n; ++i)</code></td><td><code>for i in range(n)</code></td></tr>
-      <tr><td>Ветвление</td><td><code>if / else if / else</code></td><td><code>if / elif / else</code></td></tr>
-      <tr><td>Булевы литералы</td><td><code>true</code> / <code>false</code></td><td><code>True</code> / <code>False</code></td></tr>
-    </tbody>
-  </table></div>
-  <p class="own">
-    <em>Своими словами.</em> Python помогает узнать <em>что хочешь сделать</em>.
-    C++ заставляет явно сказать <em>в какой коробке</em> это лежит и <em>каким делением</em> считаешь.
-  </p>
-
-  <p class="src">
-    Курс:
-    <a href="https://stepik.org/course/363/promo" target="_blank" rel="noopener">Введение в программирование (C++) · Stepik 363</a>.
-    Дальше по курсу — массивы, строки, STL; в тетрадь добавим, когда дойдёшь.
-  </p>
-</section>
-
 </main>
 <script>
 (function () {

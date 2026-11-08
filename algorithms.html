@@ -56,14 +56,14 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
   font-size: 1.12rem; line-height: 1.45;
 }</style>
 
-<link rel="stylesheet" href="./общее/тетрадь.css?v=3cbcc131">
-<script src="./общее/тетрадь.js?v=3cbcc131" defer></script>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
+<script src="./общее/тетрадь.js?v=f7721170" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
-<link rel="stylesheet" href="./_viz/viz.css?v=2843f9a4">
-<script src="./_viz/viz.js?v=2843f9a4" defer></script>
+<link rel="stylesheet" href="./_viz/viz.css?v=1c764500">
+<script src="./_viz/viz.js?v=1c764500" defer></script>
   <meta name="theme-color" content="#0d1117">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -76,62 +76,95 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <body>
 <header>
   <h1>Алгоритмы · тетрадь</h1>
-  <p class="note">Лекции 1–2 (Пальченков): асимптотика · Карацуба · структуры · префиксы · два указателя · стек/дек + практика 1 и 30 задач к лекции 2 · Лекция 3: бинпоиск · амортизация · куча · сортировки (с анимациями) · корневая декомпозиция · Практика 2: рекурсия, мемоизация, ДП</p>
+  <p class="note">Лекции 1–2 (Пальченков): асимптотика · Карацуба · структуры · префиксы · два указателя · стек/дек + практика 1 и 30 задач к лекции 2 · Лекция 3: бинпоиск · амортизация · куча · сортировки (с анимациями) · корневая декомпозиция · Практика 2: рекурсия, мемоизация, ДП · Лекция 4 (05.11): DSU, Крускал</p>
   <nav class="toc">
-    <a href="#intro">Введение</a>
-    <a href="#ops">Операции</a>
-    <a href="#nested">Вложенные циклы</a>
-    <a href="#asymp">O, Θ, Ω</a>
-    <a href="#asymp-proof">Как доказывать</a>
-    <a href="#poly">Многочлен</a>
-    <a href="#karatsuba">Карацуба</a>
-    <a href="#karatsuba-naive">4 умножения</a>
-    <a href="#karatsuba-trick">Трюк с 3</a>
-    <a href="#karatsuba-ex">Примеры</a>
-    <a href="#karatsuba-time">Сложность</a>
-    <a href="#tree">Дерево рекурсии</a>
-    <a href="#master">Мастер-теорема</a>
-    <a href="#master-cases">Три случая</a>
-    <a href="#loops">Циклы</a>
-    <a href="#practice">Практика 1</a>
-    <a href="#lec2-intro">Лекция 2</a>
-    <a href="#cpp-pair">pair / struct</a>
-    <a href="#machine">Память-кубики</a>
-    <a href="#prefix">Префиксы</a>
-    <a href="#diff">Разности</a>
-    <a href="#structs">Структуры</a>
-    <a href="#min-stack">Min на стеке</a>
-    <a href="#seminar-easy">Семинар 1–7</a>
-    <a href="#seminar-mid">Семинар 8–21</a>
-    <a href="#seminar-hard">Семинар 22–30</a>
-    <a href="#lec3-intro">Лекция 3</a>
-    <a href="#binsearch">Бинпоиск</a>
-    <a href="#bounds">lower/upper_bound</a>
-    <a href="#maxsum-lr">Сумма длины L…R</a>
-    <a href="#amort">Амортизация</a>
-    <a href="#heap">Куча</a>
-    <a href="#sorts">Сортировки</a>
-    <a href="#sort-ins">Вставками</a>
-    <a href="#sort-quick">Быстрая</a>
-    <a href="#sort-merge">Слиянием</a>
-    <a href="#sort-heap">Кучей</a>
-    <a href="#sort-count">Подсчётом</a>
-    <a href="#sqrt">Корневая</a>
-    <a href="#practice2">Практика 2 · ДП</a>
-    <a href="#dp-fib">Фибоначчи</a>
-    <a href="#dp-calc">Калькулятор</a>
-    <a href="#dp-grid">Робот на поле</a>
-    <a href="#cheat">Шпаргалка</a>
-    <a href="#video">Видео</a>
+    <div class="toc-group" data-title="Лекция 1 · 03.09 · асимптотика, Карацуба, мастер-теорема">
+      <a href="#intro">Введение</a>
+      <a href="#ops">Операции</a>
+      <a href="#nested">Вложенные циклы</a>
+      <a href="#asymp">O, Θ, Ω</a>
+      <a href="#asymp-proof">Как доказывать</a>
+      <a href="#poly">Многочлен</a>
+      <a href="#karatsuba">Карацуба</a>
+      <a href="#karatsuba-naive">4 умножения</a>
+      <a href="#karatsuba-trick">Трюк с 3</a>
+      <a href="#karatsuba-ex">Примеры</a>
+      <a href="#karatsuba-time">Сложность</a>
+      <a href="#tree">Дерево рекурсии</a>
+      <a href="#master">Мастер-теорема</a>
+      <a href="#master-cases">Три случая</a>
+      <a href="#loops">Циклы</a>
+    </div>
+    <div class="toc-group" data-title="Практика 1 · к лекции 1">
+      <a href="#practice">Практика 1 — разбор</a>
+    </div>
+    <div class="toc-group" data-title="Лекция 2 · структуры данных, префиксы, стек и дек">
+      <a href="#lec2-intro">Лекция 2</a>
+      <a href="#ub">Чтобы код запускался (UB)</a>
+      <a href="#cpp-pair">vector, pair, struct</a>
+      <a href="#machine">Что дорого · память-кубики</a>
+      <a href="#prefix">Префиксные суммы</a>
+      <a href="#diff">Разностный массив</a>
+      <a href="#structs">Массив, списки, вектор</a>
+      <a href="#stack-q">Стек, очередь, дек, кольцо</a>
+      <a href="#min-stack">Стек и очередь с минимумом</a>
+    </div>
+    <div class="toc-group" data-title="Семинар к лекции 2 · 30 задач">
+      <a href="#seminar-easy">Простые 1–7</a>
+      <a href="#seminar-mid">Средние 8–21</a>
+      <a href="#seminar-hard">Сложные 22–30</a>
+    </div>
+    <div class="toc-group" data-title="Лекция 3 · бинпоиск, амортизация, куча, сортировки">
+      <a href="#lec3-intro">Лекция 3 · оптимизации</a>
+      <a href="#binsearch">Бинпоиск</a>
+      <a href="#bounds">lower/upper_bound</a>
+      <a href="#maxsum-lr">Сумма длины L…R</a>
+      <a href="#amort">Амортизация</a>
+      <a href="#heap">Куча</a>
+      <a href="#sorts">Сортировки: обзор</a>
+      <a href="#sort-ins">Вставками</a>
+      <a href="#sort-quick">Быстрая</a>
+      <a href="#sort-merge">Слиянием</a>
+      <a href="#sort-heap">Кучей</a>
+      <a href="#sort-count">Подсчётом</a>
+      <a href="#sqrt">Корневая декомпозиция</a>
+    </div>
+    <div class="toc-group" data-title="Практика 2 · рекурсия, мемоизация, ДП">
+      <a href="#practice2">Что такое ДП</a>
+      <a href="#dp-fib">Фибоначчи</a>
+      <a href="#dp-calc">Калькулятор +1, ×2, ×3</a>
+      <a href="#dp-grid">Робот на поле</a>
+    </div>
+    <div class="toc-group" data-title="Лекция 4 · 05.11 · DSU, Крускал">
+      <a href="#dsu">DSU: find, join, ранг</a>
+      <a href="#mst">Остовное дерево, Крускал</a>
+      <a href="#dsu-tasks">Задачи про мосты</a>
+    </div>
+    <div class="toc-group" data-title="Общее">
+      <a href="#materials">§0 · Материалы</a>
+    </div>
   </nav>
 </header>
 <main>
 
+<section class="card" id="materials">
+<h2>§0 · Материалы</h2>
+<ul>
+<li>Лекции 1–2 (конспект Пальченкова): <a href="материалы/lectures-1-2-styled.pdf">lectures-1-2-styled.pdf</a>; листок к семинару — <a href="материалы/lecture2-problems-30.pdf">lecture2-problems-30.pdf</a>; задачи первой пары — <a href="материалы/practice-1-tasks.pdf">practice-1-tasks.pdf</a>.</li>
+<li>Рукописные конспекты: <a href="материалы/конспект-рукописный-2-пары.pdf">конспект-рукописный-2-пары.pdf</a> (стр. 1–2 — лекция 2, стр. 3–8 — лекция 3), <a href="материалы/конспект-рукописный-05.11.pdf">конспект-рукописный-05.11.pdf</a> (лекция 4).</li>
+<li>Доска Miro с практики по ДП (скриншоты): <span class="mono">материалы/_архив/алгоритмы-практика-2-ДП-miro/</span>.</li>
+</ul>
+<p><strong>Видео:</strong></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=v4cd1O4zkGw" target="_blank" rel="noopener">YouTube — Master theorem (лекция 1)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=rEBsGRunses" target="_blank" rel="noopener">YouTube — префиксные суммы и два указателя (к лекции 2)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=sFPHaUHSw8s" target="_blank" rel="noopener">YouTube — Павел Маврин, «АиСД S01E02. Структуры данных. Куча. Сортировка кучей» (к лекции 3)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=VgPAFaEYEo4" target="_blank" rel="noopener">YouTube — Тимофей Хирьянов, «Динамическое программирование сверху и снизу» (к практике 2)</a></p>
+  <p class="video"><a href="https://www.youtube.com/watch?v=8dhernHDZYo" target="_blank" rel="noopener">YouTube — Лекторий ФПМИ, «Алгоритмы 9. DSU, MST, Алгоритм Прима, Алгоритм Краскала» (к лекции 4; алгоритм Прима на нашей паре не разбирали)</a></p>
+</section>
 <section class="card" id="intro">
   <h2>Введение</h2>
-  <p>Сквозная тетрадь по первой паре алгоритмов (03.09.2026) и листку <span class="mono">practice-1-tasks.pdf</span>. Цель — не «угадывать» порядок роста, а уметь <em>вывести</em> его из циклов и рекуррентностей: посчитать операции, узнать O/Θ, применить мастер-теорему, понять Карацубу.</p>
+  <p>Цель — не «угадывать» порядок роста, а уметь <em>вывести</em> его из циклов и рекуррентностей: посчитать операции, узнать O/Θ, применить мастер-теорему, понять Карацубу.</p>
   <p>На паре шли цепочкой: линейка «сколько оп/сек» → вложенные циклы → язык асимптотики → число как многочлен → умножение / Карацуба → дерево рекурсии → мастер-теорема. Ниже — тот же порядок, но с развёрткой и примерами.</p>
-  <p class="src">Markdown: <span class="mono">03.09-асимптотика-умножение-мастер-теорема.md</span> · <span class="mono">лекция-2-структуры-данных.md</span>. PDF: <span class="mono">lectures-1-2-styled.pdf</span>, <span class="mono">lecture2-problems-30.pdf</span>.</p>
 </section>
 
 <section class="card" id="ops">
@@ -151,14 +184,14 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест что-такое-алгоритм-и-зачем-с</code> — несколько коротких вопросов по всему блоку, потом сверка.</p>
 
 <h2>Пример: вложенные циклы и ≈ n²</h2>
-  <p>На доске схема вроде:</p>
+  <p>Схема:</p>
   <pre class="cheat">for i = 0 … n:
     for j = 0 … i:
         ans += …   # константа «мелких» операций, на паре множитель 5</pre>
   <p><strong>Шаг 1.</strong> Зафиксируй i. Внутренний цикл делает примерно i+1 шагов (j от 0 до i).</p>
   <p><strong>Шаг 2.</strong> Сложи по всем i:</p>
   <div class="def">0 + 1 + 2 + … + n = n(n+1)/2.</div>
-  <p><strong>Шаг 3.</strong> Если внутри ещё константа k мелких операций (на доске k = 5):</p>
+  <p><strong>Шаг 3.</strong> Если внутри ещё константа k мелких операций (например, k = 5):</p>
   <div class="def">T(n) = 5 · n(n+1)/2 = (5/2) n² + (5/2) n.</div>
   <p>При больших n доминирует (5/2)n² → говорят «порядка n²» или Θ(n²).</p>
   <div class="fig">
@@ -463,7 +496,7 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
   <div class="ex"><strong>Mergesort.</strong> T(n)=2T(n/2)+n → a=2,b=2,c=1 → q=1 → Θ(n log n).</div>
   <div class="ex"><strong>q &lt; 1.</strong> T(n)=2T(n/2)+n² → q = 2/4 = ½ &lt; 1 → Θ(n²): склейка наверху дороже всей «нижней» работы.</div>
   <div class="ex"><strong>Бинарный поиск / T(n)=T(n/2)+1.</strong> a=1,b=2,c=0 (n⁰=1) → q = 1/1 = 1 → Θ(log n).</div>
-  <p class="src">На доске иногда писали O вместо Θ — для «порядка» на практике часто имеют в виду тот же класс. Аккуратнее в ответах практики ставить Θ, когда зажаты сверху и снизу.</p>
+<p class="src">Часто пишут O вместо Θ — для «порядка» обычно имеют в виду тот же класс. Аккуратнее ставить Θ, когда оценка зажата сверху и снизу.</p>
 </section>
 
 <section class="card" id="loops">
@@ -584,7 +617,6 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы практика-1</code> — несколько коротких вопросов по всему блоку, потом сверка.</p>
 
 <h2>Лекция 2 · структуры данных</h2>
-  <p>Полный разбор по конспекту Пальченкова (<span class="mono">lectures-1-2-styled.pdf</span>) и листку на семинар (<span class="mono">lecture2-problems-30.pdf</span>). Параллельный Markdown без сжатия: <span class="mono">лекция-2-структуры-данных.md</span>.</p>
   <p class="own"><em>Своими словами.</em> Лекция 1 учила <em>считать</em> время. Лекция 2 — какие структуры дают операции дёшево и какие приёмы (префиксы, два указателя, стек/дек) решают задачи на массивах. Ниже — определения, примеры и все 30 задач с разбором, не «шпаргалка в одну строку».</p>
 </section>
 
@@ -603,10 +635,9 @@ pre.cheat { white-space: pre-wrap; font-family: ui-monospace, Consolas, monospac
 <section class="card" id="cpp-pair">
 
 <h2>vector вместо массива; pair и struct для «точки»</h2>
-  <p>Из рукописного конспекта (стр. 1–2): «std::vector vs int a[]», «Struct / Class», «2 массива» (перечёркнуто), <span class="mono">std::pair&lt;int, int&gt; point</span>, <span class="mono">point.first =</span>, <span class="mono">point.second =</span>, <span class="mono">point = {5, 6}</span>, <span class="mono">struct Point { int x; int y; };</span>, рисунок точки $(x, y)$ на плоскости.</p>
   <p><strong>vector против <span class="mono">int a[]</span>.</strong> Обычный массив <span class="mono">int a[100]</span> — размер задан заранее и не меняется, выход за границу никто не проверяет. <span class="mono">std::vector&lt;int&gt;</span> знает свой размер (<span class="mono">a.size()</span>), умеет расти (<span class="mono">push_back</span>, см. <a href="#structs">«Вектор»</a> и <a href="#amort">амортизацию</a>), его можно передать в функцию и вернуть из неё без возни с указателями.</p>
   <div class="def"><strong>Определение.</strong> <span class="mono">std::pair&lt;A, B&gt;</span> — готовая пара из двух значений, поля называются <span class="mono">first</span> и <span class="mono">second</span>. <span class="mono">struct</span> — свой тип с полями, у которых <em>осмысленные имена</em>.</div>
-  <p class="own"><em>Своими словами.</em> Точки $(x, y)$ можно хранить «двумя массивами» <span class="mono">xs[i]</span> и <span class="mono">ys[i]</span> — на доске это перечёркнуто: при сортировке или удалении легко переставить один массив и забыть другой, и координаты «разъедутся». Лучше держать $x$ и $y$ вместе в одном объекте.</p>
+  <p class="own"><em>Своими словами.</em> Точки $(x, y)$ можно хранить «двумя массивами» <span class="mono">xs[i]</span> и <span class="mono">ys[i]</span> — но так хуже: при сортировке или удалении легко переставить один массив и забыть другой, и координаты «разъедутся». Лучше держать $x$ и $y$ вместе в одном объекте.</p>
   <pre class="cheat">#include &lt;utility&gt;   // std::pair
 #include &lt;vector&gt;
 
@@ -622,7 +653,7 @@ struct Point {
 Point p = {5, 6};
 std::vector&lt;Point&gt; pts = {{0, 0}, {3, 4}, {5, 6}};
 int len2 = pts[1].x * pts[1].x + pts[1].y * pts[1].y;   // 3·3 + 4·4 = 25</pre>
-  <div class="ex"><strong>Пример: что выбрать.</strong> Для быстрой записи — вернуть из функции два числа, отсортировать пары — удобен <span class="mono">pair</span>: у него уже есть сравнение (сначала по <span class="mono">first</span>, при равенстве по <span class="mono">second</span>), так что <span class="mono">std::sort</span> работает сразу. Если полей больше двух или важно, чтобы код читался, — <span class="mono">struct</span>: <span class="mono">p.x</span> понятнее, чем <span class="mono">p.first</span>. <span class="src">(дополнено)</span></div>
+  <div class="ex"><strong>Пример: что выбрать.</strong> Для быстрой записи — вернуть из функции два числа, отсортировать пары — удобен <span class="mono">pair</span>: у него уже есть сравнение (сначала по <span class="mono">first</span>, при равенстве по <span class="mono">second</span>), так что <span class="mono">std::sort</span> работает сразу. Если полей больше двух или важно, чтобы код читался, — <span class="mono">struct</span>: <span class="mono">p.x</span> понятнее, чем <span class="mono">p.first</span>. <span class="src"></span></div>
   <p>Ещё на стр. 2: стек — <span class="mono">push_back</span> / <span class="mono">pop_back</span>, $O(1)$; очередь — <span class="mono">push_back</span> / <span class="mono">pop_front</span>, $O(1)$; очередь на двух стеках $S_1$, $S_2$ — пример разобран в блоке <a href="#min-stack">«Очередь с минимумом»</a>.</p>
 </section>
 
@@ -641,7 +672,7 @@ int len2 = pts[1].x * pts[1].x + pts[1].y * pts[1].y;   // 3·3 + 4·4 = 25</pre
   <p class="own"><em>Своими словами.</em> Два алгоритма с одним Θ(n²) ведут себя по-разному, если один держит таблицу n×n в RAM, а другой — массив длины n в кеше.</p>
   <div class="ex"><strong>Пример.</strong> Θ(2ⁿ) времени и Θ(2ⁿ) памяти при n≈40 часто убивается памятью раньше времени. Плотный массив обычно быстрее россыпи мелких объектов.</div>
 
-<h3>Память слоями (как на лекции — «кубики» с границами)</h3>
+<h3>Память слоями («кубики» с границами)</h3>
   <p>Диск — самый большой и самый медленный. Оперативная память — гигабайты. Кеш последнего уровня — единицы мегабайт. Ближний кеш ядра — десятки килобайт. На картинке снизу вверх: <strong>больше и медленнее → меньше и быстрее</strong>. Границы слоёв — жёсткие: данные «живут» в одном кубике, пока их не перенесли ближе к процессору.</p>
   <div class="fig">
 <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иерархия памяти кубиками">
@@ -1038,9 +1069,9 @@ int len2 = pts[1].x * pts[1].x + pts[1].y * pts[1].y;   // 3·3 + 4·4 = 25</pre
 
 <h3>Очередь с минимумом</h3>
   <p>Два стека с min: b — хвост (push), a — голова (pop). Если a пуст — перелить b→a. min очереди = min вершин a и b. Каждый элемент в b один раз и в a ≤ одного раза → серия m операций суммарно Θ(m).</p>
-  <div class="ex"><strong>Пример (из рукописного конспекта, стр. 2; числа восстановлены по смыслу).</strong> $S_1$ — стек для push, $S_2$ — для pop. Операции: +13, +5, +12, +1, +2, pop, pop, +3.<br>
+  <div class="ex"><strong>Пример.</strong> $S_1$ — стек для push, $S_2$ — для pop. Операции: +13, +5, +12, +1, +2, pop, pop, +3.<br>
   • +13, +5, +12, +1, +2 → $S_1 = [13, 5, 12, 1, 2]$ (вершина справа), $S_2$ пуст.<br>
-  • pop: $S_2$ пуст → перекладываем все пять: снимаем из $S_1$ по очереди 2, 1, 12, 5, 13 и кладём в $S_2$ → $S_2 = [2, 1, 12, 5, 13]$, вершина 13. Снимаем <strong>13</strong>. Это перекладывание стоило $O(n)$ — на доске «на перекладывание с $S_1$ на $S_2$ — $O(n)$».<br>
+  • pop: $S_2$ пуст → перекладываем все пять: снимаем из $S_1$ по очереди 2, 1, 12, 5, 13 и кладём в $S_2$ → $S_2 = [2, 1, 12, 5, 13]$, вершина 13. Снимаем <strong>13</strong>. Это перекладывание стоило $O(n)$.<br>
   • pop: $S_2$ не пуст → сразу снимаем <strong>5</strong>.<br>
   • +3 → $S_1 = [3]$. Следующие pop выдадут 12, 1, 2 из $S_2$ и только потом 3.<br>
   Порядок выхода 13, 5, 12, 1, 2, 3 — порядок входа (FIFO). Каждый элемент перекладывается не больше одного раза, поэтому дорогое перекладывание случается редко: по всей серии в среднем $O(1)$ на операцию. Строго — через потенциал, см. <a href="#amort">амортизацию</a>.</div>
@@ -1200,14 +1231,12 @@ int len2 = pts[1].x * pts[1].x + pts[1].y * pts[1].y;   // 3·3 + 4·4 = 25</pre
 <section class="card" id="lec3-intro">
 
 <h2>Лекция 3 · бинпоиск, амортизация, куча, сортировки</h2>
-  <p>Разбор по рукописному конспекту <span class="mono">конспект-рукописный-2-пары.pdf</span>, стр. 3–8. Стр. 1–2 — это ещё лекция 2, она выше; оттуда добавлены <a href="#cpp-pair">vector / pair / struct</a> и <a href="#min-stack">пример очереди на двух стеках</a>. Номер «3» — по порядку в этой тетради, даты на листах нет.</p>
-  <p>На доске шли по порядку: оптимизации → бинарный поиск и <span class="mono">lower_bound</span> / <span class="mono">upper_bound</span> → задача про сумму подотрезка длины от L до R → амортизационный анализ (вектор, упоминание DSU) → куча → сортировки: вставками, быстрая, слиянием, кучей, подсчётом → корневая декомпозиция. Ниже — тот же порядок.</p>
+  <p>Порядок раздела: оптимизации → бинарный поиск и <span class="mono">lower_bound</span> / <span class="mono">upper_bound</span> → задача про сумму подотрезка длины от L до R → амортизационный анализ (вектор, упоминание DSU) → куча → сортировки: вставками, быстрая, слиянием, кучей, подсчётом → корневая декомпозиция.</p>
   <p class="own"><em>Своими словами.</em> Лекция 2 дала структуры «на каждый день» (префиксы, стек, дек). Здесь три новых инструмента: <strong>бинпоиск</strong> — найти границу за $\log n$ шагов; <strong>амортизация</strong> — как честно сказать «в среднем $O(1)$», если иногда операция дорогая; <strong>сортировки</strong> — от простой $O(n^2)$ до $O(n\log n)$ и даже $O(n + C)$.</p>
-  <p class="src">Пометки: «из конспекта» — то, что записано на листах; «дополнено» — доведено по стандартному курсу (Кормен; лекции Маврина, ИТМО) там, где на доске только схема.</p>
 
 <h3>Оптимизации (стр. 3)</h3>
-  <p>Список на доске: 1) ввод/вывод; 2) <span class="mono">math.h</span> / <span class="mono">cmath</span> — <span class="mono">acos</span>, <span class="mono">cos</span>, <span class="mono">sqrt</span>; 3) деление <span class="mono">/</span> и остаток <span class="mono">%</span>; 4) обход <span class="mono">a[i]</span> против <span class="mono">a[p[i]]</span>; 5) рекурсия <span class="mono">rec(n) → rec(n−1)</span> — рисунок стопки кадров $n, n-1, n-2, \ldots, 0$. Всё это уже разобрано в блоке <a href="#machine">«Что дорого, хотя в Θ не видно»</a> (там же пример про кеш).</p>
-  <div class="ex"><strong>Пример к пункту 1 (дополнено).</strong> Стандартное ускорение <span class="mono">cin</span>/<span class="mono">cout</span> в начале <span class="mono">main</span>:
+  <p>Что ещё влияет на скорость: 1) ввод/вывод; 2) <span class="mono">math.h</span> / <span class="mono">cmath</span> — <span class="mono">acos</span>, <span class="mono">cos</span>, <span class="mono">sqrt</span>; 3) деление <span class="mono">/</span> и остаток <span class="mono">%</span>; 4) обход <span class="mono">a[i]</span> против <span class="mono">a[p[i]]</span>; 5) рекурсия <span class="mono">rec(n) → rec(n−1)</span> — стопка кадров $n, n-1, n-2, \ldots, 0$. Всё это уже разобрано в блоке <a href="#machine">«Что дорого, хотя в Θ не видно»</a> (там же пример про кеш).</p>
+  <div class="ex"><strong>Пример к пункту 1.</strong> Стандартное ускорение <span class="mono">cin</span>/<span class="mono">cout</span> в начале <span class="mono">main</span>:
   <pre class="cheat">std::ios::sync_with_stdio(false);   // не синхронизироваться с printf/scanf
 std::cin.tie(nullptr);              // не сбрасывать cout перед каждым cin
 // и печатать '\n' вместо std::endl: endl каждый раз сбрасывает буфер</pre>
@@ -1218,12 +1247,12 @@ std::cin.tie(nullptr);              // не сбрасывать cout перед
 <section class="card" id="binsearch">
 
 <h2>Бинарный поиск: граница между нулями и единицами</h2>
-  <p><strong>Задача (из конспекта).</strong> Массив $a[0\ldots n-1]$ устроен как $0\,0\ldots0\,1\,1\ldots1$: сначала нули, потом единицы (на доске подписано: может быть и «целиком из 1», и «целиком из 0»). Найти, где кончаются нули и начинаются единицы. На доске: $O(\log_2 n)$, указатель <strong>L</strong> → «last 0», указатель <strong>R</strong> → «first 1».</p>
+  <p><strong>Задача.</strong> Массив $a[0\ldots n-1]$ устроен как $0\,0\ldots0\,1\,1\ldots1$: сначала нули, потом единицы (массив может состоять и целиком из 1, и целиком из 0). Найти, где кончаются нули и начинаются единицы. За $O(\log_2 n)$: указатель <strong>L</strong> → «last 0», указатель <strong>R</strong> → «first 1».</p>
   <div class="def"><strong>Определение.</strong> Пусть в массиве $a[0\ldots n-1]$ из нулей и единиц все нули стоят левее всех единиц. <em>Бинарный поиск</em> находит индекс первой единицы $R$ (и последнего нуля $L = R - 1$), на каждом шаге уменьшая область поиска вдвое.</div>
   <p class="own"><em>Своими словами.</em> Это игра «угадай число от 1 до 100» вопросами «больше или меньше?»: спрашиваешь середину и выкидываешь половину. Тут так же: заглянули в середину, увидели 0 — граница правее; увидели 1 — граница левее или прямо здесь.</p>
   <div class="ex"><strong>Пример.</strong> $a = [0, 0, 0, 1, 1]$, $n = 5$. Последний ноль — индекс 2, первая единица — индекс 3. Ответ: $L = 2$, $R = 3$.</div>
 
-<h3>Код с доски и почему он верный</h3>
+<h3>Код и почему он верный</h3>
   <pre class="cheat">int L = -1, R = n;          // L — «точно 0», R — «точно 1»
 while (R - L > 1) {
     int M = (L + R) / 2;    // строго между L и R
@@ -1243,17 +1272,16 @@ while (R - L > 1) {
   <div class="ex"><strong>Не-пример.</strong> $a = [0, 1, 0, 1]$ — нули и единицы перемешаны. Бинпоиск вернёт <em>какую-то</em> пару «0, а сразу за ним 1», но не обязательно первую единицу: он опирается на то, что левее любого нуля — только нули. Нет монотонности — нет бинпоиска.</div>
 
 <h3>Анимация</h3>
-  <p><em>Как смотреть.</em> Стрелки сверху: <b style="color:#1f5c4d">L</b> — последний известный 0, <b style="color:#c45c26">R</b> — первая известная 1, <b style="color:#e0a24a">M</b> — середина на этом шаге. Под числами 0/1 — выполнено ли условие. Серые клетки уже отброшены, пунктирные — воображаемые клетки $-1$ и $n$. Кнопки <span class="mono">lower_bound</span> / <span class="mono">upper_bound</span> и <span class="mono">x = …</span> меняют условие — это следующий раздел.</p>
   <div class="lab" data-lab="binsearch"></div>
 </section>
 
 <section class="card" id="bounds">
 
 <h2>lower_bound и upper_bound: бинпоиск в отсортированном массиве</h2>
-  <p>Главная мысль: в <em>отсортированном</em> массиве условие вида «$a[i] \ge x$» превращает массив в картинку $0\ldots0\,1\ldots1$. Значит, работает тот же бинпоиск. На доске (стр. 4):</p>
+  <p>Главная мысль: в <em>отсортированном</em> массиве условие вида «$a[i] \ge x$» превращает массив в картинку $0\ldots0\,1\ldots1$. Значит, работает тот же бинпоиск:</p>
   <div class="def"><strong>Определение.</strong> Пусть $a$ отсортирован по неубыванию.<br>
-  • <span class="mono">lower_bound(x)</span> — первый индекс $i$, для которого $a[i] \ge x$ (на доске: $a[i] &lt; x \Rightarrow 0$, $a[i] \ge x \Rightarrow 1$);<br>
-  • <span class="mono">upper_bound(x)</span> — первый индекс $i$, для которого $a[i] &gt; x$ (на доске: $a[i] \le x \Rightarrow 0$, $a[i] &gt; x \Rightarrow 1$).<br>
+  • <span class="mono">lower_bound(x)</span> — первый индекс $i$, для которого $a[i] \ge x$ ($a[i] &lt; x \Rightarrow 0$, $a[i] \ge x \Rightarrow 1$);<br>
+  • <span class="mono">upper_bound(x)</span> — первый индекс $i$, для которого $a[i] &gt; x$ ($a[i] \le x \Rightarrow 0$, $a[i] &gt; x \Rightarrow 1$).<br>
   Если такого индекса нет, ответ равен $n$.</div>
   <p class="own"><em>Своими словами.</em> <span class="mono">lower_bound</span> — куда вставить $x$, чтобы он встал <em>перед</em> всеми равными ему; <span class="mono">upper_bound</span> — куда вставить <em>после</em> всех равных. Между этими двумя индексами лежат ровно все элементы, равные $x$.</p>
   <div class="ex"><strong>Пример.</strong> $a = [1, 3, 3, 5, 7, 7, 7, 9, 12, 15]$ (индексы 0…9), $x = 7$.<br>
@@ -1263,7 +1291,7 @@ while (R - L > 1) {
   Для $x = 4$ оба ответа равны 3 (четвёрок нет, разность 0). Для $x = 20$ оба равны $n = 10$.</div>
   <p>Проверь это в анимации выше: кнопки <span class="mono">lower_bound</span> / <span class="mono">upper_bound</span> и <span class="mono">x = 7 / 4 / 20</span>.</p>
 
-<h3>В C++ (дополнено)</h3>
+<h3>В C++</h3>
   <pre class="cheat">#include &lt;algorithm&gt;
 #include &lt;vector&gt;
 
@@ -1289,20 +1317,20 @@ int cnt = hi - lo;                                               // 3 семёр
 <section class="card" id="maxsum-lr">
 
 <h2>Задача: подотрезок с максимальной суммой длины от L до R</h2>
-  <p><strong>Условие (из конспекта, стр. 4).</strong> Дан массив $a[0\ldots n-1]$. Найти подотрезок с максимальной суммой, длина которого от $L$ до $R$. Это задача 23 из <a href="#seminar-hard">семинара</a> — здесь полный разбор, как на доске.</p>
+  <p><strong>Условие.</strong> Дан массив $a[0\ldots n-1]$. Найти подотрезок с максимальной суммой, длина которого от $L$ до $R$. Это задача 23 из <a href="#seminar-hard">семинара</a> — здесь полный разбор.</p>
   <p><strong>Шаг 1. Префиксные суммы.</strong> $sum[0] = 0$, $sum[i+1] = sum[i] + a[i]$ (блок <a href="#prefix">«Префиксные суммы»</a>). Сумма на подотрезке $[l, r]$ — разность:</p>
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
     <div class="formula-box-body">$\mathrm{sum}(l, r) = sum[r+1] - sum[l]$</div>
   </div>
-  <p><strong>Шаг 2. Фиксируем правый конец.</strong> Перебрать все пары $(l, r)$ — это $O(n^2)$. На доске: «будем перебирать только левую границу, $r$ зафиксируем», цель — $O(n^2) \to O(n)$. При фиксированном $r$ число $sum[r+1]$ постоянно, поэтому сумма максимальна, когда $sum[l]$ <strong>минимально</strong> («чтобы максимизировать сумму, нужно минимизировать $sum[l]$ по всем допустимым $l$»).</p>
-  <p><strong>Шаг 3. Какие $l$ допустимы.</strong> Длина $r - l + 1$ должна лежать в $[L, R]$. Выразим $l$ (на доске «выразим!»): из $r - l + 1 \ge L$ следует $l \le r + 1 - L$, из $r - l + 1 \le R$ следует $l \ge r + 1 - R$. Плюс, конечно, $l \ge 0$.</p>
+  <p><strong>Шаг 2. Фиксируем правый конец.</strong> Перебрать все пары $(l, r)$ — это $O(n^2)$. Поэтому фиксируем $r$ и перебираем только левую границу; цель — $O(n^2) \to O(n)$. При фиксированном $r$ число $sum[r+1]$ постоянно, поэтому сумма максимальна, когда $sum[l]$ <strong>минимально</strong> («чтобы максимизировать сумму, нужно минимизировать $sum[l]$ по всем допустимым $l$»).</p>
+  <p><strong>Шаг 3. Какие $l$ допустимы.</strong> Длина $r - l + 1$ должна лежать в $[L, R]$. Выразим $l$: из $r - l + 1 \ge L$ следует $l \le r + 1 - L$, из $r - l + 1 \le R$ следует $l \ge r + 1 - R$. Плюс, конечно, $l \ge 0$.</p>
   $$L \le r - l + 1 \le R \quad\Longleftrightarrow\quad r + 1 - R \;\le\; l \;\le\; r + 1 - L$$
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
     <div class="formula-box-body">$best(r) = sum[r+1] - \min\limits_{\max(0,\,r+1-R)\,\le\, l\,\le\, r+1-L} sum[l]$, ответ $= \max\limits_r best(r)$</div>
   </div>
-  <p><strong>Шаг 4. Почему это окно.</strong> В рамке на доске: «по сути добавить 1 к $r$ — тогда сдвигаются и левая, и правая граница; своего рода окно фиксированной длины». Когда $r$ растёт на 1, обе границы допустимых $l$ тоже сдвигаются на 1, а длина окна остаётся $R - L + 1$. Нужен <strong>минимум в скользящем окне</strong> по массиву $sum$ — ровно задача из блока <a href="#min-stack">«Минимум скользящего окна»</a> (дек индексов). Каждый индекс входит в дек и выходит из него не больше одного раза → всё решение $O(n)$.</p>
+  <p><strong>Шаг 4. Почему это окно.</strong> Когда $r$ растёт на 1, обе границы допустимых $l$ тоже сдвигаются на 1, а длина окна остаётся $R - L + 1$. Нужен <strong>минимум в скользящем окне</strong> по массиву $sum$ — ровно задача из блока <a href="#min-stack">«Минимум скользящего окна»</a> (дек индексов). Каждый индекс входит в дек и выходит из него не больше одного раза → всё решение $O(n)$.</p>
   <div class="ex"><strong>Пример.</strong> $a = [2, -5, 3, 4, -1]$, $L = 2$, $R = 3$. Префиксы: $sum = [0, 2, -3, 0, 4, 3]$.
   <div class="nb-table-scroll"><table>
     <tr><th>$r$</th><th>допустимые $l$</th><th>$\min sum[l]$</th><th>$best(r)$</th></tr>
@@ -1342,7 +1370,7 @@ long long maxSumLenLR(const std::vector&lt;int&gt;&amp; a, int L, int R) {
 <section class="card" id="amort">
 
 <h2>Амортизационный анализ</h2>
-  <p>На доске (стр. 5) три вида «времени операции»:</p>
+  <p>Три вида «времени операции»:</p>
   <ol>
     <li>$t_i$ — <strong>реальное время</strong> $i$-й операции;</li>
     <li>$t_{avg} = \dfrac{\sum t_i}{m}$ — <strong>среднее</strong> по серии из $m$ операций;</li>
@@ -1364,12 +1392,12 @@ long long maxSumLenLR(const std::vector&lt;int&gt;&amp; a, int L, int R) {
   Каждая операция амортизированно $O(1)$, хотя отдельный pop может стоить $O(n)$.</div>
 
 <h3>Вектор: push_back с удвоением</h3>
-  <p>На доске два случая (рисунки буфера с <span class="mono">x</span>):</p>
+  <p>Два случая:</p>
   <ol>
-    <li>Место в буфере есть — просто записали $x$: $t_i = 1$; на доске $\Delta\varphi_i = 0$, $a_i = 1 = O(1)$.</li>
-    <li>Буфер полон — выделили новый вдвое больше, скопировали все $size$ элементов, записали $x$: $t_i \approx size$; на доске $\Delta\varphi_i = -size$, и $a_i = size - size = 0 = O(1)$.</li>
+    <li>Место в буфере есть — просто записали $x$: $t_i = 1$; если положить $\Delta\varphi_i = 0$, то $a_i = 1 = O(1)$.</li>
+    <li>Буфер полон — выделили новый вдвое больше, скопировали все $size$ элементов, записали $x$: $t_i \approx size$; если $\Delta\varphi_i = -size$, то $a_i = size - size = 0 = O(1)$.</li>
   </ol>
-  <p><em>Дополнено.</em> Чтобы при переезде потенциал мог упасть на $size$, его надо сначала накопить — значит, обычные push должны класть в копилку, а не «$\Delta\varphi = 0$». На доске рядом нарисованы «монетки» $+1$ над ячейками и строка «balance = 1, 0, −2, 0, −4, 0»; её я до конца не расшифровал — похоже на баланс копилки, когда взнос слишком мал и копилка уходит в минус. Стандартный выбор потенциала (Кормен), при котором всё сходится:</p>
+<p>Но чтобы при переезде потенциал мог упасть на $size$, его надо сначала накопить — значит, обычные push должны класть в копилку, а не «$\Delta\varphi = 0$». Стандартный выбор потенциала, при котором всё сходится:</p>
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
     <div class="formula-box-body">$\varphi = 2\cdot size - cap$</div>
@@ -1379,20 +1407,19 @@ long long maxSumLenLR(const std::vector&lt;int&gt;&amp; a, int L, int R) {
   <p>В обоих случаях $a_i = 3$. После первой вставки $\varphi \ge 0$ (вектор всегда заполнен хотя бы наполовину), поэтому $m$ вставок реально стоят не больше $3m$ → амортизированно $O(1)$ на <span class="mono">push_back</span>.</p>
   <div class="ex"><strong>Пример с числами — то же без потенциала, просто сумма по серии.</strong> 17 вставок, старт $cap = 1$. Переезды при $size = 1, 2, 4, 8, 16$ копируют $1 + 2 + 4 + 8 + 16 = 31$ элемент, плюс 17 записей: всего $48 \le 3 \cdot 17 = 51$. В среднем $48 / 17 \approx 2{,}8$ на операцию, хотя самая дорогая стоила 17.</div>
   <div class="ex"><strong>Не-пример.</strong> Если увеличивать ёмкость не вдвое, а на 1, каждый push копирует всё: $1 + 2 + \ldots + m = \Theta(m^2)$, то есть амортизированно $\Theta(m)$ на операцию. (Это же в блоке <a href="#structs">«Вектор»</a>.)</div>
-  <p><em>Как смотреть.</em> Верхний ряд — буфер вектора: тёмные клетки живые, пунктир — пустой запас, оранжевые — скопированы при переезде, красная — только что записана. Ниже столбики $t_i$: почти все высоты 1, редкие пики — переезды. Красный пунктир на высоте 3 — амортизированная стоимость: пики «оплачены» копилкой предыдущих дешёвых операций.</p>
+<p>Почти все операции стоят 1, редкие переезды — дорогие, но амортизированная стоимость не больше 3: пики «оплачены» копилкой предыдущих дешёвых операций.</p>
   <div class="lab" data-lab="vecgrow"></div>
 
 <h3>DSU — только упоминание</h3>
-  <p>На доске нарисованы два дерева: корень одного подвешивают к корню другого, подпись DSU (система непересекающихся множеств). Это ещё один классический пример структуры, которую оценивают амортизированно. Подробно на паре не разбирали — здесь только отметка, что это было.</p>
+<p>Ещё один классический пример структуры, которую оценивают амортизированно, — DSU (система непересекающихся множеств): корень одного дерева подвешивают к корню другого. Подробно DSU разобрана в <a href="#dsu">лекции 4</a>.</p>
 </section>
 
 <section class="card" id="heap">
 
 <h2>Куча (heap)</h2>
-  <p>На доске (стр. 5–6): «Куча (Heap): $O(\log_2 n)$ — add», «всегда знаем min», дерево с подписями $x \le y$, $x \le z$, рисунки sift up и sift down, «как хранится в массиве» с дугами $i \to 2i+1,\ 2i+2$.</p>
   <div class="def"><strong>Определение.</strong> <em>Двоичная куча на минимум</em> — двоичное дерево, у которого<br>
   1) все уровни заполнены полностью, кроме, может быть, последнего, а последний заполняется слева направо;<br>
-  2) <strong>свойство кучи:</strong> значение в каждой вершине не больше значений её детей (на доске: $x \le y$, $x \le z$).</div>
+  2) <strong>свойство кучи:</strong> значение в каждой вершине не больше значений её детей ($x \le y$, $x \le z$).</div>
   <p class="own"><em>Своими словами.</em> Это пирамида начальников: каждый начальник не больше своих подчинённых. Тогда самый маленький — на самом верху, в корне. Между братьями и между разными ветками порядок <em>не</em> требуется: куча не отсортирована, она только «знает минимум».</p>
   <div class="ex"><strong>Пример.</strong> Массив $[1, 3, 2, 7, 5, 9, 8]$ — куча: корень 1, его дети 3 и 2; у 3 дети 7 и 5; у 2 дети 9 и 8. Везде родитель не больше детей. При этом массив не отсортирован (3 стоит раньше 2).</div>
   <div class="ex"><strong>Не-пример.</strong> $[1, 3, 2, 0]$: элемент 0 (позиция 3) — ребёнок элемента 3 (позиция 1), а $3 &gt; 0$. Свойство нарушено — это не куча.</div>
@@ -1407,9 +1434,9 @@ long long maxSumLenLR(const std::vector&lt;int&gt;&amp; a, int L, int R) {
   <p>Высота дерева из $n$ вершин — около $\log_2 n$: на уровне $d$ помещается $2^d$ вершин, уровни $0 \ldots d$ вмещают $2^{d+1} - 1$. Операции ниже ходят по одному пути корень↔лист, отсюда $O(\log n)$.</p>
 
 <h3>Операции</h3>
-  <p><strong>get_min — $O(1)$.</strong> Минимум всегда в $a[0]$. На доске рядом с кучей написано «$O(1)$: delete min» — скорее всего, имелось в виду «узнать минимум»: само <em>удаление</em> минимума стоит $O(\log n)$, см. ниже.</p>
-  <p><strong>add(x) — sift up, $O(\log n)$.</strong> Кладём $x$ в конец массива (следующее свободное место нижнего ряда). Форма дерева не испортилась, но $x$ может оказаться меньше родителя. Тогда «меняем местами» (так на доске) и повторяем, пока родитель не станет $\le x$ или $x$ не дойдёт до корня. Это <em>просеивание вверх</em>.</p>
-  <p><strong>extract_min — sift down, $O(\log n)$.</strong> Забираем корень. На его место ставим последний элемент $x$ — так дерево остаётся «полным». Теперь $x$ может быть больше детей: на доске «$x &gt; b$, $x &gt; c$ — опускаем вниз, пока не подойдёт». Меняем $x$ с <strong>меньшим</strong> из детей и повторяем. Это <em>просеивание вниз</em>.</p>
+  <p><strong>get_min — $O(1)$.</strong> Минимум всегда в $a[0]$. Само <em>удаление</em> минимума стоит $O(\log n)$, см. ниже.</p>
+  <p><strong>add(x) — sift up, $O(\log n)$.</strong> Кладём $x$ в конец массива (следующее свободное место нижнего ряда). Форма дерева не испортилась, но $x$ может оказаться меньше родителя. Тогда «меняем местами» и повторяем, пока родитель не станет $\le x$ или $x$ не дойдёт до корня. Это <em>просеивание вверх</em>.</p>
+  <p><strong>extract_min — sift down, $O(\log n)$.</strong> Забираем корень. На его место ставим последний элемент $x$ — так дерево остаётся «полным». Теперь $x$ может быть больше детей: если $x$ больше хотя бы одного ребёнка, опускаем его вниз, пока не подойдёт. Меняем $x$ с <strong>меньшим</strong> из детей и повторяем. Это <em>просеивание вниз</em>.</p>
   <div class="ex"><strong>Почему с меньшим ребёнком.</strong> Сверху $x = 9$, дети 4 и 6. Поменяем 9 с 6 — наверху окажется 6, а под ним 4: снова нарушение. Меняем с 4 — наверху 4, под ним 9 и 6, с этой вершиной всё в порядке, а 9 продолжит спуск.</div>
   <pre class="cheat">#include &lt;utility&gt;
 #include &lt;vector&gt;
@@ -1442,15 +1469,14 @@ int  extractMin() {
     if (!h.empty()) siftDown(0);
     return res;
 }</pre>
-  <p><em>Как смотреть.</em> Сверху дерево, снизу <strong>тот же самый</strong> массив: следи, как обмен в дереве меняет две клетки массива. Оранжевый — элемент, который просеиваем; светло-зелёный — с кем сравниваем; красные дуги под массивом — где у текущей позиции дети ($2i+1$, $2i+2$). Режим «add + extract_min»: 7 вставок, затем 3 извлечения минимума.</p>
   <div class="lab" data-lab="heap" data-mode="ops"></div>
-  <p>В C++ готовая куча — <span class="mono">std::priority_queue</span>; по умолчанию она на <em>максимум</em>, на минимум: <span class="mono">std::priority_queue&lt;int, std::vector&lt;int&gt;, std::greater&lt;int&gt;&gt;</span>. <span class="src">(дополнено)</span></p>
+  <p>В C++ готовая куча — <span class="mono">std::priority_queue</span>; по умолчанию она на <em>максимум</em>, на минимум: <span class="mono">std::priority_queue&lt;int, std::vector&lt;int&gt;, std::greater&lt;int&gt;&gt;</span>. <span class="src"></span></p>
 </section>
 
 <section class="card" id="sorts">
 
 <h2>Сортировки: обзор</h2>
-  <p>На доске: «Сортировки → квадратичные $O(n^2)$ и быстрые $O(n \log n)$». Ниже все сортировки с пары в одной таблице, потом каждая отдельно — с кодом и анимацией.</p>
+  <p>Сортировки делятся на квадратичные $O(n^2)$ и быстрые $O(n \log n)$. Ниже все сортировки в одной таблице, потом каждая отдельно — с кодом и анимацией.</p>
   <div class="def"><strong>Определение.</strong> <em>Сортировка</em> — переставить элементы так, чтобы $a[0] \le a[1] \le \ldots \le a[n-1]$. Сортировка <em>устойчивая</em>, если равные элементы сохраняют исходный порядок между собой.</div>
   <p class="own"><em>Своими словами.</em> Устойчивость важна, когда сортируют записи по одному полю. Например, список студентов по алфавиту сортируют по оценке — устойчивая сортировка оставит внутри каждой оценки алфавитный порядок.</p>
   <div class="ex"><strong>Пример устойчивости.</strong> Пары (имя, оценка): Анна 5, Борис 4, Вера 5. Устойчиво по оценке: Борис 4, Анна 5, Вера 5 — Анна осталась раньше Веры. Неустойчивая сортировка может выдать Борис, Вера, Анна.</div>
@@ -1462,14 +1488,12 @@ int  extractMin() {
     <tr><td><a href="#sort-heap">кучей</a></td><td>$O(n \log n)$</td><td>$O(n \log n)$</td><td>$O(n \log n)$</td><td>$O(1)$ на месте</td><td>нет</td></tr>
     <tr><td><a href="#sort-count">подсчётом</a></td><td colspan="3">$O(n + C)$, где все $a_i \in [0, C]$</td><td>$O(C)$</td><td>для голых чисел вопрос не стоит</td></tr>
   </table></div>
-  <p class="src">Колонки «память» и «устойчива» — дополнено, на доске их не было.</p>
-  <p>На стр. 6 ещё запись «$O(n \log n)$ — возможно». Как я её понял (дополнено): для сортировок, которые только <em>сравнивают</em> элементы, $n \log n$ — лучшее, чего можно добиться в худшем случае; это известная нижняя оценка, её доказательство будет позже в курсе. Сортировка подсчётом обходит эту оценку, потому что элементы вообще не сравнивает.</p>
+  <p>На стр. 6 ещё запись «$O(n \log n)$ — возможно». Как я её понял: для сортировок, которые только <em>сравнивают</em> элементы, $n \log n$ — лучшее, чего можно добиться в худшем случае; это известная нижняя оценка, её доказательство будет позже в курсе. Сортировка подсчётом обходит эту оценку, потому что элементы вообще не сравнивает.</p>
 </section>
 
 <section class="card" id="sort-ins">
 
 <h2>Сортировка вставками — $O(n^2)$</h2>
-  <p>На доске (стр. 6): «сортировка вставкой $O(n^2)$», «$O(n)$ — min», «$a_i &gt; a_{i+1}$ → swap».</p>
   <div class="def"><strong>Алгоритм.</strong> Идём слева направо. Перед шагом $i$ префикс $a[0 \ldots i-1]$ уже отсортирован. Берём $a[i]$ и двигаем его влево обменами с соседом, пока сосед слева больше. После шага отсортирован префикс $a[0 \ldots i]$.</div>
   <p class="own"><em>Своими словами.</em> Так раскладывают карты в руке: берёшь новую карту и вставляешь её на место среди уже упорядоченных, сдвигая большие вправо.</p>
   <div class="ex"><strong>Пример.</strong> $[5, 2, 4, 1]$.<br>
@@ -1489,15 +1513,13 @@ void insertionSort(std::vector&lt;int&gt;&amp; a) {
         }
     }
 }</pre>
-  <p><strong>Сколько это стоит.</strong> Каждый обмен исправляет ровно одну «неправильную пару» — <em>инверсию</em>. Худший случай — массив в обратном порядке: там инверсий $\dfrac{n(n-1)}{2}$, значит $\Theta(n^2)$. Лучший — уже отсортированный массив: на каждом шаге одно сравнение и сразу стоп, итого $n - 1$ сравнений, $O(n)$. Это и есть «$O(n)$ — min» с доски: <em>минимальное</em> (лучшее) время.</p>
-  <p><em>Как смотреть.</em> Оранжевый столбик — элемент, который сейчас вставляем; светло-зелёные — уже отсортированный префикс. Внизу счётчики сравнений и обменов и для сравнения $n(n-1)/2$. Нажми «Уже отсортированный» — увидишь $n - 1$ сравнений и 0 обменов; «Обратный порядок» — максимум.</p>
+  <p><strong>Сколько это стоит.</strong> Каждый обмен исправляет ровно одну «неправильную пару» — <em>инверсию</em>. Худший случай — массив в обратном порядке: там инверсий $\dfrac{n(n-1)}{2}$, значит $\Theta(n^2)$. Лучший — уже отсортированный массив: на каждом шаге одно сравнение и сразу стоп, итого $n - 1$ сравнений, $O(n)$. Это <em>минимальное</em> (лучшее) время.</p>
   <div class="sort-anim" data-algo="insertion" data-title="Сортировка вставками" data-items="5,2,8,4,9,1,6,3" data-presets="random,sorted,reversed"></div>
 </section>
 
 <section class="card" id="sort-quick">
 
 <h2>Быстрая сортировка (Quick Sort)</h2>
-  <p>На доске (стр. 6): массив, в нём выделен $x$; стрелки «$&lt; x$» в левый кусок и «$&gt; x$» в правый, сам $x$ остаётся посередине; подпись «$O(n \log n)$, $O(n^2)$».</p>
   <div class="def"><strong>Алгоритм.</strong> 1) Выбрать <em>опорный</em> элемент $x$. 2) Переставить отрезок так, чтобы слева были элементы $&lt; x$, потом $x$, справа — элементы $\ge x$ (<em>разбиение</em>, partition, за $O(n)$). 3) Рекурсивно отсортировать левую и правую части. Опорный уже стоит на своём окончательном месте.</div>
   <p class="own"><em>Своими словами.</em> Как построить класс по росту: выбрали одного ученика, все ниже него — налево, остальные — направо. Он сам уже стоит там, где будет в итоговой шеренге. Дальше каждую группу делим так же.</p>
   <div class="ex"><strong>Пример.</strong> $[5, 2, 8, 4, 9, 1, 6, 3]$, опорный — последний, $x = 3$. Меньше 3: $2, 1$. Не меньше: $5, 8, 4, 9, 6$. После разбиения $3$ встаёт на позицию 2 и больше никуда не двигается; дальше отдельно сортируем $[2, 1]$ и правую часть из пяти элементов.</div>
@@ -1520,19 +1542,17 @@ void quickSort(std::vector&lt;int&gt;&amp; a, int lo, int hi) {
 }
 // вызов: quickSort(a, 0, (int)a.size() - 1);</pre>
   <p><strong>Почему в среднем $n \log n$.</strong> Если опорный делит отрезок примерно пополам, получается та же картина, что у слияния: уровней рекурсии около $\log_2 n$, на каждом уровне разбиения вместе проходят все $n$ элементов → $O(n \log n)$. Это рекуррентность $T(n) = 2T(n/2) + O(n)$, см. <a href="#master-cases">мастер-теорему</a>.</p>
-  <p><strong>Почему в худшем $n^2$.</strong> Если опорный каждый раз оказывается минимумом или максимумом, одна часть пустая, а другая короче всего на 1: $n + (n-1) + \ldots + 1 = \dfrac{n(n+1)}{2} = \Theta(n^2)$. С опорным «последний элемент» ровно так происходит на <strong>уже отсортированном</strong> массиве — проверь кнопкой ниже и сравни число сравнений с $n(n-1)/2$. Поэтому на практике опорный берут <em>случайным</em> (дополнено): тогда плохие разбиения маловероятны.</p>
-  <p><em>Как смотреть.</em> Красный — опорный, оранжевый — элемент, который сейчас сравниваем, зелёные — уже в группе «меньше опорного», светлый фон — текущий отрезок, тёмно-зелёный — элемент на окончательном месте.</p>
+  <p><strong>Почему в худшем $n^2$.</strong> Если опорный каждый раз оказывается минимумом или максимумом, одна часть пустая, а другая короче всего на 1: $n + (n-1) + \ldots + 1 = \dfrac{n(n+1)}{2} = \Theta(n^2)$. С опорным «последний элемент» ровно так происходит на <strong>уже отсортированном</strong> массиве — проверь кнопкой ниже и сравни число сравнений с $n(n-1)/2$. Поэтому на практике опорный берут <em>случайным</em>: тогда плохие разбиения маловероятны.</p>
   <div class="sort-anim" data-algo="quick" data-title="Быстрая сортировка (опорный — последний элемент)" data-items="5,2,8,4,9,1,6,3" data-presets="random,sorted"></div>
 </section>
 
 <section class="card" id="sort-merge">
 
 <h2>Сортировка слиянием (Merge Sort) — $O(n \log n)$</h2>
-  <p>На доске (стр. 7): массив делится на две половины по $n/2$, каждая снова пополам, … до кусочков из одного элемента; подписи «уровней $\log_2 n$», «$O(n \log_2 n)$».</p>
   <div class="def"><strong>Алгоритм.</strong> 1) Если в массиве 0 или 1 элемент — он отсортирован. 2) Иначе разрезать пополам и рекурсивно отсортировать каждую половину. 3) <em>Слить</em> две отсортированные половины в одну: сравниваем первые (наименьшие) оставшиеся элементы половин, меньший переносим в ответ, повторяем.</div>
   <p class="own"><em>Своими словами.</em> Две отсортированные стопки карт лицом вверх: каждый раз смотришь на две верхние и забираешь меньшую. Каждая карта перекладывается ровно один раз — поэтому слияние линейное.</p>
   <div class="ex"><strong>Пример слияния.</strong> $[2, 5, 8]$ и $[1, 4, 9]$: 2 и 1 → берём 1; 2 и 4 → 2; 5 и 4 → 4; 5 и 9 → 5; 8 и 9 → 8; левая кончилась — дописываем 9. Ответ $[1, 2, 4, 5, 8, 9]$, 5 сравнений.</div>
-  <p><strong>Почему $n \log_2 n$ (как на доске).</strong> Дерево разбиений для $n = 8$:</p>
+  <p><strong>Почему $n \log_2 n$.</strong> Дерево разбиений для $n = 8$:</p>
   <div class="fig">
 <svg viewBox="0 0 640 262" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дерево разбиений сортировки слиянием, n = 8">
   <rect x="104" y="20" width="24" height="24" fill="#1f5c4d" fill-opacity="0.14" stroke="#1f5c4d" stroke-width="1.5"/>
@@ -1643,7 +1663,7 @@ void mergeSort(std::vector&lt;int&gt;&amp; a, int lo, int hi) {   // сорти�
     for (int k = 0; k &lt; (int)out.size(); k++) a[lo + k] = out[k];
 }
 // вызов: mergeSort(a, 0, (int)a.size());</pre>
-  <p><em>Как смотреть.</em> Анимация показывает слияния; дробление до одиночных элементов идёт «за кадром». Зелёные — левая половина, бежевые — правая, тёмные — уже слито. Второй пример — с именами: при равных оценках первым берётся элемент из левой половины, поэтому порядок равных сохраняется (устойчивость).</p>
+<p>При равных ключах первым берётся элемент из левой половины, поэтому порядок равных сохраняется — сортировка слиянием устойчива.</p>
   <div class="sort-anim" data-algo="merge" data-title="Сортировка слиянием" data-items="5,2,8,4,9,1,6,3" data-presets="random,sorted"></div>
   <div class="sort-anim" data-algo="merge" data-title="Устойчивость: сортируем по оценке" data-items="Анна:5,Борис:4,Вера:5,Глеб:3,Дина:4"></div>
 </section>
@@ -1651,28 +1671,26 @@ void mergeSort(std::vector&lt;int&gt;&amp; a, int lo, int hi) {   // сорти�
 <section class="card" id="sort-heap">
 
 <h2>Сортировка кучей (Heap Sort) — $O(n \log n)$</h2>
-  <p>На доске (стр. 6): «$n \log n$ — построить кучу $+$ $n \log n$ — достать min», и под первым слагаемым стрелка «$O(n)$».</p>
   <div class="def"><strong>Алгоритм.</strong> 1) Сложить все элементы в <a href="#heap">кучу</a> на минимум. 2) $n$ раз сделать extract_min — минимумы выходят по возрастанию.</div>
   <p class="own"><em>Своими словами.</em> Куча всегда отдаёт самый маленький из оставшихся. Если вынимать по одному, получится отсортированная последовательность.</p>
-  <p><strong>Шаг 1: построить кучу.</strong> Наивно — $n$ раз add по $O(\log n)$: итого $O(n \log n)$, это первое слагаемое на доске. Но из готового массива кучу можно построить быстрее, за $O(n)$ — это стрелка «$O(n)$». Как (дополнено): просеиваем <em>вниз</em> все вершины, у которых есть дети, от последней такой (позиция $\lfloor n/2 \rfloor - 1$) до корня. Когда доходим до вершины $i$, оба её поддерева уже кучи, и sift down чинит поддерево $i$.</p>
+  <p><strong>Шаг 1: построить кучу.</strong> Наивно — $n$ раз add по $O(\log n)$: итого $O(n \log n)$. Но из готового массива кучу можно построить быстрее, за $O(n)$. Как: просеиваем <em>вниз</em> все вершины, у которых есть дети, от последней такой (позиция $\lfloor n/2 \rfloor - 1$) до корня. Когда доходим до вершины $i$, оба её поддерева уже кучи, и sift down чинит поддерево $i$.</p>
   <p><strong>Почему $O(n)$, а не $O(n \log n)$.</strong> Sift down из вершины стоит не больше её высоты над листьями. Низко сидящих вершин много, высоко — мало: около $n/2$ вершин — листья (0 шагов), около $n/4$ имеют высоту 1, $n/8$ — высоту 2, и так далее. Сумма:</p>
   $$\frac{n}{4} \cdot 1 + \frac{n}{8} \cdot 2 + \frac{n}{16} \cdot 3 + \ldots = n \sum_{h \ge 1} \frac{h}{2^{h+1}} = n \cdot 1 = O(n).$$
   <div class="ex"><strong>Пример с числами.</strong> $n = 15$ (полное дерево из 4 уровней): 8 листьев по 0 шагов, 4 вершины по 1, 2 вершины по 2, корень — 3. Всего $0 + 4 + 4 + 3 = 11 \le 15$ обменов в худшем случае. А 15 раз add могли бы стоить до $15 \cdot 3 = 45$.</div>
   <p><strong>Шаг 2: достать всё.</strong> $n$ раз extract_min по $O(\log n)$ — второе слагаемое $n \log n$. Итого $O(n) + O(n \log n) = O(n \log n)$ в <em>любом</em> случае.</p>
-  <p>В анимации ответ пишется в отдельный ряд — так нагляднее (это $O(n)$ памяти). Классическая сортировка кучей делает всё <em>на месте</em> (дополнено): берут кучу на <strong>максимум</strong>, меняют корень с последним элементом кучи, уменьшают её размер на 1 и просеивают вниз — максимумы по очереди занимают конец массива.</p>
+  <p>В анимации ответ пишется в отдельный ряд — так нагляднее (это $O(n)$ памяти). Классическая сортировка кучей делает всё <em>на месте</em>: берут кучу на <strong>максимум</strong>, меняют корень с последним элементом кучи, уменьшают её размер на 1 и просеивают вниз — максимумы по очереди занимают конец массива.</p>
   <pre class="cheat">void heapSort(std::vector&lt;int&gt;&amp; a) {          // использует h, siftDown, extractMin из блока «Куча»
     h = a;
     for (int i = (int)h.size() / 2 - 1; i >= 0; i--) siftDown(i);   // построение за O(n)
     for (int k = 0; k &lt; (int)a.size(); k++) a[k] = extractMin();      // n раз по O(log n)
 }</pre>
-  <p><em>Как смотреть.</em> Сначала построение снизу вверх: просеиваются вниз позиции 4, 3, 2, 1, 0. Потом 10 извлечений минимума — тёмно-зелёный ряд «ответ» растёт по возрастанию.</p>
   <div class="lab" data-lab="heap" data-mode="sort"></div>
 </section>
 
 <section class="card" id="sort-count">
 
 <h2>Сортировка подсчётом — $O(n + C)$</h2>
-  <p>На доске (стр. 8): «сортировка подсчётом, $n$, $0 \le a_i \le C \le 10^7$»; массив <span class="mono">cnt[C+1]</span>, <span class="mono">cnt[a[i]]++</span>; цикл <span class="mono">for i = 0…C</span> → $O(C)$; внутри <span class="mono">for j = 0…cnt[i]: cout &lt;&lt; i</span>; итог $O(n + C)$.</p>
+  <p>Схема: $n$ чисел, $0 \le a_i \le C$ (например, $C \le 10^7$); массив <span class="mono">cnt[C+1]</span>, <span class="mono">cnt[a[i]]++</span>; цикл <span class="mono">for i = 0…C</span> → $O(C)$; внутри <span class="mono">for j = 0…cnt[i]: cout &lt;&lt; i</span>; итог $O(n + C)$.</p>
   <div class="def"><strong>Алгоритм.</strong> Пусть все $a_i$ — целые от $0$ до $C$. 1) Завести массив $cnt[0 \ldots C]$ из нулей. 2) Для каждого $a_i$ увеличить $cnt[a_i]$ на 1 — теперь $cnt[v]$ равно числу вхождений $v$. 3) Пройти $v = 0, 1, \ldots, C$ и выписать $v$ ровно $cnt[v]$ раз.</div>
   <p class="own"><em>Своими словами.</em> Как подсчёт голосов: бюллетени не сортируют, а раскладывают по ящикам «за кандидата 0», «за 1», … и потом пересчитывают ящики по порядку.</p>
   <div class="ex"><strong>Пример.</strong> $a = [3, 1, 4, 1, 5, 2, 0, 3, 1, 4]$, $C = 5$.<br>
@@ -1689,8 +1707,7 @@ void countingSort(std::vector&lt;int&gt;&amp; a, int C) {   // все a[i] в [0
             a[k++] = v;
 }</pre>
   <p><strong>Почему $O(n + C)$.</strong> Подсчёт — $n$ шагов. Внешний цикл по $v$ — $C + 1$ шаг, даже если ящик пуст. Внутренний цикл в сумме по всем $v$ выполняется $\sum cnt[v] = n$ раз. Итого $O(n + C)$. Сравнений элементов между собой нет совсем.</p>
-  <div class="ex"><strong>Когда хорошо и когда плохо.</strong> $10^6$ оценок от 0 до 100: $C = 100$ — мгновенно. Пять чисел до $10^9$: $C = 10^9$ — массив <span class="mono">cnt</span> на гигабайты, так нельзя. Ограничение «$C \le 10^7$» на доске — как раз про это: $10^7$ чисел <span class="mono">int</span> занимают около 40 МБ.</div>
-  <p><em>Как смотреть.</em> Верхний ряд — исходный массив, средний — <span class="mono">cnt</span> (над клетками значения $v$), нижний — ответ. Сначала проход по массиву (оранжевая клетка вверху и её ящик), потом проход по ящикам. Кнопка «Большое C, мало чисел» показывает, как время уходит на пустые ящики.</p>
+  <div class="ex"><strong>Когда хорошо и когда плохо.</strong> $10^6$ оценок от 0 до 100: $C = 100$ — мгновенно. Пять чисел до $10^9$: $C = 10^9$ — массив <span class="mono">cnt</span> на гигабайты, так нельзя. Ограничение вида «$C \le 10^7$» — как раз про это: $10^7$ чисел <span class="mono">int</span> занимают около 40 МБ.</div>
   <div class="lab" data-lab="countsort"></div>
   <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы сортировки</code> — несколько коротких вопросов по куче и всем сортировкам, потом сверка.</p>
 </section>
@@ -1698,7 +1715,7 @@ void countingSort(std::vector&lt;int&gt;&amp; a, int C) {   // все a[i] в [0
 <section class="card" id="sqrt">
 
 <h2>Корневая декомпозиция</h2>
-  <p>На доске (стр. 8): массив разрезан на куски по $\sqrt n$, $k = \sqrt n$; блок 0: $0 \ldots k-1$, блок 1: $k \ldots 2k-1$, блок 2: $2k \ldots 3k-1$, …, блок $i$: $ik \ldots (i+1)k - 1$; «найти сумму» на $[l, r]$ — дуги по блокам, $O(\sqrt n)$; случай $r - l + 1 &lt; k$ → $O(\sqrt n)$; $a_i \mathrel{+}= x$ → $O(1)$; построение <span class="mono">for i = 0…n: b[i/k] += a[i]</span> → $O(n)$; при изменении <span class="mono">b[i/k] += x</span>.</p>
+  <p>Схема: массив разрезан на куски по $\sqrt n$, $k = \sqrt n$; блок 0: $0 \ldots k-1$, блок 1: $k \ldots 2k-1$, блок 2: $2k \ldots 3k-1$, …, блок $i$: $ik \ldots (i+1)k - 1$; «найти сумму» на $[l, r]$ — дуги по блокам, $O(\sqrt n)$; случай $r - l + 1 &lt; k$ → $O(\sqrt n)$; $a_i \mathrel{+}= x$ → $O(1)$; построение <span class="mono">for i = 0…n: b[i/k] += a[i]</span> → $O(n)$; при изменении <span class="mono">b[i/k] += x</span>.</p>
   <div class="def"><strong>Определение.</strong> Делим массив длины $n$ на блоки длины $k \approx \sqrt n$: блок $j$ — позиции $jk, \ldots, (j+1)k - 1$. Позиция $i$ лежит в блоке $\lfloor i/k \rfloor$. Для каждого блока храним готовую сумму $b[j]$.</div>
   <p class="own"><em>Своими словами.</em> Как книга с оглавлением по главам: чтобы посчитать страницы с 37-й по 412-ю, не листаешь каждую — берёшь целые главы из оглавления и досчитываешь только кусочки по краям.</p>
   <div class="ex"><strong>Пример.</strong> $n = 16$, $k = 4$, $a = [3,1,4,1,\ 5,9,2,6,\ 5,3,5,8,\ 9,7,9,3]$. Суммы блоков: $b = [9, 22, 21, 28]$. Позиция $i = 6$ лежит в блоке $\lfloor 6/4 \rfloor = 1$.</div>
@@ -1734,7 +1751,6 @@ struct SqrtSum {
     }
 };</pre>
   <p class="own"><em>Сравни с префиксными суммами.</em> Префиксы отвечают на запрос суммы за $O(1)$, но после изменения одного элемента надо пересчитать до $n$ префиксов. Корневая — компромисс: запрос $O(\sqrt n)$, изменение $O(1)$.</p>
-  <p><em>Как смотреть.</em> Сверху суммы блоков $b[j]$, снизу элементы; бежевым подсвечен отрезок запроса. Оранжевое — что прибавляем на этом шаге, светло-зелёное — уже учтено. Кнопка «a[6] += 4» показывает изменение: меняются ровно одна клетка и одна сумма блока.</p>
   <div class="lab" data-lab="sqrtdec"></div>
   <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы лекция 3</code> — несколько коротких вопросов по всему блоку (бинпоиск, амортизация, корневая), потом сверка.</p>
 </section>
@@ -1742,15 +1758,15 @@ struct SqrtSum {
 <section class="card" id="practice2">
 
 <h2>Практика 2 · рекурсия, мемоизация, динамическое программирование</h2>
-  <p>Разбор по доске Miro с практики (по формату — скорее лекция). Скриншоты: <span class="mono">материалы/_архив/алгоритмы-практика-2-ДП-miro/</span>. На доске три задачи по порядку: <a href="#dp-fib">N-е число Фибоначчи</a> → <a href="#dp-calc">калькулятор «+1, ×2, ×3»</a> → <a href="#dp-grid">робот на поле N×N с максимальной суммой и восстановлением пути</a>. Слова «динамическое программирование» на доске не написано, но таблица называется <span class="mono">dp</span>, и все три задачи — это оно.</p>
-  <div class="def"><strong>Определение (дополнено).</strong> <em>Динамическое программирование (ДП)</em> — способ решать задачу через ответы на <em>меньшие задачи того же вида</em>, причём ответ на каждую меньшую задачу считается <strong>один раз</strong> и запоминается в таблице. Чтобы записать ДП, отвечают на пять вопросов:<br>
+<p>Три задачи по порядку: <a href="#dp-fib">N-е число Фибоначчи</a> → <a href="#dp-calc">калькулятор «+1, ×2, ×3»</a> → <a href="#dp-grid">робот на поле N×N с максимальной суммой и восстановлением пути</a>. Во всех трёх таблица называется <span class="mono">dp</span> — это динамическое программирование.</p>
+  <div class="def"><strong>Определение.</strong> <em>Динамическое программирование (ДП)</em> — способ решать задачу через ответы на <em>меньшие задачи того же вида</em>, причём ответ на каждую меньшую задачу считается <strong>один раз</strong> и запоминается в таблице. Чтобы записать ДП, отвечают на пять вопросов:<br>
   1) <strong>состояние</strong> — что хранит клетка таблицы ($F(k)$, $ans[k]$, $dp[i][j]$);<br>
   2) <strong>база</strong> — ответы, известные сразу ($F(0)=0$, $F(1)=1$; $ans[1]=0$; $dp[0][0]=a[0][0]$);<br>
   3) <strong>переход</strong> — как ответ выражается через меньшие;<br>
   4) <strong>порядок</strong> — в каком порядке считать, чтобы нужные меньшие ответы были уже готовы;<br>
   5) <strong>где ответ</strong> — какая клетка таблицы и надо ли восстанавливать сам путь.</div>
   <p class="own"><em>Своими словами.</em> Обычная рекурсия решает одну и ту же подзадачу много раз и забывает результат. ДП — та же рекурсия, но с блокнотом: посчитал один раз — записал, в следующий раз просто прочитал.</p>
-  <p>Как оценивать время — на доске (задача про калькулятор): «$O$(кол-во значений, которые смотрим в рекурсии)». Точнее:</p>
+  <p>Как оценивать время: «$O$(кол-во значений, которые смотрим в рекурсии)». Точнее:</p>
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
     <div class="formula-box-body">время ДП $=$ (число различных состояний) $\times$ (работа на один переход)</div>
@@ -1761,23 +1777,23 @@ struct SqrtSum {
 <section class="card" id="dp-fib">
 
 <h2>Задача 1. N-е число Фибоначчи</h2>
-  <p><strong>Условие (с доски).</strong> Дано число $N &gt; 0$. Найти $N$-е по счёту число Фибоначчи.</p>
+  <p><strong>Условие.</strong> Дано число $N &gt; 0$. Найти $N$-е по счёту число Фибоначчи.</p>
   <div class="def"><strong>Определение.</strong> Числа Фибоначчи: $F(0) = 0$, $F(1) = 1$, $F(N) = F(N-1) + F(N-2)$ при $N \ge 2$.</div>
   <p class="own"><em>Своими словами.</em> Каждое следующее число — сумма двух предыдущих.</p>
   <div class="ex"><strong>Пример.</strong> $F(0..10)$: $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55$. Например, $F(5) = F(4) + F(3) = 3 + 2 = 5$.</div>
 
 <h3>Способ 1. Рекурсия «в лоб»</h3>
-  <p>На доске: «Рекурсия (когда вызываем функцию внутри себя)».</p>
+  <p>Рекурсия — когда функция вызывает саму себя.</p>
   <pre class="cheat">int F(int N) {
     if (N == 0) return 0;
     if (N == 1) return 1;
     return F(N - 1) + F(N - 2);
 }</pre>
-  <p><strong>Сколько работает.</strong> На доске: при $N \le 1$ — $O(1)$; при $N \ge 2$: $T(N) = T(N-1) + T(N-2)$ (плюс $O(1)$ на сложение); итог $O(2^N)$.</p>
+  <p><strong>Сколько работает.</strong> При $N \le 1$ — $O(1)$; при $N \ge 2$: $T(N) = T(N-1) + T(N-2)$ (плюс $O(1)$ на сложение); итог $O(2^N)$.</p>
   <p><strong>Шаг 1. Откуда $2^N$.</strong> $T(N-2) \le T(N-1)$, поэтому $T(N) \le 2\,T(N-1) \le 4\,T(N-2) \le \ldots \le 2^N\,T(0)$. Это оценка <em>сверху</em>.</p>
-  <p><strong>Шаг 2. Почему так много.</strong> Нарисуем дерево вызовов для $N = 5$, как на доске: $F(5)$ вызывает $F(4)$ и $F(3)$; $F(4)$ — снова $F(3)$ и $F(2)$; … Одна и та же $F(3)$ считается 2 раза, $F(2)$ — 3 раза, $F(1)$ — 5 раз. Вызовов всего 15, а различных значений всего 6.</p>
-  <p><strong>Шаг 3. Точнее (дополнено).</strong> Число вызовов $C(N)$ удовлетворяет $C(N) = C(N-1) + C(N-2) + 1$, откуда $C(N) = 2F(N+1) - 1$. А $F(N)$ растёт как $\varphi^N$, где $\varphi = \frac{1+\sqrt5}{2} \approx 1{,}618$. Значит, на самом деле $\Theta(1{,}618^N)$ — тоже экспонента, просто основание меньше 2.</p>
-  <div class="ex"><strong>Пример с числами.</strong> $N = 30$: вызовов $2F(31) - 1 \approx 2{,}7 \cdot 10^6$ — ещё быстро. $N = 40$: $\approx 3{,}3 \cdot 10^8$ — секунды. $N = 50$: $\approx 4 \cdot 10^{10}$ — минуты. Каждые $+1$ к $N$ умножают время примерно на 1,6. На доске рядом с $O(2^N)$ написано «$\sim 10^9$» — видимо, имелось в виду, что при $N \approx 30$ оценка $2^{30} \approx 10^9$ — уже предел «за секунду».</div>
+  <p><strong>Шаг 2. Почему так много.</strong> Нарисуем дерево вызовов для $N = 5$: $F(5)$ вызывает $F(4)$ и $F(3)$; $F(4)$ — снова $F(3)$ и $F(2)$; … Одна и та же $F(3)$ считается 2 раза, $F(2)$ — 3 раза, $F(1)$ — 5 раз. Вызовов всего 15, а различных значений всего 6.</p>
+  <p><strong>Шаг 3. Точнее.</strong> Число вызовов $C(N)$ удовлетворяет $C(N) = C(N-1) + C(N-2) + 1$, откуда $C(N) = 2F(N+1) - 1$. А $F(N)$ растёт как $\varphi^N$, где $\varphi = \frac{1+\sqrt5}{2} \approx 1{,}618$. Значит, на самом деле $\Theta(1{,}618^N)$ — тоже экспонента, просто основание меньше 2.</p>
+  <div class="ex"><strong>Пример с числами.</strong> $N = 30$: вызовов $2F(31) - 1 \approx 2{,}7 \cdot 10^6$ — ещё быстро. $N = 40$: $\approx 3{,}3 \cdot 10^8$ — секунды. $N = 50$: $\approx 4 \cdot 10^{10}$ — минуты. Каждые $+1$ к $N$ умножают время примерно на 1,6. Ориентир: $2^{30} \approx 10^9$ — уже предел «за секунду».</div>
 
 <h3>Способ 2. Рекурсия с мемоизацией</h3>
   <pre class="cheat">std::vector&lt;long long&gt; mem(1000, -1);   // -1 = «ещё не считали»
@@ -1788,10 +1804,9 @@ long long F(int N) {
     if (N == 1) return mem[N] = 1;
     return mem[N] = F(N - 1) + F(N - 2);     // посчитали — запомнили
 }</pre>
-  <p>На доске: «Рекурсия с мемоизацией — асимптотика? $O(N)$».</p>
+  <p>Рекурсия с мемоизацией работает за $O(N)$.</p>
   <p><strong>Почему $O(N)$.</strong> Тело функции (два вызова и сложение) выполняется не больше одного раза для каждого $N' = 0, 1, \ldots, N$: после первого раза ответ лежит в <span class="mono">mem</span>, и следующие вызовы возвращаются сразу. Значений $N + 1$, на каждое $O(1)$ работы плюс не больше двух «быстрых» вызовов. Всего вызовов $2N - 1$.</p>
   <div class="ex"><strong>Пример.</strong> $N = 5$: вызовы $F(5), F(4), F(3), F(2), F(1), F(0)$, затем $F(1)$ из <span class="mono">mem</span> (внутри $F(3)$), $F(2)$ из <span class="mono">mem</span> (внутри $F(4)$), $F(3)$ из <span class="mono">mem</span> (внутри $F(5)$). Девять вызовов вместо пятнадцати; при $N = 40$ — 79 вместо $3{,}3 \cdot 10^8$.</div>
-  <p><em>Как смотреть.</em> Переключай «Без памяти» / «С мемоизацией» и $N = 4, 5, 6$. Оранжевые вершины — вызовы, которые ещё не вернули ответ (они лежат в стеке вызовов: это путь от корня до текущей вершины). Тёмные — вернули значение (оно подписано рядом). Пунктирные светлые — ответ взят из <span class="mono">mem</span>, поддерева под ними нет. Внизу в режиме мемоизации — массив <span class="mono">mem</span>.</p>
   <div class="lab" data-lab="fibtree" data-n="5"></div>
 
 <h3>Способ 3. Цикл (ДП снизу вверх)</h3>
@@ -1801,8 +1816,8 @@ mem[0] = 0;  mem[1] = 1;
 for (int i = 2; i &lt;= N; i++)
     mem[i] = mem[i - 1] + mem[i - 2];
 // ответ: mem[N]</pre>
-  <div class="ex"><strong>Где легко ошибиться (было на доске).</strong> На доске написано <span class="mono">mem[0] = mem[1] = 1</span>. При нашем определении ($F(0) = 0$) так нельзя: получится последовательность $1, 1, 2, 3, 5, \ldots$, сдвинутая на один номер, — в <span class="mono">mem[5]</span> окажется 8, а не 5. Нужно <span class="mono">mem[0] = 0, mem[1] = 1</span>.</div>
-  <p><strong>Ещё экономнее: две переменные.</strong> Для следующего числа нужны только два предыдущих, массив целиком не нужен (последний вариант на доске):</p>
+  <div class="ex"><strong>Где легко ошибиться.</strong> Частая ошибка — <span class="mono">mem[0] = mem[1] = 1</span>. При нашем определении ($F(0) = 0$) так нельзя: получится последовательность $1, 1, 2, 3, 5, \ldots$, сдвинутая на один номер, — в <span class="mono">mem[5]</span> окажется 8, а не 5. Нужно <span class="mono">mem[0] = 0, mem[1] = 1</span>.</div>
+  <p><strong>Ещё экономнее: две переменные.</strong> Для следующего числа нужны только два предыдущих, массив целиком не нужен:</p>
   <pre class="cheat">long long pre_prev = 0, prev = 1;     // F(0), F(1)
 for (int i = 2; i &lt;= N; i++) {
     long long next = prev + pre_prev;  // F(i)
@@ -1820,7 +1835,7 @@ for (int i = 2; i &lt;= N; i++) {
     <tr><td>5</td><td>5</td><td>3</td><td>5</td></tr>
   </table></div>
   Ответ $F(5) = 5$. Время $O(N)$, память $O(1)$.</div>
-  <div class="ex"><strong>Не-пример (переполнение, дополнено).</strong> $F(47) = 2\,971\,215\,073 &gt; 2^{31} - 1$ — в <span class="mono">int</span> уже не помещается. В <span class="mono">long long</span> влезает до $F(92)$.</div>
+  <div class="ex"><strong>Не-пример (переполнение).</strong> $F(47) = 2\,971\,215\,073 &gt; 2^{31} - 1$ — в <span class="mono">int</span> уже не помещается. В <span class="mono">long long</span> влезает до $F(92)$.</div>
   <div class="nb-table-scroll"><table>
     <tr><th>Способ</th><th>Время</th><th>Память</th></tr>
     <tr><td>рекурсия в лоб</td><td>$O(2^N)$, точнее $\Theta(\varphi^N)$</td><td>$O(N)$ — глубина стека</td></tr>
@@ -1833,7 +1848,7 @@ for (int i = 2; i &lt;= N; i++) {
 <section class="card" id="dp-calc">
 
 <h2>Задача 2. Калькулятор: +1, ×2, ×3</h2>
-  <p><strong>Условие (с доски).</strong> Калькулятор умеет три операции: $+1$, $\times 2$, $\times 3$. Изначально на нём написано 1. Нужно получить из 1 число $N$. Найти минимальное количество действий, чтобы это сделать. (Сначала на доске были записаны другие операции — «$\times5+3$, $\times2+7$, $\times9+1$» — потом их заменили на $+1, \times2, \times3$.)</p>
+  <p><strong>Условие.</strong> Калькулятор умеет три операции: $+1$, $\times 2$, $\times 3$. Изначально на нём написано 1. Нужно получить из 1 число $N$. Найти минимальное количество действий, чтобы это сделать.</p>
   <p><strong>Идея.</strong> Смотрим на <em>последнюю</em> операцию. Если в конце было $+1$, то перед этим на экране было $N - 1$; если $\times 2$ — было $N/2$ (только если $N$ чётно); если $\times 3$ — было $N/3$ (если $N$ делится на 3). Из этих вариантов берём тот, куда добраться дешевле, и прибавляем 1 за саму последнюю операцию.</p>
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
@@ -1849,7 +1864,7 @@ for (int i = 2; i &lt;= N; i++) {
   Цепочка: $1 \xrightarrow{\times 3} 3 \xrightarrow{\times 3} 9 \xrightarrow{+1} 10$ — три действия.</div>
   <div class="ex"><strong>Не-пример: жадность.</strong> Правило «с конца: дели на 3, если можно, иначе на 2, иначе вычитай 1» для $N = 10$ даёт $10 \to 5 \to 4 \to 2 \to 1$ — четыре действия, а можно за три (см. выше). Жадный выбор «самой сильной» операции не всегда оптимален — поэтому сравниваем все варианты.</div>
 
-<h3>Код с доски: рекурсия с мемоизацией</h3>
+<h3>Код: рекурсия с мемоизацией</h3>
   <pre class="cheat">#include &lt;algorithm&gt;
 #include &lt;vector&gt;
 
@@ -1865,10 +1880,10 @@ int F(int N) {
 
     return ans[N] = mn + 1;
 }</pre>
-  <p><strong>Сколько работает.</strong> На доске сначала «$O$(кол-во значений, которые смотрим в рекурсии)», рядом рисунок числовой прямой $0 \ldots N/3 \ldots N/2 \ldots N$ и в конце «$O(\log n)$». <strong>Для этого кода $O(\log n)$ неверно</strong>: ветка <span class="mono">F(N − 1)</span> одна уже проходит все значения $N, N-1, \ldots, 1$. Благодаря <span class="mono">ans</span> каждое считается один раз, так что время и память — $O(N)$. Возможно, имелось в виду, что сам <em>ответ</em> маленький — $O(\log N)$ действий (например, через двоичную запись: каждый бит стоит не больше двух операций «$\times 2$» и «$+1$»). Но время работы — $O(N)$.</p>
+<p><strong>Сколько работает.</strong> Ветка <span class="mono">F(N − 1)</span> одна уже проходит все значения $N, N-1, \ldots, 1$. Благодаря <span class="mono">ans</span> каждое считается один раз, так что время и память — $O(N)$. Маленький здесь сам <em>ответ</em> — $O(\log N)$ действий (например, через двоичную запись: каждый бит стоит не больше двух операций «$\times 2$» и «$+1$»), а время работы — $O(N)$.</p>
   <div class="ex"><strong>Где легко ошибиться.</strong> 1) Без <span class="mono">ans</span> рекурсия снова станет экспоненциальной: одни и те же числа считаются много раз, как у Фибоначчи. 2) Глубина рекурсии — $N$ (цепочка $F(N) \to F(N-1) \to \ldots \to F(1)$). При $N = 10^6$ стек вызовов может переполниться — см. <a href="#lec3-intro">пункт 5 «оптимизаций»</a>. Поэтому для больших $N$ пишут цикл снизу вверх.</div>
 
-<h3>Цикл снизу вверх и восстановление операций (дополнено)</h3>
+<h3>Цикл снизу вверх и восстановление операций</h3>
   <pre class="cheat">#include &lt;algorithm&gt;
 #include &lt;string&gt;
 #include &lt;vector&gt;
@@ -1889,16 +1904,15 @@ for (int k = N; k != 1; ) {
     else                                            { ops.push_back("+1"); k -= 1; }
 }
 std::reverse(ops.begin(), ops.end());   // теперь в порядке от 1 к N</pre>
-  <p><em>Как смотреть.</em> Клетки — $k = 1, \ldots, N$, в клетке $ans[k]$. На каждом $k$ серые дуги ведут к кандидатам $k-1$, $k/2$, $k/3$, красная — к выбранному. В конце тёмно-зелёная цепочка — восстановленный ответ.</p>
   <div class="lab" data-lab="calcdp" data-n="10"></div>
 </section>
 
 <section class="card" id="dp-grid">
 
 <h2>Задача 3. Робот на поле: максимальная сумма и путь</h2>
-  <p><strong>Условие (с доски).</strong> Есть поле $N \times N$, в каждой клетке лежит число от $-100$ до $100$. Робот стоит в клетке $(0, 0)$ — левый верхний угол, может ходить вправо или вниз. Нужно попасть в правый нижний угол $(N-1, N-1)$ и получить максимальную возможную сумму чисел на пути. Ответ: максимальная сумма <strong>и сам путь</strong> (все клетки, через которые нужно пройти).</p>
+  <p><strong>Условие.</strong> Есть поле $N \times N$, в каждой клетке лежит число от $-100$ до $100$. Робот стоит в клетке $(0, 0)$ — левый верхний угол, может ходить вправо или вниз. Нужно попасть в правый нижний угол $(N-1, N-1)$ и получить максимальную возможную сумму чисел на пути. Ответ: максимальная сумма <strong>и сам путь</strong> (все клетки, через которые нужно пройти).</p>
   <p><strong>Почему не перебор.</strong> Любой путь — это $N-1$ шагов вправо и $N-1$ вниз в каком-то порядке, путей $\binom{2N-2}{N-1}$. При $N = 10$ это $48\,620$, при $N = 20$ — уже $\approx 3{,}5 \cdot 10^{10}$.</p>
-  <p><strong>Идея (рисунок на доске: клетка $(i, j)$, в неё стрелки слева и сверху).</strong> В клетку $(i, j)$ робот может прийти только из $(i, j-1)$ (слева) или из $(i-1, j)$ (сверху). Если мы уже знаем лучшие суммы до этих двух клеток, то лучшая сумма до $(i, j)$ — большая из них плюс $a[i][j]$.</p>
+  <p><strong>Идея.</strong> В клетку $(i, j)$ робот может прийти только из $(i, j-1)$ (слева) или из $(i-1, j)$ (сверху). Если мы уже знаем лучшие суммы до этих двух клеток, то лучшая сумма до $(i, j)$ — большая из них плюс $a[i][j]$.</p>
   <div class="formula-box" role="note">
     <div class="formula-box-label">Формула</div>
     <div class="formula-box-body">$dp[i][j] = \max\bigl(dp[i][j-1],\ dp[i-1][j]\bigr) + a[i][j]$</div>
@@ -1922,10 +1936,10 @@ for (int i = 1; i &lt; n; i++)
         dp[i][j] = std::max(dp[i][j - 1], dp[i - 1][j]) + a[i][j];
 
 // ответ — dp[n - 1][n - 1]</pre>
-  <div class="ex"><strong>Где легко ошибиться (было на доске).</strong> На доске таблица заведена как <span class="mono">vector&lt;vector&lt;int&gt;&gt; dp(n, vector&lt;int&gt;(n, 1e18))</span>. $10^{18}$ не помещается в <span class="mono">int</span> (максимум $\approx 2{,}1 \cdot 10^9$) — это ошибка. Здесь начальное значение вообще не важно: каждая клетка перезаписывается до того, как её читают. Если же «пустое» значение нужно (например, есть запрещённые клетки), для максимума берут очень <em>маленькое</em> число, а не огромное. Суммы тут не больше $2N \cdot 100$, так что <span class="mono">int</span> хватает.</div>
+  <div class="ex"><strong>Где легко ошибиться.</strong> Частая ошибка — завести таблицу как <span class="mono">vector&lt;vector&lt;int&gt;&gt; dp(n, vector&lt;int&gt;(n, 1e18))</span>. $10^{18}$ не помещается в <span class="mono">int</span> (максимум $\approx 2{,}1 \cdot 10^9$). Здесь начальное значение вообще не важно: каждая клетка перезаписывается до того, как её читают. Если же «пустое» значение нужно (например, есть запрещённые клетки), для максимума берут очень <em>маленькое</em> число, а не огромное. Суммы тут не больше $2N \cdot 100$, так что <span class="mono">int</span> хватает.</div>
 
 <h3>Код: сам путь через prev</h3>
-  <p>На доске сначала была попытка <span class="mono">ans.append((i, j − 1))</span> прямо в двойном цикле. Так не работает: цикл проходит <em>все</em> клетки поля, а не только клетки пути, и в момент заполнения ещё неизвестно, войдёт ли клетка в лучший путь. Правильная идея с доски — для каждой клетки запомнить, <strong>откуда</strong> в неё выгоднее прийти, а путь собрать потом, идя от финиша назад (на доске — стрелка вверх вдоль кода).</p>
+<p>Добавлять клетки в путь (<span class="mono">ans.append((i, j − 1))</span>) прямо в двойном цикле нельзя: цикл проходит <em>все</em> клетки поля, а не только клетки пути, и в момент заполнения ещё неизвестно, войдёт ли клетка в лучший путь. Правильная идея — для каждой клетки запомнить, <strong>откуда</strong> в неё выгоднее прийти, а путь собрать потом, идя от финиша назад.</p>
   <pre class="cheat">#include &lt;algorithm&gt;
 #include &lt;utility&gt;
 #include &lt;vector&gt;
@@ -1957,62 +1971,163 @@ for (int i = n - 1, j = n - 1; i != -1; ) {
     i = p.first;  j = p.second;
 }
 std::reverse(path.begin(), path.end());     // теперь от (0, 0) к (n-1, n-1)</pre>
-  <p>На доске в объявлении <span class="mono">prev</span> внутри написано <span class="mono">vector&lt;int&gt;(n, {-1, -1})</span> — это описка: элементы должны быть парами, <span class="mono">vector&lt;pair&lt;int, int&gt;&gt;</span>, как выше. Ветка <span class="mono">else</span> на доске осталась многоточием — она симметрична первой.</p>
+<p>Ветка <span class="mono">else</span> симметрична первой.</p>
   <p><strong>Сложность.</strong> $N^2$ клеток, на каждую одно сравнение: $O(N^2)$ времени и памяти. Восстановление пути — $2N - 1$ шагов.</p>
-  <p><em>Как смотреть.</em> В клетке слева сверху — число $a[i][j]$, справа снизу — $dp[i][j]$, стрелка ← или ↑ — <span class="mono">prev</span>, откуда пришли. Сначала заполняется таблица (оранжевая — текущая клетка, светло-зелёные — с кем сравниваем), потом от правого нижнего угла по стрелкам собирается путь (тёмно-зелёный). «Случайное поле» — числа от −100 до 100, как в условии.</p>
   <div class="lab" data-lab="griddp"></div>
   <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы практика 2</code> — несколько коротких вопросов по Фибоначчи, калькулятору и роботу, потом сверка.</p>
 </section>
 
+<section class="card" id="dsu">
+
+<h2>Лекция 4 (05.11) · система непересекающихся множеств (DSU)</h2>
+<p class="src">Порядок: DSU → объединение по высоте → минимальное остовное дерево (Крускал) → две задачи про острова и мосты.</p>
+  <p><strong>Задача.</strong> Есть набор уникальных значений $0, 1, \ldots, N-1$. Приходят запросы двух видов: <span class="mono">join x y</span> — объединить группы, где лежат $x$ и $y$; <span class="mono">ask x y</span> — лежат ли $x$ и $y$ в одной группе.</p>
+  <div class="def"><strong>Определение.</strong> <em>Система непересекающихся множеств</em> (DSU, disjoint set union; по-русски СНМ) — структура, которая хранит разбиение элементов $0 \ldots N-1$ на группы и умеет две операции: объединить две группы (<span class="mono">join</span>) и проверить, в одной ли группе два элемента (<span class="mono">ask</span>). Группы никогда не пересекаются и не разделяются обратно.</div>
+  <p class="own"><em>Своими словами.</em> Как компании друзей: «дружба» заразна — если 1 дружит с 2, а 2 с 8, то 1, 2 и 8 — одна компания. Спрашивают только «в одной ли компании эти двое?», а компании только сливаются.</p>
+  <div class="ex"><strong>Пример.</strong> $N = 9$, сначала все поодиночке: $\{0\}, \{1\}, \ldots, \{8\}$.<br>
+  join 4 8 → $\{4, 8\}$; join 1 2 → $\{1, 2\}$; join 2 8 → $\{1, 2, 4, 8\}$.<br>
+  ask 2 5 → «нет»: 2 и 5 в разных группах. А ask 1 4 → «да», хотя напрямую 1 и 4 никто не объединял.</div>
+
+<h3>Как реализовать</h3>
+  <ul>
+    <li><strong>Через <span class="mono">set</span></strong> (у каждой группы своё множество, при join перекладываем меньшее в большее) — $O(n \log n)$, можно лучше.</li>
+    <li><strong>Хэш-таблица</strong> «элемент → номер группы» — «не подходит»: при join пришлось бы переписать номер у всех элементов одной из групп.</li>
+    <li><strong>Деревья</strong> (с весом/высотой) — «лучше». Это и есть DSU.</li>
+  </ul>
+  <div class="def"><strong>Определение.</strong> Каждая группа — дерево, у каждого элемента хранится <span class="mono">parent[x]</span> — родитель. Если <span class="mono">parent[x] = x</span>, то $x$ — <em>корень</em> дерева. Корень — «представитель» группы: два элемента в одной группе ⇔ у них один корень.</div>
+  <p class="own"><em>Своими словами.</em> Каждый знает только своего «начальника». Чтобы узнать главного в компании, идёшь по начальникам вверх, пока не дойдёшь до того, кто сам себе начальник.</p>
+  <div class="ex"><strong>Пример.</strong> <span class="mono">parent = [0, 2, 8, 3, 8, 5, 6, 7, 8]</span>: у 1 родитель 2, у 2 — 8, у 4 — 8, а 8 — корень. Значит, $\{1, 2, 4, 8\}$ — одно дерево с корнем 8, остальные элементы — корни самих себя.</div>
+  <pre class="cheat">std::vector&lt;int&gt; p(N);                    // parent
+for (int i = 0; i &lt; N; i++) p[i] = i;     // все сами себе корни
+
+int find(int x) {                         // возвращает корень
+    if (p[x] == x) return x;
+    return find(p[x]);
+}
+bool ask(int x, int y) { return find(x) == find(y); }
+void join(int x, int y) {                 // наивно: корень одного — сын корня другого
+    x = find(x);  y = find(y);
+    if (x != y) p[x] = y;
+}</pre>
+  <p>join — объединение деревьев: корень одного становится родителем другого, $O(1)$; ask — сравнить корни, $O(n)$. Само подвешивание — одно присваивание, но перед ним нужны два <span class="mono">find</span>, а <span class="mono">find</span> идёт по цепочке родителей. Если дерево вытянулось в цепочку длины $n$, один <span class="mono">find</span> стоит $O(n)$.</p>
+  <div class="ex"><strong>Не-пример (плохой случай).</strong> join 0 1, join 0 2, join 0 3, … при наивном правиле «корень $x$ под корень $y$»: 0 под 1, потом корень 1 под 2, потом корень 2 под 3… Получается цепочка $0 \to 1 \to 2 \to \ldots$, и <span class="mono">find(0)</span> проходит её целиком. Посмотри в анимации: кнопка «Плохой случай: цепочка».</div>
+
+<h3>Какое дерево к какому подвешивать: высота h</h3>
+  <p>Как понять, какое дерево к какому подвешивать? Храним $h[x]$ ≥ высоты дерева с корнем в $x$. Правило — подвешивать <strong>низкое дерево под высокое</strong>:</p>
+  <pre class="cheat">std::vector&lt;int&gt; h(N, 0);                // h[x] — высота (ранг) дерева с корнем x
+
+void join(int x, int y) {
+    x = find(x);
+    y = find(y);
+    if (x == y) return;                   // уже вместе (без этой строки h[y] может вырасти зря)
+    if (h[x] > h[y]) {
+        p[y] = x;                         // низкое (y) — под высокое (x); высота x не меняется
+    } else {
+        p[x] = y;
+        if (h[x] == h[y]) h[y]++;         // одинаковые высоты: дерево y стало на 1 выше
+    }
+}</pre>
+  <p><strong>Почему высота растёт медленно.</strong> Высота увеличивается только при объединении двух деревьев одинаковой высоты $k$, и тогда в новом дереве не меньше чем вдвое больше вершин. По индукции: дерево высоты $k$ содержит хотя бы $2^k$ вершин. Вершин всего $N$, значит высота не больше $\log_2 N$ — и <span class="mono">find</span> работает за $O(\log N)$.</p>
+  <div class="ex"><strong>Пример.</strong> Два одиночки (высота 0) → дерево из 2 вершин высоты 1. Два таких → 4 вершины, высота 2. Чтобы получить высоту 3, нужно уже 8 вершин. При $N = 10^6$ высота не больше 19.</div>
+
+<h3>Сжатие путей</h3>
+<p>Сжатие путей: найдя корень, перецепляем все вершины пройденного пути прямо к нему. Первый <span class="mono">find</span> может быть долгим ($O(n)$), зато следующие от тех же вершин — за один шаг: $O(n) + O(1) + \ldots + O(1) \approx O(1)$ в среднем.</p>
+  <pre class="cheat">int find(int x) {
+    if (p[x] == x) return x;
+    return p[x] = find(p[x]);    // запоминаем корень у каждой вершины пути
+}</pre>
+  <div class="formula-box" role="note">
+    <div class="formula-box-label">Формула</div>
+    <div class="formula-box-body">ранг $+$ сжатие путей: $m$ операций за $O(m\,\alpha(N))$, $\;\alpha(N) \le 4$ при любых реальных $N$</div>
+  </div>
+  <p class="src">$\alpha$ — обратная функция Аккермана, растёт невероятно медленно. Это известный факт без доказательства; на практике считают, что операция DSU — $O(1)$ амортизированно.</p>
+  <div class="lab" data-lab="dsu"></div>
+</section>
+
+<section class="card" id="mst">
+
+<h2>Минимальное остовное дерево: алгоритм Крускала</h2>
+  <div class="def"><strong>Определение.</strong> Пусть дан связный неориентированный граф с весами на рёбрах. <em>Остовное дерево</em> — набор рёбер, который соединяет все вершины и не содержит циклов (это дерево из $V - 1$ ребра). <em>Минимальное остовное дерево</em> (MST, minimum spanning tree) — остовное дерево с наименьшей суммой весов.</div>
+  <p class="own"><em>Своими словами.</em> Есть города и возможные дороги с ценой постройки. Нужно построить дороги так, чтобы из любого города можно было доехать в любой, и заплатить как можно меньше. Лишние дороги, замыкающие круг, не нужны — без них всё равно связно.</p>
+  <div class="ex"><strong>Пример.</strong> Вершины 1–5, рёбра с весами: 2–3: 1, 2–5: 2, 1–4: 3, 3–5: 4, 1–3: 5, 3–4: 7, 1–2: 10. Остовных деревьев у этого графа много, но минимальный вес — 11 (ниже).</div>
+  <div class="def"><strong>Алгоритм Крускала.</strong> 1) Выписать все рёбра. 2) Отсортировать по возрастанию веса. 3) Идти по рёбрам по порядку: если концы ребра лежат в <em>разных</em> компонентах (проверка через DSU: <span class="mono">find(a) != find(b)</span>) — взять ребро и сделать <span class="mono">join</span>; иначе пропустить (ребро замкнуло бы цикл).</div>
+  <div class="ex"><strong>Прогон.</strong><br>
+  2–3 (1): разные компоненты → берём.<br>
+  2–5 (2): разные → берём.<br>
+  1–4 (3): разные → берём.<br>
+  3–5 (4): 3 и 5 уже связаны через 2 → <strong>пропуск</strong>, иначе цикл 2–3–5.<br>
+  1–3 (5): разные ($\{1, 4\}$ и $\{2, 3, 5\}$) → берём. Взято $4 = V - 1$ ребра — готово.<br>
+  Дерево: 2–3, 2–5, 1–4, 1–3, вес $1 + 2 + 3 + 5 = 11$.</div>
+  <p><strong>Почему жадность здесь верна (идея).</strong> Возьмём любой разрез вершин на две части. Самое лёгкое ребро через разрез можно включить в какое-то минимальное дерево: если в дереве его нет, добавим — появится цикл, этот цикл пересекает разрез ещё каким-то ребром, не легче нашего; выкинем то ребро — вес не вырос. Крускал всегда берёт самое лёгкое ребро между текущей компонентой и остальными, поэтому ни разу не ошибается.</p>
+  <p><strong>Сложность.</strong> 1) список рёбер — $E$; 2) сортировка — $E \log E$; 3) DSU — $E \cdot O(1)$ (амортизированно). Итого $O(E \log E)$: дольше всего сортировка.</p>
+  <pre class="cheat">struct Edge { int a, b, w; };
+
+long long kruskal(int n, std::vector&lt;Edge&gt; edges) {
+    std::sort(edges.begin(), edges.end(),
+              [](const Edge&amp; x, const Edge&amp; y) { return x.w &lt; y.w; });
+    // p, h, find, join — из блока DSU, на n вершин
+    long long total = 0;
+    int taken = 0;
+    for (const Edge&amp; e : edges) {
+        if (find(e.a) != find(e.b)) {     // разные компоненты — цикла не будет
+            join(e.a, e.b);
+            total += e.w;
+            if (++taken == n - 1) break;  // дерево готово
+        }
+    }
+    return total;                          // если taken &lt; n - 1 — граф несвязный
+}</pre>
+  <div class="ex"><strong>Где легко ошибиться.</strong> Проверять «нет ли цикла» обходом графа на каждом ребре — это $O(V)$ на ребро и $O(EV)$ всего. Ровно эту проверку DSU делает почти за $O(1)$.</div>
+  <div class="lab" data-lab="kruskal"></div>
+</section>
+
+<section class="card" id="dsu-tasks">
+
+<h2>Задачи на DSU</h2>
+
+<h3>1. Удаление мостов и вопросы о пути</h3>
+  <p><strong>Условие.</strong> Острова $1, \ldots, N$, мосты — список пар $[(x, y), \ldots, (a, b)]$, мостов $M \ge N - 1$, и сначала между любыми двумя островами есть путь. Приходят $Q$ запросов двух видов: 1) удалить мост $x$–$y$; 2) есть ли путь между $x$ и $y$? Можно ли за $O(Q)$?</p>
+  <p><strong>Идея: пойти от обратного.</strong> DSU умеет только <em>объединять</em>, а удалять не умеет. Но если прокрутить запросы с конца, удаление моста превращается в его <em>добавление</em>, то есть в <span class="mono">join</span>.</p>
+  <p><strong>Решение по шагам.</strong></p>
+  <ol>
+    <li>Прочитать все запросы заранее (задача <em>офлайн</em> — можно отвечать не сразу).</li>
+    <li>Найти мосты, которые не удаляются ни одним запросом, и сделать для них <span class="mono">join</span> — это состояние графа <em>после</em> всех запросов.</li>
+    <li>Идти по запросам с последнего к первому: запрос «удалить $x$–$y$» → <span class="mono">join(x, y)</span> (в прошлом этот мост был); запрос «есть ли путь» → <span class="mono">ask(x, y)</span>, ответ записать.</li>
+    <li>Вывести записанные ответы в исходном порядке (развернуть).</li>
+  </ol>
+  <p><strong>Почему верно.</strong> Когда при обратном проходе мы дошли до запроса номер $t$, в DSU объединены ровно мосты, которые существуют в момент $t$: никогда не удаляемые и те, что удалят позже $t$. Значит, <span class="mono">ask</span> отвечает про граф в момент $t$.</p>
+  <p><strong>Сложность.</strong> $O((M + Q)\,\alpha(N))$ — почти $O(M + Q)$. Чтобы по запросу «удалить $x$–$y$» быстро понять, какой это мост, удобно хранить мосты в <span class="mono">set</span> / <span class="mono">map</span> пар — тогда добавляется $\log$.</p>
+  <div class="ex"><strong>Пример.</strong> Мосты 1–2, 2–3, 3–4, 1–3 (цепочка $1 - 2 - 3 - 4$ и дуга 1–3). Запросы: (а) удалить 2–3; (б) путь 2–4?; (в) удалить 1–3; (г) путь 2–4?<br>
+  Никогда не удаляются: 1–2, 3–4 → join(1, 2), join(3, 4).<br>
+  С конца: (г) ask(2, 4): $\{1, 2\}$ и $\{3, 4\}$ → «нет». (в) join(1, 3) → $\{1, 2, 3, 4\}$. (б) ask(2, 4) → «да». (а) join(2, 3) — уже вместе.<br>
+  Ответы в исходном порядке: (б) «да», (г) «нет». Проверка: после удаления 2–3 путь 2–1–3–4 есть; после удаления ещё 1–3 — нет.</div>
+  <div class="ex"><strong>Где легко ошибиться.</strong> Если мост удаляют, а потом спрашивают, ответ зависит от времени — нельзя просто построить DSU по всем мостам. И нельзя «откатывать» join в обычном DSU: со сжатием путей родители уже перепутаны.</div>
+
+<h3>2. Сколько мостов хватит, чтобы всё связалось</h3>
+  <p><strong>Условие.</strong> $N$ островов, есть список из $M$ мостов, которые хотим построить по очереди. После какого по счёту моста между любыми двумя островами впервые появится путь?</p>
+  <p><strong>Идея.</strong> Острова связаны ⇔ осталась одна компонента. Каждый мост, соединяющий <em>разные</em> компоненты, уменьшает число компонент на 1, а мост внутри одной компоненты ничего не меняет. Изначально компонент $N$, значит нужно ровно $N - 1$ «полезных» мостов.</p>
+  <pre class="cheat">int merges = 0;                                     // он же last_diff
+for (int k = 0; k &lt; M; k++) {
+    auto [x, y] = bridges[k];
+    if (find(x) != find(y)) {          // ask x y — «нет»
+        join(x, y);
+        merges++;
+        if (merges == N - 1) { answer = k + 1; break; }   // мостов построено k + 1
+    }
+}
+// если цикл кончился раньше — связать все острова этими мостами нельзя</pre>
+  <div class="ex"><strong>Пример («2-й способ»).</strong> $N = 4$, мосты по очереди: 1–2, 2–3, 3–1, 3–4.<br>
+  1–2 → разные, last_diff = 1; 2–3 → разные, last_diff = 2; 3–1 → уже вместе, last_diff остаётся 2; 3–4 → разные, last_diff = 3 = $N - 1$.<br>
+  Ответ: хватит <strong>4</strong> мостов (третий оказался лишним).</div>
+<p class="src">Другой способ: хранить размер компоненты у корня (<span class="mono">sz[root]</span>) и остановиться, когда размер компоненты станет $N$.</p>
+  <p><strong>Сложность.</strong> $O(M\,\alpha(N))$ — один проход по мостам.</p>
+  <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы лекция 4</code> — несколько коротких вопросов по DSU, Крускалу и задачам про мосты, потом сверка.</p>
+</section>
+
 <section class="card" id="cheat">
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест алгоритмы сем22</code> — несколько коротких вопросов по всему блоку, потом сверка.</p>
-
-<h2>Что взять с собой</h2>
-  <div class="cheat">
-    <ul>
-      <li>Сравниваем операции от n, не секунды на глаз; линейка ~10⁸–10⁹ оп/сек</li>
-      <li>Треугольник вложенных циклов → n(n+1)/2 = Θ(n²)</li>
-      <li>Θ — зажат между C₁g и C₂g; O — только сверху; n=O(n²) правда</li>
-      <li>Число = многочлен в точке «основание»; умножение ↔ умножение многочленов</li>
-      <li>4 умножения половин → n²; Карацуба: 3 умножения → n^{log₂ 3}≈n¹·⁵⁸</li>
-      <li>AD+BC = (A+B)(C+D) − AC − BD</li>
-      <li>Дерево: работа уровня nᶜ qⁱ; q=a/bᶜ</li>
-      <li>q&lt;1 → nᶜ; q=1 → nᶜ log n; q&gt;1 → n^{log_b a}</li>
-      <li>i*=2 → log; два вложенных до n → n²; n + log внутри → n log n</li>
-    </ul>
-    <p><strong>Лекция 3</strong></p>
-    <ul>
-      <li>Бинпоиск: <span class="mono">L = −1, R = n</span>, держим «в L ноль, в R единица», пока $R - L &gt; 1$; ответ R; $\approx \log_2(n+1)$ итераций</li>
-      <li><span class="mono">lower_bound(x)</span> — первый $a[i] \ge x$; <span class="mono">upper_bound(x)</span> — первый $a[i] &gt; x$; их разность = сколько раз встречается $x$</li>
-      <li>Сумма длины от L до R: $best(r) = sum[r+1] - \min sum[l]$ по окну $l \in [r+1-R,\ r+1-L]$ → минимум в окне деком, $O(n)$</li>
-      <li>Амортизация: $a_i = t_i + \Delta\varphi_i$, $\sum t_i = \sum a_i - (\varphi_m - \varphi_0)$; вектор: $\varphi = 2\,size - cap$, $a_i = 3$</li>
-      <li>Куча: дети $2i+1$, $2i+2$, родитель $\lfloor (i-1)/2 \rfloor$; min за $O(1)$; add (sift up) и extract_min (sift down к меньшему ребёнку) за $O(\log n)$; построение снизу вверх $O(n)$</li>
-      <li>Вставками: $O(n^2)$, на отсортированном $O(n)$; обменов = инверсий</li>
-      <li>Быстрая: разбиение по опорному; в среднем $O(n\log n)$, худший $O(n^2)$ (отсортированный массив при опорном «последний»)</li>
-      <li>Слиянием: $\log_2 n$ уровней по $O(n)$ → всегда $O(n \log n)$, память $O(n)$, устойчива</li>
-      <li>Кучей: построить $O(n)$ + $n$ раз extract_min → $O(n\log n)$ всегда</li>
-      <li>Подсчётом: <span class="mono">cnt[a[i]]++</span>, выписать по ящикам → $O(n + C)$, без сравнений; только если $C$ небольшое</li>
-      <li>Корневая: блоки по $k = \sqrt n$, суммы $b[i/k]$; запрос $O(\sqrt n)$, изменение $O(1)$, построение $O(n)$</li>
-    </ul>
-    <p><strong>Практика 2 · ДП</strong></p>
-    <ul>
-      <li>ДП = состояние + база + переход + порядок + где ответ; время = число состояний × работа на переход</li>
-      <li>Фибоначчи: рекурсия в лоб $O(2^N)$ (точнее $\Theta(1{,}618^N)$, вызовов $2F(N+1)-1$); с <span class="mono">mem</span> — $O(N)$; цикл с двумя переменными — $O(N)$ времени, $O(1)$ памяти; база <span class="mono">mem[0] = 0</span>, а не 1</li>
-      <li>Калькулятор: $ans[N] = 1 + \min(ans[N-1], ans[N/2], ans[N/3])$ по допустимым; жадность ошибается ($N = 10$: 3, а не 4); время $O(N)$, а не $O(\log N)$</li>
-      <li>Робот: $dp[i][j] = \max(dp[i][j-1], dp[i-1][j]) + a[i][j]$, $O(N^2)$; путь — через <span class="mono">prev</span> от финиша назад и <span class="mono">reverse</span></li>
-    </ul>
-  </div>
 </section>
 
-<section class="card" id="video">
-
-<h2>Видео по теме</h2>
-  <p class="video"><a href="https://www.youtube.com/watch?v=v4cd1O4zkGw" target="_blank" rel="noopener">YouTube — Master theorem (лекция 1)</a></p>
-  <p class="video"><a href="https://www.youtube.com/watch?v=rEBsGRunses" target="_blank" rel="noopener">YouTube — префиксные суммы и два указателя (к лекции 2)</a></p>
-  <p class="src">Если вторая ссылка устарела — ищи «Тренировки по алгоритмам префиксные суммы два указателя».</p>
-  <p class="video"><a href="https://www.youtube.com/watch?v=sFPHaUHSw8s" target="_blank" rel="noopener">YouTube — Павел Маврин, «АиСД S01E02. Структуры данных. Куча. Сортировка кучей» (к лекции 3)</a></p>
-  <p class="video"><a href="https://www.youtube.com/watch?v=VgPAFaEYEo4" target="_blank" rel="noopener">YouTube — Тимофей Хирьянов, «Динамическое программирование сверху и снизу» (к практике 2)</a></p>
-</section>
 </main>
   <script src="./site.js?v=4"></script>
 </body>
