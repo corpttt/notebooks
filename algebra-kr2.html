@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru" data-nb-id="algebra-kr2" data-nb-title="Алгебра · КР-2" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Алгебра · КР-2</title>
+<style>
+:root {
+  --bg: #f4f1ea; --card: #fff; --ink: #1a1a18; --muted: #6a655c;
+  --line: #e0dbd0; --acc: #1f5c4d; --acc2: #8a4b1f; --soft: #e7f2ee;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 16px/1.55 "Segoe UI", "Cambria Math", "Segoe UI Symbol", system-ui, sans-serif;
+  color: var(--ink); background: var(--bg);
+}
+header {
+  max-width: 48rem; margin: 0 auto; padding: 1.25rem 1.25rem 0.5rem;
+}
+h1 { font-size: 1.4rem; margin: 0 0 0.35rem; }
+.note { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.75rem; }
+main { max-width: 48rem; margin: 0 auto 3rem; padding: 0 1.25rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 1rem 1.15rem 1.25rem; margin-bottom: 0.9rem;
+  border-top: 3px solid var(--acc);
+}
+.prose h1 { font-size: 1.35rem; margin: 0.2rem 0 0.8rem; }
+.prose h2 {
+  font-size: 1.15rem; margin: 1.6rem 0 0.55rem; padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--line); color: var(--acc);
+}
+.prose h3 { font-size: 1.02rem; margin: 1.2rem 0 0.4rem; }
+.prose p { margin: 0.55rem 0; }
+.prose ul, .prose ol { margin: 0.4rem 0 0.55rem 1.2rem; padding: 0; }
+.prose li { margin: 0.2rem 0; }
+.prose hr { border: none; border-top: 1px solid var(--line); margin: 1.4rem 0; }
+.prose blockquote {
+  margin: 0.75rem 0; padding: 0.55rem 0.85rem; background: #f7f5f0;
+  border-left: 3px solid var(--line); color: var(--muted);
+}
+.prose a { color: var(--acc); }
+table {
+  border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.94rem;
+}
+th, td {
+  border: 1px solid var(--line); padding: 0.4rem 0.55rem;
+  text-align: left; vertical-align: top;
+}
+th { background: #f0eee8; }
+code {
+  background: #efece4; padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.9em;
+}
+pre {
+  background: #1e1e1e; color: #eee; padding: 0.85rem 1rem;
+  overflow: auto; border-radius: 8px; font-size: 0.88rem;
+}
+.formula-box {
+  margin: 0.9rem 0; padding: 0.85rem 1rem 0.95rem; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--acc) 35%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 8%, var(--card)), var(--card));
+}
+.formula-box-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--acc); margin-bottom: 0.35rem;
+}
+.formula-box-body {
+  font-family: "Cambria Math", "Segoe UI Symbol", "Segoe UI", serif;
+  font-size: 1.12rem; line-height: 1.45;
+}
+.fig {
+  margin: 0.85rem 0; padding: 0.65rem; background: #faf9f6;
+  border: 1px dashed var(--line); border-radius: 10px;
+  overflow-x: auto; text-align: center;
+}
+.fig figcaption {
+  color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; text-align: left;
+}
+.figs { display: grid; gap: 0.65rem; margin: 0.85rem 0; }
+@media (min-width: 640px) { .figs.two { grid-template-columns: 1fr 1fr; } }
+.prose svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+html[data-theme="dark"] {
+  --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e; --line: #30363d;
+}
+html[data-theme="dark"] .fig { background: #12171e; }
+.katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+</style>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
+<script src="./общее/тетрадь.js?v=f7721170" defer></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
+
+
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Тетради">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./site.css?v=4">
+</head>
+<body>
+<header>
+  <h1>Алгебра · КР-2</h1>
+  <p class="note">Комплексные числа · индекс АП-КР2</p>
+</header>
+<main>
+  <div class="card">
+    <div class="prose">
+<h1>Алгебра · КР-2: комплексные числа (<code>АП-КР2</code>)</h1>
+<p><em>Группа 26.Б83-мм · практика Королева А. В.</em></p>
+<p><strong>Что в этом файле.</strong> Три типа заданий, которые показали как примеры к контрольной: большая степень частного, корень из частного и область на комплексной плоскости. Каждое разобрано полностью. Перед ними — опорные формулы, без которых эти задачи не решить.</p>
+<h2 id="оглавление">Оглавление</h2>
+<ul>
+<li><a href="#0-материалы">0. Материалы</a></li>
+<li><a href="#опорные-формулы">Опорные формулы</a></li>
+<li><a href="#к1-степень-в-числителе-и-знаменателе-ап-кр2-к1">К1. Степень в числителе и знаменателе (АП-КР2-К1)</a></li>
+<li><a href="#к2-корень-четвёртой-степени-из-частного-ап-кр2-к2">К2. Корень четвёртой степени из частного (АП-КР2-К2)</a></li>
+<li><a href="#к3-область-на-комплексной-плоскости-ап-кр2-к3">К3. Область на комплексной плоскости (АП-КР2-К3)</a></li>
+</ul>
+<hr>
+<h2 id="0-материалы">0. Материалы</h2>
+<ul>
+<li>Записи практики 06.11 с примерами заданий КР: <a href="материалы/практика-Б83/конспект-практ5-06.11-с-заданиями-кр2.pdf"><code>материалы/практика-Б83/конспект-практ5-06.11-с-заданиями-кр2.pdf</code></a>.</li>
+<li>Разборы того же типа в практике: <a href="тетрадь-практика.md"><code>тетрадь-практика.md</code></a>, раздел П5 (<code>АП-П5</code>).</li>
+<li>Теория: <a href="тетрадь-теория.md"><code>тетрадь-теория.md</code></a>, §4 (<code>АТ-§4</code>): модуль и аргумент 4.5, неравенство треугольника 4.6, Муавр 4.7, корни 4.8.</li>
+</ul>
+<hr>
+<h2 id="опорные-формулы">Опорные формулы</h2>
+<p><strong>Тригонометрическая и показательная форма.</strong> Для \(z=a+bi\neq0\):<br>
+\[
+z=r(\cos\varphi+i\sin\varphi)=re^{i\varphi},\qquad r=|z|=\sqrt{a^2+b^2}.
+\]</p>
+<p><strong>Аргумент по четвертям.</strong></p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">\[
+\varphi=\begin{cases}
+\operatorname{arctg}\dfrac{b}{a}, &amp; a&gt;0,\\[2mm]
+\operatorname{arctg}\dfrac{b}{a}\pm\pi, &amp; a&lt;0,\\[2mm]
+\dfrac{\pi}{2}, &amp; a=0,\ b&gt;0,\\[2mm]
+-\dfrac{\pi}{2}, &amp; a=0,\ b&lt;0.
+\end{cases}
+\]</div>
+</div>
+
+<p><em>Своими словами.</em> \(\operatorname{arctg}\) «видит» только правую полуплоскость. Если точка левее мнимой оси (\(a&lt;0\)), к арктангенсу добавляют \(\pi\) (или вычитают — это тот же угол с точностью до полного оборота).</p>
+<p><strong>Пример.</strong> \(-1-i\sqrt3\): \(r=\sqrt{1+3}=2\); \(a&lt;0\), поэтому \(\varphi=\operatorname{arctg}\sqrt3-\pi=\frac\pi3-\pi=-\frac{2\pi}{3}\). Точка в III четверти, угол \(-120^\circ\) — сходится.</p>
+<p><strong>Действия.</strong></p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">\[
+r_1e^{i\varphi_1}\cdot r_2e^{i\varphi_2}=r_1r_2\,e^{i(\varphi_1+\varphi_2)},\qquad
+\frac{r_1e^{i\varphi_1}}{r_2e^{i\varphi_2}}=\frac{r_1}{r_2}\,e^{i(\varphi_1-\varphi_2)},\qquad
+\bigl(re^{i\varphi}\bigr)^n=r^ne^{in\varphi}.
+\]</div>
+</div>
+
+<p><em>Своими словами.</em> Модули перемножаются (делятся, возводятся в степень), углы складываются (вычитаются, умножаются на \(n\)). Последняя формула — формула Муавра.</p>
+<p><strong>Корни степени \(n\).</strong> Все решения уравнения \(z^n=re^{i\varphi}\):</p>
+<div class="formula-box" role="note">
+  <div class="formula-box-label">Формула</div>
+  <div class="formula-box-body">\[
+z_k=\sqrt[n]{r}\;e^{\,i\frac{\varphi+2\pi k}{n}},\qquad k=0,1,\ldots,n-1.
+\]</div>
+</div>
+
+<p><em>Своими словами.</em> Модуль у всех корней один — обычный арифметический корень \(\sqrt[n]{r}\). Первый угол \(\frac{\varphi}{n}\), каждый следующий на \(\frac{2\pi}{n}\) больше. Корни — вершины правильного \(n\)-угольника.</p>
+<p><strong>Пример.</strong> \(\sqrt[4]{-4}\): \(r=4\), \(\varphi=\pi\); \(\sqrt[4]4=\sqrt2\), углы \(45^\circ,135^\circ,225^\circ,315^\circ\): \(\pm1\pm i\) (разбор — <code>АП-П5</code>, 5.9).</p>
+<p><strong>Модуль как расстояние.</strong> \(|z-a|\) — расстояние между точками \(z\) и \(a\) на плоскости; \(\Bigl|\dfrac{z_1}{z_2}\Bigr|=\dfrac{|z_1|}{|z_2|}\).</p>
+<p><strong>Пример.</strong> \(|(3+4i)-0|=5\) — расстояние от нуля до точки \((3,4)\). \(|z-2|=1\) — окружность радиуса \(1\) с центром в точке \(2\).</p>
+<hr>
+<h2 id="к1-степень-в-числителе-и-знаменателе-ап-кр2-к1">К1. Степень в числителе и знаменателе (<code>АП-КР2-К1</code>)</h2>
+<p><strong>Задача.</strong> Вычислить \(\dfrac{(-1-i\sqrt3)^{15}}{(1+i)^{20}}\).</p>
+<p><strong>Идея.</strong> Перевести основания в показательную форму, возвести по Муавру и поделить. Раскрывать скобки 15 и 20 раз нельзя: слишком долго.</p>
+<p><strong>План решения — тип «Частное больших степеней».</strong></p>
+<p><em>Как узнать:</em> дробь, в числителе и знаменателе — комплексные числа в больших степенях.</p>
+<p><em>План:</em></p>
+<ol>
+<li>Каждое основание — в вид \(re^{i\varphi}\); угол брать <strong>по четверти</strong> (формула аргумента выше).</li>
+<li>Муавр для числителя и знаменателя отдельно.</li>
+<li>Сократить углы на целое число оборотов \(2\pi\) — <em>зачем:</em> углы станут табличными, а часто и вовсе \(0\) или \(\pi\).</li>
+<li>Поделить: модули поделить, углы вычесть.</li>
+</ol>
+<p><em>Почему работает:</em> в показательной форме степень и деление — это арифметика модулей и углов (опорные формулы).</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li><em>Числитель.</em> \(-1-i\sqrt3=2e^{-i\,2\pi/3}\) (см. пример к формуле аргумента).<br>
+   \((-1-i\sqrt3)^{15}=2^{15}e^{-i\,\frac{2\pi}{3}\cdot15}=2^{15}e^{-10\pi i}\). Угол \(-10\pi\) — пять полных оборотов, то есть \(e^{-10\pi i}=1\). Числитель равен \(2^{15}\).</li>
+<li><em>Знаменатель.</em> \(1+i=\sqrt2\,e^{i\pi/4}\).<br>
+   \((1+i)^{20}=(\sqrt2)^{20}e^{i\,\frac\pi4\cdot20}=2^{10}e^{5\pi i}\). Угол \(5\pi=4\pi+\pi\), поэтому \(e^{5\pi i}=e^{i\pi}=-1\). Знаменатель равен \(-2^{10}\).</li>
+<li><em>Частное.</em> \(\dfrac{2^{15}}{-2^{10}}=-2^5=-32\).</li>
+</ol>
+<p><strong>Проверка.</strong> Другим путём, через малые степени.</p>
+<ul>
+<li>\((1+i)^2=1+2i+i^2=2i\), поэтому \((1+i)^{20}=(2i)^{10}=2^{10}i^{10}=2^{10}\cdot(-1)\), так как \(i^{10}=i^8\cdot i^2=-1\) ✓.</li>
+<li>\((-1-i\sqrt3)^2=1+2i\sqrt3+3i^2=-2+2i\sqrt3\); умножим ещё раз на \(-1-i\sqrt3\): \((-2+2i\sqrt3)(-1-i\sqrt3)=2+2i\sqrt3-2i\sqrt3-2\cdot3i^2=2+6=8\). Значит, \((-1-i\sqrt3)^3=8\) и \((-1-i\sqrt3)^{15}=8^5=2^{15}\) ✓.</li>
+</ul>
+<p><strong>Ответ.</strong> \(-32\).</p>
+<p><strong>Где легко ошибиться.</strong></p>
+<ul>
+<li>Взять угол \(-1-i\sqrt3\) как \(\operatorname{arctg}\sqrt3=\frac\pi3\), забыв про \(a&lt;0\). Тогда числитель получится \(2^{15}e^{5\pi i}=-2^{15}\), и ответ станет \(+32\) — неверный знак.</li>
+<li>Посчитать \((\sqrt2)^{20}\) как \(2^{20}\). На самом деле \((\sqrt2)^{20}=2^{10}\).</li>
+</ul>
+<p><strong>А если…</strong> в задаче \((1-i)^{20}\)? Угол \(-\frac\pi4\), степень даёт \(e^{-5\pi i}=-1\) — тот же знаменатель \(-2^{10}\). Так бывает потому, что \(1-i\) и \(1+i\) сопряжены, а \(-2^{10}\) вещественно.</p>
+<hr>
+<h2 id="к2-корень-четвёртой-степени-из-частного-ап-кр2-к2">К2. Корень четвёртой степени из частного (<code>АП-КР2-К2</code>)</h2>
+<p><strong>Задача.</strong> Вычислить \(\sqrt[4]{\dfrac{27-54i}{2+i}}\).</p>
+<p><strong>Идея.</strong> Сначала упростить подкоренное выражение: поделить, домножив на сопряжённое к знаменателю. Получается простое число \(-27i\). Затем найти все четыре корня по формуле корней степени \(n\).</p>
+<p><strong>План решения — тип «Корень степени \(n\) из дроби».</strong></p>
+<p><em>Как узнать:</em> \(\sqrt[n]{\ \cdot\ }\), а под корнем — частное (или произведение) комплексных чисел в алгебраической форме.</p>
+<p><em>План:</em></p>
+<ol>
+<li>Поделить в алгебраической форме: \(\dfrac{z_1}{z_2}=\dfrac{z_1\bar z_2}{|z_2|^2}\) — <em>зачем:</em> знаменатель станет вещественным, а результат часто сокращается до «красивого» числа.</li>
+<li>Результат \(w\) — в показательную форму \(re^{i(\varphi+2\pi k)}\).</li>
+<li>\(z_k=\sqrt[n]{r}\,e^{\,i\frac{\varphi+2\pi k}{n}}\), \(k=0,\ldots,n-1\).</li>
+<li>Если углы не табличные — ответ оставить в тригонометрической форме или получить алгебраическую через половинный угол.</li>
+</ol>
+<p><em>Почему работает:</em> \(z_2\bar z_2=|z_2|^2\) — вещественное положительное число (<code>АТ-§4</code>, 4.5); дальше — формула корней из опорных формул.</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li><em>Деление.</em> \((2+i)(2-i)=4-i^2=5\).<br>
+$$
+\frac{27-54i}{2+i}=\frac{(27-54i)(2-i)}{5}=\frac{54-27i-108i+54i^2}{5}=\frac{54-54-135i}{5}=\frac{-135i}{5}=-27i.
+$$</li>
+<li><em>Показательная форма.</em> \(-27i\) лежит на отрицательной мнимой полуоси: \(r=27\), \(\varphi=-\frac\pi2\). Итак, \(-27i=27e^{i\left(-\frac\pi2+2\pi k\right)}\).</li>
+<li><em>Корни.</em> \(\rho=\sqrt[4]{27}\); \(\theta_k=\dfrac{-\frac\pi2+2\pi k}{4}=-\dfrac\pi8+\dfrac{\pi k}{2}\):<br>
+\[
+\theta_0=-\frac\pi8=-22{,}5^\circ,\quad \theta_1=\frac{3\pi}{8}=67{,}5^\circ,\quad \theta_2=\frac{7\pi}{8}=157{,}5^\circ,\quad \theta_3=\frac{11\pi}{8}=247{,}5^\circ.
+\]</li>
+<li><em>Алгебраическая форма.</em> Угол \(\frac\pi8\) — половина от \(\frac\pi4\), поэтому по формулам половинного угла<br>
+\[
+\cos^2\frac\pi8=\frac{1+\cos\frac\pi4}{2}=\frac{2+\sqrt2}{4},\qquad \sin^2\frac\pi8=\frac{1-\cos\frac\pi4}{2}=\frac{2-\sqrt2}{4},
+\]<br>
+то есть \(\cos\frac\pi8=\frac{\sqrt{2+\sqrt2}}{2}\), \(\sin\frac\pi8=\frac{\sqrt{2-\sqrt2}}{2}\) (оба положительны: \(\frac\pi8\) в I четверти). Первый корень:<br>
+\[
+z_0=\sqrt[4]{27}\Bigl(\cos\frac\pi8-i\sin\frac\pi8\Bigr)=\frac{\sqrt[4]{27}}{2}\Bigl(\sqrt{2+\sqrt2}-i\sqrt{2-\sqrt2}\Bigr).
+\]<br>
+Остальные — повороты на \(90^\circ\), то есть умножение на \(i\): \(z_1=iz_0\), \(z_2=-z_0\), \(z_3=-iz_0\):<br>
+\[
+z_1=\frac{\sqrt[4]{27}}{2}\Bigl(\sqrt{2-\sqrt2}+i\sqrt{2+\sqrt2}\Bigr),\qquad z_2=-z_0,\qquad z_3=-z_1.
+\]</li>
+</ol>
+<figure class="fig">
+<svg viewBox="0 0 320 290" width="320" height="290" role="img" aria-label="Четыре корня четвёртой степени из −27i">
+  <line x1="20" y1="140" x2="300" y2="140" stroke="#6b665c" stroke-width="1.2"/>
+  <line x1="150" y1="18" x2="150" y2="275" stroke="#6b665c" stroke-width="1.2"/>
+  <text x="298" y="155" text-anchor="end" font-size="11" fill="#6b665c">Re</text>
+  <text x="156" y="28" font-size="11" fill="#6b665c">Im</text>
+  <circle cx="150" cy="140" r="102.6" fill="none" stroke="#9a948a" stroke-dasharray="4 3"/>
+  <polygon points="244.8,179.3 189.3,45.2 55.2,100.7 110.7,234.8" fill="#2b6cb0" fill-opacity="0.14" stroke="#2b6cb0" stroke-width="1.6"/>
+  <line x1="150" y1="140" x2="244.8" y2="179.3" stroke="#c45c26" stroke-width="1.6"/>
+  <path d="M190,140 A40,40 0 0 1 187,155.3" fill="none" stroke="#c45c26" stroke-width="1.8"/>
+  <text x="196" y="160" font-size="11" fill="#c45c26">−22,5°</text>
+  <circle cx="244.8" cy="179.3" r="5" fill="#2b6cb0"/>
+  <circle cx="189.3" cy="45.2" r="5" fill="#2b6cb0"/>
+  <circle cx="55.2" cy="100.7" r="5" fill="#2b6cb0"/>
+  <circle cx="110.7" cy="234.8" r="5" fill="#2b6cb0"/>
+  <text x="252" y="190" font-size="12" font-weight="600" fill="#2b6cb0">z₀</text>
+  <text x="196" y="40" font-size="12" font-weight="600" fill="#2b6cb0">z₁</text>
+  <text x="48" y="96" text-anchor="end" font-size="12" font-weight="600" fill="#2b6cb0">z₂</text>
+  <text x="103" y="252" text-anchor="end" font-size="12" font-weight="600" fill="#2b6cb0">z₃</text>
+  <text x="300" y="283" text-anchor="end" font-size="11" fill="#6b665c">радиус ⁴√27 ≈ 2,28</text>
+</svg>
+<figcaption>Рис. КР2-1 · Корни ⁴√(−27i): квадрат, вписанный в окружность радиуса ⁴√27. Первый корень под углом −π/8 (четверть от −π/2), остальные — повороты на 90°.</figcaption>
+</figure>
+
+<p><strong>Проверка.</strong> \(|z_0|^4=27\) и \(4\theta_0=-\frac\pi2\), то есть \(z_0^4=27e^{-i\pi/2}=-27i\) ✓. Для остальных: \((iz_0)^4=i^4z_0^4=z_0^4\), так же для \(-z_0\) и \(-iz_0\) ✓. Само деление проверим умножением: \((-27i)(2+i)=-54i-27i^2=27-54i\) ✓.</p>
+<p><strong>Ответ.</strong> \(\sqrt[4]{\dfrac{27-54i}{2+i}}=\sqrt[4]{27}\,\Bigl(\cos\theta_k+i\sin\theta_k\Bigr)\), \(\theta_k=-\dfrac\pi8+\dfrac{\pi k}{2}\), \(k=0,1,2,3\). В алгебраической форме: \(\pm z_0\), \(\pm iz_0\), где \(z_0=\dfrac{\sqrt[4]{27}}{2}\bigl(\sqrt{2+\sqrt2}-i\sqrt{2-\sqrt2}\bigr)\).</p>
+<p><strong>Где легко ошибиться.</strong></p>
+<ul>
+<li>Сразу брать корень из числителя и знаменателя по отдельности: \(\sqrt[4]{27-54i}\) и \(\sqrt[4]{2+i}\) — у обоих не табличные углы, и потом придётся делить \(4\times4\) варианта. Сначала упрощаем дробь.</li>
+<li>Дать один корень вместо четырёх.</li>
+<li>Написать модуль корня \(\sqrt[4]{27}\) как \(\sqrt{27}\) или \(27^{1/2}\): степень корня \(4\), значит, и модуль извлекается в четвёртой степени.</li>
+</ul>
+<hr>
+<h2 id="к3-область-на-комплексной-плоскости-ап-кр2-к3">К3. Область на комплексной плоскости (<code>АП-КР2-К3</code>)</h2>
+<p><strong>Задача.</strong> На комплексной плоскости построить область, которая определяется условием<br>
+\[
+\left|\frac{z-2}{z+4i}\right|\ge1.
+\]</p>
+<p><strong>Идея.</strong> Модуль дроби — дробь модулей, а модуль разности — расстояние. Условие превращается в «точка \(z\) находится от точки \(2\) не ближе, чем от точки \(-4i\)». Множество точек, равноудалённых от двух данных, — серединный перпендикуляр к отрезку между ними, а нужная область — полуплоскость за ним.</p>
+<p><strong>План решения — тип «Область \(|z-a|\ \vee\ |z-b|\)».</strong></p>
+<p><em>Как узнать:</em> неравенство или равенство с модулями вида \(|z-a|\), \(|z-b|\) (часто в виде дроби).</p>
+<p><em>План:</em></p>
+<ol>
+<li>Выписать ограничения: знаменатель не ноль — <em>зачем:</em> эту точку придётся выколоть.</li>
+<li>\(\Bigl|\dfrac{z-a}{z-b}\Bigr|=\dfrac{|z-a|}{|z-b|}\); умножить на \(|z-b|&gt;0\) — знак неравенства не меняется.</li>
+<li>Прочитать геометрически: \(|z-a|\) — расстояние до точки \(a\).</li>
+<li>Для строгой проверки — алгебра: \(z=x+iy\), обе части неотрицательны, поэтому можно возвести в квадрат; получится уравнение прямой (или окружности).</li>
+<li>Нарисовать, отметить, входит ли граница, и выколоть запрещённые точки.</li>
+</ol>
+<p><em>Почему работает:</em> \(|z-a|=\sqrt{(x-a_1)^2+(y-a_2)^2}\) — формула расстояния между точками \((x,y)\) и \((a_1,a_2)\) (<code>АТ-§4</code>, 4.6).</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li><em>Ограничение.</em> \(z+4i\neq0\), то есть \(z\neq-4i\).</li>
+<li><em>Убираем дробь.</em> \(\dfrac{|z-2|}{|z+4i|}\ge1\iff|z-2|\ge|z+4i|\) (при \(z\neq-4i\)). Заметим: \(|z+4i|=|z-(-4i)|\).</li>
+<li><em>Геометрия.</em> Расстояние от \(z\) до точки \(A=2\) (то есть \((2,0)\)) не меньше расстояния до точки \(B=-4i\) (то есть \((0,-4)\)). Равенство расстояний — серединный перпендикуляр к отрезку \(AB\); «до \(A\) не ближе» — полуплоскость со стороны \(B\), включая сам перпендикуляр.</li>
+<li><em>Алгебра.</em> \(z=x+iy\):<br>
+$$
+|z-2|^2=(x-2)^2+y^2,\qquad |z+4i|^2=x^2+(y+4)^2.
+$$<br>
+$$
+(x-2)^2+y^2\ge x^2+(y+4)^2\iff x^2-4x+4+y^2\ge x^2+y^2+8y+16
+$$<br>
+$$
+\iff -4x-8y-12\ge0.
+$$<br>
+Делим на \(-4\) (знак меняется): \(x+2y+3\le0\), то есть \(y\le-\dfrac{x+3}{2}\).</li>
+<li><em>Итог.</em> Замкнутая полуплоскость под прямой \(x+2y+3=0\), без точки \(-4i\). Эта точка лежит внутри полуплоскости (\(0+2\cdot(-4)+3=-5\le0\)), но там знаменатель обращается в ноль, поэтому её выкалываем.</li>
+</ol>
+<figure class="fig">
+<svg viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Полуплоскость x + 2y + 3 ≤ 0 без точки −4i">
+  <polygon points="0,12 400,212 400,300 0,300" fill="#1f5c4d" fill-opacity="0.16"/>
+  <line x1="0" y1="75" x2="400" y2="75" stroke="#6b665c" stroke-width="1.2"/>
+  <line x1="210" y1="0" x2="210" y2="300" stroke="#6b665c" stroke-width="1.2"/>
+  <text x="396" y="68" text-anchor="end" font-size="11" fill="#6b665c">Re</text>
+  <text x="216" y="12" font-size="11" fill="#6b665c">Im</text>
+  <line x1="0" y1="12" x2="400" y2="212" stroke="#1f5c4d" stroke-width="2.4"/>
+  <text x="300" y="150" font-size="12" fill="#1f5c4d" transform="rotate(26.6 300 150)">x + 2y + 3 = 0</text>
+  <line x1="266" y1="75" x2="210" y2="187" stroke="#8a4b1f" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <circle cx="238" cy="131" r="3.5" fill="#8a4b1f"/>
+  <text x="246" y="128" font-size="10" fill="#8a4b1f">(1; −2)</text>
+  <circle cx="266" cy="75" r="5" fill="#2b6cb0"/>
+  <text x="272" y="66" font-size="12" font-weight="600" fill="#2b6cb0">A = 2</text>
+  <circle cx="210" cy="187" r="5.5" fill="#fff" stroke="#c45c26" stroke-width="2.2"/>
+  <text x="200" y="207" text-anchor="end" font-size="12" font-weight="600" fill="#c45c26">B = −4i (выколота)</text>
+  <text x="40" y="250" font-size="13" fill="#1f5c4d" font-weight="600">|z − 2| ≥ |z + 4i|</text>
+  <text x="40" y="268" font-size="11" fill="#1f5c4d">ближе к B, чем к A (или поровну)</text>
+</svg>
+<figcaption>Рис. КР2-2 · Граница — серединный перпендикуляр к отрезку AB (проходит через середину (1; −2) и перпендикулярен AB). Закрашенная полуплоскость со стороны B вместе с прямой — ответ; точка B выколота.</figcaption>
+</figure>
+
+<p><strong>Проверка.</strong> Подставим пробные точки.</p>
+<ul>
+<li>\(z=0\): \(\frac{|{-2}|}{|4i|}=\frac24=\frac12&lt;1\) — не подходит; и \(0+0+3=3&gt;0\) — вне полуплоскости ✓.</li>
+<li>\(z=-4\): \(\frac{|{-6}|}{|{-4+4i}|}=\frac{6}{4\sqrt2}\approx1{,}06\ge1\) — подходит; \(-4+0+3=-1\le0\) — внутри ✓.</li>
+<li>Середина \(AB\), \(z=1-2i\): \(|{-1-2i}|=|1+2i|=\sqrt5\) — равенство, точка на границе ✓.</li>
+</ul>
+<p><strong>Ответ.</strong> Множество \(\{z=x+iy:\ x+2y+3\le0\}\setminus\{-4i\}\) — замкнутая полуплоскость под прямой \(y=-\frac{x+3}{2}\) (прямая входит), из которой выколота точка \(-4i\).</p>
+<p><strong>Где легко ошибиться.</strong></p>
+<ul>
+<li>Забыть выколоть \(-4i\): алгебра после умножения на \(|z+4i|\) её «впускает», но в исходном условии там деление на ноль.</li>
+<li>Перепутать сторону: «\(|z-2|\ge\dots\)» значит <strong>далеко от \(2\)</strong>, то есть со стороны \(-4i\). Проверяйте пробной точкой, как выше.</li>
+<li>При делении \(-4x-8y-12\ge0\) на \(-4\) не перевернуть знак.</li>
+</ul>
+<p><strong>А если…</strong> отношение не равно \(1\), например \(|z-2|\ge2|z+4i|\)? После возведения в квадрат слагаемые \(x^2\), \(y^2\) не сократятся:<br>
+\[
+(x-2)^2+y^2\ge4\bigl(x^2+(y+4)^2\bigr)\iff\Bigl(x+\frac23\Bigr)^2+\Bigl(y+\frac{16}{3}\Bigr)^2\le\frac{80}{9}.
+\]<br>
+Получается круг с центром \(\bigl(-\frac23;-\frac{16}{3}\bigr)\) и радиусом \(\frac{4\sqrt5}{3}\) (окружность Аполлония). Прямая получается только при отношении \(1\).</p>
+<blockquote>
+<p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест АП-КР2</code> — степень частного · корень из частного · область на плоскости</p>
+</blockquote>
+    </div>
+  </div>
+</main>
+  <script src="./site.js?v=4"></script>
+</body>
+</html>
