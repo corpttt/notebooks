@@ -1,4 +1,6 @@
 (function () {
+  const CACHE_NAME = "notebooks-shell-v6";
+
   function toast(msg) {
     let el = document.getElementById("nb-toast");
     if (!el) {
@@ -13,39 +15,67 @@
     el._t = setTimeout(() => el.classList.remove("show"), 1600);
   }
 
+  async function refillCache() {
+    if (!("caches" in window)) return;
+    const cache = await caches.open(CACHE_NAME);
+    let list = [];
+    try {
+      const res = await fetch("./precache.json", {
+        cache: "reload",
+        credentials: "same-origin",
+      });
+      if (res.ok) list = await res.json();
+    } catch (_) {}
+    if (!Array.isArray(list)) list = [];
+    const shell = [
+      "./",
+      "./index.html",
+      "./site.css",
+      "./site.js",
+      "./theme.js",
+      "./manifest.json",
+      "./precache.json",
+    ];
+    const urls = [...new Set([...shell, ...list])];
+    let done = 0;
+    await Promise.all(
+      urls.map(async (u) => {
+        try {
+          const res = await fetch(u, {
+            cache: "reload",
+            credentials: "same-origin",
+          });
+          if (res && res.ok) {
+            await cache.put(u, res.clone());
+            done += 1;
+          }
+        } catch (_) {}
+      })
+    );
+    return { done, total: urls.length };
+  }
+
   async function hardRefresh() {
     const btn = document.getElementById("btn-refresh");
     if (btn) btn.disabled = true;
-    toast("Обновляю…");
+    toast("Кэширую тетради…");
     try {
       const keys = await caches.keys();
       await Promise.all(keys.map((k) => caches.delete(k)));
       const reg = await navigator.serviceWorker.getRegistration();
       await reg?.update();
-      const url = location.href.split("#")[0];
-      await fetch(url, { cache: "reload", credentials: "same-origin" });
-      const assets = [
-        "./site.css",
-        "./site.js",
-        "./theme.js",
-        "./index.html",
-        "./manifest.json",
-      ];
-      await Promise.all(
-        assets.map((u) =>
-          fetch(u, { cache: "reload", credentials: "same-origin" }).catch(
-            () => null
-          )
-        )
-      );
-    } catch (_) {}
-    location.reload();
+      const { done, total } = await refillCache();
+      toast(`Офлайн: ${done}/${total}`);
+    } catch (_) {
+      toast("Обновление не удалось");
+    }
+    setTimeout(() => location.reload(), 500);
   }
 
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker
-      .register("./sw.js?v=5")
+      .register("./sw.js?v=6")
       .then((reg) => {
         reg.update().catch(() => {});
         reg.addEventListener("updatefound", () => {
