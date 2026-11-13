@@ -70,7 +70,9 @@ html[data-theme="light"] .nb-brand-mark {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+  text-decoration: none;
 }
+a.nb-btn:hover { text-decoration: none; color: inherit; }
 html[data-theme="light"] .nb-btn {
   border-color: #d0d7de;
   background: #fff;

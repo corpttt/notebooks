@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Повтор">
+  <meta name="description" content="Повтор карточек — тетради Б83">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <title>Повтор</title>
+  <link rel="stylesheet" href="./styles.css?v=23">
+  <link rel="stylesheet" href="./review.css?v=4">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="./theme.js?v=23"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body class="rv-body">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="brand" href="./review.html">
+        <span class="brand-mark">↻</span>
+        <span>повтор</span>
+      </a>
+      <div class="header-actions">
+        <a class="btn" href="./index.html">Тетради</a>
+        <a class="btn" href="https://corpttt.github.io/timetable/">Расписание</a>
+        <button type="button" class="btn" id="btn-theme" title="Тема">◑</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="rv-wrap">
+    <!-- Hub -->
+    <section id="rv-hub" class="rv-view">
+      <div class="rv-hero">
+        <p class="rv-hello" id="rv-hello">Снова сюда — хорошо.</p>
+        <p class="rv-lead" id="rv-lead">Выбери колоду и предметы, дальше просто переворачивай карточку.</p>
+      </div>
+
+      <div class="rv-panel rv-panel-soft">
+        <h2>Колода</h2>
+        <div class="rv-decks">
+          <button type="button" class="rv-deck is-on" data-deck="current">
+            <span class="rv-deck-emoji" aria-hidden="true">📘</span>
+            <span class="rv-deck-title">Текущее</span>
+            <span class="rv-deck-hint">Лекции и практика — основной повтор</span>
+          </button>
+          <button type="button" class="rv-deck" data-deck="exam">
+            <span class="rv-deck-emoji" aria-hidden="true">🎫</span>
+            <span class="rv-deck-title">Билеты</span>
+            <span class="rv-deck-hint">Активный повтор перед экзаменом — по одному предмету</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="rv-panel rv-panel-soft" id="rv-panel-current">
+        <h2>Предметы</h2>
+        <div class="rv-subjects" id="rv-subjects"></div>
+        <div class="rv-actions">
+          <button type="button" class="btn btn-primary rv-btn-go" id="rv-btn-start">Начать</button>
+          <button type="button" class="btn" id="rv-btn-all">Все подряд</button>
+        </div>
+        <p class="rv-note">
+          Нажми карточку — ответ; ещё раз — снова вопрос.
+          Не знаю / шатко / знаю — когда готов оценить.
+        </p>
+      </div>
+
+      <div class="rv-panel rv-panel-soft rv-hidden" id="rv-panel-exam">
+        <h2>Предмет экзамена</h2>
+        <p class="rv-exam-hint">Один предмет — одна сессия. Так удобнее готовиться к конкретному экзамену.</p>
+        <div class="rv-exam-subjects" id="rv-exam-subjects"></div>
+        <div class="rv-actions">
+          <button type="button" class="btn btn-primary rv-btn-go" id="rv-btn-exam-start">Начать билеты</button>
+          <button type="button" class="btn" id="rv-btn-exam-all">Все билеты предмета</button>
+        </div>
+        <p class="rv-note">
+          Нажми карточку — ответ; ещё раз — снова вопрос.
+        </p>
+      </div>
+
+      <p class="rv-status soft" id="rv-status" hidden></p>
+    </section>
+
+    <!-- Session -->
+    <section id="rv-session" class="rv-view rv-hidden">
+      <div class="rv-session-top">
+        <span class="rv-chip" id="rv-chip-subject">—</span>
+        <button type="button" class="btn rv-btn-quiet" id="rv-btn-stop">Выйти</button>
+      </div>
+
+      <div class="rv-stage">
+        <div class="rv-card" id="rv-card" role="button" tabindex="0" aria-label="Перевернуть карточку">
+          <div class="rv-card-inner" id="rv-card-inner">
+            <div class="rv-card-label" id="rv-card-label">Вопрос</div>
+            <div class="rv-card-media rv-hidden" id="rv-card-media"></div>
+            <div class="rv-card-body" id="rv-card-body"></div>
+            <div class="rv-card-hint" id="rv-card-hint">нажми, чтобы перевернуть</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv-grade rv-hidden" id="rv-grade">
+        <button type="button" class="btn rv-btn-again" id="rv-btn-again">Не знаю</button>
+        <button type="button" class="btn rv-btn-hard" id="rv-btn-hard">Шатко</button>
+        <button type="button" class="btn rv-btn-good" id="rv-btn-good">Знаю</button>
+      </div>
+
+      <div class="rv-session-extra">
+        <button type="button" class="btn rv-btn-quiet" id="rv-btn-defer">Позже в этой сессии</button>
+      </div>
+    </section>
+
+    <!-- Done -->
+    <section id="rv-done" class="rv-view rv-hidden">
+      <div class="rv-panel rv-panel-soft rv-done">
+        <p class="rv-done-emoji" aria-hidden="true">✨</p>
+        <h2 id="rv-done-title">На сегодня по этой очереди всё</h2>
+        <p id="rv-done-body" class="rv-done-text">Можно продолжить спокойно — сколько захочешь.</p>
+        <div class="rv-actions">
+          <button type="button" class="btn btn-primary" id="rv-btn-continue">Продолжить</button>
+          <button type="button" class="btn" id="rv-btn-hub">К колодам</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./review.js?v=4"></script>
+</body>
+</html>
