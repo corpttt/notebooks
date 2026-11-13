@@ -45,7 +45,7 @@
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker
-      .register("./sw.js?v=4")
+      .register("./sw.js?v=5")
       .then((reg) => {
         reg.update().catch(() => {});
         reg.addEventListener("updatefound", () => {

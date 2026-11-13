@@ -80,6 +80,29 @@ html[data-theme="light"] .nb-btn {
 }
 .nb-btn:hover { filter: brightness(1.08); }
 .nb-btn:disabled { opacity: 0.55; cursor: default; }
+.nb-btn-primary {
+  background: #238636;
+  border-color: rgba(240, 246, 252, 0.12);
+  color: #fff;
+  font-weight: 650;
+  padding: 0.42rem 0.9rem;
+  box-shadow: 0 0 0 1px rgba(63, 185, 80, 0.25);
+}
+.nb-btn-primary:hover {
+  background: #2ea043;
+  filter: none;
+  color: #fff;
+}
+html[data-theme="light"] .nb-btn-primary {
+  background: #1a7f37;
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(26, 127, 55, 0.2);
+}
+html[data-theme="light"] .nb-btn-primary:hover {
+  background: #2da44e;
+  color: #fff;
+}
 
 .nb-toast {
   position: fixed;
@@ -120,14 +143,7 @@ html[data-theme="light"] .nb-index-body {
   margin: 0 auto;
   padding: 1.25rem 1rem 3rem;
 }
-.nb-index-wrap h1 { font-size: 1.35rem; margin: 0 0 0.35rem; }
-.nb-index-lead {
-  margin: 0 0 1.25rem;
-  color: #8b949e;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-html[data-theme="light"] .nb-index-lead { color: #656d76; }
+.nb-index-wrap h1 { font-size: 1.35rem; margin: 0 0 1rem; }
 .nb-index-wrap .sub { color: #8b949e; font-size: 0.85rem; margin-top: 1.5rem; }
 html[data-theme="light"] .nb-index-wrap .sub { color: #656d76; }
 .nb-index-wrap a { color: #2f81f7; }
