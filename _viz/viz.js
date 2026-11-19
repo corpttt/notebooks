@@ -9,7 +9,7 @@
  *   <div class="sort-anim" data-algo="quick|merge|insertion" data-title="…"
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted,reversed"></div>
  *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur
- *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp|dsu|kruskal"></div>
+ *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp|dsu|kruskal|sdlcmodels|tdd"></div>
  *   fibtree / calcdp: optional data-n
  *   heap: optional data-mode="ops|sort"
  *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"
@@ -2236,6 +2236,68 @@ window.Viz = window.Viz || {};
     reload();
   }
 
+  function labSdlcModels(box) {
+    head(box, 'Анимация: когда появляется ценность');
+    var steps = [
+      { mode: 'Водопад', msg: 'Шаг 1/4. Дизайн. Рабочего продукта ещё нет.', value: 0 },
+      { mode: 'Водопад', msg: 'Шаг 2/4. Создание. Всё ещё нет поставки пользователю.', value: 0 },
+      { mode: 'Водопад', msg: 'Шаг 3/4. Тест. Ценность почти в конце.', value: 0 },
+      { mode: 'Водопад', msg: 'Шаг 4/4. Выгоды. Первый работающий продукт - только сейчас.', value: 1 },
+      { mode: 'Итерации', msg: 'Релиз 1: короткий цикл дизайн-код-тест -> уже есть выгоды.', value: 1 },
+      { mode: 'Итерации', msg: 'Релиз 2: уточнили требования по обратной связи, снова выгоды.', value: 2 },
+      { mode: 'Итерации', msg: 'Релиз 3: продукт растёт инкрементами, ценность накопилась.', value: 3 }
+    ];
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var bar = el('div', null, '');
+    bar.style.cssText = 'height:18px;background:#e2ddd2;border-radius:999px;overflow:hidden;margin:.4rem 0;';
+    var fill = el('div', null, '');
+    fill.style.cssText = 'height:100%;width:0%;background:#1f5c4d;transition:width .35s;';
+    bar.appendChild(fill); box.appendChild(bar);
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var step = stepper(ctr, {
+      count: function () { return steps.length; },
+      delay: 1100,
+      render: function (i) {
+        var s = steps[i];
+        msg.textContent = '[' + s.mode + '] ' + s.msg;
+        fill.style.width = Math.min(100, s.value * 33) + '%';
+      }
+    });
+    step.reset();
+  }
+
+  function labTdd(box) {
+    head(box, 'Анимация: цикл TDD (RED -> GREEN -> REFACTOR)');
+    var stages = [
+      { name: 'RED', tip: 'Пишем тест, который падает. Ещё нет нужного поведения.' },
+      { name: 'GREEN', tip: 'Пишем ровно столько кода, чтобы тест прошёл.' },
+      { name: 'REFACTOR', tip: 'Чистим структуру, внешнее поведение не меняем. Тесты снова зелёные.' },
+      { name: 'COMMIT', tip: 'Фиксируем. Дальше новый тест - новый виток цикла.' }
+    ];
+    var msg = el('div', 'sa-msg'); box.appendChild(msg);
+    var row = el('div', null, '');
+    row.style.cssText = 'display:flex;gap:.4rem;flex-wrap:wrap;margin:.35rem 0;';
+    box.appendChild(row);
+    var cells = stages.map(function (s) {
+      var d = el('div', null, s.name);
+      d.style.cssText = 'flex:1;min-width:90px;text-align:center;padding:.45rem;border-radius:8px;border:1px solid #e2ddd2;background:#faf9f6;font-weight:700;';
+      row.appendChild(d); return d;
+    });
+    var ctr = el('div', 'sa-controls'); box.appendChild(ctr);
+    var step = stepper(ctr, {
+      count: function () { return stages.length; },
+      delay: 1000,
+      render: function (i) {
+        stages.forEach(function (s, j) {
+          cells[j].style.background = j === i ? '#1f5c4d' : (j < i ? '#e8f1ee' : '#faf9f6');
+          cells[j].style.color = j === i ? '#fff' : '#1c1b19';
+        });
+        msg.textContent = 'Шаг ' + (i + 1) + '/4. ' + stages[i].tip;
+      }
+    });
+    step.reset();
+  }
+
   var LABS = {
     dsu: labDSU, kruskal: labKruskal,
     fibtree: labFibTree, calcdp: labCalcDP, griddp: labGridDP,
@@ -2243,7 +2305,8 @@ window.Viz = window.Viz || {};
     rs: labRS, vn: labVN, timeline: labTimeline,
     bfs: labBFS, dfs: labDFS, stackqueue: labStackQueue, epsn: labEpsN, induct: labInduct,
     recur: labRecur, bisect: labBisect, heap: labHeap, countsort: labCountSort, binsearch: labBinSearch,
-    vecgrow: labVecGrow, sqrtdec: labSqrtDec
+    vecgrow: labVecGrow, sqrtdec: labSqrtDec,
+    sdlcmodels: labSdlcModels, tdd: labTdd
   };
   var Viz = window.Viz;
   var api = {

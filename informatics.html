@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Информатика · тетрадь (лекции 0–5 + семинары 1–2)</title>
+<title>Информатика · тетрадь (лекции 0–6 + семинары 1–2)</title>
 <style>
 :root {
   --bg: #f6f4ef; --card: #fff; --ink: #1c1b19; --muted: #6b665c;
@@ -80,8 +80,8 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   font-size: 1.12rem; line-height: 1.45;
 }
 </style>
-<link rel="stylesheet" href="./_viz/viz.css?v=1c764500">
-<script src="./_viz/viz.js?v=1c764500" defer></script>
+<link rel="stylesheet" href="./_viz/viz.css?v=a17e6e2e">
+<script src="./_viz/viz.js?v=a17e6e2e" defer></script>
 
 <link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
 <script src="./общее/тетрадь.js?v=f7721170" defer></script>
@@ -98,7 +98,7 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
 
 <header>
   <h1>Информатика · тетрадь</h1>
-  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · лекция 4 (трансляции, парадигмы, типизация) · лекция 5 (SOLID и паттерны) · осень 2026</p>
+  <p class="note">Лекция 0 (формат) · семинар 1 (доклады) · лекция 1 (информация и коды) · лекция 2 (алгоритмы, P/NP) · семинар 2 (сложность сортировок) · лекция 3 (архитектура ЭВМ) · лекция 4 (трансляции, парадигмы, типизация) · лекция 5 (SOLID и паттерны) · лекция 6 (жизненный цикл ПО) · осень 2026</p>
   <nav class="toc">
     <a href="#intro">Введение</a>
     <a href="#format">Формат и зачёт</a>
@@ -140,24 +140,30 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
     <a href="#builder-l5">Строитель</a>
     <a href="#strategy">Стратегия</a>
     <a href="#facade">Фасад</a>
-<a href="#materials">§0 · Материалы</a>
+    <a href="#sdlc">Жизненный цикл</a>
+    <a href="#models">Водопад / итерации</a>
+    <a href="#agile">Agile</a>
+    <a href="#xp">XP</a>
+    <a href="#scrum">Scrum</a>
+    <a href="#materials">§0 · Материалы</a>
   </nav>
 </header>
 <main>
 
 <section class="card" id="materials">
 <h2>§0 · Материалы</h2>
-<p>Презентации (<span class="mono">материалы/</span>): <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>, <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>, <span class="mono">10_лекция_Паттерны_проектирования.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>, <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">лекция №4</a>, <a href="https://forms.gle/fdzZ1CM8ZZPZgjeFA">лекция №5</a>.</p>
+<p>Презентации (<span class="mono">материалы/</span>): <span class="mono">[0]_лекция_Вводная.pdf</span>, <span class="mono">[1]_семинар_Требования_к_докладам.pdf</span>, <span class="mono">2_лекция_Введение_в_теорию_информации.pdf</span>, <span class="mono">4_лекция_Введение_в_теорию_алгоритмов.pptx</span>, <span class="mono">6_лекция_Введение_архитектуру_ЭВМ.pdf</span>, <span class="mono">8_лекция_Парадигмы_трансляции_типизация.pdf</span>, <span class="mono">10_лекция_Паттерны_проектирования.pdf</span>, <span class="mono">12_лекция_Жизненный_цикл_ПО.pdf</span>. Формы: <a href="https://forms.gle/JrDk7sdTLeqQeH5Q7">лекция №3</a>, <a href="https://forms.gle/9x8t2fpxCKaLuE3t8">семинар №2</a>, <a href="https://forms.gle/KJXnzcJqoyFw2W1a6">лекция №4</a>, <a href="https://forms.gle/fdzZ1CM8ZZPZgjeFA">лекция №5</a>, <a href="https://forms.gle/Nv3Ss9FTJqes4EDa9">лекция №6</a>.</p>
 <p>Визуализация сортировок: <a href="https://visualgo.net/en/sorting" target="_blank" rel="noopener">VisuAlgo — визуализация сортировок</a> (там можно выбрать Merge / Quick и свой массив).</p>
 <p><strong>Видео:</strong></p>
 <p class="video"><a href="https://www.lektorium.tv/lecture/26234" target="_blank" rel="noopener">Лекториум — Введение в теорию информации (вероятностный подход, энтропия Шеннона)</a></p>
 <p class="video"><a href="https://www.youtube.com/watch?v=ZCOIxQTd7Gw" target="_blank" rel="noopener">CSC / «К первой паре» — Архитектура ЭВМ, лекция 1 (введение)</a></p>
 <p class="video"><a href="https://www.youtube.com/watch?v=E7Fbf7R3x6I" target="_blank" rel="noopener">Imperative vs Declarative Programming (коротко: «как» vs «что»)</a></p>
 <p class="video"><a href="https://refactoring.guru/ru/design-patterns" target="_blank" rel="noopener">Refactoring Guru — каталог паттернов (Строитель, Стратегия, Фасад и др.)</a></p>
+<p class="video"><a href="https://agilemanifesto.org/iso/ru/manifesto.html" target="_blank" rel="noopener">Манифест Agile (русский текст)</a></p>
 </section>
 <section class="card" id="intro">
   <h2>Введение</h2>
-  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ, трансляции / парадигмы / типизация, SOLID и паттерны проектирования. Цель — готовиться к тестам Google Forms без дыр между слайдами.</p>
+  <p>Это <strong>сквозная тетрадь</strong> по материалам курса информатики (ИИиНоД, осень 2026): формат работы, требования к докладам, теория информации и кодирования, введение в теорию алгоритмов и сложность сортировок, архитектура ЭВМ, трансляции / парадигмы / типизация, SOLID и паттерны проектирования, жизненный цикл ПО (водопад, итерации, Agile, XP, Scrum). Цель — готовиться к тестам Google Forms без дыр между слайдами.</p>
 </section>
 
 <section class="card" id="format">
@@ -1282,8 +1288,140 @@ code, .mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em;
   <div class="ex"><strong>Форма (банк).</strong> Верно: <code>BankingFacade</code> внутри дергает подсистемы и даёт простые методы вроде <code>checkBalance()</code> / <code>transferFunds()</code>. Неверно: свалить все методы всех подсистем наружу «оптом» или дать клиенту прямой доступ ко всем подсистемам.</div>
 </section>
 
-<section class="card" id="cheat">
+<section class="card" id="sdlc">
 <p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-SOLID</code> — несколько коротких вопросов по лекции 5.</p>
+
+  <h2>Жизненный цикл разработки ПО <span class="tag">лекция 6</span></h2>
+  <div class="def"><strong>Жизненный цикл ПО</strong> — полный путь от <em>идеи</em> продукта до <em>завершения эксплуатации</em>. Без него разработка скатывается в хаос: рвутся коммуникации, теряется информация, нельзя управлять качеством.</div>
+  <p class="own"><em>Своими словами.</em> ПО стало слишком сложным, чтобы писать «на коленке» (пример — операционные системы). Нужны порядок, структура и управляемость.</p>
+  <div class="fig" aria-label="Этапы жизненного цикла">
+    <svg viewBox="0 0 280 340" width="280" height="340" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="13">
+      <text x="140" y="22" text-anchor="middle" font-weight="700" fill="#1f5c4d">Этапы (слайд 7)</text>
+      <g fill="#e8f1ee" stroke="#1f5c4d">
+        <rect x="40" y="36" width="200" height="28" rx="6"/><rect x="40" y="72" width="200" height="28" rx="6"/>
+        <rect x="40" y="108" width="200" height="28" rx="6"/><rect x="40" y="144" width="200" height="28" rx="6"/>
+        <rect x="40" y="180" width="200" height="28" rx="6"/><rect x="40" y="216" width="200" height="28" rx="6"/>
+        <rect x="40" y="252" width="200" height="28" rx="6"/><rect x="40" y="288" width="200" height="28" rx="6"/>
+      </g>
+      <g text-anchor="middle" fill="#1c1b19">
+        <text x="140" y="55">Анализ потребностей</text>
+        <text x="140" y="91">Формирование требований</text>
+        <text x="140" y="127">Проектирование архитектуры</text>
+        <text x="140" y="163">Написание кода</text>
+        <text x="140" y="199">Тестирование</text>
+        <text x="140" y="235">Внедрение</text>
+        <text x="140" y="271">Сопровождение</text>
+        <text x="140" y="307">Вывод из эксплуатации</text>
+      </g>
+    </svg>
+    <p class="caption">От идеи до снятия с эксплуатации — не только «написать код».</p>
+  </div>
+  <div class="def"><strong>Почему процесс можно планировать.</strong> (1) Виды деятельности повторяются от проекта к проекту. (2) Они логически связаны: нельзя тестировать нереализованное, нельзя реализовать неспроектированное. (3) Артефакты одного этапа — база следующего (требования → проект → код → тесты → релиз). (4) Можно формализовать порядок, зависимости и критерии готовности.</div>
+  <div class="def"><strong>Модель разработки</strong> задаёт структуру процесса: какие работы, в каком порядке, кем и на каких артефактах. Четыре опоры модели: <em>виды деятельности</em>, <em>артефакты</em>, <em>роли</em>, <em>последовательность / правила переходов</em>.</div>
+</section>
+
+<section class="card" id="models">
+  <h2>Водопад и итерации</h2>
+  <div class="def"><strong>Каскадная (водопадная) модель.</strong> Работы идут строго по цепочке: требования → проектирование → разработка → тестирование → внедрение. Каждый этап заканчивается целиком и обычно документом; конечный продукт виден <em>только в конце</em>. Возврат на один шаг назад допустим; возвраты «далеко назад» очень дороги.</div>
+  <p class="own"><em>Плюсы.</em> Прозрачные этапы, удобно контролировать прогресс, специалистов можно звать точечно. <em>Минусы.</em> Нужно заранее предвидеть требования и риски; поздние изменения резко дорожают; ошибки анализа/дизайна всплывают поздно — на тестировании.</p>
+  <div class="def"><strong>Инкрементально-итеративная модель.</strong> Система растёт короткими циклами: каждый цикл — мини‑версия полного жизненного цикла и даёт <em>рабочий фрагмент</em>, который можно показать пользователям. На итерации можно уточнять требования и архитектуру; в одном цикле могут идти разные виды работ параллельно (дизайн страницы + её код).</div>
+  <p class="own"><em>Плюсы.</em> Готовность к изменениям, ранняя обратная связь, ошибки ловятся рано. <em>Минусы.</em> Риск «вечной разработки», если итерации рыхлые; сложнее планировать сроки и ресурсы.</p>
+  <div class="fig" aria-label="Водопад vs итерации">
+    <svg viewBox="0 0 560 200" width="560" height="200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="11">
+      <text x="140" y="18" text-anchor="middle" font-weight="700" fill="#8a4b1f">Водопад: ценность в конце</text>
+      <rect x="20" y="40" width="70" height="36" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="55" y="62" text-anchor="middle">Дизайн</text>
+      <rect x="100" y="70" width="70" height="36" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="135" y="92" text-anchor="middle">Создание</text>
+      <rect x="180" y="100" width="70" height="36" rx="6" fill="#fff4e5" stroke="#e2ddd2"/><text x="215" y="122" text-anchor="middle">Тест</text>
+      <rect x="260" y="130" width="70" height="36" rx="6" fill="#1f5c4d"/><text x="295" y="152" text-anchor="middle" fill="#fff" font-weight="700">Выгоды</text>
+      <text x="420" y="18" text-anchor="middle" font-weight="700" fill="#1f5c4d">Итерации: ценность каждый цикл</text>
+      <circle cx="380" cy="90" r="36" fill="none" stroke="#5b4fc7" stroke-width="3"/>
+      <text x="380" y="86" text-anchor="middle">релиз 1</text><text x="380" y="102" text-anchor="middle" font-size="10">выгоды</text>
+      <circle cx="455" cy="90" r="36" fill="none" stroke="#5b4fc7" stroke-width="3"/>
+      <text x="455" y="86" text-anchor="middle">релиз 2</text><text x="455" y="102" text-anchor="middle" font-size="10">выгоды</text>
+      <circle cx="530" cy="90" r="28" fill="none" stroke="#5b4fc7" stroke-width="3"/>
+      <text x="530" y="94" text-anchor="middle">релиз 3</text>
+      <text x="280" y="190" text-anchor="middle" fill="#6b665c">схема по слайду 10: слева лестница, справа короткие циклы с пользой каждый раз</text>
+    </svg>
+    <p class="caption">Главное отличие для теста: когда заказчик впервые видит работающий результат.</p>
+  </div>
+  <div class="lab" data-lab="sdlcmodels"></div>
+  <p class="own"><em>Как смотреть.</em> На водопаде полоса ценности долго пустая; на итерациях растёт с каждым релизом.</p>
+  <div class="ex"><strong>Для формы.</strong> Водопад = последовательность и продукт в конце; итерации = короткие циклы с рабочим инкрементом. Высокоуровневая модель отвечает «как устроен цикл в целом»; низкоуровневые методики (Agile/XP/Scrum) — «как команда работает внутри итераций».</div>
+</section>
+
+<section class="card" id="agile">
+  <h2>Agile</h2>
+  <div class="def"><strong>Agile</strong> возник как реакция на чрезмерную формализацию 80–90‑х: тяжёлые документ‑ориентированные процессы, долгие циклы, мало обратной связи. Это набор <em>ценностей и принципов</em>, а не один жёсткий процесс.</div>
+  <p class="own"><em>Своими словами.</em> Люди и взаимодействие важнее процедур; работающий продукт важнее километров документации; сотрудничество с заказчиком важнее жёсткого контракта; готовность к изменениям важнее следования плану.</p>
+  <ul>
+    <li>Главный приоритет — ранняя и регулярная поставка ценного ПО заказчику.</li>
+    <li>Изменение требований приветствуется даже поздно — это конкурентное преимущество.</li>
+    <li>Поставка работающего продукта часто (недели–месяцы); работающий продукт — основной показатель прогресса.</li>
+    <li>Бизнес и разработчики работают вместе ежедневно; лучший обмен — живая коммуникация.</li>
+    <li>Мотивированные люди, техническое качество, простота, самоорганизующиеся команды, регулярный разбор и улучшение процесса.</li>
+    <li>Устойчивый ритм «бесконечно» — без выгорания.</li>
+  </ul>
+</section>
+
+<section class="card" id="xp">
+  <h2>Extreme Programming (XP)</h2>
+  <div class="def"><strong>XP</strong> — методология на тех же ценностях, что Agile, но с упором на <em>инженерные практики</em> в условиях постоянных изменений. Рассчитана на небольшие профессиональные команды.</div>
+
+  <h3>TDD — разработка через тестирование</h3>
+  <div class="def"><strong>TDD.</strong> Сначала пишут тест (он должен <em>не пройти</em>), потом минимальный код, чтобы тест прошёл, потом рефакторинг. Даёт страховку от регрессий, проясняет «что строить» и заставляет писать тестируемый код.</div>
+  <div class="lab" data-lab="tdd"></div>
+
+  <h3>Другие практики XP</h3>
+  <div class="def"><strong>Игра в планирование.</strong> Заказчик и команда вместе решают <em>что</em> и <em>когда</em>: заказчик говорит, что важно; команда — что возможно (ресурсы).</div>
+  <div class="def"><strong>Парное программирование.</strong> Двое за одним местом: Driver пишет, Navigator смотрит и предлагает. Это про качество и знания в команде (выше bus‑factor), а не «двойные затраты».</div>
+  <div class="def"><strong>Непрерывная интеграция (CI).</strong> Частые мелкие коммиты в общий репозиторий; каждый коммит гоняет автотесты и сборку. Главная ветка всегда в рабочем состоянии — нет «адского дня слияния».</div>
+  <div class="def"><strong>Рефакторинг.</strong> Улучшение внутренней структуры кода <em>без</em> смены внешнего поведения. Борьба с техническим долгом.</div>
+  <div class="def"><strong>Устойчивый темп (≈ 40‑часовая неделя).</strong> Темп, который можно держать бесконечно. Нельзя работать сверхурочно две недели подряд: разовый штурм допустим, повторяющиеся переработки — признак потери управляемости.</div>
+  <p class="own"><em>Связь.</em> Agile задаёт принципы взаимодействия и поставки ценности; XP — дисциплину разработки и техническое качество.</p>
+</section>
+
+<section class="card" id="scrum">
+  <h2>Фреймворк Scrum</h2>
+  <div class="def"><strong>Scrum</strong> — лёгкий итеративный фреймворк управления разработкой сложных продуктов: роли, события и артефакты, чтобы применять Agile (+ инженерные практики вроде XP) предсказуемо.</div>
+
+  <h3>Роли</h3>
+  <div class="nb-table-scroll"><table>
+    <tr><th>Роль</th><th>За что отвечает</th></tr>
+    <tr><td>Product Owner</td><td>Ценность и приоритеты продукта (бэклог)</td></tr>
+    <tr><td>Scrum Master</td><td>Чтобы Scrum‑процесс шёл правильно, снимать препятствия. <strong>Не</strong> пишет фичи как руководитель проекта и <strong>не</strong> «руководит проектом» в классическом смысле</td></tr>
+    <tr><td>Команда разработки</td><td>Создаёт инкремент, самоорганизуется; важна взаимозаменяемость</td></tr>
+  </table></div>
+
+  <h3>Бэклог, спринт, события</h3>
+  <div class="def"><strong>Бэклог продукта</strong> — упорядоченный список того, <em>что</em> нужно сделать (приоритеты). Канбан‑столбики / доска показывают, <em>как</em> движется работа в текущем спринте.</div>
+  <div class="def"><strong>Спринт</strong> — фиксированный цикл (обычно 1–4 недели), в котором команда делает работающий инкремент и достигает согласованной цели. <strong>Планирование спринта</strong>: цель + выбор элементов бэклога + план задач (бэклог спринта).</div>
+  <div class="fig" aria-label="Планирование спринта">
+    <svg viewBox="0 0 520 150" width="520" height="150" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, system-ui, sans-serif" font-size="11">
+      <text x="70" y="18" text-anchor="middle" font-weight="700">Бэклог продукта</text>
+      <rect x="20" y="28" width="100" height="18" rx="3" fill="#5b4fc7"/><text x="70" y="41" text-anchor="middle" fill="#fff">Элемент 1</text>
+      <rect x="20" y="50" width="100" height="18" rx="3" fill="#5b4fc7"/><text x="70" y="63" text-anchor="middle" fill="#fff">Элемент 2</text>
+      <rect x="20" y="72" width="100" height="18" rx="3" fill="#5b4fc7"/><text x="70" y="85" text-anchor="middle" fill="#fff">Элемент 3</text>
+      <rect x="20" y="94" width="100" height="18" rx="3" fill="#c8c3b8"/><text x="70" y="107" text-anchor="middle">Элемент 4</text>
+      <rect x="20" y="116" width="100" height="18" rx="3" fill="#c8c3b8"/><text x="70" y="129" text-anchor="middle">...</text>
+      <text x="175" y="80" fill="#8a4b1f" font-weight="700">планирование</text>
+      <text x="330" y="18" text-anchor="middle" font-weight="700">Бэклог спринта</text>
+      <rect x="250" y="35" width="100" height="28" rx="4" fill="#1f5c4d"/><text x="300" y="53" text-anchor="middle" fill="#fff">Элемент 1</text>
+      <rect x="360" y="35" width="50" height="12" rx="2" fill="#e8f1ee" stroke="#e2ddd2"/><text x="385" y="45" text-anchor="middle" font-size="9">task</text>
+      <rect x="360" y="50" width="50" height="12" rx="2" fill="#e8f1ee" stroke="#e2ddd2"/><text x="385" y="60" text-anchor="middle" font-size="9">task</text>
+      <rect x="250" y="75" width="100" height="28" rx="4" fill="#1f5c4d"/><text x="300" y="93" text-anchor="middle" fill="#fff">Элемент 2</text>
+      <rect x="360" y="75" width="50" height="12" rx="2" fill="#e8f1ee" stroke="#e2ddd2"/><text x="385" y="85" text-anchor="middle" font-size="9">task</text>
+      <rect x="360" y="90" width="50" height="12" rx="2" fill="#e8f1ee" stroke="#e2ddd2"/><text x="385" y="100" text-anchor="middle" font-size="9">task</text>
+      <line x1="130" y1="50" x2="245" y2="50" stroke="#8a4b1f" stroke-width="2"/>
+      <line x1="130" y1="80" x2="245" y2="90" stroke="#8a4b1f" stroke-width="2"/>
+    </svg>
+    <p class="caption">Слайд 34: из бэклога продукта выбирают кусок и дробят на задачи спринта.</p>
+  </div>
+  <div class="def"><strong>Review</strong> — в конце спринта про продукт (инкремент): обратная связь от Product Owner / пользователей, адаптация приоритетов. <strong>Retrospective</strong> — про процесс: как улучшить взаимодействие команды.</div>
+  <div class="ex"><strong>Почему нельзя внедрить «всё сразу».</strong> Нужны зрелость (самоорганизация, доверие), взаимозаменяемость и сильная инженерная культура под практики XP. Идеальная схема со слайдов на практике упирается в людей и дисциплину.</div>
+</section>
+
+<section class="card" id="cheat">
+<p class="quiz-trigger" style="margin:1.2rem 0;padding:.7rem 1rem;border-left:4px solid #c45c26;background:#fff8f2;">⚡ <b>Быстрый тест:</b> в чат Cursor напиши <code>тест ИФ-SDLC</code> — несколько коротких вопросов по лекции 6.</p>
 </section>
 
 </main>
