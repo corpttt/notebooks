@@ -19,19 +19,12 @@
 
   const els = {};
   let allCards = [];
-  let mode = "current"; // current | exam
-  let subjectsOn = new Set(SUBJECTS.map((s) => s.id));
-  let examSubject = "matan"; // single subject for Билеты
+  let examSubject = "matan";
   let queue = [];
   let idx = 0;
   let flipped = false;
   let freeMode = false;
   let flipping = false;
-
-  const LEAD = {
-    current: "Выбери предметы и начинай — обычный повтор по ходу семестра.",
-    exam: "Выбери один предмет и разбирай его билеты перед экзаменом.",
-  };
 
   function todayStr() {
     const d = new Date();
@@ -102,18 +95,7 @@
   }
 
   function filteredPool() {
-    return allCards.filter((c) => {
-      if (c.deck !== mode) return false;
-      if (mode === "exam") return c.subject === examSubject;
-      return subjectsOn.has(c.subject);
-    });
-  }
-
-  function syncHubPanels() {
-    const exam = mode === "exam";
-    els.panelCurrent.classList.toggle("rv-hidden", exam);
-    els.panelExam.classList.toggle("rv-hidden", !exam);
-    if (els.lead) els.lead.textContent = LEAD[mode] || LEAD.current;
+    return allCards.filter((c) => c.subject === examSubject);
   }
 
   function renderMath(root) {
@@ -182,7 +164,7 @@
     const side = card.imageSide || "front";
     if (side === "both") return true;
     if (side === "back") return flipped;
-    return !flipped; // front
+    return !flipped;
   }
 
   function paintMedia(card) {
@@ -245,8 +227,7 @@
     }
     flipped = false;
     const subj = SUBJECT_TITLE[card.subject] || card.subject;
-    els.chipSubject.textContent =
-      mode === "exam" ? "Билеты · " + subj : subj;
+    els.chipSubject.textContent = "Билеты · " + subj;
     els.chipSubject.className = "rv-chip rv-chip-" + card.subject;
     els.card.classList.remove("is-flipped", "is-exit", "is-enter", "is-turning");
     if (animateIn) {
@@ -322,11 +303,11 @@
     if (emptyBank) {
       els.doneTitle.textContent = "Пока пусто";
       els.doneBody.textContent =
-        "В этой колоде ещё нет карточек для выбранных предметов. Можно сменить колоду или предметы.";
+        "По этому предмету ещё нет карточек по билетам. Можно выбрать другой предмет.";
     } else {
       els.doneTitle.textContent = "На сегодня по этой очереди всё";
       els.doneBody.textContent =
-        "Можно продолжить спокойно — сколько захочешь. Или вернуться к колодам.";
+        "Можно продолжить спокойно — сколько захочешь. Или вернуться к предметам.";
     }
     showView("done");
   }
@@ -338,60 +319,36 @@
   }
 
   async function loadBanks() {
-    const paths = ["./review/cards-current.json", "./review/cards-exam.json"];
     const out = [];
-    for (const p of paths) {
-      try {
-        const res = await fetch(p + "?v=" + Date.now(), { cache: "no-cache" });
-        if (!res.ok) continue;
-        const data = await res.json();
-        const cards = Array.isArray(data.cards) ? data.cards : [];
-        for (const c of cards) {
-          if (!c || !c.id) continue;
-          const row = {
-            id: String(c.id),
-            subject: String(c.subject || ""),
-            deck: String(c.deck || (p.includes("exam") ? "exam" : "current")),
-            anchor: String(c.anchor || ""),
-            type: String(c.type || "def"),
-            front: String(c.front || ""),
-            back: String(c.back || ""),
-          };
-          if (c.svg) row.svg = String(c.svg);
-          if (c.image) row.image = String(c.image);
-          if (c.imageSide) row.imageSide = String(c.imageSide);
-          out.push(row);
-        }
-      } catch (_) {}
-    }
+    try {
+      const res = await fetch("./review/cards-exam.json?v=" + Date.now(), {
+        cache: "no-cache",
+      });
+      if (!res.ok) return out;
+      const data = await res.json();
+      const cards = Array.isArray(data.cards) ? data.cards : [];
+      for (const c of cards) {
+        if (!c || !c.id) continue;
+        const row = {
+          id: String(c.id),
+          subject: String(c.subject || ""),
+          deck: "exam",
+          anchor: String(c.anchor || ""),
+          type: String(c.type || "def"),
+          front: String(c.front || ""),
+          back: String(c.back || ""),
+        };
+        if (c.svg) row.svg = String(c.svg);
+        if (c.image) row.image = String(c.image);
+        if (c.imageSide) row.imageSide = String(c.imageSide);
+        out.push(row);
+      }
+    } catch (_) {}
     return out;
   }
 
   function wireHub() {
     els.hello.textContent = HELLOS[Math.floor(Math.random() * HELLOS.length)];
-
-    els.hub.querySelectorAll("[data-deck]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        mode = btn.getAttribute("data-deck") || "current";
-        els.hub.querySelectorAll("[data-deck]").forEach((b) => {
-          b.classList.toggle("is-on", b === btn);
-        });
-        syncHubPanels();
-      });
-    });
-
-    SUBJECTS.forEach((s) => {
-      const lab = document.createElement("label");
-      lab.className = "is-on";
-      lab.innerHTML = `<input type="checkbox" checked data-subject="${s.id}"> ${s.title}`;
-      const input = lab.querySelector("input");
-      input.addEventListener("change", () => {
-        if (input.checked) subjectsOn.add(s.id);
-        else subjectsOn.delete(s.id);
-        lab.classList.toggle("is-on", input.checked);
-      });
-      els.subjects.appendChild(lab);
-    });
 
     SUBJECTS.forEach((s) => {
       const btn = document.createElement("button");
@@ -408,13 +365,16 @@
       els.examSubjects.appendChild(btn);
     });
 
-    els.btnStart.addEventListener("click", () => startSession({ includeAll: false }));
-    els.btnAll.addEventListener("click", () => startSession({ includeAll: true }));
-    els.btnExamStart.addEventListener("click", () => startSession({ includeAll: false }));
-    els.btnExamAll.addEventListener("click", () => startSession({ includeAll: true }));
-    els.btnContinue.addEventListener("click", () => startSession({ includeAll: true }));
+    els.btnExamStart.addEventListener("click", () =>
+      startSession({ includeAll: false })
+    );
+    els.btnExamAll.addEventListener("click", () =>
+      startSession({ includeAll: true })
+    );
+    els.btnContinue.addEventListener("click", () =>
+      startSession({ includeAll: true })
+    );
     els.btnHub.addEventListener("click", backToHub);
-    syncHubPanels();
   }
 
   function wireSession() {
@@ -450,12 +410,7 @@
     els.done = document.getElementById("rv-done");
     els.hello = document.getElementById("rv-hello");
     els.lead = document.getElementById("rv-lead");
-    els.panelCurrent = document.getElementById("rv-panel-current");
-    els.panelExam = document.getElementById("rv-panel-exam");
-    els.subjects = document.getElementById("rv-subjects");
     els.examSubjects = document.getElementById("rv-exam-subjects");
-    els.btnStart = document.getElementById("rv-btn-start");
-    els.btnAll = document.getElementById("rv-btn-all");
     els.btnExamStart = document.getElementById("rv-btn-exam-start");
     els.btnExamAll = document.getElementById("rv-btn-exam-all");
     els.chipSubject = document.getElementById("rv-chip-subject");
@@ -487,7 +442,7 @@
     if (!allCards.length) {
       els.status.hidden = false;
       els.status.textContent =
-        "Банк пока пуст — добавь карточки через промпт и merge_review_cards.py.";
+        "Банк пока пуст — добавь карточки через промпт и merge_review_cards.py --deck exam.";
     }
     showView("hub");
   }

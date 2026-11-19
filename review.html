@@ -7,14 +7,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Повтор">
-  <meta name="description" content="Повтор карточек — тетради Б83">
+  <meta name="description" content="Повтор карточек по билетам — тетради Б83">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <title>Повтор</title>
   <link rel="stylesheet" href="./styles.css?v=23">
-  <link rel="stylesheet" href="./review.css?v=4">
+  <link rel="stylesheet" href="./review.css?v=5">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="./theme.js?v=23"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -40,40 +40,11 @@
     <section id="rv-hub" class="rv-view">
       <div class="rv-hero">
         <p class="rv-hello" id="rv-hello">Снова сюда — хорошо.</p>
-        <p class="rv-lead" id="rv-lead">Выбери колоду и предметы, дальше просто переворачивай карточку.</p>
+        <p class="rv-lead" id="rv-lead">Выбери предмет и разбирай билеты — дальше просто переворачивай карточку.</p>
       </div>
 
-      <div class="rv-panel rv-panel-soft">
-        <h2>Колода</h2>
-        <div class="rv-decks">
-          <button type="button" class="rv-deck is-on" data-deck="current">
-            <span class="rv-deck-emoji" aria-hidden="true">📘</span>
-            <span class="rv-deck-title">Текущее</span>
-            <span class="rv-deck-hint">Лекции и практика — основной повтор</span>
-          </button>
-          <button type="button" class="rv-deck" data-deck="exam">
-            <span class="rv-deck-emoji" aria-hidden="true">🎫</span>
-            <span class="rv-deck-title">Билеты</span>
-            <span class="rv-deck-hint">Активный повтор перед экзаменом — по одному предмету</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="rv-panel rv-panel-soft" id="rv-panel-current">
-        <h2>Предметы</h2>
-        <div class="rv-subjects" id="rv-subjects"></div>
-        <div class="rv-actions">
-          <button type="button" class="btn btn-primary rv-btn-go" id="rv-btn-start">Начать</button>
-          <button type="button" class="btn" id="rv-btn-all">Все подряд</button>
-        </div>
-        <p class="rv-note">
-          Нажми карточку — ответ; ещё раз — снова вопрос.
-          Не знаю / шатко / знаю — когда готов оценить.
-        </p>
-      </div>
-
-      <div class="rv-panel rv-panel-soft rv-hidden" id="rv-panel-exam">
-        <h2>Предмет экзамена</h2>
+      <div class="rv-panel rv-panel-soft" id="rv-panel-exam">
+        <h2>Предмет</h2>
         <p class="rv-exam-hint">Один предмет — одна сессия. Так удобнее готовиться к конкретному экзамену.</p>
         <div class="rv-exam-subjects" id="rv-exam-subjects"></div>
         <div class="rv-actions">
@@ -82,6 +53,7 @@
         </div>
         <p class="rv-note">
           Нажми карточку — ответ; ещё раз — снова вопрос.
+          Не знаю / шатко / знаю — когда готов оценить.
         </p>
       </div>
 
@@ -125,12 +97,12 @@
         <p id="rv-done-body" class="rv-done-text">Можно продолжить спокойно — сколько захочешь.</p>
         <div class="rv-actions">
           <button type="button" class="btn btn-primary" id="rv-btn-continue">Продолжить</button>
-          <button type="button" class="btn" id="rv-btn-hub">К колодам</button>
+          <button type="button" class="btn" id="rv-btn-hub">К предметам</button>
         </div>
       </div>
     </section>
   </div>
 
-  <script src="./review.js?v=4"></script>
+  <script src="./review.js?v=5"></script>
 </body>
 </html>

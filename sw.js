@@ -84,7 +84,6 @@ const PRECACHE = [
   "./matan-kr1.html",
   "./matan-practice.html",
   "./matan-theory.html",
-  "./review/cards-current.json",
   "./review/cards-exam.json",
   "./review.css",
   "./review.html",
