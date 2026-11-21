@@ -17,10 +17,13 @@ const SHELL = [
 
 /* Replaced at publish with the full asset list. */
 const PRECACHE = [
+  "./_viz/discrete-tickets.js",
+  "./_viz/matan-tickets.js",
   "./_viz/viz.css",
   "./_viz/viz.js",
   "./algebra-colloquium-checklist.html",
   "./algebra-colloquium.html",
+  "./algebra-exam.html",
   "./algebra-kr2.html",
   "./algebra-practice.html",
   "./algebra-theory.html",
@@ -81,10 +84,12 @@ const PRECACHE = [
   "./index.html",
   "./informatics.html",
   "./manifest.json",
+  "./matan-exam.html",
   "./matan-kr1.html",
   "./matan-practice.html",
   "./matan-theory.html",
   "./review/cards-exam.json",
+  "./review/ticket-sources.json",
   "./review.css",
   "./review.html",
   "./review.js",

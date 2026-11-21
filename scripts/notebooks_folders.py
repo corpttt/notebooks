@@ -67,6 +67,7 @@ FOLDER_BY_ID: dict[str, str] = {
     "matan-theory": "matan",
     "matan-practice": "matan",
     "matan-kr1": "matan",
+    "matan-exam": "matan",
     "algebra-theory": "algebra",
     "algebra-practice": "algebra",
     "algebra-colloquium": "algebra",

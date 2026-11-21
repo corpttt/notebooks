@@ -223,6 +223,11 @@ html[data-theme="light"] .rv-panel {
   justify-content: center;
 }
 .rv-actions .btn { min-height: 2.65rem; border-radius: 10px; }
+a.rv-btn-quiet {
+  text-decoration: none;
+  justify-content: center;
+}
+a.rv-btn-quiet:hover { text-decoration: none; color: inherit; }
 .rv-btn-go {
   flex: 1 1 12rem;
   justify-content: center;

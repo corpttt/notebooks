@@ -10,6 +10,8 @@
  *        data-items="5,2,8" | "Анна:4,Борис:5" data-presets="random,sorted,reversed"></div>
  *   <div class="lab" data-lab="switches|gates|fulladder|ripple|rs|vn|timeline|bfs|dfs|stackqueue|epsn|induct|recur
  *        |bisect|heap|countsort|binsearch|vecgrow|sqrtdec|fibtree|calcdp|griddp|dsu|kruskal|sdlcmodels|tdd"></div>
+ *   Discrete exam tickets: load discrete-tickets.js before viz.js — labs dm-partprod|dm-hasse|dm-topo|dm-critpath|
+ *        dm-antichain|dm-lis|dm-dilworth|dm-lehmer|dm-pie|dm-stirling|dm-monty|dm-bayes|dm-inverse|dm-alias|dm-knuthyao
  *   fibtree / calcdp: optional data-n
  *   heap: optional data-mode="ops|sort"
  *   recur: optional data-preset="cbrt7|heron|sqrt2|half|p68"

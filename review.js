@@ -11,12 +11,16 @@
     { id: "discrete", title: "Дискрет" },
   ];
   const SUBJECT_TITLE = Object.fromEntries(SUBJECTS.map((s) => [s.id, s.title]));
-  /** matan exam list uses «вопрос», others — «билет». */
   const UNIT_WORD = {
-    matan: "вопрос",
+    matan: "билет",
     algebra: "билет",
     geometry: "билет",
     discrete: "билет",
+  };
+  const TICKET_FILES = {
+    matan: "matan-exam.html",
+    algebra: "algebra-exam.html",
+    discrete: "discrete-tickets.html",
   };
   const HELLOS = [
     "Снова сюда — хорошо.",
@@ -27,6 +31,8 @@
 
   const els = {};
   let allCards = [];
+  /** @type {Record<string, {file?: string, tickets?: Record<string, string>}>} */
+  let ticketSources = {};
   let examSubject = "matan";
   /** @type {Record<string, number>} */
   let untilBySubject = {};
@@ -136,6 +142,49 @@
     return Math.max.apply(null, nums);
   }
 
+  /** Primary ticket for deep link (first / lowest number in anchor). */
+  function primaryTicket(card) {
+    const m = String(card.anchor || "").match(/(?:Билет|Вопрос)\s+(\d+)/i);
+    if (m) return +m[1];
+    const nums = ticketNums(card.anchor);
+    return nums.length ? Math.min.apply(null, nums) : null;
+  }
+
+  function notebooksBase() {
+    return /\/notebooks\//.test(location.pathname) ? "./" : "./notebooks/";
+  }
+
+  function sourceHref(card) {
+    if (!card) return "";
+    const n = primaryTicket(card);
+    if (n == null) return "";
+    const subj = ticketSources[card.subject] || {};
+    const file = subj.file || TICKET_FILES[card.subject];
+    if (!file) return "";
+    const frag = (subj.tickets && subj.tickets[String(n)]) || "";
+    const url = notebooksBase() + file;
+    return frag ? url + "#" + encodeURIComponent(frag) : url;
+  }
+
+  function paintSourceLink(card) {
+    const a = els.cardSource;
+    if (!a) return;
+    const href = sourceHref(card);
+    if (!href) {
+      a.classList.add("rv-hidden");
+      a.removeAttribute("href");
+      return;
+    }
+    const n = primaryTicket(card);
+    const word = unitWord(card.subject);
+    a.href = href;
+    a.textContent =
+      n != null
+        ? "Полный текст · " + word + " " + n
+        : "Полный текст билета";
+    a.classList.remove("rv-hidden");
+  }
+
   function ticketsForSubject(subject) {
     const set = new Set();
     for (const c of allCards) {
@@ -178,10 +227,7 @@
 
   function refreshUntilSelect() {
     const tickets = ticketsForSubject(examSubject);
-    const word = unitWord(examSubject);
-    const label =
-      word === "вопрос" ? "Повторять до вопроса" : "Повторять до билета";
-    if (els.untilLabel) els.untilLabel.textContent = label;
+    if (els.untilLabel) els.untilLabel.textContent = "Повторять до билета";
 
     const sel = els.untilSelect;
     if (!sel) return;
@@ -203,8 +249,7 @@
     tickets.forEach((n) => {
       const opt = document.createElement("option");
       opt.value = String(n);
-      opt.textContent =
-        word === "вопрос" ? "Вопрос " + n : "Билет " + n;
+      opt.textContent = "Билет " + n;
       if (n === until) opt.selected = true;
       sel.appendChild(opt);
     });
@@ -358,6 +403,7 @@
       els.card.classList.add("is-enter");
     }
     paintFace();
+    paintSourceLink(card);
   }
 
   function toggleFlip() {
@@ -438,7 +484,26 @@
   function backToHub() {
     freeMode = false;
     flipped = false;
+    if (els.cardSource) {
+      els.cardSource.classList.add("rv-hidden");
+      els.cardSource.removeAttribute("href");
+    }
     showView("hub");
+  }
+
+  async function loadTicketSources() {
+    try {
+      const res = await fetch("./review/ticket-sources.json?v=" + Date.now(), {
+        cache: "no-cache",
+      });
+      if (!res.ok) return {};
+      const data = await res.json();
+      return data && data.subjects && typeof data.subjects === "object"
+        ? data.subjects
+        : {};
+    } catch (_) {
+      return {};
+    }
   }
 
   async function loadBanks() {
@@ -531,6 +596,9 @@
       e.stopPropagation();
       deferToEnd();
     });
+    if (els.cardSource) {
+      els.cardSource.addEventListener("click", (e) => e.stopPropagation());
+    }
     els.btnStop.addEventListener("click", backToHub);
   }
 
@@ -557,6 +625,7 @@
     els.btnHard = document.getElementById("rv-btn-hard");
     els.btnGood = document.getElementById("rv-btn-good");
     els.btnDefer = document.getElementById("rv-btn-defer");
+    els.cardSource = document.getElementById("rv-card-source");
     els.btnStop = document.getElementById("rv-btn-stop");
     els.doneTitle = document.getElementById("rv-done-title");
     els.doneBody = document.getElementById("rv-done-body");
@@ -570,6 +639,7 @@
     untilBySubject = loadUntilPrefs();
     wireHub();
     wireSession();
+    ticketSources = await loadTicketSources();
     allCards = await loadBanks();
     const state = loadState();
     saveState(pruneState(state, new Set(allCards.map((c) => c.id))));

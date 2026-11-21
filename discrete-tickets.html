@@ -81,6 +81,9 @@ html[data-theme="dark"] .katex { color: var(--ink); }
 </style>
 <link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
 <script src="./общее/тетрадь.js?v=f7721170" defer></script>
+<link rel="stylesheet" href="./_viz/viz.css?v=540713b7">
+<script src="./_viz/discrete-tickets.js?v=540713b7" defer></script>
+<script src="./_viz/viz.js?v=540713b7" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -210,6 +213,7 @@ $$|\mathcal{P}(A)| = \sum_{k=0}^n \binom{n}{k} = \sum_{k=0}^n \binom{n}{k} 1^k 1
 $$\mathcal{P}_1 = {A_1, A_2, \dots, A_k} \quad \text{и} \quad \mathcal{P}_2 = {B_1, B_2, \dots, B_m}$$
 <strong>Произведением разбиений</strong> $\mathcal{P}_1 \cdot \mathcal{P}_2$ называется семейство непустых попарных пересечений их блоков:
 $$\mathcal{P}_1 \cdot \mathcal{P}_2 = {A_i \cap B_j \mid A_i \in \mathcal{P}_1, \, B_j \in \mathcal{P}_2, \, A_i \cap B_j \neq \emptyset}$$</p>
+<div class="lab" data-lab="dm-partprod"></div>
 <div class="callout callout-thm"><div class="callout-title">⚡ Теорема / Утверждение</div><div class="callout-body"><p><strong>Теорема 1.2 (Корректность произведения разбиений)</strong>:
 Семейство $\mathcal{P} = \mathcal{P}_1 \cdot \mathcal{P}_2$ является корректным разбиением множества $A$.</p></div></div>
 
@@ -263,6 +267,7 @@ $$x &lt; y \quad \text{и} \quad \nexists z \in P: (x &lt; z &lt; y)$$
 - Элементы множества $P$ изображаются точками (вершинами) на плоскости.
 - Если $x \lessdot y$, то вершина $y$ рисуется <strong>строго выше</strong> вершины $x$, и они соединяются прямолинейным или гладким отрезком (ребром).
 - Транзитивные стрелки (если $x \lessdot y \lessdot z$, то ребро $x \to z$) и рефлексивные петли ($x \to x$) <strong>не рисуются</strong>, так как они однозначно восстанавливаются по транзитивности снизу вверх.</p>
+<div class="lab" data-lab="dm-hasse"></div>
 <pre><code>       Диаграмма Хассе булеана P({1, 2, 3}) по включению:
 
                      {1, 2, 3}
@@ -339,6 +344,7 @@ $$\forall x, y \in P: (x &lt; y \implies \pi(x) &lt; \pi(y))$$
      - Если оба $x, y \in P'$, то $\pi(x) = \pi'(x)$ и $\pi(y) = \pi'(y)$. Так как $\pi'$ — топологическая сортировка на $P'$, то $\pi'(x) < \pi'(y) \implies \pi(x) < \pi(y)$.
 Индукционный переход доказан. Конструктивный алгоритм: на каждом шаге находим минимальный элемент (источник графа с нулевой входящей полустепенью), выписываем его и удаляем из графа. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-topo"></div>
 
 <hr />
 <h2 id="discrete-билет-4-моделирование-расписаний-параллельные-вычисления-цепи-и-критические-пути">[Билет 4] Моделирование расписаний, параллельные вычисления, цепи и критические пути</h2>
@@ -378,6 +384,7 @@ $$S_j = {x \in P \mid L(x) = j}, \quad j = 1, 2, \dots, h$$</p>
    - Следовательно, задача $u$ принадлежит слою $S_k$ с номером $k \le j - 1$, то есть она уже была завершена на предыдущих тактах.
 3. Время работы алгоритма равно числу слоёв $h = \max_{x \in P} L(x)$. Так как время не может быть меньше длины максимальной цепи ($T \ge h$), полученное расписание является оптимальным. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-critpath"></div>
 
 <hr />
 <h2 id="discrete-билет-5-антицепи-поуровневое-разбиение-на-антицепи-и-теорема-о-высоте">[Билет 5] Антицепи, поуровневое разбиение на антицепи и теорема о высоте</h2>
@@ -406,6 +413,7 @@ $$P = A_1 \sqcup A_2 \sqcup \dots \sqcup A_h$$
      Следовательно, никакие два элемента в $A_i$ не сравнимы, то есть $A_i$ — антицепь.
 Построено разбиение на ровно $h$ антицепей. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-antichain"></div>
 
 <hr />
 <h2 id="discrete-билет-6-задача-о-наибольшей-возрастающей-подпоследовательности-lis-и-алгоритм-on-log-n">[Билет 6] Задача о наибольшей возрастающей подпоследовательности (LIS) и алгоритм $O(n \log n)$</h2>
@@ -445,6 +453,7 @@ $$i \prec j \iff (i &lt; j) \land (a_i &lt; a_j)$$
 2. **Сложность**: Внешний цикл выполняется $n$ раз. На каждой итерации выполняется бинарный поиск по массиву размера не более $n$, требующий $O(\log n)$ операций. Итоговая асимптотика:
    $$T(n) = O(n \log n), \quad \text{память } O(n) \quad \blacksquare$$
 </div></details>
+<div class="lab" data-lab="dm-lis"></div>
 
 <hr />
 <h2 id="discrete-билет-7-теорема-дилуорса-dilworths-theorem">[Билет 7] Теорема Дилуорса (Dilworth's Theorem)</h2>
@@ -503,6 +512,7 @@ $$\min |\text{покрытие цепями}| = \max |\text{антицепь}|$$
        Так как все элементы $C_i^-$ меньше или равны $a_i$, а все элементы $C_i^+$ больше или равны $a_i$, множество $C_i$ является корректной цепью в $P$.
        Семейство $\{C_1, \dots, C_w\}$ покрывает $P^- \cup P^+ = P$ и состоит ровно из $w$ цепей. Теорема полностью доказана! $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-dilworth"></div>
 
 <hr />
 <h1 id="discrete-глава-3-комбинаторика-кодирование-перестановок-и-формула-включений-исключений">Глава 3. Комбинаторика, кодирование перестановок и формула включений-исключений</h1>
@@ -569,6 +579,7 @@ $$l_i = |{j &gt; i \mid \pi_j &lt; \pi_i}|$$</p>
    $$S_n \longleftrightarrow {0, \dots, n-1} \times {0, \dots, n-2} \times \dots \times {0}$$
 4. Код Лемера задаёт номер перестановки в факториальной системе счисления:
    $$\operatorname{Index}(\pi) = \sum_{i=1}^n l_i \cdot (n-i)!$$</p></div></div>
+<div class="lab" data-lab="dm-lehmer"></div>
 
 <hr />
 <h2 id="discrete-билет-9-способы-нумерации-перестановок-биномиальные-и-мультиномиальные-коэффициенты">[Билет 9] Способы нумерации перестановок. Биномиальные и мультиномиальные коэффициенты</h2>
@@ -617,6 +628,7 @@ $$\left| \bigcup_{i=1}^n A_i \right| = \sum_{k=1}^n (-1)^{k-1} \sum_{1 \le i_1 &
    $$\mathbf{1}_{\bigcup A_i}(x) = \sum_{i=1}^n \mathbf{1}_{A_i}(x) - \sum_{1 \le i < j \le n} \mathbf{1}_{A_i \cap A_j}(x) + \dots + (-1)^{n-1} \mathbf{1}_{\bigcap A_i}(x)$$
 5. Просуммируем обе части этого тождества по всем элементам $x \in U$. Так как для любого множества $\sum_{x \in U} \mathbf{1}_S(x) = |S|$, получаем требуемое равенство мощностей. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-pie"></div>
 
 <hr />
 <h4 id="discrete-4-задача-о-беспорядках-subfactorials-derangements">4. Задача о беспорядках (Subfactorials / Derangements)</h4>
@@ -675,6 +687,7 @@ $$S(n, k) = S(n-1, k-1) + k \cdot S(n-1, k)$$</p></div></div>
    - По правилу произведения число способов равно $k \cdot S(n-1, k)$.
 По правилу сложения: $S(n, k) = S(n-1, k-1) + k \cdot S(n-1, k)$. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-stirling"></div>
 
 <hr />
 <h4 id="discrete-2-числа-стирлинга-i-рода-left-beginmatrix-n-k-endmatrix-right-или-sn-k">2. Числа Стирлинга I рода $\left[ \begin{matrix} n \\ k \end{matrix} \right]$ или $s(n, k)$</h4>
@@ -795,6 +808,7 @@ $$F_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\f
      $$\mathbb{P}(H_2 \mid M_3) = \frac{\mathbb{P}(H_2) \mathbb{P}(M_3 \mid H_2)}{\mathbb{P}(M_3)} = \frac{\frac{1}{3} \cdot 1}{\frac{1}{2}} = \frac{2}{3}$$
 Смена двери строго удваивает вероятность выигрыша с $1/3$ до $2/3$! $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-monty"></div>
 
 <hr />
 <h2 id="discrete-билет-14-формула-полной-вероятности-и-формула-байеса">[Билет 14] Формула полной вероятности и формула Байеса</h2>
@@ -812,6 +826,7 @@ $$F_n = \frac{1}{\sqrt{5}} \left( \left(\frac{1+\sqrt{5}}{2}\right)^n - \left(\f
    $$\mathbb{P}(A) = \sum_{i=1}^n \mathbb{P}(A \cap H_i) = \sum_{i=1}^n \mathbb{P}(H_i) \mathbb{P}(A \mid H_i)$$
 2. По определению условной вероятности $\mathbb{P}(H_k \mid A) = \frac{\mathbb{P}(H_k \cap A)}{\mathbb{P}(A)} = \frac{\mathbb{P}(H_k) \mathbb{P}(A \mid H_k)}{\sum_{i=1}^n \mathbb{P}(H_i) \mathbb{P}(A \mid H_i)}$. $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-bayes"></div>
 
 <hr />
 <h2 id="discrete-билет-15-случайные-величины-математическое-ожидание-дисперсия-и-схема-испытаний-бернулли">[Билет 15] Случайные величины, математическое ожидание, дисперсия и схема испытаний Бернулли</h2>
@@ -851,6 +866,7 @@ $$\mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k \in {0, 1, \dots, n}
 <li>Линейный поиск (<code>for i in 1..n</code>): время $O(n)$.</li>
 <li>Бинарный поиск (<code>std::upper_bound</code> по отсортированному массиву $S$): время $O(\log n)$.</li>
 </ol>
+<div class="lab" data-lab="dm-inverse"></div>
 <hr />
 <h2 id="discrete-билет-17-alias-метод-вокера-walkers-alias-method-за-o1">[Билет 17] Alias-метод Вокера (Walker's Alias Method) за $O(1)$</h2>
 
@@ -894,6 +910,7 @@ $$\mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k \in {0, 1, \dots, n}
      $$\mathbb{P}(k) = \frac{1}{n} \left( Prob[k] + \sum_{s \in S_k} (1 - Prob[s]) \right) = \frac{1}{n} q_k = \frac{1}{n} (n p_k) = p_k$$
 Теорема доказана: моделирование точно воспроизводит заданное распределение! $\blacksquare$
 </div></details>
+<div class="lab" data-lab="dm-alias"></div>
 
 <hr />
 <h2 id="discrete-билет-18-моделирование-дискретного-распределения-из-потока-случайных-бит">[Билет 18] Моделирование дискретного распределения из потока случайных бит</h2>
@@ -917,6 +934,7 @@ $$\mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k \in {0, 1, \dots, n}
    $$H(X) \le \mathbb{E}[\text{число бит}] &lt; H(X) + 2$$
    где $H(X) = -\sum_{i=1}^n p_i \log_2 p_i$ — энтропия Шеннона моделируемого распределения. $\blacksquare$</li>
 </ol>
+<div class="lab" data-lab="dm-knuthyao"></div>
     </div>
   </div>
 </main>
