@@ -2,6 +2,7 @@
   "use strict";
 
   const STATE_KEY = "ucheba-review-state";
+  const UNTIL_KEY = "ucheba-review-until";
   const LEVEL_DAYS = [0, 2, 7, 30];
   const SUBJECTS = [
     { id: "matan", title: "Матанализ" },
@@ -10,6 +11,13 @@
     { id: "discrete", title: "Дискрет" },
   ];
   const SUBJECT_TITLE = Object.fromEntries(SUBJECTS.map((s) => [s.id, s.title]));
+  /** matan exam list uses «вопрос», others — «билет». */
+  const UNIT_WORD = {
+    matan: "вопрос",
+    algebra: "билет",
+    geometry: "билет",
+    discrete: "билет",
+  };
   const HELLOS = [
     "Снова сюда — хорошо.",
     "Давай спокойно повторим.",
@@ -20,6 +28,8 @@
   const els = {};
   let allCards = [];
   let examSubject = "matan";
+  /** @type {Record<string, number>} */
+  let untilBySubject = {};
   let queue = [];
   let idx = 0;
   let flipped = false;
@@ -94,8 +104,118 @@
     return a;
   }
 
+  function loadUntilPrefs() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(UNTIL_KEY) || "{}");
+      return raw && typeof raw === "object" ? raw : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function saveUntilPrefs() {
+    try {
+      localStorage.setItem(UNTIL_KEY, JSON.stringify(untilBySubject));
+    } catch (_) {}
+  }
+
+  /** Numbers from «Билет 3» / «Вопрос 10» / «Вопросы 11–12». */
+  function ticketNums(anchor) {
+    const nums = [];
+    const re = /\d+/g;
+    const s = String(anchor || "");
+    let m;
+    while ((m = re.exec(s))) nums.push(+m[0]);
+    return nums;
+  }
+
+  /** Card's ticket index for filtering: max number in anchor (range counted as whole). */
+  function cardTicket(card) {
+    const nums = ticketNums(card.anchor);
+    if (!nums.length) return null;
+    return Math.max.apply(null, nums);
+  }
+
+  function ticketsForSubject(subject) {
+    const set = new Set();
+    for (const c of allCards) {
+      if (c.subject !== subject) continue;
+      const n = cardTicket(c);
+      if (n != null) set.add(n);
+    }
+    return Array.from(set).sort((a, b) => a - b);
+  }
+
+  function unitWord(subject) {
+    return UNIT_WORD[subject] || "билет";
+  }
+
+  function currentUntil() {
+    const tickets = ticketsForSubject(examSubject);
+    if (!tickets.length) return 0;
+    const saved = +untilBySubject[examSubject];
+    if (Number.isFinite(saved) && tickets.includes(saved)) return saved;
+    return tickets[tickets.length - 1];
+  }
+
+  function setUntil(n) {
+    untilBySubject[examSubject] = n;
+    saveUntilPrefs();
+  }
+
+  function passesUntil(card, until) {
+    const n = cardTicket(card);
+    if (n == null) return until >= (ticketsForSubject(card.subject).slice(-1)[0] || 0);
+    return n <= until;
+  }
+
   function filteredPool() {
-    return allCards.filter((c) => c.subject === examSubject);
+    const until = currentUntil();
+    return allCards.filter(
+      (c) => c.subject === examSubject && passesUntil(c, until)
+    );
+  }
+
+  function refreshUntilSelect() {
+    const tickets = ticketsForSubject(examSubject);
+    const word = unitWord(examSubject);
+    const label =
+      word === "вопрос" ? "Повторять до вопроса" : "Повторять до билета";
+    if (els.untilLabel) els.untilLabel.textContent = label;
+
+    const sel = els.untilSelect;
+    if (!sel) return;
+    sel.innerHTML = "";
+    if (!tickets.length) {
+      sel.disabled = true;
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "Нет карточек с номерами";
+      sel.appendChild(opt);
+      if (els.untilHint) {
+        els.untilHint.textContent =
+          "По этому предмету в банке пока нет пронумерованных билетов.";
+      }
+      return;
+    }
+    sel.disabled = false;
+    const until = currentUntil();
+    tickets.forEach((n) => {
+      const opt = document.createElement("option");
+      opt.value = String(n);
+      opt.textContent =
+        word === "вопрос" ? "Вопрос " + n : "Билет " + n;
+      if (n === until) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    setUntil(until);
+    const inRange = filteredPool().length;
+    if (els.untilHint) {
+      els.untilHint.textContent =
+        "В сессию попадут карточки до выбранного включительно (" +
+        inRange +
+        "). Более поздние — нет.";
+    }
   }
 
   function renderMath(root) {
@@ -227,7 +347,10 @@
     }
     flipped = false;
     const subj = SUBJECT_TITLE[card.subject] || card.subject;
-    els.chipSubject.textContent = "Билеты · " + subj;
+    const until = currentUntil();
+    const word = unitWord(card.subject);
+    els.chipSubject.textContent =
+      subj + " · до " + word + "а " + until;
     els.chipSubject.className = "rv-chip rv-chip-" + card.subject;
     els.card.classList.remove("is-flipped", "is-exit", "is-enter", "is-turning");
     if (animateIn) {
@@ -361,8 +484,15 @@
         els.examSubjects.querySelectorAll(".rv-exam-subj").forEach((b) => {
           b.classList.toggle("is-on", b.dataset.subject === examSubject);
         });
+        refreshUntilSelect();
       });
       els.examSubjects.appendChild(btn);
+    });
+
+    els.untilSelect.addEventListener("change", () => {
+      const n = +els.untilSelect.value;
+      if (Number.isFinite(n) && n > 0) setUntil(n);
+      refreshUntilSelect();
     });
 
     els.btnExamStart.addEventListener("click", () =>
@@ -411,6 +541,9 @@
     els.hello = document.getElementById("rv-hello");
     els.lead = document.getElementById("rv-lead");
     els.examSubjects = document.getElementById("rv-exam-subjects");
+    els.untilSelect = document.getElementById("rv-until");
+    els.untilLabel = document.getElementById("rv-until-label-text");
+    els.untilHint = document.getElementById("rv-until-hint");
     els.btnExamStart = document.getElementById("rv-btn-exam-start");
     els.btnExamAll = document.getElementById("rv-btn-exam-all");
     els.chipSubject = document.getElementById("rv-chip-subject");
@@ -434,11 +567,13 @@
 
   async function init() {
     bindEls();
+    untilBySubject = loadUntilPrefs();
     wireHub();
     wireSession();
     allCards = await loadBanks();
     const state = loadState();
     saveState(pruneState(state, new Set(allCards.map((c) => c.id))));
+    refreshUntilSelect();
     if (!allCards.length) {
       els.status.hidden = false;
       els.status.textContent =

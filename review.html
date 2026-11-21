@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <title>Повтор</title>
   <link rel="stylesheet" href="./styles.css?v=23">
-  <link rel="stylesheet" href="./review.css?v=5">
+  <link rel="stylesheet" href="./review.css?v=6">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="./theme.js?v=23"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -47,9 +47,16 @@
         <h2>Предмет</h2>
         <p class="rv-exam-hint">Один предмет — одна сессия. Так удобнее готовиться к конкретному экзамену.</p>
         <div class="rv-exam-subjects" id="rv-exam-subjects"></div>
+        <div class="rv-until" id="rv-until-wrap">
+          <label class="rv-until-label" for="rv-until">
+            <span id="rv-until-label-text">Повторять до билета</span>
+          </label>
+          <select id="rv-until" class="rv-until-select" aria-describedby="rv-until-hint"></select>
+          <p class="rv-until-hint" id="rv-until-hint">Карточки с номером выше выбранного не попадут в сессию.</p>
+        </div>
         <div class="rv-actions">
           <button type="button" class="btn btn-primary rv-btn-go" id="rv-btn-exam-start">Начать билеты</button>
-          <button type="button" class="btn" id="rv-btn-exam-all">Все билеты предмета</button>
+          <button type="button" class="btn" id="rv-btn-exam-all">Все до выбранного</button>
         </div>
         <p class="rv-note">
           Нажми карточку — ответ; ещё раз — снова вопрос.
@@ -103,6 +110,6 @@
     </section>
   </div>
 
-  <script src="./review.js?v=5"></script>
+  <script src="./review.js?v=6"></script>
 </body>
 </html>

@@ -173,6 +173,48 @@ html[data-theme="light"] .rv-panel {
 .rv-exam-subj[data-subject="geometry"].is-on { color: #6bc5d8; border-color: #6bc5d8; box-shadow: 0 0 0 1px #6bc5d8; }
 .rv-exam-subj[data-subject="discrete"].is-on { color: #7ab8e8; border-color: #7ab8e8; box-shadow: 0 0 0 1px #7ab8e8; }
 
+.rv-until {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: stretch;
+}
+.rv-until-label {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--muted);
+  text-align: center;
+}
+.rv-until-select {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--canvas);
+  color: var(--fg);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
+  font: inherit;
+  font-weight: 650;
+  text-align: center;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+.rv-until-select:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+.rv-until-hint {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.4;
+  text-align: center;
+}
+
 .rv-actions {
   display: flex;
   flex-wrap: wrap;
