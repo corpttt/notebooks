@@ -1,14 +1,16 @@
-/* Notebooks PWA — precache shell + all notebooks + KaTeX (offline). */
-const CACHE = "notebooks-shell-v6";
+/* Notebooks PWA — offline-first shell + notebooks + local/CDN KaTeX. */
+const CACHE = "notebooks-shell-v7";
+const NETWORK_MS = 3000;
+
 const SHELL = [
   "./",
   "./index.html",
   "./site.css",
-  "./site.css?v=6",
+  "./site.css?v=7",
   "./site.js",
-  "./site.js?v=6",
+  "./site.js?v=7",
   "./theme.js",
-  "./theme.js?v=6",
+  "./theme.js?v=7",
   "./manifest.json",
   "./precache.json",
   "./icons/icon-192.png",
@@ -97,11 +99,34 @@ const PRECACHE = [
   "./site.js",
   "./styles.css",
   "./theme.js",
+  "./vendor/katex/contrib/auto-render.min.js",
+  "./vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+  "./vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+  "./vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+  "./vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+  "./vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+  "./vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+  "./vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+  "./vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+  "./vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+  "./vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+  "./vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+  "./vendor/katex/katex.min.css",
+  "./vendor/katex/katex.min.js",
   "./общее/тетрадь.css",
   "./общее/тетрадь.js",
-  "./site.css?v=6",
-  "./site.js?v=6",
-  "./theme.js?v=6"
+  "./site.css?v=7",
+  "./site.js?v=7",
+  "./theme.js?v=7"
 ];
 
 const KATEX = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist";
@@ -132,13 +157,37 @@ const KATEX_ASSETS = [
   `${KATEX}/katex.min.js`,
   `${KATEX}/contrib/auto-render.min.js`,
   ...KATEX_FONTS.map((f) => `${KATEX}/fonts/${f}.woff2`),
+  "./vendor/katex/katex.min.css",
+  "./vendor/katex/katex.min.js",
+  "./vendor/katex/contrib/auto-render.min.js",
+  ...KATEX_FONTS.map((f) => `./vendor/katex/fonts/${f}.woff2`),
 ];
+
+function toAbs(url) {
+  try {
+    return new URL(url, self.location.href).href;
+  } catch {
+    return url;
+  }
+}
 
 async function putAll(cache, urls) {
   await Promise.all(
-    urls.map((url) =>
-      cache.add(url).catch(() => undefined)
-    )
+    urls.map(async (url) => {
+      try {
+        const abs = toAbs(url);
+        const res = await fetch(abs, { cache: "reload", mode: "cors" });
+        if (res && res.ok) {
+          await cache.put(abs, res.clone());
+          const u = new URL(abs);
+          if (u.search) {
+            await cache.put(u.origin + u.pathname, res.clone());
+          }
+        }
+      } catch (_) {
+        /* one miss must not break install */
+      }
+    })
   );
 }
 
@@ -163,6 +212,21 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+  if (event.data && event.data.type === "NB_REFRESH") {
+    event.waitUntil(
+      (async () => {
+        const cache = await caches.open(CACHE);
+        const urls = [...new Set([...SHELL, ...PRECACHE, ...KATEX_ASSETS])];
+        await putAll(cache, urls);
+      })()
+    );
+  }
+});
+
 function isSameOrigin(url) {
   return url.origin === self.location.origin;
 }
@@ -174,64 +238,92 @@ function isKatexCdn(url) {
   );
 }
 
-function isShellHtml(url) {
-  const p = url.pathname;
-  return /\/index\.html$/i.test(p) || /\/notebooks\/?$/i.test(p);
-}
-
-function isHtml(url) {
-  return /\.html$/i.test(url.pathname);
+function isAppNavigate(url) {
+  const p = url.pathname.replace(/\/+$/, "") || "/";
+  return (
+    /\/notebooks$/i.test(p) ||
+    /\/index\.html$/i.test(url.pathname) ||
+    /\/notebooks\/?$/i.test(url.pathname)
+  );
 }
 
 async function fromCache(request) {
   const cache = await caches.open(CACHE);
-  return (
+  const direct =
     (await cache.match(request)) ||
-    (await cache.match(request, { ignoreSearch: true })) ||
-    null
-  );
+    (await cache.match(request, { ignoreSearch: true, ignoreVary: true }));
+  if (direct) return direct;
+
+  try {
+    const url = typeof request === "string" ? new URL(toAbs(request)) : new URL(request.url);
+    const candidates = [
+      url.href,
+      url.origin + url.pathname,
+      url.origin + url.pathname.replace(/\/$/, "") + "/",
+      url.origin + url.pathname.replace(/\/$/, "") + "/index.html",
+      toAbs("./"),
+      toAbs("./index.html"),
+    ];
+    for (const href of [...new Set(candidates)]) {
+      const hit =
+        (await cache.match(href)) ||
+        (await cache.match(href, { ignoreSearch: true }));
+      if (hit) return hit;
+    }
+  } catch (_) {}
+  return null;
 }
 
-async function networkFirst(event) {
+async function putBoth(cache, request, res) {
+  await cache.put(request, res.clone());
+  try {
+    const u = new URL(typeof request === "string" ? toAbs(request) : request.url);
+    if (u.search) {
+      await cache.put(u.origin + u.pathname, res.clone());
+    }
+  } catch (_) {}
+}
+
+async function fetchWithTimeout(request, ms) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(request, { cache: "no-cache", signal: ctrl.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+async function staleWhileRevalidate(event) {
   const cache = await caches.open(CACHE);
-  try {
-    const res = await fetch(event.request, { cache: "no-cache" });
-    if (res && res.ok) {
-      await cache.put(event.request, res.clone());
-      try {
-        const u = new URL(event.request.url);
-        if (u.search) {
-          await cache.put(new Request(u.origin + u.pathname), res.clone());
-        }
-      } catch (_) {}
-      return res;
-    }
-  } catch {
-    /* offline */
-  }
-  return (await fromCache(event.request)) || Response.error();
-}
+  const cached = await fromCache(event.request);
 
-async function cacheFirst(event) {
-  const hit = await fromCache(event.request);
-  if (hit) return hit;
-  try {
-    const res = await fetch(event.request);
-    if (res && res.ok) {
-      const cache = await caches.open(CACHE);
-      await cache.put(event.request, res.clone());
-    }
-    return res;
-  } catch {
-    if (event.request.mode === "navigate") {
-      return (
-        (await fromCache("./index.html")) ||
-        (await fromCache("./")) ||
-        Response.error()
-      );
-    }
-    return Response.error();
+  const networkPromise = fetchWithTimeout(event.request, NETWORK_MS)
+    .then(async (res) => {
+      if (res && res.ok) await putBoth(cache, event.request, res);
+      return res;
+    })
+    .catch(() => null);
+
+  if (cached) {
+    event.waitUntil(networkPromise);
+    return cached;
   }
+
+  const net = await networkPromise;
+  if (net && net.ok) return net;
+
+  if (event.request.mode === "navigate" || isAppNavigate(new URL(event.request.url))) {
+    return (
+      (await fromCache("./index.html")) ||
+      (await fromCache("./")) ||
+      new Response(
+        "<!doctype html><meta charset=utf-8><title>Офлайн</title><p>Нет кэша тетрадей. Открой сайт один раз онлайн и дождись установки.</p>",
+        { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      )
+    );
+  }
+  return new Response("", { status: 503, statusText: "Offline" });
 }
 
 self.addEventListener("fetch", (event) => {
@@ -239,20 +331,11 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
   if (isKatexCdn(url)) {
-    event.respondWith(cacheFirst(event));
+    event.respondWith(staleWhileRevalidate(event));
     return;
   }
 
   if (!isSameOrigin(url)) return;
 
-  if (
-    isShellHtml(url) ||
-    isHtml(url) ||
-    event.request.mode === "navigate"
-  ) {
-    event.respondWith(networkFirst(event));
-    return;
-  }
-
-  event.respondWith(cacheFirst(event));
+  event.respondWith(staleWhileRevalidate(event));
 });

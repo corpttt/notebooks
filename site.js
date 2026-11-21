@@ -1,5 +1,5 @@
 (function () {
-  const CACHE_NAME = "notebooks-shell-v6";
+  const CACHE_NAME = "notebooks-shell-v7";
 
   function toast(msg) {
     let el = document.getElementById("nb-toast");
@@ -12,11 +12,11 @@
     el.textContent = msg;
     el.classList.add("show");
     clearTimeout(el._t);
-    el._t = setTimeout(() => el.classList.remove("show"), 1600);
+    el._t = setTimeout(() => el.classList.remove("show"), 1800);
   }
 
   async function refillCache() {
-    if (!("caches" in window)) return;
+    if (!("caches" in window)) return { done: 0, total: 0 };
     const cache = await caches.open(CACHE_NAME);
     let list = [];
     try {
@@ -38,46 +38,63 @@
     ];
     const urls = [...new Set([...shell, ...list])];
     let done = 0;
-    await Promise.all(
-      urls.map(async (u) => {
-        try {
-          const res = await fetch(u, {
-            cache: "reload",
-            credentials: "same-origin",
-          });
-          if (res && res.ok) {
-            await cache.put(u, res.clone());
-            done += 1;
-          }
-        } catch (_) {}
-      })
-    );
+    // sequential batches keep mobile browsers from aborting
+    const chunk = 8;
+    for (let i = 0; i < urls.length; i += chunk) {
+      const slice = urls.slice(i, i + chunk);
+      await Promise.all(
+        slice.map(async (u) => {
+          try {
+            const res = await fetch(u, {
+              cache: "reload",
+              credentials: "same-origin",
+            });
+            if (res && res.ok) {
+              await cache.put(u, res.clone());
+              done += 1;
+            }
+          } catch (_) {}
+        })
+      );
+    }
     return { done, total: urls.length };
   }
 
-  async function hardRefresh() {
+  async function softRefresh() {
     const btn = document.getElementById("btn-refresh");
     if (btn) btn.disabled = true;
-    toast("Кэширую тетради…");
+    if (!navigator.onLine) {
+      toast("Офлайн — кэш не трогаем");
+      if (btn) btn.disabled = false;
+      return;
+    }
+    toast("Обновляю кэш…");
     try {
-      const keys = await caches.keys();
-      await Promise.all(keys.map((k) => caches.delete(k)));
       const reg = await navigator.serviceWorker.getRegistration();
       await reg?.update();
+      if (reg?.waiting) reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: "NB_REFRESH" });
+      }
+      // Refill on top of existing cache — never delete first
       const { done, total } = await refillCache();
-      toast(`Офлайн: ${done}/${total}`);
+      toast(`Офлайн готов: ${done}/${total}`);
     } catch (_) {
-      toast("Обновление не удалось");
+      toast("Обновление не удалось — старый кэш на месте");
     }
-    setTimeout(() => location.reload(), 500);
+    if (btn) btn.disabled = false;
+    setTimeout(() => location.reload(), 600);
   }
 
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker
-      .register("./sw.js?v=6")
+      .register("./sw.js?v=7")
       .then((reg) => {
         reg.update().catch(() => {});
+        if (reg.waiting) {
+          reg.waiting.postMessage({ type: "SKIP_WAITING" });
+        }
         reg.addEventListener("updatefound", () => {
           const w = reg.installing;
           if (!w) return;
@@ -127,7 +144,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     document
       .getElementById("btn-refresh")
-      ?.addEventListener("click", hardRefresh);
+      ?.addEventListener("click", softRefresh);
     wireFolders();
     registerSW();
   });
