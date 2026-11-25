@@ -74,6 +74,7 @@ FOLDER_BY_ID: dict[str, str] = {
     "algebra-colloquium-checklist": "algebra",
     "geometry-theory": "geometry",
     "geometry-practice": "geometry",
+    "geometry-exam": "geometry",
     "discrete-theory": "discrete",
     "discrete": "discrete",
     "algorithms": "algorithms",

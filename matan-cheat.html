@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru" data-nb-id="matan-cheat" data-nb-title="Матанализ · шпаргалка A4" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Матанализ · шпаргалка A4</title>
+<link rel="stylesheet" href="./vendor/katex/katex.min.css">
+<script defer src="./vendor/katex/katex.min.js"></script>
+<script defer src="./vendor/katex/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root {
+  --ink: #111;
+  --muted: #444;
+  --rule: #bbb;
+  --bg: #fff;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 8.2pt/1.22 "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+.wrap {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 6mm 5mm 8mm;
+}
+h1 {
+  font-size: 11pt;
+  margin: 0 0 1.5mm;
+  letter-spacing: 0.02em;
+  text-align: center;
+  font-weight: 700;
+}
+.sub {
+  text-align: center;
+  font-size: 7pt;
+  color: var(--muted);
+  margin: 0 0 2.5mm;
+}
+.columns {
+  column-count: 3;
+  column-gap: 3.2mm;
+  column-rule: 0.3pt solid var(--rule);
+}
+section {
+  break-inside: avoid;
+  margin: 0 0 2.2mm;
+  padding: 0 0 1.4mm;
+  border-bottom: 0.3pt solid #ddd;
+}
+section:last-child { border-bottom: 0; }
+h2 {
+  font-size: 8pt;
+  margin: 0 0 0.8mm;
+  padding: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+p, li { margin: 0 0 0.6mm; }
+ul { margin: 0; padding-left: 2.8mm; }
+li { margin-bottom: 0.35mm; }
+.k { font-weight: 700; }
+.tiny { font-size: 7.2pt; color: var(--muted); }
+.katex { font-size: 0.95em !important; }
+.katex-display { margin: 0.4mm 0 !important; }
+.katex-display > .katex { font-size: 0.9em !important; }
+.block {
+  margin: 0.5mm 0;
+}
+.hint {
+  border-left: 1.2pt solid #888;
+  padding-left: 1.5mm;
+  margin: 0.6mm 0;
+}
+.noprint { margin-top: 4mm; font-size: 8pt; color: var(--muted); }
+@media print {
+  @page { size: A4; margin: 5mm; }
+  html, body { font-size: 6.7pt; line-height: 1.18; }
+  .wrap { max-width: none; padding: 0; }
+  .columns { column-count: 3; column-gap: 2.6mm; }
+  h1 { font-size: 9pt; margin-bottom: 1mm; }
+  .sub { font-size: 6pt; margin-bottom: 1.5mm; }
+  h2 { font-size: 6.8pt; }
+  .tiny { font-size: 6pt; }
+  .katex { font-size: 0.88em !important; }
+  .katex-display > .katex { font-size: 0.84em !important; }
+  section { margin-bottom: 1.6mm; padding-bottom: 1mm; }
+  .noprint { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+}
+@media screen and (max-width: 900px) {
+  .columns { column-count: 2; }
+}
+@media screen and (max-width: 560px) {
+  .columns { column-count: 1; }
+  .wrap { padding: 3mm; }
+}
+</style>
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Тетради">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./site.css?v=8">
+</head>
+<body>
+<div class="wrap">
+<h1>Матанализ · шпаргалка (A4)</h1>
+<p class="sub">Плотная выжимка формул и ходов · печать: Ctrl+P · поля ~5&nbsp;мм · 3 колонки</p>
+
+<div class="columns">
+
+<section>
+<h2>1. Эквивалентности \(x\to0\)</h2>
+<p>\(f\sim g \iff f/g\to1\). Менять только в <span class="k">произведении/частном</span>.</p>
+<p class="block">
+\(\sin x\sim\operatorname{tg}x\sim\arcsin x\sim\operatorname{arctg}x\sim x\)<br>
+\(1-\cos x\sim x^2/2,\quad 1-\cos ax\sim a^2x^2/2\)<br>
+\(e^x-1\sim x,\quad a^x-1\sim x\ln a\)<br>
+\(\ln(1+x)\sim x,\quad \log_a(1+x)\sim x/\ln a\)<br>
+\((1+x)^\alpha-1\sim\alpha x,\quad \sqrt[n]{1+x}-1\sim x/n\)
+</p>
+<p class="hint"><span class="k">Нельзя</span> в сумме/разности, если главные части сокращаются: \(x+1\sim x\), но \((x+1)-x=1\).</p>
+<p><span class="k">Разность → произведение:</span> \(\operatorname{tg}x-\sin x=\operatorname{tg}x(1-\cos x)\); \(\sin x-\operatorname{tg}x=\sin x(\cos x-1)/\cos x\).</p>
+<p>\(f\sim g\Rightarrow f-g=o(g)\); \(f=g+o(g)\Rightarrow f\sim g\).</p>
+</section>
+
+<section>
+<h2>2. Степень \(1^\infty\)</h2>
+<p>\(f^g=e^{g\ln f}\). Если \(f\to1\): \(\ln f=\ln(1+(f-1))\sim f-1\).</p>
+<p>Показатель \(g\ln f\) — <span class="k">произведение</span>: там ∼ законна.</p>
+<p class="tiny">Ход: найти \(\lim g\ln f=L\) ⇒ ответ \(e^L\) (или \(0/\infty\) если \(L=\pm\infty\)).</p>
+</section>
+
+<section>
+<h2>3. О-малое</h2>
+<p>\(f=o(g)\iff f/g\to0\) (если \(g\neq0\)). Читать только слева направо.</p>
+<p>\(o(g)\pm o(g)=o(g)\) <span class="k">(не 0!)</span>; \(c\cdot o(g)=o(g)\); \(o(o(g))=o(g)\); \(fh=o(gh)\); \(f=o(1)\iff f\to0\); \(\lim f=A\iff f=A+o(1)\).</p>
+<p>Если \(f=o(g_1)\) и \(g_1\sim g_2\), то \(f=o(g_2)\) (напр. \(o(\arcsin x)=o(x)\)).</p>
+<p class="block"><span class="k">Коротко \(+o\):</span><br>
+\(e^x=1+x+o(x),\ \ln(1+x)=x+o(x),\ \sin x=x+o(x)\)<br>
+\(\cos x=1-x^2/2+o(x^2),\ (1+x)^\alpha=1+\alpha x+o(x)\)
+</p>
+<p class="hint">После вычитания осталось одно \(o(x^k)\), а делишь на \(x^n\) (\(n>k\)) — точности мало → Тейлор.</p>
+</section>
+
+<section>
+<h2>4. Маклорен (\(x\to0\))</h2>
+<p class="block">
+\(e^x=1+x+\dfrac{x^2}{2!}+\dfrac{x^3}{3!}+\cdots+\dfrac{x^n}{n!}+o(x^n)\)<br>
+\(\sin x=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}-\cdots+o(x^{2n+2})\)<br>
+\(\cos x=1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\cdots+o(x^{2n+1})\)<br>
+\(\ln(1+x)=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\cdots+(-1)^{n-1}\dfrac{x^n}{n}+o(x^n)\)<br>
+\(\operatorname{arctg}x=x-\dfrac{x^3}{3}+\dfrac{x^5}{5}-\cdots+o(x^{2n+2})\)<br>
+\(\arcsin x=x+\dfrac{x^3}{6}+\dfrac{3x^5}{40}+\cdots+o(x^{2n+2})\)<br>
+\((1+x)^p=1+px+\dfrac{p(p-1)}{2!}x^2+\dfrac{p(p-1)(p-2)}{3!}x^3+\cdots+o(x^n)\)<br>
+\(\operatorname{tg}x=x+\dfrac{x^3}{3}+\dfrac{2x^5}{15}+o(x^6)\)
+</p>
+<p class="tiny">Частые \(p\): \(\sqrt{1+u}=1+\frac u2-\frac{u^2}{8}+o(u^2)\); \(\sqrt[3]{1+u}=1+\frac u3-\frac{u^2}{9}+o(u^2)\); \((1+u)^{-1}=1-u+u^2+o(u^2)\).</p>
+<p>Тейлор в \(x_0\): \(f(x)=\sum_{k=0}^{n}\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k+o((x-x_0)^n)\).</p>
+</section>
+
+<section>
+<h2>5. Правила разложения</h2>
+<ul>
+<li><span class="k">Сумма:</span> оба до \(o(x^n)\), сложить.</li>
+<li><span class="k">Произведение:</span> оба до \(o(x^n)\), умножить, отбросить степень \(>n\).</li>
+<li><span class="k">Сложная \(f(g)\):</span> \(g\to0\); подставить разложение \(g\) в \(f\); иначе выделить \(g=c+h\), \(h\to0\).</li>
+</ul>
+<p>Чётная → только чётные степени, остаток можно \(o(x^{2n+1})\); нечётная → наоборот.</p>
+</section>
+
+<section>
+<h2>6. Предел через Тейлора</h2>
+<p>\(\lim\dfrac{f}{g}\): разложи более простой до первого \(a x^n+o(x^n)\); второй до \(o(x^n)\); ответ \(b/a\).</p>
+<p>Для \(f^g\) (\(f\to1\), \(g\sim c/x^n\)): \(\ln f\) нужен до \(o(x^n)\).</p>
+<p class="hint">Если низкие степени сократились — бери следующий порядок (часто 3→5, 2→4).</p>
+</section>
+
+<section>
+<h2>7. Производные</h2>
+<p class="block">
+\((c)'=0,\ (x^\alpha)'=\alpha x^{\alpha-1},\ (a^x)'=a^x\ln a,\ (e^x)'=e^x\)<br>
+\((\ln x)'=1/x,\ (\log_a x)'=1/(x\ln a)\)<br>
+\((\sin x)'=\cos x,\ (\cos x)'=-\sin x,\ (\operatorname{tg}x)'=1/\cos^2 x\)<br>
+\((\arcsin x)'=1/\sqrt{1-x^2},\ (\operatorname{arctg}x)'=1/(1+x^2)\)
+</p>
+<p>\((uv)'=u'v+uv',\ \bigl(\frac u v\bigr)'=\frac{u'v-uv'}{v^2},\ (f(g))'=f'(g)g'\).</p>
+<p>\(u^v=e^{v\ln u}\Rightarrow (u^v)'=u^v(v'\ln u+v\cdot u'/u)\).</p>
+<p class="tiny">В «острых» точках (\(0\), стыки корней/модулей) — по определению \(\lim\dfrac{f(x)-f(x_0)}{x-x_0}\).</p>
+</section>
+
+<section>
+<h2>8. Односторонние · разрывы</h2>
+<p>\(\exists\lim_{x\to a}f\iff f(a-)=f(a+)\).</p>
+<p><span class="k">I род:</span> оба односторонних конечны, но \(f(a-),f(a+),f(a)\) не все равны. Скачок \(f(a-)\neq f(a+)\); устранимый \(f(a-)=f(a+)\neq f(a)\) (или \(f(a)\) нет).</p>
+<p><span class="k">II род:</span> хоть один \(\pm\infty\) или не существует (\(\sin(1/x)\), \(1/x^2\)).</p>
+<p>Элементарные непрерывны на своей области; разрывы — на стыках / делении на 0 / границах области.</p>
+</section>
+
+<section>
+<h2>9. Лопиталь</h2>
+<p>При \(\frac00\) или \(\frac\infty\infty\): если \(\lim f'/g'=A\) существует, то \(\lim f/g=A\) (в проколотой окр., \(g'\neq0\)).</p>
+<p class="tiny">\(x\ln x=\dfrac{\ln x}{1/x}\to0\) (\(x\to0+\)); \(\infty-\infty\) сначала к одной дроби.</p>
+</section>
+
+<section>
+<h2>10. Монотонность</h2>
+<p>\(f\in C[a,b]\), дифф. на \((a,b)\): \(f'\ge0\Rightarrow\) не убывает; \(f'>0\Rightarrow\) строго ↑ (достаточно).</p>
+<p>Неравенства: \(f(x)=\text{лев}-\text{прав}\), \(f(0)=0\), знак \(f'\) ⇒ знак \(f\).</p>
+<p class="tiny">\(\ln(1+x)<x\) (\(x>0\)): \(f=\ln(1+x)-x\), \(f'= -x/(1+x)<0\).</p>
+</section>
+
+<section>
+<h2>11. Полезные тождества</h2>
+<p class="block">
+\(1-\cos\alpha=2\sin^2(\alpha/2),\quad 1+\cos\alpha=2\cos^2(\alpha/2)\)<br>
+\(\sin\alpha-\sin\beta=2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\)<br>
+\(\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\)<br>
+\(\operatorname{tg}\alpha-\operatorname{tg}\beta=\dfrac{\sin(\alpha-\beta)}{\cos\alpha\cos\beta}\)
+</p>
+</section>
+
+<section>
+<h2>12. Последовательности (кратко)</h2>
+<p>\(x_n\to a\): \(\forall\varepsilon>0\ \exists N\ \forall n>N:\ |x_n-a|<\varepsilon\).</p>
+<p>Зажатая; Вейерштрасс: монотонна + ограничена ⇒ сходится; Коши \(\iff\) сходится в \(\mathbb{R}\).</p>
+<p class="tiny">Рост: \(n^\alpha=o(a^n)\) (\(a>1\)); \(a^n=o(n!)\); \(\sqrt{n^2\pm n}=n\sqrt{1\pm1/n}=n(1\pm1/(2n)+o(1/n))\).</p>
+</section>
+
+<section>
+<h2>13. Ходы «что делать»</h2>
+<ul>
+<li><span class="k">∼-предел:</span> упростить → заменить множители → если разность — в произведение / \(o\).</li>
+<li><span class="k">\(o\)-предел:</span> «главная \(+o\)» → следить, не съели ли главные части.</li>
+<li><span class="k">Разложить:</span> таблица → сумма/произведение/сложная → чётность.</li>
+<li><span class="k">Тейлор-предел:</span> порядок знаменателя → тот же в числителе.</li>
+<li><span class="k">\(1^\infty\):</span> \(e^{g\ln f}\); порядок показателя задаёт точность \(\ln f\).</li>
+<li><span class="k">\(x\to x_0\neq0\):</span> замена \(t=x-x_0\) (или \(t=1/x\) при \(\infty\)).</li>
+<li><span class="k">Разрыв:</span> \(f(a\pm)\) → тип I/II.</li>
+<li><span class="k">\(\frac00/\frac\infty\infty\):</span> Лопиталь или Тейлор/∼.</li>
+</ul>
+</section>
+
+<section>
+<h2>14. Ловушки</h2>
+<ul>
+<li>\(\sim\) внутри разности «в лоб».</li>
+<li>\(o-o=0\); забытый следующий член после сокращения.</li>
+<li>Разложение около 0 при \(x\to1\) без замены.</li>
+<li>\(\sqrt{\sin^2}=|\sin|\) → разные односторонние.</li>
+<li>Константа \(\ln^4 3\) — производная 0.</li>
+</ul>
+</section>
+
+</div>
+
+<p class="noprint">Экран: можно увеличить масштаб. Печать на один лист A4 — в диалоге печати отключите колонтитулы браузера и поставьте масштаб 100%. Полные разборы: <code>МП-П4</code>…<code>МП-П8</code>, подготовка к КР — <code>МП-КР2</code>.</p>
+</div>
+  <script src="./site.js?v=8"></script>
+</body>
+</html>

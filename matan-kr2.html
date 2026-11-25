@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru" data-nb-id="matan-kr2" data-nb-title="Матанализ · КР-2" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Матанализ · КР-2: эквивалентности, о-малое, Тейлор</title>
+<style>
+:root {
+  --bg: #f4f1ea; --card: #fff; --ink: #1a1a18; --muted: #6a655c;
+  --line: #e0dbd0; --acc: #1f5c4d; --acc2: #8a4b1f; --soft: #e7f2ee;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font: 16px/1.55 "Segoe UI", "Cambria Math", "Segoe UI Symbol", system-ui, sans-serif;
+  color: var(--ink); background: var(--bg);
+}
+header {
+  max-width: 48rem; margin: 0 auto; padding: 1.25rem 1.25rem 0.5rem;
+}
+h1 { font-size: 1.4rem; margin: 0 0 0.35rem; }
+.note { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.75rem; }
+main { max-width: 48rem; margin: 0 auto 3rem; padding: 0 1.25rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 1rem 1.15rem 1.25rem; margin-bottom: 0.9rem;
+  border-top: 3px solid var(--acc);
+}
+.prose h1 { font-size: 1.35rem; margin: 0.2rem 0 0.8rem; }
+.prose h2 {
+  font-size: 1.15rem; margin: 1.6rem 0 0.55rem; padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--line); color: var(--acc);
+}
+.prose h3 { font-size: 1.02rem; margin: 1.2rem 0 0.4rem; }
+.prose p { margin: 0.55rem 0; }
+.prose ul, .prose ol { margin: 0.4rem 0 0.55rem 1.2rem; padding: 0; }
+.prose li { margin: 0.2rem 0; }
+.prose hr { border: none; border-top: 1px solid var(--line); margin: 1.4rem 0; }
+.prose blockquote {
+  margin: 0.75rem 0; padding: 0.55rem 0.85rem; background: #f7f5f0;
+  border-left: 3px solid var(--line); color: var(--muted);
+}
+.prose a { color: var(--acc); }
+table {
+  border-collapse: collapse; width: 100%; margin: 0.75rem 0; font-size: 0.94rem;
+}
+th, td {
+  border: 1px solid var(--line); padding: 0.4rem 0.55rem;
+  text-align: left; vertical-align: top;
+}
+th { background: #f0eee8; }
+code {
+  background: #efece4; padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.9em;
+}
+pre {
+  background: #1e1e1e; color: #eee; padding: 0.85rem 1rem;
+  overflow: auto; border-radius: 8px; font-size: 0.88rem;
+}
+.formula-box {
+  margin: 0.9rem 0; padding: 0.85rem 1rem 0.95rem; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--acc) 35%, var(--line));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 8%, var(--card)), var(--card));
+}
+.formula-box-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--acc); margin-bottom: 0.35rem;
+}
+.formula-box-body {
+  font-family: "Cambria Math", "Segoe UI Symbol", "Segoe UI", serif;
+  font-size: 1.12rem; line-height: 1.45;
+}
+.fig {
+  margin: 0.85rem 0; padding: 0.65rem; background: #faf9f6;
+  border: 1px dashed var(--line); border-radius: 10px;
+  overflow-x: auto; text-align: center;
+}
+.fig figcaption {
+  color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; text-align: left;
+}
+.figs { display: grid; gap: 0.65rem; margin: 0.85rem 0; }
+@media (min-width: 640px) { .figs.two { grid-template-columns: 1fr 1fr; } }
+.prose svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+html[data-theme="dark"] {
+  --bg: #0d1117; --card: #161b22; --ink: #e6edf3; --muted: #8b949e; --line: #30363d;
+}
+html[data-theme="dark"] .fig { background: #12171e; }
+.katex-display { margin: 0.75rem 0; overflow-x: auto; overflow-y: hidden; }
+</style>
+<link rel="stylesheet" href="./общее/тетрадь.css?v=f7721170">
+<script src="./общее/тетрадь.js?v=f7721170" defer></script>
+
+<link rel="stylesheet" href="./vendor/katex/katex.min.css">
+<script defer src="./vendor/katex/katex.min.js"></script>
+<script defer src="./vendor/katex/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});"></script>
+
+
+  <meta name="theme-color" content="#0d1117">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Тетради">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./site.css?v=8">
+</head>
+<body>
+<header>
+  <h1>Матанализ · КР-2: эквивалентности, о-малое, Тейлор</h1>
+  <p class="note">Подготовка к КР-2 · индекс МП-КР2</p>
+</header>
+<main>
+  <div class="card">
+    <div class="prose">
+<h1>Матанализ · КР-2: эквивалентности, о-малое, Тейлор (<code>МП-КР2</code>)</h1>
+<p><em>Группа 26.Б83-мм · практика Улицкой А. Ю. · контрольная 24 ноября</em></p>
+<p><strong>Что в этом файле.</strong> Четыре типа заданий с доски: пределы через эквивалентности; пределы через о-малое; разложить по Тейлору; предел через Тейлора. Для каждого типа — шпаргалка и разобранные задачи того же вида, что на практиках <code>МП-П4</code>…<code>МП-П7</code>.</p>
+<h2 id="оглавление">Оглавление</h2>
+<ul>
+<li><a href="#0-материалы">0. Материалы</a></li>
+<li><a href="#как-готовиться">Как готовиться</a></li>
+<li><a href="#к1-эквивалентности--предел-мп-кр2-к1">К1. Эквивалентности → предел (<code>МП-КР2-К1</code>)</a></li>
+<li><a href="#к2-о-малое--предел-мп-кр2-к2">К2. О-малое → предел (<code>МП-КР2-К2</code>)</a></li>
+<li><a href="#к3-тейлор-разложить-мп-кр2-к3">К3. Тейлор: разложить (<code>МП-КР2-К3</code>)</a></li>
+<li><a href="#к4-тейлор--предел-мп-кр2-к4">К4. Тейлор → предел (<code>МП-КР2-К4</code>)</a></li>
+</ul>
+<hr>
+<h2 id="0-материалы">0. Материалы</h2>
+<ul>
+<li>Темы КР-2 (фото доски): <a href="материалы/практика-Б83/кр2-темы-доска.jpg"><code>материалы/практика-Б83/кр2-темы-доска.jpg</code></a>.</li>
+<li>Полные разборы: <a href="тетрадь-практика.md"><code>тетрадь-практика.md</code></a> — <code>МП-П4</code> (эквивалентности), <code>МП-П5</code> (о-малое), <code>МП-П6</code> (разложения), <code>МП-П7</code> (пределы через Тейлора).</li>
+<li>Теория рядом: <a href="тетрадь-теория.md"><code>тетрадь-теория.md</code></a> — <code>МТ-§18</code> (о-малое), <code>МТ-§16</code> (предел функции).</li>
+<li>Плотная шпаргалка на A4: <a href="matan-cheat.html"><code>шпаргалка-A4.html</code></a>.</li>
+</ul>
+<hr>
+<h2 id="как-готовиться">Как готовиться</h2>
+<ol>
+<li>Выучи <strong>таблицы</strong> из К1–К3 (эквивалентности / о-малое / Маклорен) — без них на КР не успеешь.</li>
+<li>На каждом типе прогони <strong>план</strong> (ниже в блоках): сначала узнай тип, потом шаги.</li>
+<li>Три ловушки, из‑за которых чаще всего ноль: замена в <strong>разности</strong>; \(o(x)-o(x)\) «не ноль»; разложение <strong>грубее</strong>, чем степень в знаменателе.</li>
+</ol>
+<hr>
+<h2 id="к1-эквивалентности-предел-мп-кр2-к1">К1. Эквивалентности → предел (<code>МП-КР2-К1</code>)</h2>
+<h3 id="шпаргалка">Шпаргалка</h3>
+<p><strong>Определение.</strong> \(f\sim g\) при \(x\to x_0\), если \(\dfrac{f(x)}{g(x)}\to 1\).</p>
+<p><strong>Таблица при \(x\to 0\):</strong></p>
+<p>\[
+\begin{aligned}
+&amp;\sin x\sim x,\quad \operatorname{tg} x\sim x,\quad \arcsin x\sim x,\quad \operatorname{arctg} x\sim x,\\
+&amp;1-\cos x\sim\frac{x^2}{2},\quad e^x-1\sim x,\quad \ln(1+x)\sim x,\\
+&amp;(1+x)^\alpha-1\sim\alpha x,\quad a^x-1\sim x\ln a.
+\end{aligned}
+\]</p>
+<p><strong>Где менять можно.</strong> В <strong>произведении</strong> и <strong>частном</strong>: множитель (делитель) заменяется на эквивалентный.</p>
+<p><strong>Где нельзя.</strong> В <strong>сумме / разности</strong>, если главные части сокращаются: \(x+1\sim x\), но \((x+1)-x=1\not\sim 0\).</p>
+<p><strong>Степень \(1^\infty\).</strong> \(f^g=e^{g\ln f}\); внутри показателя \(g\ln f\) — уже произведение, там замена законна. Если \(f\to 1\), то \(\ln f=\ln\bigl(1+(f-1)\bigr)\sim f-1\).</p>
+<h3 id="задача-а-синус-минус-тангенс">Задача А · синус минус тангенс</h3>
+<p><strong>Задача.</strong> \(\displaystyle\lim_{x\to 0}\frac{\sin x-\operatorname{tg} x}{x^3}\).</p>
+<p><strong>Идея.</strong> Прямая замена \(\sin x\sim x\), \(\operatorname{tg} x\sim x\) даёт \(\dfrac{0}{0}\) бессмысленно. Сначала превратить разность в произведение.</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li>\(\sin x-\operatorname{tg} x=\sin x-\dfrac{\sin x}{\cos x}=\sin x\cdot\dfrac{\cos x-1}{\cos x}\).</li>
+<li>\(\sin x\sim x\), \(1-\cos x\sim\dfrac{x^2}{2}\), \(\cos x\to 1\), значит<br>
+   \[
+   \sin x-\operatorname{tg} x\sim x\cdot\dfrac{-\,x^2/2}{1}=-\frac{x^3}{2}.
+   \]</li>
+<li>Предел \(\dfrac{-x^3/2}{x^3}=-\dfrac12\).</li>
+</ol>
+<p><strong>Ответ.</strong> \(-\dfrac12\).</p>
+<p><strong>Где легко ошибиться.</strong> Заменить \(\sin x\) и \(\operatorname{tg} x\) на \(x\) прямо в разности.</p>
+<h3 id="задача-b-длинная-цепочка">Задача B · длинная цепочка</h3>
+<p><strong>Задача.</strong> \(\displaystyle\lim_{x\to 0}\frac{\ln\cos x}{\operatorname{tg}^2 x}\).</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li>\(\ln\cos x=\ln\bigl(1+(\cos x-1)\bigr)\sim\cos x-1\sim-\dfrac{x^2}{2}\).</li>
+<li>\(\operatorname{tg} x\sim x\), значит \(\operatorname{tg}^2 x\sim x^2\).</li>
+<li>Предел \(\dfrac{-x^2/2}{x^2}=-\dfrac12\).</li>
+</ol>
+<p><strong>Ответ.</strong> \(-\dfrac12\).</p>
+<hr>
+<h2 id="к2-о-малое-предел-мп-кр2-к2">К2. О-малое → предел (<code>МП-КР2-К2</code>)</h2>
+<h3 id="шпаргалка">Шпаргалка</h3>
+<p><strong>Определение.</strong> \(f=o(g)\) при \(x\to x_0\), если \(\dfrac{f}{g}\to 0\) (когда \(g\neq 0\)).</p>
+<p><strong>Рабочая запись.</strong> \(f(x)=a\,x^n+o(x^n)\) значит «главная часть \(a x^n\), остальное много меньше».</p>
+<p><strong>Свойства (одни и те же \(x\to x_0\)):</strong></p>
+<p>\[
+o(g)+o(g)=o(g),\quad o(g)-o(g)=o(g)\ \text{(не ноль!)},\quad
+c\cdot o(g)=o(g),\quad o\bigl(o(g)\bigr)=o(g).
+\]</p>
+<p><strong>Таблица «главная часть + о» при \(x\to 0\):</strong></p>
+<p>\[
+\begin{aligned}
+&amp;e^x=1+x+o(x),\quad \ln(1+x)=x+o(x),\quad \sin x=x+o(x),\\
+&amp;\cos x=1-\frac{x^2}{2}+o(x^2),\quad (1+x)^\alpha=1+\alpha x+o(x).
+\end{aligned}
+\]</p>
+<p><strong>Правило точности.</strong> Если после вычитания осталось одно \(o(x^k)\), а делишь на \(x^n\) с \(n&gt;k\) — точности <strong>мало</strong>, нужен Тейлор (К4).</p>
+<h3 id="задача-а-косинус-минус-экспонента">Задача А · косинус минус экспонента</h3>
+<p><strong>Задача.</strong> \(\displaystyle\lim_{x\to 0}\frac{\cos x-e^{-x^2/2}}{x^4}\).</p>
+<p><strong>Идея.</strong> До \(o(x^2)\) числитель обнуляется — нужны слагаемые \(x^4\). Это уже граница о-малого первого порядка; здесь удобнее Тейлор, но тот же приём «главная часть + о».</p>
+<p><strong>Решение (через разложения до \(o(x^4)\)).</strong></p>
+<p>\[
+\cos x=1-\frac{x^2}{2}+\frac{x^4}{24}+o(x^4),\qquad
+e^{-x^2/2}=1-\frac{x^2}{2}+\frac{x^4}{8}+o(x^4).
+\]</p>
+<p>Числитель \(\dfrac{x^4}{24}-\dfrac{x^4}{8}+o(x^4)=-\dfrac{x^4}{12}+o(x^4)\). Предел \(-\dfrac{1}{12}\).</p>
+<p><strong>Ответ.</strong> \(-\dfrac{1}{12}\).</p>
+<h3 id="задача-b-когда-о-малого-мало">Задача B · когда о-малого мало</h3>
+<p><strong>Пример-ловушка.</strong> \(\displaystyle\lim_{x\to 0}\frac{e^x-1-x}{x^2}\).</p>
+<p>Запись \(e^x=1+x+o(x)\) даёт числитель \(o(x)\), а \(\dfrac{o(x)}{x^2}\) неизвестно. Нужно \(e^x=1+x+\dfrac{x^2}{2}+o(x^2)\), тогда предел \(\dfrac12\).</p>
+<hr>
+<h2 id="к3-тейлор-разложить-мп-кр2-к3">К3. Тейлор: разложить (<code>МП-КР2-К3</code>)</h2>
+<h3 id="шпаргалка-маклорен">Шпаргалка · Маклорен</h3>
+<p>\[
+\begin{aligned}
+e^x&amp;=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}+o(x^n),\\
+\sin x&amp;=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots+o(x^{2m+1}),\\
+\cos x&amp;=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots+o(x^{2m}),\\
+\ln(1+x)&amp;=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots+(-1)^{n-1}\frac{x^n}{n}+o(x^n),\\
+(1+x)^\alpha&amp;=1+\alpha x+\frac{\alpha(\alpha-1)}{2}x^2+\cdots+o(x^n).
+\end{aligned}
+\]</p>
+<p><strong>Чётность.</strong> У чётной функции — только чётные степени; у нечётной — только нечётные. Остаток пиши \(o(x^n)\) с той \(n\), до которой реально дошёл.</p>
+<p><strong>Три правила.</strong></p>
+<ol>
+<li><strong>Сумма:</strong> складываешь разложения (с общей точностью).</li>
+<li><strong>Произведение:</strong> перемножаешь многочлены, отбрасываешь степени выше нужной, \(o(x^n)\cdot O(1)=o(x^n)\).</li>
+<li><strong>Сложная:</strong> \(f(g(x))\) — подставь разложение \(g\) в разложение \(f\) (как многочлен + о).</li>
+</ol>
+<h3 id="задача-а-сложная-функция">Задача А · сложная функция</h3>
+<p><strong>Задача.</strong> Разложить \(\sin(\sin x)\) до \(o(x^5)\) при \(x\to 0\).</p>
+<p><strong>Решение.</strong></p>
+<ol>
+<li>\(\sin x=x-\dfrac{x^3}{6}+\dfrac{x^5}{120}+o(x^5)\). Пусть \(s=\sin x\).</li>
+<li>\(\sin s=s-\dfrac{s^3}{6}+o(s^5)\). Нужны \(s\) и \(s^3\) до \(o(x^5)\):<br>
+   \[
+   s^3=\Bigl(x-\frac{x^3}{6}\Bigr)^3+o(x^5)=x^3-\frac{x^5}{2}+o(x^5).
+   \]</li>
+<li>\(\sin s=x-\dfrac{x^3}{6}+\dfrac{x^5}{120}-\dfrac{1}{6}\Bigl(x^3-\dfrac{x^5}{2}\Bigr)+o(x^5)=x-\dfrac{x^3}{3}+\dfrac{x^5}{10}+o(x^5)\).</li>
+</ol>
+<p><strong>Ответ.</strong> \(x-\dfrac{x^3}{3}+\dfrac{x^5}{10}+o(x^5)\).</p>
+<h3 id="задача-b-произведение">Задача B · произведение</h3>
+<p><strong>Задача.</strong> Разложить \(e^x\cos x\) до \(o(x^3)\).</p>
+<p><strong>Решение.</strong> \(e^x=1+x+\dfrac{x^2}{2}+\dfrac{x^3}{6}+o(x^3)\), \(\cos x=1-\dfrac{x^2}{2}+o(x^3)\) (нечётных нет до третьей). Произведение:<br>
+\[
+\Bigl(1+x+\frac{x^2}{2}+\frac{x^3}{6}\Bigr)\Bigl(1-\frac{x^2}{2}\Bigr)+o(x^3)=1+x-\frac{x^3}{3}+o(x^3).
+\]</p>
+<p><strong>Ответ.</strong> \(1+x-\dfrac{x^3}{3}+o(x^3)\).</p>
+<hr>
+<h2 id="к4-тейлор-предел-мп-кр2-к4">К4. Тейлор → предел (<code>МП-КР2-К4</code>)</h2>
+<h3 id="правило-порядка">Правило порядка</h3>
+<p>Чтобы найти \(\displaystyle\lim_{x\to 0}\dfrac{f(x)}{g(x)}\):</p>
+<ol>
+<li>Разложи <strong>более простой</strong> из \(f,g\) до <strong>первого ненулевого</strong> \(a x^n+o(x^n)\).</li>
+<li>Второй разложи до \(o(x^n)\).</li>
+<li>Сократи на \(x^n\): ответ \(\dfrac{b}{a}\).</li>
+</ol>
+<p>Для \(f^g\) с \(f\to 1\), \(g\to\infty\): смотри показатель \(g\ln f\); если \(g\sim\dfrac{c}{x^n}\), то \(\ln f\) нужен до \(o(x^n)\).</p>
+<h3 id="задача-а-знаменатель-пятого-порядка">Задача А · знаменатель пятого порядка</h3>
+<p><strong>Задача.</strong> \(\displaystyle\lim_{x\to 0}\frac{\sin(\sin x)-x\sqrt[3]{1-x^2}}{2\sin x+\operatorname{tg} x-3x}\).</p>
+<p><strong>Решение (схема).</strong></p>
+<ol>
+<li>Знаменатель: до \(o(x)\) и до \(o(x^3)\) всё сокращается; первый ненулевой член — \(\dfrac{3}{20}x^5+o(x^5)\). Значит \(n=5\).</li>
+<li>Числитель до \(o(x^5)\): \(\sin(\sin x)=x-\dfrac{x^3}{3}+\dfrac{x^5}{10}+o(x^5)\), \(x\sqrt[3]{1-x^2}=x-\dfrac{x^3}{3}-\dfrac{x^5}{9}+o(x^5)\), разность \(\dfrac{19}{90}x^5+o(x^5)\).</li>
+<li>Предел \(\dfrac{19}{90}\cdot\dfrac{20}{3}=\dfrac{38}{27}\).</li>
+</ol>
+<p><strong>Ответ.</strong> \(\dfrac{38}{27}\).</p>
+<h3 id="задача-b-степень-1-infty">Задача B · степень \(1^\infty\)</h3>
+<p><strong>Задача.</strong> \(\displaystyle\lim_{x\to 0}\Bigl(\dfrac{\sqrt{1-x^2}}{\cos x}\Bigr)^{1/x^4}\).</p>
+<p><strong>Решение (схема).</strong></p>
+<ol>
+<li>Пишем \(e^{\frac{1}{x^4}\ln(\cdots)}\). Показатель делит на \(x^4\) ⇒ логарифм до \(o(x^4)\).</li>
+<li>\(\sqrt{1-x^2}=1-\dfrac{x^2}{2}-\dfrac{x^4}{8}+o(x^4)\), \(\cos x=1-\dfrac{x^2}{2}+\dfrac{x^4}{24}+o(x^4)\).</li>
+<li>Отношение \(=1-\dfrac{x^4}{6}+o(x^4)\), \(\ln= -\dfrac{x^4}{6}+o(x^4)\), показатель \(\to-\dfrac16\).</li>
+</ol>
+<p><strong>Ответ.</strong> \(e^{-1/6}\).</p>
+<p><strong>Где легко ошибиться.</strong> Остановиться на \(o(x^2)\): тогда отношение \(1+o(x^2)\), и после деления на \(x^4\) ответа нет.</p>
+<hr>
+<blockquote>
+<p>⚡ <strong>Быстрый тест:</strong> в чат <code>тест МП-КР2</code> — таблица ∼ · где замена запрещена · \(o-o\) · порядок разложения · \(1^\infty\)</p>
+</blockquote>
+    </div>
+  </div>
+</main>
+  <script src="./site.js?v=8"></script>
+</body>
+</html>

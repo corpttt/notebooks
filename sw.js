@@ -1,16 +1,23 @@
 /* Notebooks PWA — offline-first shell + notebooks + local/CDN KaTeX. */
-const CACHE = "notebooks-shell-v7";
+const CACHE = "notebooks-shell-v8";
 const NETWORK_MS = 3000;
 
 const SHELL = [
   "./",
   "./index.html",
   "./site.css",
-  "./site.css?v=7",
+  "./site.css?v=8",
   "./site.js",
-  "./site.js?v=7",
+  "./site.js?v=8",
   "./theme.js",
-  "./theme.js?v=7",
+  "./theme.js?v=8",
+  "./session.css",
+  "./session.css?v=8",
+  "./session.js",
+  "./session.js?v=8",
+  "./session/plan.json",
+  "./session/catalog.json",
+  "./session/my-progress.json",
   "./manifest.json",
   "./precache.json",
   "./icons/icon-192.png",
@@ -71,6 +78,7 @@ const PRECACHE = [
   "./english-media/img-035.jpg",
   "./english.html",
   "./favicon.ico",
+  "./geometry-exam.html",
   "./geometry-practice.html",
   "./geometry-theory.html",
   "./icons/icon-192.png",
@@ -86,8 +94,10 @@ const PRECACHE = [
   "./index.html",
   "./informatics.html",
   "./manifest.json",
+  "./matan-cheat.html",
   "./matan-exam.html",
   "./matan-kr1.html",
+  "./matan-kr2.html",
   "./matan-practice.html",
   "./matan-theory.html",
   "./review/cards-exam.json",
@@ -95,6 +105,10 @@ const PRECACHE = [
   "./review.css",
   "./review.html",
   "./review.js",
+  "./session/catalog.json",
+  "./session/plan.json",
+  "./session.css",
+  "./session.js",
   "./site.css",
   "./site.js",
   "./styles.css",
@@ -124,9 +138,9 @@ const PRECACHE = [
   "./vendor/katex/katex.min.js",
   "./общее/тетрадь.css",
   "./общее/тетрадь.js",
-  "./site.css?v=7",
-  "./site.js?v=7",
-  "./theme.js?v=7"
+  "./site.css?v=8",
+  "./site.js?v=8",
+  "./theme.js?v=8"
 ];
 
 const KATEX = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist";

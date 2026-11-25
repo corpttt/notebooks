@@ -1,0 +1,1641 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "id": "matan",
+      "title": "Матанализ",
+      "file": "matan-exam.html"
+    },
+    {
+      "id": "algebra",
+      "title": "Алгебра",
+      "file": "algebra-exam.html"
+    },
+    {
+      "id": "geometry",
+      "title": "Геометрия",
+      "file": "geometry-exam.html"
+    },
+    {
+      "id": "discrete",
+      "title": "Дискрет",
+      "file": "discrete-tickets.html"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "matan:1",
+      "subject": "matan",
+      "n": 1,
+      "title": "Супремум. Аксиома полноты вещественных чисел",
+      "href": "./notebooks/matan-exam.html#билет-1",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:2",
+      "subject": "matan",
+      "n": 2,
+      "title": "Теорема о существовании инфимума",
+      "href": "./notebooks/matan-exam.html#билет-2",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:3",
+      "subject": "matan",
+      "n": 3,
+      "title": "Предел последовательности, единственность и ограниченность",
+      "href": "./notebooks/matan-exam.html#билет-3",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:4",
+      "subject": "matan",
+      "n": 4,
+      "title": "Предел константы, суммы и постоянного множителя",
+      "href": "./notebooks/matan-exam.html#билет-4",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:5",
+      "subject": "matan",
+      "n": 5,
+      "title": "Предел произведения последовательностей",
+      "href": "./notebooks/matan-exam.html#билет-5",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:6",
+      "subject": "matan",
+      "n": 6,
+      "title": "Предел обратной последовательности и частного",
+      "href": "./notebooks/matan-exam.html#билет-6",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:7",
+      "subject": "matan",
+      "n": 7,
+      "title": "Предельные неравенства для последовательностей",
+      "href": "./notebooks/matan-exam.html#билет-7",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:8",
+      "subject": "matan",
+      "n": 8,
+      "title": "Предел возрастающей последовательности",
+      "href": "./notebooks/matan-exam.html#билет-8",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:9",
+      "subject": "matan",
+      "n": 9,
+      "title": "Предел монотонной убывающей последовательности",
+      "href": "./notebooks/matan-exam.html#билет-9",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:10",
+      "subject": "matan",
+      "n": 10,
+      "title": "Теорема Кантора о вложенных промежутках",
+      "href": "./notebooks/matan-exam.html#билет-10",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:11",
+      "subject": "matan",
+      "n": 11,
+      "title": "Критерий Коши. Необходимость",
+      "href": "./notebooks/matan-exam.html#билет-11",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:12",
+      "subject": "matan",
+      "n": 12,
+      "title": "Критерий Коши (достаточность)",
+      "href": "./notebooks/matan-exam.html#билет-12",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:13",
+      "subject": "matan",
+      "n": 13,
+      "title": "Бесконечные пределы, бесконечно большие и малые последовательности",
+      "href": "./notebooks/matan-exam.html#билет-13",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:14",
+      "subject": "matan",
+      "n": 14,
+      "title": "Число e и убывающая последовательность",
+      "href": "./notebooks/matan-exam.html#билет-14",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:15",
+      "subject": "matan",
+      "n": 15,
+      "title": "Число e и возрастающая последовательность",
+      "href": "./notebooks/matan-exam.html#билет-15",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:16",
+      "subject": "matan",
+      "n": 16,
+      "title": "Окрестности и подпоследовательности",
+      "href": "./notebooks/matan-exam.html#билет-16",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:17",
+      "subject": "matan",
+      "n": 17,
+      "title": "Принцип выбора Больцано–Вейерштрасса",
+      "href": "./notebooks/matan-exam.html#билет-17",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:18",
+      "subject": "matan",
+      "n": 18,
+      "title": "Точка сгущения; последовательность, стремящаяся к точке сгущения",
+      "href": "./notebooks/matan-exam.html#билет-18",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:19",
+      "subject": "matan",
+      "n": 19,
+      "title": "Предел функции по Коши и через окрестности",
+      "href": "./notebooks/matan-exam.html#билет-19",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:20",
+      "subject": "matan",
+      "n": 20,
+      "title": "Предел функции по Гейне. Эквивалентность с определением Коши",
+      "href": "./notebooks/matan-exam.html#билет-20",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:21",
+      "subject": "matan",
+      "n": 21,
+      "title": "Единственность предела функции, константа и сумма",
+      "href": "./notebooks/matan-exam.html#билет-21",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:22",
+      "subject": "matan",
+      "n": 22,
+      "title": "Предел функции: произведение, обратная и частное",
+      "href": "./notebooks/matan-exam.html#билет-22",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:23",
+      "subject": "matan",
+      "n": 23,
+      "title": "Предельные неравенства для функций",
+      "href": "./notebooks/matan-exam.html#билет-23",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:24",
+      "subject": "matan",
+      "n": 24,
+      "title": "Предел монотонной функции",
+      "href": "./notebooks/matan-exam.html#билет-24",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:25",
+      "subject": "matan",
+      "n": 25,
+      "title": "Критерий Коши существования конечного предела функции (необходимость)",
+      "href": "./notebooks/matan-exam.html#билет-25",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:26",
+      "subject": "matan",
+      "n": 26,
+      "title": "Критерий Коши существования конечного предела функции (достаточность)",
+      "href": "./notebooks/matan-exam.html#билет-26",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:27",
+      "subject": "matan",
+      "n": 27,
+      "title": "Шкала бесконечно малых",
+      "href": "./notebooks/matan-exam.html#билет-27",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:28",
+      "subject": "matan",
+      "n": 28,
+      "title": "Оценки для логарифма",
+      "href": "./notebooks/matan-exam.html#билет-28",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:29",
+      "subject": "matan",
+      "n": 29,
+      "title": "Оценки для экспоненты",
+      "href": "./notebooks/matan-exam.html#билет-29",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:30",
+      "subject": "matan",
+      "n": 30,
+      "title": "Оценки для степени с показателем 1/x",
+      "href": "./notebooks/matan-exam.html#билет-30",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:31",
+      "subject": "matan",
+      "n": 31,
+      "title": "Замечательный предел логарифма",
+      "href": "./notebooks/matan-exam.html#билет-31",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:32",
+      "subject": "matan",
+      "n": 32,
+      "title": "Замечательный предел экспоненты",
+      "href": "./notebooks/matan-exam.html#билет-32",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:33",
+      "subject": "matan",
+      "n": 33,
+      "title": "Предел степени с основанием 1+x",
+      "href": "./notebooks/matan-exam.html#билет-33",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:34",
+      "subject": "matan",
+      "n": 34,
+      "title": "Предел степени с постоянным показателем",
+      "href": "./notebooks/matan-exam.html#билет-34",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:35",
+      "subject": "matan",
+      "n": 35,
+      "title": "Замечательный предел синуса",
+      "href": "./notebooks/matan-exam.html#билет-35",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:36",
+      "subject": "matan",
+      "n": 36,
+      "title": "Непрерывность в точке и арифметика",
+      "href": "./notebooks/matan-exam.html#билет-36",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:37",
+      "subject": "matan",
+      "n": 37,
+      "title": "Односторонняя непрерывность функции; классификация разрывов",
+      "href": "./notebooks/matan-exam.html#билет-37",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:38",
+      "subject": "matan",
+      "n": 38,
+      "title": "Непрерывность и разрывы монотонной функции",
+      "href": "./notebooks/matan-exam.html#билет-38",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:39",
+      "subject": "matan",
+      "n": 39,
+      "title": "Непрерывность композиции",
+      "href": "./notebooks/matan-exam.html#билет-39",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:40",
+      "subject": "matan",
+      "n": 40,
+      "title": "Непрерывность логарифма",
+      "href": "./notebooks/matan-exam.html#билет-40",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:41",
+      "subject": "matan",
+      "n": 41,
+      "title": "Непрерывность экспоненты",
+      "href": "./notebooks/matan-exam.html#билет-41",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:42",
+      "subject": "matan",
+      "n": 42,
+      "title": "Непрерывность вещественной степени",
+      "href": "./notebooks/matan-exam.html#билет-42",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:43",
+      "subject": "matan",
+      "n": 43,
+      "title": "Непрерывность синуса",
+      "href": "./notebooks/matan-exam.html#билет-43",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:44",
+      "subject": "matan",
+      "n": 44,
+      "title": "Непрерывность косинуса, тангенса и котангенса",
+      "href": "./notebooks/matan-exam.html#билет-44",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:45",
+      "subject": "matan",
+      "n": 45,
+      "title": "Теорема об отображении отрезка",
+      "href": "./notebooks/matan-exam.html#билет-45",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:46",
+      "subject": "matan",
+      "n": 46,
+      "title": "Первая теорема Больцано–Коши. Обращение функции в ноль",
+      "href": "./notebooks/matan-exam.html#билет-46",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:47",
+      "subject": "matan",
+      "n": 47,
+      "title": "Вторая теорема Больцано–Коши. Промежуточное значение",
+      "href": "./notebooks/matan-exam.html#билет-47",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:48",
+      "subject": "matan",
+      "n": 48,
+      "title": "Существование обратной непрерывной функции",
+      "href": "./notebooks/matan-exam.html#билет-48",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:49",
+      "subject": "matan",
+      "n": 49,
+      "title": "Непрерывность обратных тригонометрических функций",
+      "href": "./notebooks/matan-exam.html#билет-49",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:50",
+      "subject": "matan",
+      "n": 50,
+      "title": "Равномерная непрерывность. Теорема Кантора",
+      "href": "./notebooks/matan-exam.html#билет-50",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:51",
+      "subject": "matan",
+      "n": 51,
+      "title": "Производная и односторонние производные",
+      "href": "./notebooks/matan-exam.html#билет-51",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:52",
+      "subject": "matan",
+      "n": 52,
+      "title": "Дифференцируемость функции; связь дифференцируемости и существования производной",
+      "href": "./notebooks/matan-exam.html#билет-52",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:53",
+      "subject": "matan",
+      "n": 53,
+      "title": "Производная константы на функцию, суммы и произведения",
+      "href": "./notebooks/matan-exam.html#билет-53",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:54",
+      "subject": "matan",
+      "n": 54,
+      "title": "Производная обратной величины и частного",
+      "href": "./notebooks/matan-exam.html#билет-54",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:55",
+      "subject": "matan",
+      "n": 55,
+      "title": "Производная композиции и обратной функции",
+      "href": "./notebooks/matan-exam.html#билет-55",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:56",
+      "subject": "matan",
+      "n": 56,
+      "title": "Первая теорема Вейерштрасса",
+      "href": "./notebooks/matan-exam.html#билет-56",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:57",
+      "subject": "matan",
+      "n": 57,
+      "title": "Вторая теорема Вейерштрасса",
+      "href": "./notebooks/matan-exam.html#билет-57",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:58",
+      "subject": "matan",
+      "n": 58,
+      "title": "Теорема Ферма",
+      "href": "./notebooks/matan-exam.html#билет-58",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:59",
+      "subject": "matan",
+      "n": 59,
+      "title": "Теорема Ролля",
+      "href": "./notebooks/matan-exam.html#билет-59",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:60",
+      "subject": "matan",
+      "n": 60,
+      "title": "Теорема Лагранжа о среднем значении",
+      "href": "./notebooks/matan-exam.html#билет-60",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:61",
+      "subject": "matan",
+      "n": 61,
+      "title": "Теорема Коши",
+      "href": "./notebooks/matan-exam.html#билет-61",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:62",
+      "subject": "matan",
+      "n": 62,
+      "title": "Производные константы, переменной и целых степеней",
+      "href": "./notebooks/matan-exam.html#билет-62",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:63",
+      "subject": "matan",
+      "n": 63,
+      "title": "Производные экспоненты и логарифма",
+      "href": "./notebooks/matan-exam.html#билет-63",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:64",
+      "subject": "matan",
+      "n": 64,
+      "title": "Производная вещественной степени",
+      "href": "./notebooks/matan-exam.html#билет-64",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:65",
+      "subject": "matan",
+      "n": 65,
+      "title": "Производные синуса и косинуса",
+      "href": "./notebooks/matan-exam.html#билет-65",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:66",
+      "subject": "matan",
+      "n": 66,
+      "title": "Производные тангенса и котангенса",
+      "href": "./notebooks/matan-exam.html#билет-66",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:67",
+      "subject": "matan",
+      "n": 67,
+      "title": "Производные арксинуса и арккосинуса",
+      "href": "./notebooks/matan-exam.html#билет-67",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:68",
+      "subject": "matan",
+      "n": 68,
+      "title": "Производные арктангенса и арккотангенса",
+      "href": "./notebooks/matan-exam.html#билет-68",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:69",
+      "subject": "matan",
+      "n": 69,
+      "title": "Производная n-го порядка",
+      "href": "./notebooks/matan-exam.html#билет-69",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:70",
+      "subject": "matan",
+      "n": 70,
+      "title": "Линейность производных высших порядков",
+      "href": "./notebooks/matan-exam.html#билет-70",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:71",
+      "subject": "matan",
+      "n": 71,
+      "title": "Производная высшего порядка у f(ax+b)",
+      "href": "./notebooks/matan-exam.html#билет-71",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:72",
+      "subject": "matan",
+      "n": 72,
+      "title": "Высшие производные целой степени",
+      "href": "./notebooks/matan-exam.html#билет-72",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:73",
+      "subject": "matan",
+      "n": 73,
+      "title": "Высшие производные вещественной степени",
+      "href": "./notebooks/matan-exam.html#билет-73",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:74",
+      "subject": "matan",
+      "n": 74,
+      "title": "Высшие производные экспоненты и логарифма",
+      "href": "./notebooks/matan-exam.html#билет-74",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:75",
+      "subject": "matan",
+      "n": 75,
+      "title": "Высшие производные синуса и косинуса",
+      "href": "./notebooks/matan-exam.html#билет-75",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:76",
+      "subject": "matan",
+      "n": 76,
+      "title": "Высшие производные степеней и логарифма со сдвигом",
+      "href": "./notebooks/matan-exam.html#билет-76",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:77",
+      "subject": "matan",
+      "n": 77,
+      "title": "Формула Тейлора для полинома",
+      "href": "./notebooks/matan-exam.html#билет-77",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:78",
+      "subject": "matan",
+      "n": 78,
+      "title": "Формула Тейлора с остатком Пеано",
+      "href": "./notebooks/matan-exam.html#билет-78",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:79",
+      "subject": "matan",
+      "n": 79,
+      "title": "Формула Тейлора с остатком в форме Лагранжа",
+      "href": "./notebooks/matan-exam.html#билет-79",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:80",
+      "subject": "matan",
+      "n": 80,
+      "title": "Применение формулы Тейлора к экспоненте",
+      "href": "./notebooks/matan-exam.html#билет-80",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:81",
+      "subject": "matan",
+      "n": 81,
+      "title": "Формула Тейлора для вещественной степени",
+      "href": "./notebooks/matan-exam.html#билет-81",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:82",
+      "subject": "matan",
+      "n": 82,
+      "title": "Применение формулы Тейлора к ln(1+x)",
+      "href": "./notebooks/matan-exam.html#билет-82",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "matan:83",
+      "subject": "matan",
+      "n": 83,
+      "title": "Применение формулы Тейлора к синусу и косинусу",
+      "href": "./notebooks/matan-exam.html#билет-83",
+      "file": "matan-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:1",
+      "subject": "algebra",
+      "n": 1,
+      "title": "Построение поля комплексных чисел. Алгебраическая форма записи",
+      "href": "./notebooks/algebra-exam.html#1-построение-поля-комплексных-чисел-алгебраическая-форма-зап",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:2",
+      "subject": "algebra",
+      "n": 2,
+      "title": "Комплексная плоскость и тригонометрическая форма",
+      "href": "./notebooks/algebra-exam.html#2-геометрическое-изображение-комплексных-чисел-тригонометрич",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:3",
+      "subject": "algebra",
+      "n": 3,
+      "title": "Модуль комплексного числа. Неравенство треугольника",
+      "href": "./notebooks/algebra-exam.html#3-модуль-комплексного-числа-неравенство-треугольника",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:4",
+      "subject": "algebra",
+      "n": 4,
+      "title": "Умножение, деление и формула Муавра",
+      "href": "./notebooks/algebra-exam.html#4-умножение-и-деление-комплексных-чисел-в-тригонометрической",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:5",
+      "subject": "algebra",
+      "n": 5,
+      "title": "Извлечение корней и их расположение",
+      "href": "./notebooks/algebra-exam.html#5-извлечение-корня-из-комплексных-чисел-изображение-корней-и",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:6",
+      "subject": "algebra",
+      "n": 6,
+      "title": "Корни из единицы. Свойства. Группа корней из единицы",
+      "href": "./notebooks/algebra-exam.html#6-корни-из-единицы-свойства-группа-корней-из-единицы",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:7",
+      "subject": "algebra",
+      "n": 7,
+      "title": "Построение кольца многочленов над коммутативным кольцом",
+      "href": "./notebooks/algebra-exam.html#7-построение-кольца-многочленов-над-коммутативным-кольцом",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:8",
+      "subject": "algebra",
+      "n": 8,
+      "title": "Делимость в кольце многочленов над областью целостности",
+      "href": "./notebooks/algebra-exam.html#8-делимость-в-кольце-многочленов-над-областью-целостности",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:9",
+      "subject": "algebra",
+      "n": 9,
+      "title": "Теорема Безу, теорема Декарта и число корней",
+      "href": "./notebooks/algebra-exam.html#9-теорема-безу-теорема-о-числе-корней-многочлена",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:10",
+      "subject": "algebra",
+      "n": 10,
+      "title": "Неприводимые многочлены. Свойства",
+      "href": "./notebooks/algebra-exam.html#10-неприводимые-многочлены-свойства",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:11",
+      "subject": "algebra",
+      "n": 11,
+      "title": "Факториальность кольца многочленов",
+      "href": "./notebooks/algebra-exam.html#11-факториальность-кольца-многочленов",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:12",
+      "subject": "algebra",
+      "n": 12,
+      "title": "Поля. Алгебраически замкнутое поле. Примеры. Изоморфизм полей. Автоморфизмы полей рациональных и комплексных чисел",
+      "href": "./notebooks/algebra-exam.html#12-поля-алгебраически-замкнутое-поле-примеры-изоморфизм-поле",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:13",
+      "subject": "algebra",
+      "n": 13,
+      "title": "Алгебраическая замкнутость поля комплексных чисел (без доказательства). Каноническое разложение многочленов над полем комплексных чисел",
+      "href": "./notebooks/algebra-exam.html#13-алгебраическая-замкнутость-поля-комплексных-чисел-без-док",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:14",
+      "subject": "algebra",
+      "n": 14,
+      "title": "Каноническое разложение многочленов над полем вещественных чисел",
+      "href": "./notebooks/algebra-exam.html#14-каноническое-разложение-многочленов-над-полем-вещественны",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:15",
+      "subject": "algebra",
+      "n": 15,
+      "title": "Производная многочлена. Свойства",
+      "href": "./notebooks/algebra-exam.html#15-производная-многочлена-свойства",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:16",
+      "subject": "algebra",
+      "n": 16,
+      "title": "Критерий кратности корня",
+      "href": "./notebooks/algebra-exam.html#16-критерий-кратности-корня",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:17",
+      "subject": "algebra",
+      "n": 17,
+      "title": "Характеристика поля. Отделение кратных корней",
+      "href": "./notebooks/algebra-exam.html#17-характеристика-поля-отделение-кратных-корней",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:18",
+      "subject": "algebra",
+      "n": 18,
+      "title": "Интерполяционный многочлен Лагранжа",
+      "href": "./notebooks/algebra-exam.html#18-интерполяционный-многочлен-лагранжа",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:19",
+      "subject": "algebra",
+      "n": 19,
+      "title": "Интерполяционный многочлен Ньютона",
+      "href": "./notebooks/algebra-exam.html#19-интерполяционный-многочлен-ньютона",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:20",
+      "subject": "algebra",
+      "n": 20,
+      "title": "Построение поля частных",
+      "href": "./notebooks/algebra-exam.html#20-построение-поля-частных",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:21",
+      "subject": "algebra",
+      "n": 21,
+      "title": "Поле дробно-рациональных функций. Правильные и неправильные дроби. Выделение целой части",
+      "href": "./notebooks/algebra-exam.html#21-поле-дробно-рациональных-функций-правильные-и-неправильны",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:22",
+      "subject": "algebra",
+      "n": 22,
+      "title": "Разложение правильной дроби на простейшие",
+      "href": "./notebooks/algebra-exam.html#22-разложение-правильной-дроби-на-простейшие",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:23",
+      "subject": "algebra",
+      "n": 23,
+      "title": "Матрицы и действия над ними",
+      "href": "./notebooks/algebra-exam.html#23-матрицы-и-действия-над-ними",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:24",
+      "subject": "algebra",
+      "n": 24,
+      "title": "Инверсии и знак перестановки",
+      "href": "./notebooks/algebra-exam.html#24-инверсии-определение-знака-перестановки-через-число-инвер",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:25",
+      "subject": "algebra",
+      "n": 25,
+      "title": "Понятие определителя. Определитель транспонированной матрицы",
+      "href": "./notebooks/algebra-exam.html#25-понятие-определителя-определитель-транспонированной-матри",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:26",
+      "subject": "algebra",
+      "n": 26,
+      "title": "Свойства определителя (кроме первого)",
+      "href": "./notebooks/algebra-exam.html#26-свойства-определителя-кроме-первого",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:27",
+      "subject": "algebra",
+      "n": 27,
+      "title": "Разложение определителя по строке (столбцу)",
+      "href": "./notebooks/algebra-exam.html#27-разложение-определителя-по-строке-столбцу",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:28",
+      "subject": "algebra",
+      "n": 28,
+      "title": "Определитель ступенчатой матрицы. Определитель произведения матриц",
+      "href": "./notebooks/algebra-exam.html#28-определитель-ступенчатой-матрицы-определитель-произведени",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:29",
+      "subject": "algebra",
+      "n": 29,
+      "title": "Элементарные преобразования. Определитель Вандермонда",
+      "href": "./notebooks/algebra-exam.html#29-элементарные-преобразования-определитель-вандермонда",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:30",
+      "subject": "algebra",
+      "n": 30,
+      "title": "Обратная матрица",
+      "href": "./notebooks/algebra-exam.html#30-обратная-матрица",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:31",
+      "subject": "algebra",
+      "n": 31,
+      "title": "Формулы Крамера",
+      "href": "./notebooks/algebra-exam.html#31-формулы-крамера",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:32",
+      "subject": "algebra",
+      "n": 32,
+      "title": "Векторное пространство. Следствия из аксиом. Примеры",
+      "href": "./notebooks/algebra-exam.html#32-векторное-пространство-следствия-из-аксиом-примеры",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:33",
+      "subject": "algebra",
+      "n": 33,
+      "title": "Линейная зависимость и независимость",
+      "href": "./notebooks/algebra-exam.html#33-линейная-зависимость-и-независимость-векторов-свойства",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:34",
+      "subject": "algebra",
+      "n": 34,
+      "title": "Лемма о линейно зависимых векторах",
+      "href": "./notebooks/algebra-exam.html#34-лемма-о-линейно-зависимых-векторах",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:35",
+      "subject": "algebra",
+      "n": 35,
+      "title": "Теорема о связи количества линейно независимых векторов и порождающих",
+      "href": "./notebooks/algebra-exam.html#35-теорема-о-связи-количества-линейно-независимых-векторов-и",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:36",
+      "subject": "algebra",
+      "n": 36,
+      "title": "Базис, размерность и единственность координат",
+      "href": "./notebooks/algebra-exam.html#36-понятие-базиса-и-размерности-примеры-единственность-разло",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:37",
+      "subject": "algebra",
+      "n": 37,
+      "title": "Теорема о существовании базиса",
+      "href": "./notebooks/algebra-exam.html#37-теорема-о-существовании-базиса",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:38",
+      "subject": "algebra",
+      "n": 38,
+      "title": "Три определения базиса",
+      "href": "./notebooks/algebra-exam.html#38-три-определения-базиса",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:39",
+      "subject": "algebra",
+      "n": 39,
+      "title": "Свойства пространств данной размерности. Размерность подпространства",
+      "href": "./notebooks/algebra-exam.html#39-свойства-пространств-данной-размерности-размерность-подпр",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:40",
+      "subject": "algebra",
+      "n": 40,
+      "title": "Сумма, пересечение и формула Грассмана",
+      "href": "./notebooks/algebra-exam.html#40-размерности-суммы-и-пересечения-подпространств-формула-гр",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:41",
+      "subject": "algebra",
+      "n": 41,
+      "title": "Прямая сумма подпространств: эквивалентные определения",
+      "href": "./notebooks/algebra-exam.html#41-прямая-сумма-подпространств-эквивалентные-определения",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:42",
+      "subject": "algebra",
+      "n": 42,
+      "title": "Базис прямой суммы",
+      "href": "./notebooks/algebra-exam.html#42-базис-прямой-суммы",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:43",
+      "subject": "algebra",
+      "n": 43,
+      "title": "Координатные столбцы и матрица перехода",
+      "href": "./notebooks/algebra-exam.html#43-матрицы-перехода-между-базисами",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:44",
+      "subject": "algebra",
+      "n": 44,
+      "title": "Обратимая матрица как матрица перехода между базисами",
+      "href": "./notebooks/algebra-exam.html#44-обратимая-матрица-как-матрица-перехода-между-базисами",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "algebra:45",
+      "subject": "algebra",
+      "n": 45,
+      "title": "Изменение координат при замене базиса",
+      "href": "./notebooks/algebra-exam.html#45-изменение-координат-при-замене-базиса",
+      "file": "algebra-exam.html",
+      "theory": null
+    },
+    {
+      "id": "geometry:1",
+      "subject": "geometry",
+      "n": 1,
+      "title": "Системы координат на прямой и окружности. Расстояние на прямой",
+      "href": "./notebooks/geometry-exam.html#билет-1",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#декартова-система-координат",
+        "note": "ДСК в теории"
+      }
+    },
+    {
+      "id": "geometry:2",
+      "subject": "geometry",
+      "n": 2,
+      "title": "Декартовы координаты и расстояние на плоскости",
+      "href": "./notebooks/geometry-exam.html#билет-2",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#декартова-система-координат",
+        "note": "ДСК"
+      }
+    },
+    {
+      "id": "geometry:3",
+      "subject": "geometry",
+      "n": 3,
+      "title": "Полярные координаты и переход к декартовым",
+      "href": "./notebooks/geometry-exam.html#билет-3",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#декартова-система-координат",
+        "note": "координаты"
+      }
+    },
+    {
+      "id": "geometry:4",
+      "subject": "geometry",
+      "n": 4,
+      "title": "Преобразование координат на плоскости: поворот, сдвиг, отражение",
+      "href": "./notebooks/geometry-exam.html#билет-4",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#изометрии",
+        "note": "изометрии / замена"
+      }
+    },
+    {
+      "id": "geometry:5",
+      "subject": "geometry",
+      "n": 5,
+      "title": "Системы координат в трёхмерном пространстве",
+      "href": "./notebooks/geometry-exam.html#билет-5",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#декартова-система-координат",
+        "note": "пространство"
+      }
+    },
+    {
+      "id": "geometry:6",
+      "subject": "geometry",
+      "n": 6,
+      "title": "Кривая второго порядка и приведение к каноническому виду",
+      "href": "./notebooks/geometry-exam.html#билет-6",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "коники — пока индекс теории"
+      }
+    },
+    {
+      "id": "geometry:7",
+      "subject": "geometry",
+      "n": 7,
+      "title": "Классификация кривых второго порядка",
+      "href": "./notebooks/geometry-exam.html#билет-7",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "классификация коник"
+      }
+    },
+    {
+      "id": "geometry:8",
+      "subject": "geometry",
+      "n": 8,
+      "title": "Фокальное и директориальное свойства эллипса",
+      "href": "./notebooks/geometry-exam.html#билет-8",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "эллипс"
+      }
+    },
+    {
+      "id": "geometry:9",
+      "subject": "geometry",
+      "n": 9,
+      "title": "Фокальное и директориальное свойства гиперболы",
+      "href": "./notebooks/geometry-exam.html#билет-9",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "гипербола"
+      }
+    },
+    {
+      "id": "geometry:10",
+      "subject": "geometry",
+      "n": 10,
+      "title": "Директориальное свойства параболы. Уравнения кривых второго порядка в полярных координатах",
+      "href": "./notebooks/geometry-exam.html#билет-10",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "парабола"
+      }
+    },
+    {
+      "id": "geometry:11",
+      "subject": "geometry",
+      "n": 11,
+      "title": "Касательные к кривым второго порядка. Оптические свойства кривых второго порядка",
+      "href": "./notebooks/geometry-exam.html#билет-11",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "касательные"
+      }
+    },
+    {
+      "id": "geometry:12",
+      "subject": "geometry",
+      "n": 12,
+      "title": "Аксиомы векторных и аффинных пространств. Простейшие следствия",
+      "href": "./notebooks/geometry-exam.html#билет-12",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#аксиомы-векторного-пространства",
+        "note": "L1 аксиомы V"
+      }
+    },
+    {
+      "id": "geometry:13",
+      "subject": "geometry",
+      "n": 13,
+      "title": "Эквивалентность направленных отрезков. Определение вектора",
+      "href": "./notebooks/geometry-exam.html#билет-13",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#направленные-отрезки--свободные-векторы",
+        "note": "L2 векторы"
+      }
+    },
+    {
+      "id": "geometry:14",
+      "subject": "geometry",
+      "n": 14,
+      "title": "Сложение векторов. Умножение векторов на число. Проверка корректности и некоторых аксиом векторных и аффинных пространств",
+      "href": "./notebooks/geometry-exam.html#билет-14",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#операции-на-v-и-корректность",
+        "note": "L3 операции"
+      }
+    },
+    {
+      "id": "geometry:15",
+      "subject": "geometry",
+      "n": 15,
+      "title": "Линейная независимость на прямой, плоскости и в пространстве",
+      "href": "./notebooks/geometry-exam.html#билет-15",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#линейная-комбинация-и-лнз",
+        "note": "L3 ЛНЗ"
+      }
+    },
+    {
+      "id": "geometry:16",
+      "subject": "geometry",
+      "n": 16,
+      "title": "Скалярное произведение, линейность и неравенство КБШ",
+      "href": "./notebooks/geometry-exam.html#билет-16",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#скалярное-произведение-определение",
+        "note": "L6 скалярное"
+      }
+    },
+    {
+      "id": "geometry:17",
+      "subject": "geometry",
+      "n": 17,
+      "title": "Одноимённые базисы и ориентация векторного пространства. Ориентация пространств малых размерностей",
+      "href": "./notebooks/geometry-exam.html#билет-17",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#базисы-в-v0v3",
+        "note": "ориентация / базисы"
+      }
+    },
+    {
+      "id": "geometry:18",
+      "subject": "geometry",
+      "n": 18,
+      "title": "Векторное произведение. Антисимметричность и линейность векторного произведения",
+      "href": "./notebooks/geometry-exam.html#билет-18",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "векторное произведение"
+      }
+    },
+    {
+      "id": "geometry:19",
+      "subject": "geometry",
+      "n": 19,
+      "title": "Вычисление векторного произведения в координатах. Двойное векторное произведение. Тождество Якоби",
+      "href": "./notebooks/geometry-exam.html#билет-19",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "векторное в координатах"
+      }
+    },
+    {
+      "id": "geometry:20",
+      "subject": "geometry",
+      "n": 20,
+      "title": "Смешанное произведение и ориентированный объём",
+      "href": "./notebooks/geometry-exam.html#билет-20",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "смешанное произведение"
+      }
+    },
+    {
+      "id": "geometry:21",
+      "subject": "geometry",
+      "n": 21,
+      "title": "Уравнения прямой на плоскости и в пространстве. Расстояние от точки до прямой и между скрещивающимися прямыми",
+      "href": "./notebooks/geometry-exam.html#билет-21",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#расстояние-от-точки-до-прямой",
+        "note": "прямая / расстояние"
+      }
+    },
+    {
+      "id": "geometry:22",
+      "subject": "geometry",
+      "n": 22,
+      "title": "Уравнение плоскости и расстояние до неё",
+      "href": "./notebooks/geometry-exam.html#билет-22",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#аффинные-подпространства",
+        "note": "плоскость / аффинные"
+      }
+    },
+    {
+      "id": "geometry:23",
+      "subject": "geometry",
+      "n": 23,
+      "title": "Приведение уравнения поверхности второго порядка к диагональному виду",
+      "href": "./notebooks/geometry-exam.html#билет-23",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "поверхности 2 порядка"
+      }
+    },
+    {
+      "id": "geometry:24",
+      "subject": "geometry",
+      "n": 24,
+      "title": "Классификация поверхностей второго порядка",
+      "href": "./notebooks/geometry-exam.html#билет-24",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "классификация поверхностей"
+      }
+    },
+    {
+      "id": "geometry:25",
+      "subject": "geometry",
+      "n": 25,
+      "title": "Прямолинейные образующие поверхностей второго порядка.",
+      "href": "./notebooks/geometry-exam.html#билет-25",
+      "file": "geometry-exam.html",
+      "theory": {
+        "href": "./notebooks/geometry-theory.html#оглавление",
+        "note": "образующие"
+      }
+    },
+    {
+      "id": "discrete:1",
+      "subject": "discrete",
+      "n": 1,
+      "title": "Множества, способы задания и операции над ними. Разбиение множеств. Произведение разбиений, теорема о его существовании. Принцип математической индукции. Мощность множества всех подмножеств. Прямое произведение множеств.",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-1",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:2",
+      "subject": "discrete",
+      "n": 2,
+      "title": "Бинарные отношения. Частичный, линейный и строгий порядок",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-2",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:3",
+      "subject": "discrete",
+      "n": 3,
+      "title": "Топологическая сортировка и экстремальные элементы",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-3",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:4",
+      "subject": "discrete",
+      "n": 4,
+      "title": "Расписания, длина, высота и критический путь",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-4",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:5",
+      "subject": "discrete",
+      "n": 5,
+      "title": "Антицепи. Теорема о существовании разбиения на антицепи.",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-5",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:6",
+      "subject": "discrete",
+      "n": 6,
+      "title": "Наибольшая возрастающая подпоследовательность",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-6",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:7",
+      "subject": "discrete",
+      "n": 7,
+      "title": "Теорема Дилуорса (первое доказательство).",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-7",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:8",
+      "subject": "discrete",
+      "n": 8,
+      "title": "Комбинаторное доказательство. Перестановки, размещения и сочетания. Факториальная система счисления.",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-8",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:9",
+      "subject": "discrete",
+      "n": 9,
+      "title": "Способы нумерации перестановок и перечисления. Биномиальные и мультиномиальные коэффициенты и их свойства.",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-9",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:10",
+      "subject": "discrete",
+      "n": 10,
+      "title": "Формула включений–исключений",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-10",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:11",
+      "subject": "discrete",
+      "n": 11,
+      "title": "Числа Стирлинга второго рода и числа Белла",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-11",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:12",
+      "subject": "discrete",
+      "n": 12,
+      "title": "Производящие функции и извлечение коэффициента",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-12",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:13",
+      "subject": "discrete",
+      "n": 13,
+      "title": "Парадокс Монти Холла. Эксперимент, исход, событие, вероятность. Условная вероятность.",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-13",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:14",
+      "subject": "discrete",
+      "n": 14,
+      "title": "Полная вероятность, Байес и дискретные случайные величины",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-14",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:15",
+      "subject": "discrete",
+      "n": 15,
+      "title": "Ожидание, дисперсия и схема Бернулли",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-15",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:16",
+      "subject": "discrete",
+      "n": 16,
+      "title": "Датчик случайных чисел, псевдослучайные числа. Моделирование дискретного распределения (табличный метод).",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-16",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:17",
+      "subject": "discrete",
+      "n": 17,
+      "title": "Alias-метод дискретного моделирования",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-17",
+      "file": "discrete-tickets.html",
+      "theory": null
+    },
+    {
+      "id": "discrete:18",
+      "subject": "discrete",
+      "n": 18,
+      "title": "Моделирование с помощью случайных битов",
+      "href": "./notebooks/discrete-tickets.html#discrete-билет-18",
+      "file": "discrete-tickets.html",
+      "theory": null
+    }
+  ]
+}

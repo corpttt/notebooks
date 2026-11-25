@@ -7,13 +7,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Тетради">
-  <meta name="description" content="Учебные тетради Б83 / Б84">
+  <meta name="description" content="Сессия и учебные тетради Б83">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <title>Тетради</title>
-  <link rel="stylesheet" href="./site.css?v=7">
-  <script src="./theme.js?v=7"></script>
+  <title>Сегодня · тетради</title>
+  <link rel="stylesheet" href="./site.css?v=8">
+  <link rel="stylesheet" href="./session.css?v=8">
+  <script src="./theme.js?v=8"></script>
 </head>
 <body class="nb-index-body" data-no-section-nav>
 <header class="nb-app-header">
@@ -25,20 +26,32 @@
     <div class="nb-header-actions">
       <a class="nb-btn nb-btn-primary" href="./review.html">Карточки</a>
       <button type="button" class="nb-btn" id="btn-theme" title="Тема">◑</button>
-      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить тетради с сайта">↻ Обновить</button>
+      <button type="button" class="nb-btn" id="btn-refresh" title="Обновить кэш (прогресс сессии не трогаем)">↻ Обновить</button>
     </div>
   </div>
 </header>
 
   <div class="nb-index-wrap">
-    <h1>Тетради</h1>
-    <div class="nb-folders">
+    <div class="nb-tabs" role="tablist" aria-label="Разделы">
+      <button type="button" class="nb-tab is-active" role="tab" data-tab="today" aria-selected="true">Сегодня</button>
+      <button type="button" class="nb-tab" role="tab" data-tab="calendar" aria-selected="false">Календарь</button>
+      <button type="button" class="nb-tab" role="tab" data-tab="notebooks" aria-selected="false">Тетради</button>
+    </div>
+    <div id="panel-today" class="nb-panel" role="tabpanel">
+      <div id="session-today"></div>
+    </div>
+    <div id="panel-calendar" class="nb-panel" role="tabpanel" hidden>
+      <div id="session-calendar"></div>
+    </div>
+    <div id="panel-notebooks" class="nb-panel" role="tabpanel" hidden>
+      <h1>Тетради</h1>
+      <div class="nb-folders">
     <section class="nb-folder" data-folder="matan" style="--folder-accent:#6ba3f0">
       <button type="button" class="nb-folder-toggle" aria-expanded="false" aria-controls="folder-matan">
         <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/matan.png')" role="img" aria-hidden="true"></span></span>
         <span class="nb-folder-meta">
           <span class="nb-folder-title">Математический анализ</span>
-          <span class="nb-folder-count">4 тетради</span>
+          <span class="nb-folder-count">6 тетрадей</span>
         </span>
         <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
       </button>
@@ -47,6 +60,8 @@
           <li><a href="./matan-theory.html">Матанализ · теория</a></li>
           <li><a href="./matan-practice.html">Матанализ · практика</a></li>
           <li><a href="./matan-kr1.html">Матанализ · КР-1</a></li>
+          <li><a href="./matan-kr2.html">Матанализ · КР-2</a></li>
+          <li><a href="./matan-cheat.html">Матанализ · шпаргалка A4</a></li>
           <li><a href="./matan-exam.html">Матанализ · экзамен · билеты</a></li>
         </ul>
       </div>
@@ -76,7 +91,7 @@
         <span class="nb-folder-icon"><span class="nb-folder-icon-img" style="--icon-url:url('./icons/subjects/geometry.png')" role="img" aria-hidden="true"></span></span>
         <span class="nb-folder-meta">
           <span class="nb-folder-title">Геометрия и топология</span>
-          <span class="nb-folder-count">2 тетради</span>
+          <span class="nb-folder-count">3 тетради</span>
         </span>
         <svg class="nb-folder-chevron" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M6.2 3.2a.75.75 0 0 1 1.06 0l4 4a.75.75 0 0 1 0 1.06l-4 4A.75.75 0 0 1 6.2 11.2L9.4 8 6.2 4.8a.75.75 0 0 1 0-1.6z"/></svg>
       </button>
@@ -84,6 +99,7 @@
         <ul class="nb-folder-list">
           <li><a href="./geometry-theory.html">Геометрия · теория</a></li>
           <li><a href="./geometry-practice.html">Геометрия · практика</a></li>
+          <li><a href="./geometry-exam.html">Геометрия · экзамен · билеты</a></li>
         </ul>
       </div>
     </section>
@@ -164,9 +180,11 @@
         </ul>
       </div>
     </section>
+      </div>
+      <p class="sub">updated 2026-11-25 21:40 UTC</p>
     </div>
-    <p class="sub">updated 2026-11-21 14:40 UTC</p>
   </div>
-  <script src="./site.js?v=7"></script>
+  <script src="./session.js?v=8"></script>
+  <script src="./site.js?v=8"></script>
 </body>
 </html>
