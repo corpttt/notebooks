@@ -570,15 +570,21 @@
       .replace(/"/g, "&quot;");
   }
 
+  function isLocalHub() {
+    const path = (global.location && global.location.pathname) || "";
+    // Only the timetable app shell (…/notebooks.html). Published Pages is
+    // /notebooks/ or /notebooks/index.html — flat HTML next to index.
+    return /notebooks\.html$/i.test(path);
+  }
+
   function ticketHref(meta) {
     if (!meta) return "#";
-    const href = meta.href || "#";
-    // Local timetable app hub: notebooks.html next to notebooks/ folder.
-    // Published PWA (/notebooks/index.html) is flat — strip the folder prefix.
-    const path = (global.location && global.location.pathname) || "";
-    const localHub = /notebooks\.html$/i.test(path);
-    if (localHub) return href;
-    return href.replace("./", "./");
+    let href = meta.href || "#";
+    if (!isLocalHub()) {
+      // catalog stores ./notebooks/file.html#… for the local app layout
+      href = href.replace(/^\.\/notebooks\//, "./");
+    }
+    return href || "#";
   }
 
   function renderLearnItem(it, state, dateIso, opts) {
@@ -601,10 +607,10 @@
       <input class="ss-check" type="checkbox" ${done ? "checked" : ""} data-act="check" aria-label="Пройден">
       <div class="ss-item-main">
         <span class="${chipClass(it.subject)}">${esc(SUBJECT_TITLE[it.subject] || it.subject)}</span>
-        <a class="ss-item-title" href="${esc(ticketHref(meta))}" target="_blank" rel="noopener">№ ${it.n}. ${esc(title)}</a>
+        <a class="ss-item-title" href="${esc(ticketHref(meta))}">№ ${it.n}. ${esc(title)}</a>
         ${plannedNote}
         <div class="ss-item-actions">
-          <a class="ss-btn ss-btn-primary" href="${esc(ticketHref(meta))}" target="_blank" rel="noopener">Открыть</a>
+          <a class="ss-btn ss-btn-primary" href="${esc(ticketHref(meta))}">Открыть</a>
           ${theory}
           <button type="button" class="ss-btn" data-act="done">Пройден · вспомню завтра</button>
         </div>
@@ -625,7 +631,7 @@
           <strong>№ ${meta.n}. ${esc(title)}</strong>
           <p class="ss-recall-prompt">Закрой глаза на формулировку. Объясни вслух другому человеку. Потом открой билет и оцени.</p>
           <div class="ss-item-actions">
-            <a class="ss-btn ss-btn-primary" href="${esc(ticketHref(meta))}" target="_blank" rel="noopener">Открыть билет</a>
+            <a class="ss-btn ss-btn-primary" href="${esc(ticketHref(meta))}">Открыть билет</a>
             <button type="button" class="ss-btn" data-grade="again">Не вспомнил</button>
             <button type="button" class="ss-btn" data-grade="hard">Шатко</button>
             <button type="button" class="ss-btn" data-grade="good">Вспомнил</button>

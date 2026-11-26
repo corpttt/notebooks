@@ -1,5 +1,5 @@
 (function () {
-  const CACHE_NAME = "notebooks-shell-v8";
+  const CACHE_NAME = "notebooks-shell-v9";
   const PROTECTED_KEYS = [
     "ucheba-session-progress",
     "ucheba-review-state",
@@ -122,7 +122,7 @@
   function registerSW() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker
-      .register("./sw.js?v=8")
+      .register("./sw.js?v=9")
       .then((reg) => {
         reg.update().catch(() => {});
         if (reg.waiting) {

@@ -111,7 +111,7 @@
   "./vendor/katex/katex.min.js",
   "./общее/тетрадь.css",
   "./общее/тетрадь.js",
-  "./site.css?v=8",
-  "./site.js?v=8",
-  "./theme.js?v=8"
+  "./site.css?v=9",
+  "./site.js?v=9",
+  "./theme.js?v=9"
 ]
