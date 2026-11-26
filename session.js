@@ -792,9 +792,13 @@
       <div class="ss-hero">
         <p class="ss-kicker">Календарь сессии</p>
         <h1 class="ss-title">План и прогресс</h1>
-        <p class="ss-meta">${esc(plan.start)} → первый проход ${esc(
+        <p class="ss-meta">${esc(plan.start)} → все билеты к ${esc(
       plan.firstPassEnd
-    )} → ${esc(plan.end)}</p>
+    )}${
+      plan.holidayStart
+        ? ` · каникулы ${esc(plan.holidayStart)}–${esc(plan.holidayEnd)} (меньше нового)`
+        : ""
+    } → ${esc(plan.end)}</p>
         <div class="ss-progress">
           <div class="ss-progress-bar" aria-hidden="true"><div class="ss-progress-fill" style="width:${stats.pct}%"></div></div>
           <p class="ss-progress-label">Первый проход: ${stats.done} / ${stats.total} (${stats.pct}%)</p>

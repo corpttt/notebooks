@@ -1,9 +1,12 @@
 {
-  "version": 2,
+  "version": 3,
   "start": "2026-11-26",
-  "firstPassEnd": "2026-12-24",
+  "firstPassEnd": "2027-01-10",
+  "holidayStart": "2026-12-30",
+  "holidayEnd": "2027-01-08",
   "end": "2027-01-27",
   "minutes": 120,
+  "holidayMinutes": 50,
   "maxCarry": 6,
   "exams": [
     {
@@ -74,15 +77,11 @@
           "id": "matan:2",
           "subject": "matan",
           "n": 2
-        },
-        {
-          "id": "algebra:2",
-          "subject": "algebra",
-          "n": 2
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
       "date": "2026-11-27",
@@ -90,6 +89,11 @@
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "algebra:2",
+          "subject": "algebra",
+          "n": 2
+        },
         {
           "id": "geometry:2",
           "subject": "geometry",
@@ -109,7 +113,18 @@
           "id": "algebra:3",
           "subject": "algebra",
           "n": 3
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-11-28",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "geometry:3",
           "subject": "geometry",
@@ -119,17 +134,7 @@
           "id": "discrete:3",
           "subject": "discrete",
           "n": 3
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-11-28",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "matan:4",
           "subject": "matan",
@@ -144,7 +149,18 @@
           "id": "geometry:4",
           "subject": "geometry",
           "n": 4
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-11-29",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:4",
           "subject": "discrete",
@@ -159,17 +175,7 @@
           "id": "algebra:5",
           "subject": "algebra",
           "n": 5
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-11-29",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "geometry:5",
           "subject": "geometry",
@@ -179,7 +185,18 @@
           "id": "discrete:5",
           "subject": "discrete",
           "n": 5
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-11-30",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "matan:6",
           "subject": "matan",
@@ -199,22 +216,23 @@
           "id": "discrete:6",
           "subject": "discrete",
           "n": 6
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-11-30",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "matan:7",
           "subject": "matan",
           "n": 7
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-01",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "algebra:7",
           "subject": "algebra",
@@ -242,10 +260,11 @@
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-01",
+      "date": "2026-12-02",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
@@ -274,22 +293,23 @@
           "id": "geometry:9",
           "subject": "geometry",
           "n": 9
-        },
-        {
-          "id": "discrete:9",
-          "subject": "discrete",
-          "n": 9
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-02",
+      "date": "2026-12-03",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "discrete:9",
+          "subject": "discrete",
+          "n": 9
+        },
         {
           "id": "matan:10",
           "subject": "matan",
@@ -304,7 +324,18 @@
           "id": "geometry:10",
           "subject": "geometry",
           "n": 10
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-04",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:10",
           "subject": "discrete",
@@ -319,22 +350,23 @@
           "id": "algebra:11",
           "subject": "algebra",
           "n": 11
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-03",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "geometry:11",
           "subject": "geometry",
           "n": 11
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-05",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:11",
           "subject": "discrete",
@@ -354,22 +386,23 @@
           "id": "geometry:12",
           "subject": "geometry",
           "n": 12
-        },
-        {
-          "id": "discrete:12",
-          "subject": "discrete",
-          "n": 12
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-04",
+      "date": "2026-12-06",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "discrete:12",
+          "subject": "discrete",
+          "n": 12
+        },
         {
           "id": "matan:13",
           "subject": "matan",
@@ -384,7 +417,18 @@
           "id": "geometry:13",
           "subject": "geometry",
           "n": 13
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-07",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:13",
           "subject": "discrete",
@@ -399,22 +443,23 @@
           "id": "algebra:14",
           "subject": "algebra",
           "n": 14
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-05",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "geometry:14",
           "subject": "geometry",
           "n": 14
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-08",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:14",
           "subject": "discrete",
@@ -434,22 +479,23 @@
           "id": "geometry:15",
           "subject": "geometry",
           "n": 15
-        },
-        {
-          "id": "discrete:15",
-          "subject": "discrete",
-          "n": 15
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-06",
+      "date": "2026-12-09",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "discrete:15",
+          "subject": "discrete",
+          "n": 15
+        },
         {
           "id": "matan:16",
           "subject": "matan",
@@ -464,7 +510,18 @@
           "id": "geometry:16",
           "subject": "geometry",
           "n": 16
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-10",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:16",
           "subject": "discrete",
@@ -479,22 +536,23 @@
           "id": "algebra:17",
           "subject": "algebra",
           "n": 17
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-07",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "geometry:17",
           "subject": "geometry",
           "n": 17
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-11",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "discrete:17",
           "subject": "discrete",
@@ -514,22 +572,23 @@
           "id": "geometry:18",
           "subject": "geometry",
           "n": 18
-        },
-        {
-          "id": "discrete:18",
-          "subject": "discrete",
-          "n": 18
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-08",
+      "date": "2026-12-12",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "discrete:18",
+          "subject": "discrete",
+          "n": 18
+        },
         {
           "id": "matan:19",
           "subject": "matan",
@@ -544,7 +603,18 @@
           "id": "geometry:19",
           "subject": "geometry",
           "n": 19
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-13",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "matan:20",
           "subject": "matan",
@@ -559,22 +629,23 @@
           "id": "geometry:20",
           "subject": "geometry",
           "n": 20
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-09",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "matan:21",
           "subject": "matan",
           "n": 21
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-14",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "algebra:21",
           "subject": "algebra",
@@ -594,22 +665,23 @@
           "id": "algebra:22",
           "subject": "algebra",
           "n": 22
-        },
-        {
-          "id": "geometry:22",
-          "subject": "geometry",
-          "n": 22
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-10",
+      "date": "2026-12-15",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
       "new": [
+        {
+          "id": "geometry:22",
+          "subject": "geometry",
+          "n": 22
+        },
         {
           "id": "matan:23",
           "subject": "matan",
@@ -624,7 +696,18 @@
           "id": "geometry:23",
           "subject": "geometry",
           "n": 23
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-16",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "matan:24",
           "subject": "matan",
@@ -639,22 +722,23 @@
           "id": "geometry:24",
           "subject": "geometry",
           "n": 24
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-11",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
+        },
         {
           "id": "matan:25",
           "subject": "matan",
           "n": 25
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-17",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Смешанный проход",
+      "new": [
         {
           "id": "algebra:25",
           "subject": "algebra",
@@ -674,22 +758,23 @@
           "id": "algebra:26",
           "subject": "algebra",
           "n": 26
-        },
-        {
-          "id": "matan:27",
-          "subject": "matan",
-          "n": 27
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-12",
+      "date": "2026-12-18",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Алгебра + Матанализ",
       "new": [
+        {
+          "id": "matan:27",
+          "subject": "matan",
+          "n": 27
+        },
         {
           "id": "algebra:27",
           "subject": "algebra",
@@ -704,7 +789,18 @@
           "id": "algebra:28",
           "subject": "algebra",
           "n": 28
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-19",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:29",
           "subject": "matan",
@@ -719,22 +815,23 @@
           "id": "matan:30",
           "subject": "matan",
           "n": 30
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-13",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
-      "new": [
+        },
         {
           "id": "algebra:30",
           "subject": "algebra",
           "n": 30
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-20",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:31",
           "subject": "matan",
@@ -754,22 +851,23 @@
           "id": "algebra:32",
           "subject": "algebra",
           "n": 32
-        },
-        {
-          "id": "matan:33",
-          "subject": "matan",
-          "n": 33
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-14",
+      "date": "2026-12-21",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Алгебра + Матанализ",
       "new": [
+        {
+          "id": "matan:33",
+          "subject": "matan",
+          "n": 33
+        },
         {
           "id": "algebra:33",
           "subject": "algebra",
@@ -784,7 +882,18 @@
           "id": "algebra:34",
           "subject": "algebra",
           "n": 34
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-22",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:35",
           "subject": "matan",
@@ -799,22 +908,23 @@
           "id": "matan:36",
           "subject": "matan",
           "n": 36
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-15",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
-      "new": [
+        },
         {
           "id": "algebra:36",
           "subject": "algebra",
           "n": 36
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-23",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:37",
           "subject": "matan",
@@ -834,22 +944,23 @@
           "id": "algebra:38",
           "subject": "algebra",
           "n": 38
-        },
-        {
-          "id": "matan:39",
-          "subject": "matan",
-          "n": 39
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-16",
+      "date": "2026-12-24",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Алгебра + Матанализ",
       "new": [
+        {
+          "id": "matan:39",
+          "subject": "matan",
+          "n": 39
+        },
         {
           "id": "algebra:39",
           "subject": "algebra",
@@ -864,7 +975,18 @@
           "id": "algebra:40",
           "subject": "algebra",
           "n": 40
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-25",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:41",
           "subject": "matan",
@@ -879,22 +1001,23 @@
           "id": "matan:42",
           "subject": "matan",
           "n": 42
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-17",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
-      "new": [
+        },
         {
           "id": "algebra:42",
           "subject": "algebra",
           "n": 42
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-26",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Алгебра + Матанализ",
+      "new": [
         {
           "id": "matan:43",
           "subject": "matan",
@@ -914,22 +1037,23 @@
           "id": "algebra:44",
           "subject": "algebra",
           "n": 44
-        },
-        {
-          "id": "matan:45",
-          "subject": "matan",
-          "n": 45
         }
       ],
       "focus": [],
-      "focusKind": "general"
+      "focusKind": "general",
+      "holiday": false
     },
     {
-      "date": "2026-12-18",
+      "date": "2026-12-27",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Алгебра + Матанализ",
       "new": [
+        {
+          "id": "matan:45",
+          "subject": "matan",
+          "n": 45
+        },
         {
           "id": "algebra:45",
           "subject": "algebra",
@@ -944,7 +1068,18 @@
           "id": "matan:47",
           "subject": "matan",
           "n": 47
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-28",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Матанализ",
+      "new": [
         {
           "id": "matan:48",
           "subject": "matan",
@@ -959,22 +1094,23 @@
           "id": "matan:50",
           "subject": "matan",
           "n": 50
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-19",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Матанализ",
-      "new": [
+        },
         {
           "id": "matan:51",
           "subject": "matan",
           "n": 51
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-29",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Матанализ",
+      "new": [
         {
           "id": "matan:52",
           "subject": "matan",
@@ -994,27 +1130,39 @@
           "id": "matan:55",
           "subject": "matan",
           "n": 55
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": false
+    },
+    {
+      "date": "2026-12-30",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · лёгкий проход",
+      "new": [
         {
           "id": "matan:56",
           "subject": "matan",
           "n": 56
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-20",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Матанализ",
-      "new": [
+        },
         {
           "id": "matan:57",
           "subject": "matan",
           "n": 57
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": true
+    },
+    {
+      "date": "2026-12-31",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · лёгкий проход",
+      "new": [
         {
           "id": "matan:58",
           "subject": "matan",
@@ -1024,7 +1172,18 @@
           "id": "matan:59",
           "subject": "matan",
           "n": 59
-        },
+        }
+      ],
+      "focus": [],
+      "focusKind": "general",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-01",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:60",
           "subject": "matan",
@@ -1034,27 +1193,43 @@
           "id": "matan:61",
           "subject": "matan",
           "n": 61
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-02",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:62",
           "subject": "matan",
           "n": 62
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-21",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Матанализ",
-      "new": [
+        },
         {
           "id": "matan:63",
           "subject": "matan",
           "n": 63
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-03",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:64",
           "subject": "matan",
@@ -1064,7 +1239,20 @@
           "id": "matan:65",
           "subject": "matan",
           "n": 65
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-04",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:66",
           "subject": "matan",
@@ -1074,27 +1262,43 @@
           "id": "matan:67",
           "subject": "matan",
           "n": 67
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-05",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:68",
           "subject": "matan",
           "n": 68
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-22",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Матанализ",
-      "new": [
+        },
         {
           "id": "matan:69",
           "subject": "matan",
           "n": 69
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-06",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Каникулы · мало нового + акцент Матанализ",
+      "new": [
         {
           "id": "matan:70",
           "subject": "matan",
@@ -1104,7 +1308,20 @@
           "id": "matan:71",
           "subject": "matan",
           "n": 71
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-07",
+      "minutes": 50,
+      "mode": "first_pass",
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [
         {
           "id": "matan:72",
           "subject": "matan",
@@ -1116,14 +1333,17 @@
           "n": 73
         }
       ],
-      "focus": [],
-      "focusKind": "general"
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam",
+      "holiday": true
     },
     {
-      "date": "2026-12-23",
-      "minutes": 120,
+      "date": "2027-01-08",
+      "minutes": 50,
       "mode": "first_pass",
-      "label": "Матанализ",
+      "label": "Акцент · Матанализ (перед экзаменом)",
       "new": [
         {
           "id": "matan:74",
@@ -1134,7 +1354,20 @@
           "id": "matan:75",
           "subject": "matan",
           "n": 75
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam",
+      "holiday": true
+    },
+    {
+      "date": "2027-01-09",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [
         {
           "id": "matan:76",
           "subject": "matan",
@@ -1149,22 +1382,25 @@
           "id": "matan:78",
           "subject": "matan",
           "n": 78
-        }
-      ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-24",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Матанализ",
-      "new": [
+        },
         {
           "id": "matan:79",
           "subject": "matan",
           "n": 79
-        },
+        }
+      ],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam",
+      "holiday": false
+    },
+    {
+      "date": "2027-01-10",
+      "minutes": 120,
+      "mode": "first_pass",
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [
         {
           "id": "matan:80",
           "subject": "matan",
@@ -1186,181 +1422,11 @@
           "n": 83
         }
       ],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-25",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-26",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-27",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-28",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-29",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-30",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2026-12-31",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": [],
-      "focus": [],
-      "focusKind": "general"
-    },
-    {
-      "date": "2027-01-01",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
       "focus": [
         "matan"
       ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-02",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-03",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-04",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-05",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-06",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Повтор · акцент Матанализ",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "soft"
-    },
-    {
-      "date": "2027-01-07",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Акцент · Матанализ (перед экзаменом)",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "pre_exam"
-    },
-    {
-      "date": "2027-01-08",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Акцент · Матанализ (перед экзаменом)",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "pre_exam"
-    },
-    {
-      "date": "2027-01-09",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Акцент · Матанализ (перед экзаменом)",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "pre_exam"
-    },
-    {
-      "date": "2027-01-10",
-      "minutes": 120,
-      "mode": "review_only",
-      "label": "Акцент · Матанализ (перед экзаменом)",
-      "new": [],
-      "focus": [
-        "matan"
-      ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-11",
@@ -1371,7 +1437,8 @@
       "focus": [
         "matan"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-12",
@@ -1382,7 +1449,8 @@
       "focus": [
         "matan"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-13",
@@ -1393,7 +1461,8 @@
       "focus": [
         "matan"
       ],
-      "focusKind": "exam_day"
+      "focusKind": "exam_day",
+      "holiday": false
     },
     {
       "date": "2027-01-14",
@@ -1404,7 +1473,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-15",
@@ -1415,7 +1485,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-16",
@@ -1426,7 +1497,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-17",
@@ -1437,7 +1509,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-18",
@@ -1448,7 +1521,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-19",
@@ -1459,7 +1533,8 @@
       "focus": [
         "discrete"
       ],
-      "focusKind": "exam_day"
+      "focusKind": "exam_day",
+      "holiday": false
     },
     {
       "date": "2027-01-20",
@@ -1470,7 +1545,8 @@
       "focus": [
         "algebra"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-21",
@@ -1481,7 +1557,8 @@
       "focus": [
         "algebra"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-22",
@@ -1492,7 +1569,8 @@
       "focus": [
         "algebra"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-23",
@@ -1503,7 +1581,8 @@
       "focus": [
         "algebra"
       ],
-      "focusKind": "exam_day"
+      "focusKind": "exam_day",
+      "holiday": false
     },
     {
       "date": "2027-01-24",
@@ -1514,7 +1593,8 @@
       "focus": [
         "geometry"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-25",
@@ -1525,7 +1605,8 @@
       "focus": [
         "geometry"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-26",
@@ -1536,7 +1617,8 @@
       "focus": [
         "geometry"
       ],
-      "focusKind": "pre_exam"
+      "focusKind": "pre_exam",
+      "holiday": false
     },
     {
       "date": "2027-01-27",
@@ -1547,7 +1629,8 @@
       "focus": [
         "geometry"
       ],
-      "focusKind": "exam_day"
+      "focusKind": "exam_day",
+      "holiday": false
     }
   ]
 }
