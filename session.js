@@ -527,19 +527,51 @@
       .join(" ");
   }
 
-  function dueTickets(state, iso) {
+  function dayFocus(day) {
+    if (day && Array.isArray(day.focus)) return day.focus;
+    return [];
+  }
+
+  function dueTickets(state, iso, focusIds) {
+    const focus = Array.isArray(focusIds) ? focusIds : [];
     const list = [];
     for (const [id, meta] of catalog) {
       const st = ticketState(state, id);
       if (!st.firstDone) continue;
       if (!st.due || st.due <= iso) list.push({ id, meta, st });
     }
-    // interleave by subject
     list.sort((a, b) => {
+      const af = focus.includes(a.meta.subject) ? 0 : 1;
+      const bf = focus.includes(b.meta.subject) ? 0 : 1;
+      if (af !== bf) return af - bf;
       if (a.st.due !== b.st.due) return (a.st.due || "").localeCompare(b.st.due || "");
       return a.id.localeCompare(b.id);
     });
     return list;
+  }
+
+  /** Extra focus-subject tickets (already learned) to drill before an exam. */
+  function accentTickets(state, iso, focusIds, excludeIds) {
+    const focus = Array.isArray(focusIds) ? focusIds : [];
+    if (!focus.length) return [];
+    const skip = new Set(excludeIds || []);
+    const list = [];
+    for (const [id, meta] of catalog) {
+      if (!focus.includes(meta.subject)) continue;
+      if (skip.has(id)) continue;
+      const st = ticketState(state, id);
+      if (!st.firstDone) continue;
+      list.push({ id, meta, st, accent: true });
+    }
+    list.sort((a, b) => {
+      const ad = a.st.due || "9999";
+      const bd = b.st.due || "9999";
+      if (ad !== bd) return ad.localeCompare(bd);
+      return a.id.localeCompare(b.id);
+    });
+    const kind = (dayByDate(iso) || {}).focusKind;
+    const limit = kind === "exam_day" ? 10 : kind === "pre_exam" ? 8 : 4;
+    return list.slice(0, limit);
   }
 
   function debtItems(state, iso) {
@@ -623,11 +655,12 @@
       return `<p class="ss-empty">На сегодня нет due-повторов — можно спокойно брать новое.</p>`;
     }
     return list
-      .slice(0, 12)
-      .map(({ id, meta, st }) => {
+      .slice(0, 16)
+      .map(({ id, meta, st, accent }) => {
         const title = meta.title || id;
-        return `<div class="ss-recall" data-id="${esc(id)}">
+        return `<div class="ss-recall${accent ? " is-accent" : ""}" data-id="${esc(id)}">
           <span class="${chipClass(meta.subject)}">${esc(SUBJECT_TITLE[meta.subject] || meta.subject)}</span>
+          ${accent ? '<span class="ss-chip ss-chip-accent">акцент</span>' : ""}
           <strong>№ ${meta.n}. ${esc(title)}</strong>
           <p class="ss-recall-prompt">Закрой глаза на формулировку. Объясни вслух другому человеку. Потом открой билет и оцени.</p>
           <div class="ss-item-actions">
@@ -636,7 +669,7 @@
             <button type="button" class="ss-btn" data-grade="hard">Шатко</button>
             <button type="button" class="ss-btn" data-grade="good">Вспомнил</button>
           </div>
-          <p class="ss-meta">due ${esc(st.due || "—")} · уровень ${st.level}</p>
+          <p class="ss-meta">${accent ? "акцент перед экзаменом" : "due " + esc(st.due || "—")} · уровень ${st.level}</p>
         </div>`;
       })
       .join("");
@@ -653,7 +686,17 @@
     const today = todayStr();
     const stats = progressStats(state);
     const debt = debtItems(state, today);
-    const due = dueTickets(state, today);
+    const todayDay = dayByDate(today);
+    const due = dueTickets(state, today, dayFocus(todayDay));
+
+    const examsHtml = (plan.exams || [])
+      .map((ex) => {
+        const title = ex.title || SUBJECT_TITLE[ex.subject] || ex.subject;
+        return `<li><span class="${chipClass(ex.subject)}">${esc(
+          title
+        )}</span> ${esc(ex.date)}</li>`;
+      })
+      .join("");
 
     const subjectBars = Object.keys(SUBJECT_TITLE)
       .map((sid) => {
@@ -695,6 +738,17 @@
                   : isPast
                     ? "долг"
                     : `${prog.total} нов.`;
+          const focus = dayFocus(day);
+        const focusChip = focus.length
+          ? focus
+              .map(
+                (s) =>
+                  `<span class="${chipClass(s)}">акцент · ${esc(
+                    SUBJECT_TITLE[s] || s
+                  )}</span>`
+              )
+              .join(" ")
+          : "";
         const ticketsPreview = (day.new || [])
           .slice(0, 4)
           .map((it) => {
@@ -719,7 +773,7 @@
             <span class="ss-cal-status">${esc(statusLabel)}</span>
           </div>
           <div class="ss-cal-label">${esc(day.label || "")}</div>
-          <div class="ss-cal-chips">${subjectChips(day.new)}</div>
+          <div class="ss-cal-chips">${focusChip || subjectChips(day.new)}</div>
           ${
             ticketsPreview
               ? `<ul class="ss-cal-tickets">${ticketsPreview}${more}</ul>`
@@ -746,6 +800,12 @@
           <p class="ss-progress-label">Первый проход: ${stats.done} / ${stats.total} (${stats.pct}%)</p>
         </div>
       </div>
+
+      <section class="ss-section">
+        <h2>Экзамены</h2>
+        <ul class="ss-exam-list">${examsHtml || '<li class="ss-empty">Нет дат</li>'}</ul>
+        <p class="ss-section-lead" style="margin-top:.55rem">За ${plan.focusWindow || 6} дней до предмета — акцент повтора именно на нём.</p>
+      </section>
 
       <section class="ss-section">
         <h2>По предметам</h2>
@@ -814,17 +874,30 @@
     };
     const stats = progressStats(state);
     const debt = debtItems(state, viewDate);
-    const due = dueTickets(state, viewDate);
+    const focus = dayFocus(day);
+    const due = dueTickets(state, viewDate, focus);
+    const accent = accentTickets(
+      state,
+      viewDate,
+      focus,
+      due.map((x) => x.id)
+    );
+    const recallList = due.concat(accent);
     const isToday = viewDate === todayStr();
     const principles = (plan.principles || [])
       .map((p) => `<li>${esc(p)}</li>`)
       .join("");
+    const focusNote = focus.length
+      ? `Акцент: ${focus.map((s) => SUBJECT_TITLE[s] || s).join(", ")}.`
+      : "";
 
     const newHtml = (day.new || []).length
       ? (day.new || []).map((it) => renderLearnItem(it, state, viewDate, {})).join("")
       : `<p class="ss-empty">${
           day.mode === "review_only"
-            ? "Первый проход закрыт по плану — только повтор."
+            ? day.focusKind === "exam_day"
+              ? "День экзамена — лёгкий повтор по предмету, без нового."
+              : "Первый проход закрыт по плану — только повтор."
             : "На этот день новых билетов нет."
         }</p>`;
 
@@ -834,7 +907,9 @@
         <h1 class="ss-title">${esc(day.label || "Занятие")}</h1>
         <p class="ss-meta">${day.minutes || plan.minutes || 120} мин · режим ${
       day.mode === "review_only" ? "только повтор" : "первый проход"
-    } · до первого прохода ${esc(plan.firstPassEnd)}</p>
+    } · до первого прохода ${esc(plan.firstPassEnd)}${
+      focusNote ? " · " + esc(focusNote) : ""
+    }</p>
         <div class="ss-progress">
           <div class="ss-progress-bar" aria-hidden="true"><div class="ss-progress-fill" style="width:${stats.pct}%"></div></div>
           <p class="ss-progress-label">Первый проход: ${stats.done} / ${stats.total} (${stats.pct}%)</p>
@@ -849,7 +924,9 @@
 
       <div class="ss-tip">
         <strong>20 минут:</strong> один билет из долга или нового — сначала вспомни вслух, потом открой текст.
-        Полное занятие (~2 ч): долг → вспомни → новое (вперемешку) → отметь пройденное.
+        Полное занятие (~2 ч): долг → вспомни${
+          focus.length ? " (сначала акцент-предмет)" : ""
+        } → новое → отметь пройденное.
       </div>
 
       ${
@@ -865,9 +942,11 @@
       }
 
       <section class="ss-section">
-        <h2>Вспомни · due на этот день</h2>
-        <p class="ss-section-lead">Не читай сразу. Сначала retrieval, потом оценка — как в карточках, но на уровне билета.</p>
-        ${renderRecall(due)}
+        <h2>Вспомни · due${focus.length ? " + акцент" : ""}</h2>
+        <p class="ss-section-lead">Не читай сразу. Сначала retrieval, потом оценка.${
+          focusNote ? " " + esc(focusNote) : ""
+        }</p>
+        ${renderRecall(recallList)}
       </section>
 
       <section class="ss-section">

@@ -1,16 +1,41 @@
 {
-  "version": 1,
+  "version": 2,
   "start": "2026-11-26",
   "firstPassEnd": "2026-12-24",
-  "end": "2027-01-11",
+  "end": "2027-01-27",
   "minutes": 120,
   "maxCarry": 6,
+  "exams": [
+    {
+      "subject": "matan",
+      "date": "2027-01-13",
+      "title": "Матанализ"
+    },
+    {
+      "subject": "discrete",
+      "date": "2027-01-19",
+      "title": "Дискрет"
+    },
+    {
+      "subject": "algebra",
+      "date": "2027-01-23",
+      "title": "Алгебра"
+    },
+    {
+      "subject": "geometry",
+      "date": "2027-01-27",
+      "title": "Геометрия"
+    }
+  ],
+  "focusWindow": 6,
+  "softWindow": 12,
   "principles": [
     "Сначала вспомни, потом открывай текст",
     "Почти забудь — и вернись через интервал",
     "Перемешивай предметы, не учи блоками",
     "Объясняй вслух так, будто другому",
-    "Связывай куски нитями (зависимости билетов)"
+    "Связывай куски нитями (зависимости билетов)",
+    "Перед экзаменом чаще повторяй именно этот предмет"
   ],
   "ticketSrsDays": [
     0,
@@ -55,7 +80,9 @@
           "subject": "algebra",
           "n": 2
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-11-27",
@@ -93,7 +120,9 @@
           "subject": "discrete",
           "n": 3
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-11-28",
@@ -131,7 +160,9 @@
           "subject": "algebra",
           "n": 5
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-11-29",
@@ -169,7 +200,9 @@
           "subject": "discrete",
           "n": 6
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-11-30",
@@ -207,7 +240,9 @@
           "subject": "algebra",
           "n": 8
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-01",
@@ -245,7 +280,9 @@
           "subject": "discrete",
           "n": 9
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-02",
@@ -283,7 +320,9 @@
           "subject": "algebra",
           "n": 11
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-03",
@@ -321,7 +360,9 @@
           "subject": "discrete",
           "n": 12
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-04",
@@ -359,7 +400,9 @@
           "subject": "algebra",
           "n": 14
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-05",
@@ -397,7 +440,9 @@
           "subject": "discrete",
           "n": 15
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-06",
@@ -435,7 +480,9 @@
           "subject": "algebra",
           "n": 17
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-07",
@@ -473,7 +520,9 @@
           "subject": "discrete",
           "n": 18
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-08",
@@ -511,7 +560,9 @@
           "subject": "geometry",
           "n": 20
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-09",
@@ -549,7 +600,9 @@
           "subject": "geometry",
           "n": 22
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-10",
@@ -587,7 +640,9 @@
           "subject": "geometry",
           "n": 24
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-11",
@@ -625,7 +680,9 @@
           "subject": "matan",
           "n": 27
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-12",
@@ -663,7 +720,9 @@
           "subject": "matan",
           "n": 30
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-13",
@@ -701,7 +760,9 @@
           "subject": "matan",
           "n": 33
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-14",
@@ -739,7 +800,9 @@
           "subject": "matan",
           "n": 36
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-15",
@@ -777,7 +840,9 @@
           "subject": "matan",
           "n": 39
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-16",
@@ -815,7 +880,9 @@
           "subject": "matan",
           "n": 42
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-17",
@@ -853,7 +920,9 @@
           "subject": "matan",
           "n": 45
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-18",
@@ -891,7 +960,9 @@
           "subject": "matan",
           "n": 50
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-19",
@@ -929,7 +1000,9 @@
           "subject": "matan",
           "n": 56
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-20",
@@ -967,7 +1040,9 @@
           "subject": "matan",
           "n": 62
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-21",
@@ -1005,7 +1080,9 @@
           "subject": "matan",
           "n": 68
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-22",
@@ -1038,7 +1115,9 @@
           "subject": "matan",
           "n": 73
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-23",
@@ -1071,7 +1150,9 @@
           "subject": "matan",
           "n": 78
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-24",
@@ -1104,133 +1185,369 @@
           "subject": "matan",
           "n": 83
         }
-      ]
+      ],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-25",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-26",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-27",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-28",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-29",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-30",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2026-12-31",
       "minutes": 120,
       "mode": "review_only",
       "label": "Повтор изученного",
-      "new": []
+      "new": [],
+      "focus": [],
+      "focusKind": "general"
     },
     {
       "date": "2027-01-01",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-02",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-03",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-04",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-05",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-06",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Повтор · акцент Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "soft"
     },
     {
       "date": "2027-01-07",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
     },
     {
       "date": "2027-01-08",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
     },
     {
       "date": "2027-01-09",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
     },
     {
       "date": "2027-01-10",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
     },
     {
       "date": "2027-01-11",
       "minutes": 120,
       "mode": "review_only",
-      "label": "Повтор изученного",
-      "new": []
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-12",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Матанализ (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-13",
+      "minutes": 60,
+      "mode": "review_only",
+      "label": "Экзамен · Матанализ",
+      "new": [],
+      "focus": [
+        "matan"
+      ],
+      "focusKind": "exam_day"
+    },
+    {
+      "date": "2027-01-14",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Дискрет (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-15",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Дискрет (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-16",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Дискрет (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-17",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Дискрет (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-18",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Дискрет (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-19",
+      "minutes": 60,
+      "mode": "review_only",
+      "label": "Экзамен · Дискрет",
+      "new": [],
+      "focus": [
+        "discrete"
+      ],
+      "focusKind": "exam_day"
+    },
+    {
+      "date": "2027-01-20",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Алгебра (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "algebra"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-21",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Алгебра (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "algebra"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-22",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Алгебра (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "algebra"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-23",
+      "minutes": 60,
+      "mode": "review_only",
+      "label": "Экзамен · Алгебра",
+      "new": [],
+      "focus": [
+        "algebra"
+      ],
+      "focusKind": "exam_day"
+    },
+    {
+      "date": "2027-01-24",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Геометрия (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "geometry"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-25",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Геометрия (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "geometry"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-26",
+      "minutes": 120,
+      "mode": "review_only",
+      "label": "Акцент · Геометрия (перед экзаменом)",
+      "new": [],
+      "focus": [
+        "geometry"
+      ],
+      "focusKind": "pre_exam"
+    },
+    {
+      "date": "2027-01-27",
+      "minutes": 60,
+      "mode": "review_only",
+      "label": "Экзамен · Геометрия",
+      "new": [],
+      "focus": [
+        "geometry"
+      ],
+      "focusKind": "exam_day"
     }
   ]
 }

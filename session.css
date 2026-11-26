@@ -164,6 +164,16 @@ html[data-theme="light"] {
 .ss-chip-algebra { background: rgba(163,113,247,.18); color: #d2a8ff; }
 .ss-chip-geometry { background: rgba(63,185,80,.16); color: #3fb950; }
 .ss-chip-discrete { background: rgba(210,153,34,.16); color: #d29922; }
+.ss-chip-accent { background: color-mix(in srgb, var(--ss-warn) 22%, transparent); color: var(--ss-warn); }
+.ss-recall.is-accent {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--ss-warn) 45%, var(--ss-border));
+}
+.ss-exam-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.ss-exam-list li { margin: 0.25rem 0; }
 .ss-item-title {
   display: inline;
   font-weight: 600;
