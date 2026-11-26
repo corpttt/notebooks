@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "start": "2026-11-26",
+  "version": 4,
+  "start": "2026-11-27",
   "firstPassEnd": "2027-01-10",
   "holidayStart": "2026-12-30",
   "holidayEnd": "2027-01-08",
@@ -48,7 +48,7 @@
   ],
   "days": [
     {
-      "date": "2026-11-26",
+      "date": "2026-11-27",
       "minutes": 120,
       "mode": "first_pass",
       "label": "Смешанный проход",
@@ -69,50 +69,9 @@
           "n": 1
         },
         {
-          "id": "discrete:1",
-          "subject": "discrete",
-          "n": 1
-        },
-        {
           "id": "matan:2",
           "subject": "matan",
           "n": 2
-        }
-      ],
-      "focus": [],
-      "focusKind": "general",
-      "holiday": false
-    },
-    {
-      "date": "2026-11-27",
-      "minutes": 120,
-      "mode": "first_pass",
-      "label": "Смешанный проход",
-      "new": [
-        {
-          "id": "algebra:2",
-          "subject": "algebra",
-          "n": 2
-        },
-        {
-          "id": "geometry:2",
-          "subject": "geometry",
-          "n": 2
-        },
-        {
-          "id": "discrete:2",
-          "subject": "discrete",
-          "n": 2
-        },
-        {
-          "id": "matan:3",
-          "subject": "matan",
-          "n": 3
-        },
-        {
-          "id": "algebra:3",
-          "subject": "algebra",
-          "n": 3
         }
       ],
       "focus": [],
@@ -126,28 +85,23 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "geometry:3",
-          "subject": "geometry",
+          "id": "matan:3",
+          "subject": "matan",
           "n": 3
         },
         {
-          "id": "discrete:3",
+          "id": "algebra:2",
+          "subject": "algebra",
+          "n": 2
+        },
+        {
+          "id": "discrete:1",
           "subject": "discrete",
-          "n": 3
+          "n": 1
         },
         {
           "id": "matan:4",
           "subject": "matan",
-          "n": 4
-        },
-        {
-          "id": "algebra:4",
-          "subject": "algebra",
-          "n": 4
-        },
-        {
-          "id": "geometry:4",
-          "subject": "geometry",
           "n": 4
         }
       ],
@@ -162,29 +116,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:4",
-          "subject": "discrete",
-          "n": 4
-        },
-        {
           "id": "matan:5",
           "subject": "matan",
           "n": 5
         },
         {
-          "id": "algebra:5",
+          "id": "algebra:3",
           "subject": "algebra",
-          "n": 5
+          "n": 3
         },
         {
-          "id": "geometry:5",
+          "id": "geometry:2",
           "subject": "geometry",
-          "n": 5
+          "n": 2
         },
         {
-          "id": "discrete:5",
-          "subject": "discrete",
-          "n": 5
+          "id": "matan:6",
+          "subject": "matan",
+          "n": 6
+        },
+        {
+          "id": "algebra:4",
+          "subject": "algebra",
+          "n": 4
         }
       ],
       "focus": [],
@@ -198,29 +152,34 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:6",
-          "subject": "matan",
-          "n": 6
-        },
-        {
-          "id": "algebra:6",
-          "subject": "algebra",
-          "n": 6
-        },
-        {
-          "id": "geometry:6",
-          "subject": "geometry",
-          "n": 6
-        },
-        {
-          "id": "discrete:6",
-          "subject": "discrete",
-          "n": 6
-        },
-        {
           "id": "matan:7",
           "subject": "matan",
           "n": 7
+        },
+        {
+          "id": "algebra:5",
+          "subject": "algebra",
+          "n": 5
+        },
+        {
+          "id": "geometry:3",
+          "subject": "geometry",
+          "n": 3
+        },
+        {
+          "id": "discrete:2",
+          "subject": "discrete",
+          "n": 2
+        },
+        {
+          "id": "matan:8",
+          "subject": "matan",
+          "n": 8
+        },
+        {
+          "id": "matan:9",
+          "subject": "matan",
+          "n": 9
         }
       ],
       "focus": [],
@@ -231,32 +190,22 @@
       "date": "2026-12-01",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Смешанный проход",
+      "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "algebra:7",
-          "subject": "algebra",
-          "n": 7
-        },
-        {
-          "id": "geometry:7",
-          "subject": "geometry",
-          "n": 7
-        },
-        {
-          "id": "discrete:7",
-          "subject": "discrete",
-          "n": 7
-        },
-        {
-          "id": "matan:8",
+          "id": "matan:10",
           "subject": "matan",
-          "n": 8
+          "n": 10
         },
         {
-          "id": "algebra:8",
+          "id": "algebra:6",
           "subject": "algebra",
-          "n": 8
+          "n": 6
+        },
+        {
+          "id": "matan:11",
+          "subject": "matan",
+          "n": 11
         }
       ],
       "focus": [],
@@ -270,29 +219,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "geometry:8",
-          "subject": "geometry",
-          "n": 8
-        },
-        {
-          "id": "discrete:8",
-          "subject": "discrete",
-          "n": 8
-        },
-        {
-          "id": "matan:9",
+          "id": "matan:12",
           "subject": "matan",
-          "n": 9
+          "n": 12
         },
         {
-          "id": "algebra:9",
+          "id": "algebra:7",
           "subject": "algebra",
-          "n": 9
+          "n": 7
         },
         {
-          "id": "geometry:9",
+          "id": "geometry:4",
           "subject": "geometry",
-          "n": 9
+          "n": 4
+        },
+        {
+          "id": "discrete:3",
+          "subject": "discrete",
+          "n": 3
+        },
+        {
+          "id": "matan:13",
+          "subject": "matan",
+          "n": 13
         }
       ],
       "focus": [],
@@ -306,24 +255,24 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:9",
-          "subject": "discrete",
-          "n": 9
-        },
-        {
-          "id": "matan:10",
+          "id": "matan:14",
           "subject": "matan",
-          "n": 10
+          "n": 14
         },
         {
-          "id": "algebra:10",
+          "id": "algebra:8",
           "subject": "algebra",
-          "n": 10
+          "n": 8
         },
         {
-          "id": "geometry:10",
+          "id": "geometry:5",
           "subject": "geometry",
-          "n": 10
+          "n": 5
+        },
+        {
+          "id": "matan:15",
+          "subject": "matan",
+          "n": 15
         }
       ],
       "focus": [],
@@ -337,24 +286,24 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:10",
-          "subject": "discrete",
-          "n": 10
-        },
-        {
-          "id": "matan:11",
+          "id": "matan:16",
           "subject": "matan",
-          "n": 11
+          "n": 16
         },
         {
-          "id": "algebra:11",
+          "id": "algebra:9",
           "subject": "algebra",
-          "n": 11
+          "n": 9
         },
         {
-          "id": "geometry:11",
-          "subject": "geometry",
-          "n": 11
+          "id": "discrete:4",
+          "subject": "discrete",
+          "n": 4
+        },
+        {
+          "id": "matan:17",
+          "subject": "matan",
+          "n": 17
         }
       ],
       "focus": [],
@@ -368,24 +317,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:11",
-          "subject": "discrete",
-          "n": 11
-        },
-        {
-          "id": "matan:12",
+          "id": "matan:18",
           "subject": "matan",
-          "n": 12
+          "n": 18
         },
         {
-          "id": "algebra:12",
+          "id": "algebra:10",
           "subject": "algebra",
-          "n": 12
+          "n": 10
         },
         {
-          "id": "geometry:12",
+          "id": "geometry:6",
           "subject": "geometry",
-          "n": 12
+          "n": 6
+        },
+        {
+          "id": "matan:19",
+          "subject": "matan",
+          "n": 19
+        },
+        {
+          "id": "algebra:11",
+          "subject": "algebra",
+          "n": 11
         }
       ],
       "focus": [],
@@ -399,24 +353,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:12",
-          "subject": "discrete",
+          "id": "matan:20",
+          "subject": "matan",
+          "n": 20
+        },
+        {
+          "id": "algebra:12",
+          "subject": "algebra",
           "n": 12
         },
         {
-          "id": "matan:13",
+          "id": "discrete:5",
+          "subject": "discrete",
+          "n": 5
+        },
+        {
+          "id": "matan:21",
           "subject": "matan",
-          "n": 13
+          "n": 21
         },
         {
-          "id": "algebra:13",
-          "subject": "algebra",
-          "n": 13
-        },
-        {
-          "id": "geometry:13",
-          "subject": "geometry",
-          "n": 13
+          "id": "matan:22",
+          "subject": "matan",
+          "n": 22
         }
       ],
       "focus": [],
@@ -430,24 +389,24 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:13",
-          "subject": "discrete",
+          "id": "matan:23",
+          "subject": "matan",
+          "n": 23
+        },
+        {
+          "id": "algebra:13",
+          "subject": "algebra",
           "n": 13
         },
         {
-          "id": "matan:14",
-          "subject": "matan",
-          "n": 14
-        },
-        {
-          "id": "algebra:14",
-          "subject": "algebra",
-          "n": 14
-        },
-        {
-          "id": "geometry:14",
+          "id": "geometry:7",
           "subject": "geometry",
-          "n": 14
+          "n": 7
+        },
+        {
+          "id": "matan:24",
+          "subject": "matan",
+          "n": 24
         }
       ],
       "focus": [],
@@ -461,24 +420,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:14",
-          "subject": "discrete",
+          "id": "matan:25",
+          "subject": "matan",
+          "n": 25
+        },
+        {
+          "id": "algebra:14",
+          "subject": "algebra",
           "n": 14
         },
         {
-          "id": "matan:15",
-          "subject": "matan",
-          "n": 15
-        },
-        {
-          "id": "algebra:15",
-          "subject": "algebra",
-          "n": 15
-        },
-        {
-          "id": "geometry:15",
+          "id": "geometry:8",
           "subject": "geometry",
-          "n": 15
+          "n": 8
+        },
+        {
+          "id": "discrete:6",
+          "subject": "discrete",
+          "n": 6
+        },
+        {
+          "id": "matan:26",
+          "subject": "matan",
+          "n": 26
         }
       ],
       "focus": [],
@@ -489,27 +453,22 @@
       "date": "2026-12-09",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Смешанный проход",
+      "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "discrete:15",
-          "subject": "discrete",
+          "id": "matan:27",
+          "subject": "matan",
+          "n": 27
+        },
+        {
+          "id": "algebra:15",
+          "subject": "algebra",
           "n": 15
         },
         {
-          "id": "matan:16",
+          "id": "matan:28",
           "subject": "matan",
-          "n": 16
-        },
-        {
-          "id": "algebra:16",
-          "subject": "algebra",
-          "n": 16
-        },
-        {
-          "id": "geometry:16",
-          "subject": "geometry",
-          "n": 16
+          "n": 28
         }
       ],
       "focus": [],
@@ -523,24 +482,29 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:16",
-          "subject": "discrete",
+          "id": "matan:29",
+          "subject": "matan",
+          "n": 29
+        },
+        {
+          "id": "algebra:16",
+          "subject": "algebra",
           "n": 16
         },
         {
-          "id": "matan:17",
-          "subject": "matan",
-          "n": 17
-        },
-        {
-          "id": "algebra:17",
-          "subject": "algebra",
-          "n": 17
-        },
-        {
-          "id": "geometry:17",
+          "id": "geometry:9",
           "subject": "geometry",
-          "n": 17
+          "n": 9
+        },
+        {
+          "id": "discrete:7",
+          "subject": "discrete",
+          "n": 7
+        },
+        {
+          "id": "matan:30",
+          "subject": "matan",
+          "n": 30
         }
       ],
       "focus": [],
@@ -554,23 +518,28 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "discrete:17",
-          "subject": "discrete",
+          "id": "matan:31",
+          "subject": "matan",
+          "n": 31
+        },
+        {
+          "id": "algebra:17",
+          "subject": "algebra",
           "n": 17
         },
         {
-          "id": "matan:18",
+          "id": "geometry:10",
+          "subject": "geometry",
+          "n": 10
+        },
+        {
+          "id": "matan:32",
           "subject": "matan",
-          "n": 18
+          "n": 32
         },
         {
           "id": "algebra:18",
           "subject": "algebra",
-          "n": 18
-        },
-        {
-          "id": "geometry:18",
-          "subject": "geometry",
           "n": 18
         }
       ],
@@ -582,17 +551,12 @@
       "date": "2026-12-12",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Смешанный проход",
+      "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "discrete:18",
-          "subject": "discrete",
-          "n": 18
-        },
-        {
-          "id": "matan:19",
+          "id": "matan:33",
           "subject": "matan",
-          "n": 19
+          "n": 33
         },
         {
           "id": "algebra:19",
@@ -600,9 +564,9 @@
           "n": 19
         },
         {
-          "id": "geometry:19",
-          "subject": "geometry",
-          "n": 19
+          "id": "matan:34",
+          "subject": "matan",
+          "n": 34
         }
       ],
       "focus": [],
@@ -616,9 +580,9 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:20",
+          "id": "matan:35",
           "subject": "matan",
-          "n": 20
+          "n": 35
         },
         {
           "id": "algebra:20",
@@ -626,14 +590,24 @@
           "n": 20
         },
         {
-          "id": "geometry:20",
+          "id": "geometry:11",
           "subject": "geometry",
-          "n": 20
+          "n": 11
         },
         {
-          "id": "matan:21",
+          "id": "discrete:8",
+          "subject": "discrete",
+          "n": 8
+        },
+        {
+          "id": "matan:36",
           "subject": "matan",
-          "n": 21
+          "n": 36
+        },
+        {
+          "id": "matan:37",
+          "subject": "matan",
+          "n": 37
         }
       ],
       "focus": [],
@@ -647,24 +621,24 @@
       "label": "Смешанный проход",
       "new": [
         {
+          "id": "matan:38",
+          "subject": "matan",
+          "n": 38
+        },
+        {
           "id": "algebra:21",
           "subject": "algebra",
           "n": 21
         },
         {
-          "id": "geometry:21",
+          "id": "geometry:12",
           "subject": "geometry",
-          "n": 21
+          "n": 12
         },
         {
-          "id": "matan:22",
+          "id": "matan:39",
           "subject": "matan",
-          "n": 22
-        },
-        {
-          "id": "algebra:22",
-          "subject": "algebra",
-          "n": 22
+          "n": 39
         }
       ],
       "focus": [],
@@ -678,24 +652,24 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "geometry:22",
-          "subject": "geometry",
+          "id": "matan:40",
+          "subject": "matan",
+          "n": 40
+        },
+        {
+          "id": "algebra:22",
+          "subject": "algebra",
           "n": 22
         },
         {
-          "id": "matan:23",
+          "id": "discrete:9",
+          "subject": "discrete",
+          "n": 9
+        },
+        {
+          "id": "matan:41",
           "subject": "matan",
-          "n": 23
-        },
-        {
-          "id": "algebra:23",
-          "subject": "algebra",
-          "n": 23
-        },
-        {
-          "id": "geometry:23",
-          "subject": "geometry",
-          "n": 23
+          "n": 41
         }
       ],
       "focus": [],
@@ -709,24 +683,24 @@
       "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:24",
+          "id": "matan:42",
           "subject": "matan",
-          "n": 24
+          "n": 42
         },
         {
-          "id": "algebra:24",
+          "id": "algebra:23",
           "subject": "algebra",
-          "n": 24
+          "n": 23
         },
         {
-          "id": "geometry:24",
+          "id": "geometry:13",
           "subject": "geometry",
-          "n": 24
+          "n": 13
         },
         {
-          "id": "matan:25",
+          "id": "matan:43",
           "subject": "matan",
-          "n": 25
+          "n": 43
         }
       ],
       "focus": [],
@@ -740,24 +714,34 @@
       "label": "Смешанный проход",
       "new": [
         {
+          "id": "matan:44",
+          "subject": "matan",
+          "n": 44
+        },
+        {
+          "id": "algebra:24",
+          "subject": "algebra",
+          "n": 24
+        },
+        {
+          "id": "geometry:14",
+          "subject": "geometry",
+          "n": 14
+        },
+        {
+          "id": "discrete:10",
+          "subject": "discrete",
+          "n": 10
+        },
+        {
+          "id": "matan:45",
+          "subject": "matan",
+          "n": 45
+        },
+        {
           "id": "algebra:25",
           "subject": "algebra",
           "n": 25
-        },
-        {
-          "id": "geometry:25",
-          "subject": "geometry",
-          "n": 25
-        },
-        {
-          "id": "matan:26",
-          "subject": "matan",
-          "n": 26
-        },
-        {
-          "id": "algebra:26",
-          "subject": "algebra",
-          "n": 26
         }
       ],
       "focus": [],
@@ -771,24 +755,19 @@
       "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "matan:27",
+          "id": "matan:46",
           "subject": "matan",
-          "n": 27
+          "n": 46
         },
         {
-          "id": "algebra:27",
+          "id": "algebra:26",
           "subject": "algebra",
-          "n": 27
+          "n": 26
         },
         {
-          "id": "matan:28",
+          "id": "matan:47",
           "subject": "matan",
-          "n": 28
-        },
-        {
-          "id": "algebra:28",
-          "subject": "algebra",
-          "n": 28
+          "n": 47
         }
       ],
       "focus": [],
@@ -799,27 +778,37 @@
       "date": "2026-12-19",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:29",
+          "id": "matan:48",
           "subject": "matan",
-          "n": 29
+          "n": 48
         },
         {
-          "id": "algebra:29",
+          "id": "algebra:27",
           "subject": "algebra",
-          "n": 29
+          "n": 27
         },
         {
-          "id": "matan:30",
+          "id": "geometry:15",
+          "subject": "geometry",
+          "n": 15
+        },
+        {
+          "id": "discrete:11",
+          "subject": "discrete",
+          "n": 11
+        },
+        {
+          "id": "matan:49",
           "subject": "matan",
-          "n": 30
+          "n": 49
         },
         {
-          "id": "algebra:30",
-          "subject": "algebra",
-          "n": 30
+          "id": "matan:50",
+          "subject": "matan",
+          "n": 50
         }
       ],
       "focus": [],
@@ -830,27 +819,27 @@
       "date": "2026-12-20",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:31",
+          "id": "matan:51",
           "subject": "matan",
-          "n": 31
+          "n": 51
         },
         {
-          "id": "algebra:31",
+          "id": "algebra:28",
           "subject": "algebra",
-          "n": 31
+          "n": 28
         },
         {
-          "id": "matan:32",
+          "id": "geometry:16",
+          "subject": "geometry",
+          "n": 16
+        },
+        {
+          "id": "matan:52",
           "subject": "matan",
-          "n": 32
-        },
-        {
-          "id": "algebra:32",
-          "subject": "algebra",
-          "n": 32
+          "n": 52
         }
       ],
       "focus": [],
@@ -861,27 +850,27 @@
       "date": "2026-12-21",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:33",
+          "id": "matan:53",
           "subject": "matan",
-          "n": 33
+          "n": 53
         },
         {
-          "id": "algebra:33",
+          "id": "algebra:29",
           "subject": "algebra",
-          "n": 33
+          "n": 29
         },
         {
-          "id": "matan:34",
+          "id": "discrete:12",
+          "subject": "discrete",
+          "n": 12
+        },
+        {
+          "id": "matan:54",
           "subject": "matan",
-          "n": 34
-        },
-        {
-          "id": "algebra:34",
-          "subject": "algebra",
-          "n": 34
+          "n": 54
         }
       ],
       "focus": [],
@@ -892,27 +881,27 @@
       "date": "2026-12-22",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:35",
+          "id": "matan:55",
           "subject": "matan",
-          "n": 35
+          "n": 55
         },
         {
-          "id": "algebra:35",
+          "id": "algebra:30",
           "subject": "algebra",
-          "n": 35
+          "n": 30
         },
         {
-          "id": "matan:36",
+          "id": "geometry:17",
+          "subject": "geometry",
+          "n": 17
+        },
+        {
+          "id": "matan:56",
           "subject": "matan",
-          "n": 36
-        },
-        {
-          "id": "algebra:36",
-          "subject": "algebra",
-          "n": 36
+          "n": 56
         }
       ],
       "focus": [],
@@ -923,27 +912,37 @@
       "date": "2026-12-23",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:37",
+          "id": "matan:57",
           "subject": "matan",
-          "n": 37
+          "n": 57
         },
         {
-          "id": "algebra:37",
+          "id": "algebra:31",
           "subject": "algebra",
-          "n": 37
+          "n": 31
         },
         {
-          "id": "matan:38",
+          "id": "geometry:18",
+          "subject": "geometry",
+          "n": 18
+        },
+        {
+          "id": "discrete:13",
+          "subject": "discrete",
+          "n": 13
+        },
+        {
+          "id": "matan:58",
           "subject": "matan",
-          "n": 38
+          "n": 58
         },
         {
-          "id": "algebra:38",
+          "id": "algebra:32",
           "subject": "algebra",
-          "n": 38
+          "n": 32
         }
       ],
       "focus": [],
@@ -957,24 +956,19 @@
       "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "matan:39",
+          "id": "matan:59",
           "subject": "matan",
-          "n": 39
+          "n": 59
         },
         {
-          "id": "algebra:39",
+          "id": "algebra:33",
           "subject": "algebra",
-          "n": 39
+          "n": 33
         },
         {
-          "id": "matan:40",
+          "id": "matan:60",
           "subject": "matan",
-          "n": 40
-        },
-        {
-          "id": "algebra:40",
-          "subject": "algebra",
-          "n": 40
+          "n": 60
         }
       ],
       "focus": [],
@@ -985,27 +979,37 @@
       "date": "2026-12-25",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:41",
+          "id": "matan:61",
           "subject": "matan",
-          "n": 41
+          "n": 61
         },
         {
-          "id": "algebra:41",
+          "id": "algebra:34",
           "subject": "algebra",
-          "n": 41
+          "n": 34
         },
         {
-          "id": "matan:42",
+          "id": "geometry:19",
+          "subject": "geometry",
+          "n": 19
+        },
+        {
+          "id": "discrete:14",
+          "subject": "discrete",
+          "n": 14
+        },
+        {
+          "id": "matan:62",
           "subject": "matan",
-          "n": 42
+          "n": 62
         },
         {
-          "id": "algebra:42",
-          "subject": "algebra",
-          "n": 42
+          "id": "matan:63",
+          "subject": "matan",
+          "n": 63
         }
       ],
       "focus": [],
@@ -1019,24 +1023,19 @@
       "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "matan:43",
+          "id": "matan:64",
           "subject": "matan",
-          "n": 43
+          "n": 64
         },
         {
-          "id": "algebra:43",
+          "id": "algebra:35",
           "subject": "algebra",
-          "n": 43
+          "n": 35
         },
         {
-          "id": "matan:44",
+          "id": "matan:65",
           "subject": "matan",
-          "n": 44
-        },
-        {
-          "id": "algebra:44",
-          "subject": "algebra",
-          "n": 44
+          "n": 65
         }
       ],
       "focus": [],
@@ -1047,27 +1046,27 @@
       "date": "2026-12-27",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Алгебра + Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:45",
+          "id": "matan:66",
           "subject": "matan",
-          "n": 45
+          "n": 66
         },
         {
-          "id": "algebra:45",
+          "id": "algebra:36",
           "subject": "algebra",
-          "n": 45
+          "n": 36
         },
         {
-          "id": "matan:46",
-          "subject": "matan",
-          "n": 46
+          "id": "geometry:20",
+          "subject": "geometry",
+          "n": 20
         },
         {
-          "id": "matan:47",
+          "id": "matan:67",
           "subject": "matan",
-          "n": 47
+          "n": 67
         }
       ],
       "focus": [],
@@ -1078,27 +1077,32 @@
       "date": "2026-12-28",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Матанализ",
+      "label": "Смешанный проход",
       "new": [
         {
-          "id": "matan:48",
+          "id": "matan:68",
           "subject": "matan",
-          "n": 48
+          "n": 68
         },
         {
-          "id": "matan:49",
-          "subject": "matan",
-          "n": 49
+          "id": "algebra:37",
+          "subject": "algebra",
+          "n": 37
         },
         {
-          "id": "matan:50",
-          "subject": "matan",
-          "n": 50
+          "id": "geometry:21",
+          "subject": "geometry",
+          "n": 21
         },
         {
-          "id": "matan:51",
+          "id": "discrete:15",
+          "subject": "discrete",
+          "n": 15
+        },
+        {
+          "id": "matan:69",
           "subject": "matan",
-          "n": 51
+          "n": 69
         }
       ],
       "focus": [],
@@ -1109,27 +1113,27 @@
       "date": "2026-12-29",
       "minutes": 120,
       "mode": "first_pass",
-      "label": "Матанализ",
+      "label": "Алгебра + Матанализ",
       "new": [
         {
-          "id": "matan:52",
+          "id": "matan:70",
           "subject": "matan",
-          "n": 52
+          "n": 70
         },
         {
-          "id": "matan:53",
-          "subject": "matan",
-          "n": 53
+          "id": "algebra:38",
+          "subject": "algebra",
+          "n": 38
         },
         {
-          "id": "matan:54",
+          "id": "matan:71",
           "subject": "matan",
-          "n": 54
+          "n": 71
         },
         {
-          "id": "matan:55",
-          "subject": "matan",
-          "n": 55
+          "id": "algebra:39",
+          "subject": "algebra",
+          "n": 39
         }
       ],
       "focus": [],
@@ -1143,14 +1147,19 @@
       "label": "Каникулы · лёгкий проход",
       "new": [
         {
-          "id": "matan:56",
+          "id": "matan:72",
           "subject": "matan",
-          "n": 56
+          "n": 72
         },
         {
-          "id": "matan:57",
-          "subject": "matan",
-          "n": 57
+          "id": "geometry:22",
+          "subject": "geometry",
+          "n": 22
+        },
+        {
+          "id": "discrete:16",
+          "subject": "discrete",
+          "n": 16
         }
       ],
       "focus": [],
@@ -1164,14 +1173,9 @@
       "label": "Каникулы · лёгкий проход",
       "new": [
         {
-          "id": "matan:58",
+          "id": "matan:73",
           "subject": "matan",
-          "n": 58
-        },
-        {
-          "id": "matan:59",
-          "subject": "matan",
-          "n": 59
+          "n": 73
         }
       ],
       "focus": [],
@@ -1185,14 +1189,9 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:60",
-          "subject": "matan",
-          "n": 60
-        },
-        {
-          "id": "matan:61",
-          "subject": "matan",
-          "n": 61
+          "id": "algebra:40",
+          "subject": "algebra",
+          "n": 40
         }
       ],
       "focus": [
@@ -1208,14 +1207,9 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:62",
+          "id": "matan:74",
           "subject": "matan",
-          "n": 62
-        },
-        {
-          "id": "matan:63",
-          "subject": "matan",
-          "n": 63
+          "n": 74
         }
       ],
       "focus": [
@@ -1231,14 +1225,19 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:64",
+          "id": "matan:75",
           "subject": "matan",
-          "n": 64
+          "n": 75
         },
         {
-          "id": "matan:65",
-          "subject": "matan",
-          "n": 65
+          "id": "algebra:41",
+          "subject": "algebra",
+          "n": 41
+        },
+        {
+          "id": "geometry:23",
+          "subject": "geometry",
+          "n": 23
         }
       ],
       "focus": [
@@ -1254,14 +1253,9 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:66",
+          "id": "matan:76",
           "subject": "matan",
-          "n": 66
-        },
-        {
-          "id": "matan:67",
-          "subject": "matan",
-          "n": 67
+          "n": 76
         }
       ],
       "focus": [
@@ -1277,14 +1271,9 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:68",
-          "subject": "matan",
-          "n": 68
-        },
-        {
-          "id": "matan:69",
-          "subject": "matan",
-          "n": 69
+          "id": "discrete:17",
+          "subject": "discrete",
+          "n": 17
         }
       ],
       "focus": [
@@ -1300,14 +1289,14 @@
       "label": "Каникулы · мало нового + акцент Матанализ",
       "new": [
         {
-          "id": "matan:70",
+          "id": "matan:77",
           "subject": "matan",
-          "n": 70
+          "n": 77
         },
         {
-          "id": "matan:71",
-          "subject": "matan",
-          "n": 71
+          "id": "algebra:42",
+          "subject": "algebra",
+          "n": 42
         }
       ],
       "focus": [
@@ -1323,14 +1312,9 @@
       "label": "Акцент · Матанализ (перед экзаменом)",
       "new": [
         {
-          "id": "matan:72",
+          "id": "matan:78",
           "subject": "matan",
-          "n": 72
-        },
-        {
-          "id": "matan:73",
-          "subject": "matan",
-          "n": 73
+          "n": 78
         }
       ],
       "focus": [
@@ -1346,14 +1330,19 @@
       "label": "Акцент · Матанализ (перед экзаменом)",
       "new": [
         {
-          "id": "matan:74",
+          "id": "matan:79",
           "subject": "matan",
-          "n": 74
+          "n": 79
         },
         {
-          "id": "matan:75",
-          "subject": "matan",
-          "n": 75
+          "id": "algebra:43",
+          "subject": "algebra",
+          "n": 43
+        },
+        {
+          "id": "geometry:24",
+          "subject": "geometry",
+          "n": 24
         }
       ],
       "focus": [
@@ -1369,24 +1358,24 @@
       "label": "Акцент · Матанализ (перед экзаменом)",
       "new": [
         {
-          "id": "matan:76",
+          "id": "matan:80",
           "subject": "matan",
-          "n": 76
+          "n": 80
         },
         {
-          "id": "matan:77",
-          "subject": "matan",
-          "n": 77
+          "id": "algebra:44",
+          "subject": "algebra",
+          "n": 44
         },
         {
-          "id": "matan:78",
-          "subject": "matan",
-          "n": 78
+          "id": "discrete:18",
+          "subject": "discrete",
+          "n": 18
         },
         {
-          "id": "matan:79",
+          "id": "matan:81",
           "subject": "matan",
-          "n": 79
+          "n": 81
         }
       ],
       "focus": [
@@ -1402,19 +1391,19 @@
       "label": "Акцент · Матанализ (перед экзаменом)",
       "new": [
         {
-          "id": "matan:80",
-          "subject": "matan",
-          "n": 80
-        },
-        {
-          "id": "matan:81",
-          "subject": "matan",
-          "n": 81
-        },
-        {
           "id": "matan:82",
           "subject": "matan",
           "n": 82
+        },
+        {
+          "id": "algebra:45",
+          "subject": "algebra",
+          "n": 45
+        },
+        {
+          "id": "geometry:25",
+          "subject": "geometry",
+          "n": 25
         },
         {
           "id": "matan:83",

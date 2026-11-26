@@ -1,20 +1,20 @@
 /* Notebooks PWA — offline-first shell + notebooks + local/CDN KaTeX. */
-const CACHE = "notebooks-shell-v11";
+const CACHE = "notebooks-shell-v12";
 const NETWORK_MS = 3000;
 
 const SHELL = [
   "./",
   "./index.html",
   "./site.css",
-  "./site.css?v=11",
+  "./site.css?v=12",
   "./site.js",
-  "./site.js?v=11",
+  "./site.js?v=12",
   "./theme.js",
-  "./theme.js?v=11",
+  "./theme.js?v=12",
   "./session.css",
-  "./session.css?v=11",
+  "./session.css?v=12",
   "./session.js",
-  "./session.js?v=11",
+  "./session.js?v=12",
   "./session/plan.json",
   "./session/catalog.json",
   "./session/my-progress.json",
@@ -138,9 +138,9 @@ const PRECACHE = [
   "./vendor/katex/katex.min.js",
   "./общее/тетрадь.css",
   "./общее/тетрадь.js",
-  "./site.css?v=11",
-  "./site.js?v=11",
-  "./theme.js?v=11"
+  "./site.css?v=12",
+  "./site.js?v=12",
+  "./theme.js?v=12"
 ];
 
 const KATEX = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist";
